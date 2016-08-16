@@ -5,11 +5,140 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="icon" href="assets/saltfavicon.png">
   </head>
 
   <body>
-    Header
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-3 col-sm-6">
+            <div class="header_img">
+              <img src="assets/whitesalticon.png" alt="salt">
+            </div>
+          </div>
+          <div class="col-xs-9 col-sm-6">
+            <div class="header_links">
+              <nav class="nav_effect">
+                <a href="#" data-toggle="modal" data-target="#sign_up">Sign Up</a>
+                <a href="#" data-toggle="modal" data-target="#login">Login</a>
+              </nav>
+              <div class="header_profile">
+                <a href="#" alt="Profile Image"><img src="assets/profileImage.png" class="img-circle header_profile_image" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     <%= yield %>
-    Footer
+    <footer>
+        <img src="assets/whitesalticon.png" alt="salt" class="footer_logo center-block" />
+        <div class="footer_links container">
+          <div class="row">
+            <div class="col-xs-6 col-sm-3 social_links text-center">
+              <a href="https://www.facebook.com/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+              <a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              <a href="https://www.snapchat.com/"><i class="fa fa-snapchat" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <a href="#about.html"><h5 class="text-center">About Salt</h5></a>
+            </div>
+            <div class="hidden-xs visible-sm visible-md visible-lg">
+              <div class="col-xs-6 col-sm-3">
+                <a href="#policies.html"><h5 class="text-center">Policies</h5></a>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <a href="#contact.html"><h5 class="text-center">Contact</h5></a>
+              </div>
+            </div>
+          </div>
+          <div class="row visible-xs hidden-sm hidden-md hidden-lg">
+            <div class="col-xs-6">
+              <a href="#policies.html"><h5 class="text-center">Policies</h5></a>
+            </div>
+            <div class="col-xs-6">
+              <a href="#contact.html"><h5 class="text-center">Contact</h5></a>
+            </div>
+          </div>
+        </div>
+    </footer>
+    <div class="modal fade" id="sign_up" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Sign Up</h4>
+          </div>
+          <br />
+          <div class="modal-body">
+            <form method="post" action="#" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="sign_up_firstname">First Name</label>
+                <input type="text" class="form-control" id="sign_up_firstname" name="sign_up_firstname" required />
+              </div>
+              <div class="form-group">
+                <label for="sign_up_lastname">Last Name</label>
+                <input type="text" class="form-control" id="sign_up_lastname" name="sign_up_lastname" required />
+              </div>
+              <div class="form-group">
+                <label for="sign_up_email">Email</label>
+                <input type="text" class="form-control" id="sign_up_email" name="sign_up_email" required />
+              </div>
+              <div class="form-group">
+                <label for="sign_up_password">Password</label>
+                <input type="password" class="form-control" id="sign_up_password" name="sign_up_password" required />
+              </div>
+              <br />
+          </div>
+          <div class="modal-footer">
+            <button id="btn_sign_up" type="button" class="btn btn-default">
+              <span>Sign Up</span>
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="login" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login</h4>
+          </div>
+          <br />
+          <div class="modal-body">
+            <form method="post" action="#" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="login_email">Email</label>
+                <input type="text" class="form-control" id="login_email" name="login_email" required />
+              </div>
+              <div class="form-group">
+                <label for="login_password">Password</label>
+                <input type="password" class="form-control" id="login_password" name="login_password" required />
+              </div>
+              <br />
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btn_login" class="btn btn-default">
+              <span>Login</span>
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/config.js"></script>
+    <script src="js/signUpLogin.js"></script>
   </body>
 </html>
