@@ -1,11 +1,12 @@
 // sign up
 document.getElementById('btn_sign_up').addEventListener('click', function () {
   var formFields = {
-    firstname: document.getElementById('sign_up_firstname').value,
-    lastname: document.getElementById('sign_up_lastname').value,
+    first_name: document.getElementById('sign_up_firstname').value,
+    last_name: document.getElementById('sign_up_lastname').value,
     email: document.getElementById('sign_up_email').value,
-    password: document.getElementById('sign_up_password').value
-    password_confirmation: document.getElementById('sign_up_password_confirm').value
+    password: document.getElementById('sign_up_password').value,
+    password_confirmation: document.getElementById('sign_up_password_confirm').value,
+    date_of_birth: document.getElementById('sign_up_birth').value
   }
 
   fetchApi('POST','/api/users', formFields, function (response, statusCode) {

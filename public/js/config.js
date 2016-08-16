@@ -1,7 +1,8 @@
 // API Host
-var api = 'https://arcane-harbor-93523.herokuapp.com'
+// var api = 'https://arcane-harbor-93523.herokuapp.com'
+var api = 'http://localhost:3000'
 // var api = 'https://c4f482c0.ngrok.io'
-var production = true
+var production = false
 
 // Utilities
 function fetchApi(method, endpoint, formFields, callback) {

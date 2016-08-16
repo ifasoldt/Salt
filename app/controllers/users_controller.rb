@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.date_of_birth = Date.parse(params[:date_of_birth])
     if @user.save
       redirect_to action: "dashboard"
     else
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:password, :password_confirmation, :email, :first_name, :last_name, :date_of_birth)
+    params.permit(:password, :password_confirmation, :email, :first_name, :last_name)
   end
 
 end
