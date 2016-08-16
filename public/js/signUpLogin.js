@@ -11,7 +11,7 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
 
   fetchApi('POST','/api/users', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      alert('success')
+      redirect('/current_user/dashboard')
     }
     else {
       var errors = response.forEach(function(error, i){
