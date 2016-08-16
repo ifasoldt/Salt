@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     @user.date_of_birth = Date.parse(params[:date_of_birth])
     if @user.save
       session[:email] = @user.email
-      redirect_to current_user_dashboard_path
+      render json: @user
     else
-      render json: @user.errors.full_messages, status: 404
+      render json: @user.errors.full_messages, status: 400
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
      session[:email] = @user.email
      redirect_to action: "dashboard"
    else
-     render json: @user.errors, status: 400
+     render json: @user.errors.full_messages, status: 400
    end
   end
 
