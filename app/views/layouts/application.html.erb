@@ -26,7 +26,11 @@
             <div class="header_links">
               <nav class="nav_effect">
                 <a href="#" data-toggle="modal" data-target="#sign_up">Sign Up</a>
-                <a href="#" data-toggle="modal" data-target="#login">Login</a>
+                <% if current_user %>
+                  <%= link_to "Logout", logout_path, method: 'delete' %>
+                <% else %>
+                  <a href="#" data-toggle="modal" data-target="#login">Login</a>
+                <% end %>
               </nav>
               <div class="header_profile">
                 <a href="#" alt="Profile Image"><img src="assets/profileImage.png" class="img-circle header_profile_image" /></a>

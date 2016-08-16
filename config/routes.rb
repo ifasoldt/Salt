@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
 resources :events, except: [:create, :update]
 resources :users, except:[:index, :edit, :create, :new, :update]
-resources :user_sessions, only: [:destroy]
 resources :applications, only: [:create, :destroy]
 resources :thumbs, only: [:create]
 
@@ -24,5 +23,7 @@ put 'api/events/:id' => 'events#update'
 
 # sign_in
 post '/api/sign_in' => 'user_sessions#create'
+# sign out
+delete '/logout' => 'user_sessions#destroy'
 
 end
