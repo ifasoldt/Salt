@@ -19,10 +19,5 @@ class UserSessionsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  def require_user
-    redirect_back(fallback_location: root_path, flash: {danger: "Please login or register."}) unless current_user
-  end
-
-
 
 end
