@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:email] = @user.email
       redirect_to current_user_dashboard_path
     else
-      render json: @user.errors
+      render json: @user.errors.full_messages, status: 404
     end
   end
 

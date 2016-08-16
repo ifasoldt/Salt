@@ -14,8 +14,14 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
       alert('success')
     }
     else {
-      alert(response)
-      location.reload()
+      console.log(response)
+
+      var errors = response.forEach(function(error, i){
+        var div = document.createElement("div")
+        div.style.color = 'red'
+        div.innerHTML = error
+        document.getElementById('sign_up_password_confirm').parentElement.appendChild(div)
+      })
     }
   })
 })
