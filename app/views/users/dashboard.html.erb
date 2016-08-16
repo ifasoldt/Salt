@@ -1,0 +1,181 @@
+  <% content_for :stylesheets do %>
+    <link rel="stylesheet" href="/css/dashboard/flatpickr.min.css" />
+    <link rel="stylesheet" href="/css/dashboard/events.css" />
+  <% end %>
+
+<a href="#" data-toggle="modal" data-target="#profileModal"><button id="editProfile" class="btn">Edit Profile</button></a>
+<a href="#" data-toggle="modal" data-target="#eventModal"><button id="createEvent" class="btn">Create Event</button></a>
+<div class="modal fade" id="profileModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Profile</h4>
+      </div>
+      <br />
+      <div class="modal-body">
+        <form method="post" action="#" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="first_name_profile">First Name</label>
+            <input type="text" class="form-control" id="first_name_profile" name="first_name_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="last_name_profile">Last Name</label>
+            <input type="text" class="form-control" id="last_name_profile" name="last_name_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="email_profile">Email</label>
+            <input type="text" class="form-control" id="email_profile" name="email_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="date_of_birth_profile">Date of Birth <span class="text-muted">(DD-MM-YYYY)</span></label>
+            <input type="text" class="form-control" id="date_of_birth_profile" name="date_of_birth_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="phone_profile">Phone Number <span class="text-muted">(XXX-XXX-XXXX)</span></label>
+            <input type="text" class="form-control" id="phone_profile" name="phone_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="address_profile">Address</label>
+            <input type="text" class="form-control" id="address_profile" name="address_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="city_profile">City</label>
+            <input type="text" class="form-control" id="city_profile" name="city_profile" required />
+          </div>
+          <div class="form-group">
+            <label for="state_profile" >State</label>
+            <select id="state_profile" name="state_profile" class="form-control">
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="zip_profile">Zip Code</label>
+            <input type="text" class="form-control" id="zip_profile" name="zip_profile" required />
+          </div>
+          <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn_submit_profile" class="btn btn-default">
+          <span>Submit</span>
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="eventModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Event</h4>
+      </div>
+      <br />
+      <div class="modal-body">
+        <form method="post" action="#" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="event_title">Event Title</label>
+            <input type="text" class="form-control" id="event_title" name="event_title" required />
+          </div>
+          <div class="form-group">
+            <label for="event__date" class="dateInput">Event Date</label>
+            <input type="text" class="form-control flatpickr" id="event_date" name="event__date" data-date-format="d-m-Y" />
+          </div>
+          <div class="form-group">
+            <label for="event_time">Event Time</label>
+            <input type="text" data-enable-time="true" data-no-calendar="true" value="09:00" class="form-control flatpickr" id="event_time" name="event_time" required />
+          </div>
+          <div class="form-group">
+            <label for="event_number_guests">Number of Guests</label>
+            <input type="text" class="form-control" id="event_number_guests" name="event_number_guests" required />
+          </div>
+          <div class="form-group">
+            <label for="event_unlimited">No Guest Limit</label>
+            <input type="checkbox" id="event_unlimited" name="event_unlimited" />
+          </div>
+          <div class="form-group">
+            <label for="event_children">Children Welcome</label>
+            <input type="checkbox" id="event_children" name="event_children" />
+          </div>
+          <div class="form-group">
+            <label for="event_alcohol">Alcohol Welcome</label>
+            <input type="checkbox" id="event_alcohol" name="event_alcohol"/>
+          </div>
+          <div class="form-group">
+            <label for="event_food">Food/Drink</label>
+            <input type="text" id="event_food" name="event_food" class="form-control text_input" />
+          </div>
+          <div class="form-group">
+            <label for="event_description">Description of Event</label>
+            <input type="text" id="event_description" name="event_description" class="form-control text_input" />
+          </div>
+          <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn_event_submit" class="btn btn-default">
+          <span>Submit</span>
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <% content_for :scripts do %>
+    <script src="/js/dashboard/flatpickr.min.js"></script>
+    <script type="text/javascript">
+        $("#event_date").flatpickr();
+        $("#event_time").flatpickr();
+    </script>
+  <% end %>
