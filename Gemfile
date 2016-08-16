@@ -37,6 +37,8 @@ gem 'sinatra', github: 'sinatra/sinatra', branch: 'master'
 gem 'refile-postgres', '~> 1.4'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'simple_form'
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'validates_timeliness', '~> 4.0'
 
 
 # Use Capistrano for deployment
@@ -45,6 +47,12 @@ gem 'simple_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'capybara', git: 'https://github.com/jnicklas/capybara.git'
+  gem 'shoulda'
 end
 
 group :development do
