@@ -5,6 +5,7 @@ class UserSessionsController < ApplicationController
    if @user
      if @user.authenticate(params[:password])
        session[:email] = @user.email
+       render json: @user, status: 200
      else
        render json: {error: "Incorrect email or password"}, status: 400
      end

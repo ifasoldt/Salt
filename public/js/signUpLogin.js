@@ -11,11 +11,9 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
 
   fetchApi('POST','/api/users', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      alert('success')
+      redirect('/current_user/dashboard')
     }
     else {
-      console.log(response)
-
       var errors = response.forEach(function(error, i){
         var div = document.createElement("div")
         div.style.color = 'red'
@@ -33,10 +31,13 @@ document.getElementById('btn_login').addEventListener('click', function () {
   }
   fetchApi('POST', '/api/sign_in', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      alert('success')
+      location.reload()
     }
     else {
-      alert(response)
+      var div = document.createElement("div")
+      div.style.color = 'red'
+      div.innerHTML = response.error
+      document.getElementById('login_password').parentElement.appendChild(div)
     }
   })
 })
