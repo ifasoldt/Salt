@@ -5,6 +5,7 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
     lastname: document.getElementById('sign_up_lastname').value,
     email: document.getElementById('sign_up_email').value,
     password: document.getElementById('sign_up_password').value
+    password_confirmation: document.getElementById('sign_up_password_confirm').value
   }
 
   fetchApi('POST','/api/users', formFields, function (response, statusCode) {
