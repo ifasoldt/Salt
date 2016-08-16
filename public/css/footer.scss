@@ -1,0 +1,43 @@
+* {
+  font-family: 'Abel', sans-serif;
+  box-sizing: border-box
+}
+a {
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: none;
+}
+footer {
+    background-color: black;
+    height: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+    .footer_logo {
+        display: inline-block;
+        width: 200px;
+        margin-top: 20px;
+    }
+    .footer_links {
+      margin-top: 20px;
+        a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            &:hover, &:focus {
+                color: pink;
+            }
+        }
+        h5 {
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+    }
+    .social_links {
+      font-size: 20px;
+      margin-top: 8px;
+      a {
+          color: white;
+      }
+    }
+}
