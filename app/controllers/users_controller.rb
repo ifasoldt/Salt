@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to action: "dashboard"
     else
-      render json: @user.errors
+      render json: @user.errors.full_messages, status: 404
     end
   end
 
