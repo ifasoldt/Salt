@@ -18,6 +18,10 @@ class User < ApplicationRecord
   validates :phone, length: {is: 10, message: 'must be in 1231231234 format'}, allow_blank: true
   validates_date :date_of_birth, :before => lambda { 18.years.ago }, :before_message => "must be at least 18 years old"
 
+  # def accepted_events
+  #   events.where
+  # end
+
 
 
 end
