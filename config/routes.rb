@@ -11,7 +11,7 @@ root 'welcome#index'
 # sign_up
 post '/api/users' => 'users#create'
 # user_dashboard
-get '/users/dashboard' => 'users#dashboard'
+get '/current_user/dashboard/' => 'users#dashboard'
 # user update
 put '/api/users/:id' => 'users#update'
 patch '/api/users/:id' => 'users#update'

@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     if @event.create(event_params)
       redirect_to event_path(@event)
     else
-      render json: @event.errors
+      render json: @event.errors, status: 400
     end
   end
 
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to event_path(@event)
     else
-      render json: @event.errors
+      render json: @event.errors, status: 400
     end
   end
 

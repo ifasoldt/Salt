@@ -7,10 +7,10 @@ class UserSessionsController < ApplicationController
        session[:email] = @user.email
        redirect_back(fallback_location: root_path)
      else
-       render json: {error: "Incorrect email or password"}
+       render json: {error: "Incorrect email or password"}, status: 400
      end
    else
-      render json: {error: "Incorrect email or password"}
+      render json: {error: "Incorrect email or password"}, status: 400
    end
  end
 
