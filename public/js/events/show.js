@@ -39,12 +39,12 @@ document.getElementById('btn_application_submit').addEventListener('click', func
   fetchApi('POST', `/api/events/${current_event_join}/applications`, formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       console.log(response)
-      // location.reload()
+      location.reload()
     }
     else {
       console.log(response)
       var errors = response.forEach(function(error){
-        createError(error, 'event_description')
+        createError(error, 'application_message')
       })
     }
   })
