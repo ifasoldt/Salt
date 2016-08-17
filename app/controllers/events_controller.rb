@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:description, :food, :guest_limit, :time, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests)
+    params.permit(:description, :food, :guest_limit, :time, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :filter_guests)
   end
 
   # def to_boolean(str)

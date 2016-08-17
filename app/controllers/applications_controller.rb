@@ -3,6 +3,11 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.new(application_params.merge(user_id: current_user.id))
+    if Event.find(params[:event_id]).filter_guests
+      @application.status = 'pending'
+    else
+      @application.status = 'approved'
+    end
     if @application.save
       render json: @application
     else
