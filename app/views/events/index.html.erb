@@ -1,0 +1,30 @@
+<% content_for :stylesheets do %>
+  <link rel="stylesheet" href="/css/flatpickr.min.css" />
+  <link rel="stylesheet" href="/css/events/index.css" />
+<% end %>
+
+
+<div class="jumbotron">
+
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="renderEvents">
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<% content_for :scripts do %>
+  <script src="/js/flatpickr.min.js"></script>
+  <!-- <script src="/js/events/index.js"></script> -->
+  <script src="js/events/index.bundle.js"></script>
+  <script type="text/javascript">
+      // $("#event_date").flatpickr();
+      // $("#event_time").flatpickr();
+  </script>
+<% end %>

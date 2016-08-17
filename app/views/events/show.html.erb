@@ -33,7 +33,7 @@
             <input type="text" data-enable-time="true" data-no-calendar="true" value="<%= @event.time %>" class="form-control flatpickr" id="event_time" name="event_time" required />
           </div>
           <div class="form-group">
-            <label for="event_number_guests">Number of Guests</label>
+            <label for="event_number_guests">Number Of Guests</label>
             <input type="text" class="form-control" id="event_number_guests" value="<%= @event.guest_limit %>" name="event_number_guests" required />
           </div>
           <div class="form-group">
@@ -65,7 +65,7 @@
             <textarea type="text" id="event_food" name="event_food" class="form-control text_input" /><%= @event.food %></textarea>
           </div>
           <div class="form-group">
-            <label for="event_description">Description of Event</label>
+            <label for="event_description">Description Of Event</label>
             <textarea type="text" id="event_description" class="form-control text_input" name="event_description"><%= @event.description %></textarea>
           </div>
           <br />
@@ -91,11 +91,11 @@
       <div class="modal-body">
         <form method="post" action="#" enctype="multipart/form-data" id="current_event_join" data-id="<%= @event.id %>">
           <div class="form-group">
-            <label for="application_guests">Number of Guests</label>
+            <label for="application_guests">Number Of Guests</label>
             <input type="text" class="form-control" id="application_guests" name="application_guests" />
           </div>
           <div class="form-group">
-            <label for="application_message">Message to Event Creator</label>
+            <label for="application_message">Message To Event Creator</label>
             <textarea type="text" id="application_message" class="form-control text_input" name="application_message" placeholder="Describe Guests"></textarea>
           </div>
           <br />
