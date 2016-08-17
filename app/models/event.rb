@@ -13,10 +13,12 @@ class Event < ApplicationRecord
 
   def spots_left
     @approved_guests = applications.where(status: 'approved').pluck(:quantity).inject(:+).to_i
-    guest_limit - @approved_guests
+    if guest_limit
+      return guest_limit - @approved_guests
+    else
+      return "The host has not limited the size of this meal"
+    end
   end
-
-
 
 
 private
