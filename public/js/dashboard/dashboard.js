@@ -1,5 +1,12 @@
+function removeErrors (){
+  var errors = document.querySelectorAll('.error')
+  for (var i = 0; i < errors.length; i++) {
+    errors[i].parentElement.removeChild(errors[i])
+  }
+}
 // update profile
 document.getElementById('btn_submit_profile').addEventListener('click', function () {
+  removeErrors()
   var formFields = {
     first_name: document.getElementById('first_name_profile').value,
     last_name: document.getElementById('last_name_profile').value,
@@ -15,12 +22,13 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
   fetchApi('PATCH','/api/users', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       console.log(response)
-      redirect('/current_user/dashboard')
+      // redirect('/current_user/dashboard')
     }
     else {
       var errors = response.forEach(function(error){
         console.log(response)
         var div = document.createElement("div")
+        div.classList.add('error')
         div.style.color = 'red'
         div.innerHTML = error
         document.getElementById('zip_profile').parentElement.appendChild(div)
@@ -30,6 +38,7 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 })
 // create event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
+  removeErrors()
   var formFields = {
     title: document.getElementById('event_title').value,
     date: document.getElementById('event_date').value,
@@ -48,6 +57,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     else {
       var errors = response.forEach(function(error){
         var div = document.createElement("div")
+        div.classList.add('error')
         div.style.color = 'red'
         div.innerHTML = error
         document.getElementById('event_description').parentElement.appendChild(div)

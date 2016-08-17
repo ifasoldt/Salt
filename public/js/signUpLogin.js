@@ -1,5 +1,13 @@
+function removeErrors (){
+  var errors = document.querySelectorAll('.error')
+  for (var i = 0; i < errors.length; i++) {
+    errors[i].parentElement.removeChild(errors[i])
+  }
+}
 // sign up
 document.getElementById('btn_sign_up').addEventListener('click', function () {
+  removeErrors()
+
   var formFields = {
     first_name: document.getElementById('sign_up_firstname').value,
     last_name: document.getElementById('sign_up_lastname').value,
@@ -14,8 +22,9 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
       redirect('/current_user/dashboard')
     }
     else {
-      var errors = response.forEach(function(error){
+      var responseErrors = response.forEach(function(error){
         var div = document.createElement("div")
+        div.classList.add('error')
         div.style.color = 'red'
         div.innerHTML = error
         document.getElementById('sign_up_password_confirm').parentElement.appendChild(div)
@@ -25,6 +34,7 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
 })
 // login
 document.getElementById('btn_login').addEventListener('click', function () {
+  removeErrors()
   var formFields = {
     email: document.getElementById('login_email').value,
     password: document.getElementById('login_password').value
@@ -35,6 +45,7 @@ document.getElementById('btn_login').addEventListener('click', function () {
     }
     else {
       var div = document.createElement("div")
+      div.classList.add('error')
       div.style.color = 'red'
       div.innerHTML = response.error
       document.getElementById('login_password').parentElement.appendChild(div)
