@@ -19,14 +19,66 @@
   flex: 2;
 }
 
+.eventContainer .imgContainer .dateContainer {
+  color: white;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  padding: 5px;
+}
+
+.eventContainer .imgContainer .dateContainer .date {
+  font-size: 15px;
+}
+
+.eventContainer .imgContainer .dateContainer .time {
+  font-size: 12px;
+}
+
+.eventContainer .imgContainer .watchIcon {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  font-size: 30px;
+  color: white;
+  transition: 0.3s;
+}
+
+.eventContainer .imgContainer .watchIcon:hover, .eventContainer .imgContainer .watchIcon:focus {
+  color: pink;
+}
+
 .eventContainer .descContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.eventContainer .descContainer .profileContainer {
+  display: flex;
+  flex-direction: row;
   flex: 1;
 }
 
-.eventContainer .descContainer img {
-  width: 70px;
+.eventContainer .descContainer .profileContainer .thumbnailContainer {
+  flex: 1;
 }
 
-.eventContainer .descContainer .event_title {
+.eventContainer .descContainer .profileContainer .thumbnailContainer img {
+  height: 100%;
+  width: 100%;
+}
+
+.eventContainer .descContainer .profileContainer .nameContainer {
+  flex: 2;
+}
+
+.eventContainer .descContainer .eventDescContainer {
+  flex: 2;
+}
+
+.eventContainer .descContainer .eventDescContainer .event_title {
   margin: 10px 0;
 }

@@ -14,17 +14,57 @@
     background-position: center;
     background-size: cover;
     flex: 2;
-    .watchContainer {
-
+    .dateContainer {
+      color: white;
+      position: absolute;
+      top: 0px;
+      left: 15px;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: inline-block;
+      padding: 5px;
+      .date {
+        font-size: 15px;
+      }
+      .time {
+        font-size: 12px;
+      }
+    }
+    .watchIcon {
+      position: absolute;
+      top: 5px;
+      right: 25px;
+      font-size: 30px;
+      color: white;
+      transition: 0.3s;
+    }
+    .watchIcon:hover, .watchIcon:focus {
+      color: pink;
     }
   }
   .descContainer {
     flex: 1;
-    img {
-      width: 70px;
+    display: flex;
+    flex-direction: column;
+    .profileContainer {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      .thumbnailContainer {
+        flex: 1;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .nameContainer {
+        flex: 2;
+      }
     }
-    .event_title {
-      margin: 10px 0;
+    .eventDescContainer {
+      flex: 2;
+      .event_title {
+        margin: 10px 0;
+      }
     }
   }
 }
