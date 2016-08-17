@@ -34,10 +34,10 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     title: document.getElementById('event_title').value,
     date: document.getElementById('event_date').value,
     time: document.getElementById('event_time').value,
-    guests: document.getElementById('event_number_guests').value,
-    unlimited_guests: document.getElementById('event_unlimited').value,
-    children: document.getElementById('event_children').value,
-    alcohol: document.getElementById('event_alcohol').value,
+    guest_limit: document.getElementById('event_number_guests').value,
+    unlimited_guests: document.getElementById('event_unlimited').checked,
+    allow_children: document.getElementById('event_children').checked,
+    alcohol_allowed: document.getElementById('event_alcohol').checked,
     food: document.getElementById('event_food').value,
     description: document.getElementById('event_description').value
   }

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :create, :destroy]
+  before_action :set_event, only: [:show, :edit, :destroy]
 
   def index
   end
@@ -8,7 +8,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    if @event.create(event_params.merge(host_id: current_user.id))
+    @event = Event.new(event_params.merge(host_id: current_user.id))
+    if @event.save
       redirect_to event_path(@event)
     else
       render json: @event.errors, status: 400
@@ -38,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:description, :food, :drink, :guest_limit, :time, :date, :alcohol_allowed, :allow_children, :title, :unlimited_guests)
+    params.permit(:description, :food, :guest_limit, :time, :date, :alcohol_allowed, :allow_children, :title, :unlimited_guests)
   end
 
 end
