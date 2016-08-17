@@ -3,7 +3,12 @@
   <link rel="stylesheet" href="/css/events/show.css" />
 <% end %>
 
-<a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Edit Event</button></a>
+<% if @event.host_id == current_user.id %>
+  <a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Edit Event</button></a>
+  <% else %>
+  <a href="#" data-toggle="modal" data-target="#joinEventModal"><button class="btn">Join Event</button></a>
+<% end %>
+
 <div class="modal fade" id="eventModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -73,6 +78,36 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="joinEventModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Event</h4>
+      </div>
+      <br />
+      <div class="modal-body">
+        <form method="post" action="#" enctype="multipart/form-data" id="current_event_id" data-id="<%= @event.id %>">
+          <div class="form-group">
+            <label for="application_guests">Number of Guests</label>
+            <input type="text" class="form-control" id="application_guests" name="application_guests" />
+          </div>
+          <div class="form-group">
+            <label for="application_message">Message to Event Creator</label>
+            <textarea type="text" id="application_message" class="form-control text_input" name="application_message" placeholder="Describe Guests"></textarea>
+          </div>
+          <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn_application_submit" class="btn btn-default">
+          <span>Submit</span>
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <% content_for :scripts do %>
   <script src="/js/flatpickr.min.js"></script>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :destroy]
+  before_action :set_event, only: [:show, :edit, :destroy, :update]
 
   def index
   end
@@ -26,9 +26,9 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to event_path(@event)
+      render json: @event, status: 200
     else
-      render json: @event.errors, status: 400
+      render json: @event.errors.full_messages, status: 400
     end
   end
 

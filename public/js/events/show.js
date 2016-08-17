@@ -20,6 +20,29 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
       location.reload()
     }
     else {
+      console.log(response)
+      var errors = response.forEach(function(error){
+        createError(error, 'event_description')
+      })
+    }
+  })
+})
+var eventID2 = document.getElementById('current_event_id')
+var current_event_id = eventID2.getAttribute('data-id')
+// edit event
+document.getElementById('btn_application_submit').addEventListener('click', function () {
+  removeErrors()
+  var formFields = {
+    quantity: document.getElementById('application_guests').value,
+    message: document.getElementById('application_message').value
+  }
+  fetchApi('POST', `/api/events/${current_event_id}/applications`, formFields, function (response, statusCode) {
+    if (statusCode >= 200 && statusCode < 300) {
+      console.log(response)
+      // location.reload()
+    }
+    else {
+      console.log(response)
       var errors = response.forEach(function(error){
         createError(error, 'event_description')
       })
