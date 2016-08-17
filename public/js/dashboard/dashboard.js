@@ -1,10 +1,3 @@
-//removes all errors from modal
-function removeErrors (){
-  var errors = document.querySelectorAll('.error')
-  for (var i = 0; i < errors.length; i++) {
-    errors[i].parentElement.removeChild(errors[i])
-  }
-}
 //get current user id
 var profile = document.getElementById('current_profile')
 var current_id = profile.getAttribute('data-id')
@@ -25,17 +18,11 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 
   fetchApi('PATCH','/api/users/' + current_id, formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      console.log(response)
-      // redirect('/current_user/dashboard')
+      redirect('/current_user/dashboard')
     }
     else {
       var errors = response.forEach(function(error){
-        console.log(response)
-        var div = document.createElement("div")
-        div.classList.add('error')
-        div.style.color = 'red'
-        div.innerHTML = error
-        document.getElementById('zip_profile').parentElement.appendChild(div)
+        createError(error, 'zip_profile')
       })
     }
   })
@@ -60,11 +47,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     }
     else {
       var errors = response.forEach(function(error){
-        var div = document.createElement("div")
-        div.classList.add('error')
-        div.style.color = 'red'
-        div.innerHTML = error
-        document.getElementById('event_description').parentElement.appendChild(div)
+        createError(error, 'event_description')
       })
     }
   })

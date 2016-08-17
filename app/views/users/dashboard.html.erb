@@ -47,7 +47,11 @@
           <div class="form-group">
             <label for="state_profile" >State</label>
             <select id="state_profile" name="state_profile" selected="<%= @user&.address&.state %>" value="<%= @user&.address&.state %>" class="form-control">
-              <option disabled selected value> -- select a state -- </option>
+              <% if @user&.address %>
+                <option selected value><%= @user&.address&.state %></option>
+              <% else %>
+                <option disabled selected value> -- select a state -- </option>
+              <% end %>
               <option value="Alabama">Alabama</option>
               <option value="Alaska">Alaska</option>
               <option value="Arizona">Arizona</option>

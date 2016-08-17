@@ -1,10 +1,3 @@
-//removes all errors from modal
-function removeErrors (){
-  var errors = document.querySelectorAll('.error')
-  for (var i = 0; i < errors.length; i++) {
-    errors[i].parentElement.removeChild(errors[i])
-  }
-}
 // sign up
 document.getElementById('btn_sign_up').addEventListener('click', function () {
   removeErrors()
@@ -24,11 +17,7 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
     }
     else {
       var responseErrors = response.forEach(function(error){
-        var div = document.createElement("div")
-        div.classList.add('error')
-        div.style.color = 'red'
-        div.innerHTML = error
-        document.getElementById('sign_up_password_confirm').parentElement.appendChild(div)
+        createError(error, 'sign_up_password_confirm')
       })
     }
   })
@@ -45,11 +34,7 @@ document.getElementById('btn_login').addEventListener('click', function () {
       location.reload()
     }
     else {
-      var div = document.createElement("div")
-      div.classList.add('error')
-      div.style.color = 'red'
-      div.innerHTML = response.error
-      document.getElementById('login_password').parentElement.appendChild(div)
+      createError(response.error, 'login_password')
     }
   })
 })
