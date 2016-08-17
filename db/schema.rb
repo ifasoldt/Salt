@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817144535) do
+ActiveRecord::Schema.define(version: 20160817150723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20160817144535) do
     t.text     "description"
     t.text     "food"
     t.integer  "guest_limit"
-    t.datetime "time"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.date     "date"
@@ -59,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160817144535) do
     t.boolean  "allow_children"
     t.boolean  "alcohol_allowed"
     t.boolean  "unlimited_guests"
+    t.time     "time"
   end
 
   create_table "thumbs", force: :cascade do |t|
