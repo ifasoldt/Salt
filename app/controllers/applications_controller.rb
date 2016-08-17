@@ -17,7 +17,11 @@ class ApplicationsController < ApplicationController
 
   def update
     @application = Application.find(params[:id])
-
+    if @user.update(status: params[:status])
+      render json: @application
+    else
+      render json: @application.errors.full_messages, status: 400
+    end
   end
 
   def destroy

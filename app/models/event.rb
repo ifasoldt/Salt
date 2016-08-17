@@ -11,6 +11,13 @@ class Event < ApplicationRecord
   validate :guest_limit_xor_unlimited_guests
   has_many :thumbs
 
+  def spots_left
+    @approved_guests = applications.where(status: 'approved').pluck(:quantity).inject(:+).to_i
+    guest_limit - @approved_guests
+  end
+
+
+
 
 private
 

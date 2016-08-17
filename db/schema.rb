@@ -86,13 +86,4 @@ ActiveRecord::Schema.define(version: 20160817181355) do
     t.date     "date_of_birth"
   end
 
-  create_table "w5d2", force: :cascade do |t|
-    t.string   "film",       limit: 255
-    t.string   "stars",      limit: 255
-    t.string   "rating",     limit: 255
-    t.string   "votes",      limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
