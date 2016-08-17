@@ -2,6 +2,9 @@
   font-family: 'Abel', sans-serif;
   box-sizing: border-box
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: white;
+}
 a {
   text-decoration: none;
 }

@@ -14,7 +14,7 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
       redirect('/current_user/dashboard')
     }
     else {
-      var errors = response.forEach(function(error, i){
+      var errors = response.forEach(function(error){
         var div = document.createElement("div")
         div.style.color = 'red'
         div.innerHTML = error

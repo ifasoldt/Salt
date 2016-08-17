@@ -1,6 +1,6 @@
   <% content_for :stylesheets do %>
-    <link rel="stylesheet" href="/css/dashboard/flatpickr.min.css" />
-    <link rel="stylesheet" href="/css/dashboard/events.css" />
+    <link rel="stylesheet" href="/css/flatpickr.min.css" />
+    <link rel="stylesheet" href="/css/dashboard/dashboard.css" />
   <% end %>
 
 <a href="#" data-toggle="modal" data-target="#profileModal"><button id="editProfile" class="btn">Edit Profile</button></a>
@@ -129,7 +129,7 @@
             <input type="text" class="form-control" id="event_title" name="event_title" required />
           </div>
           <div class="form-group">
-            <label for="event__date" class="dateInput">Event Date</label>
+            <label for="event__date">Event Date</label>
             <input type="text" class="form-control flatpickr" id="event_date" name="event__date" data-date-format="d-m-Y" />
           </div>
           <div class="form-group">
@@ -173,7 +173,8 @@
 </div>
 
   <% content_for :scripts do %>
-    <script src="/js/dashboard/flatpickr.min.js"></script>
+    <script src="/js/flatpickr.min.js"></script>
+    <script src="/js/dashboard/dashboard.js"></script>
     <script type="text/javascript">
         $("#event_date").flatpickr();
         $("#event_time").flatpickr();

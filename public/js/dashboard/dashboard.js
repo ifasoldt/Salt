@@ -1,43 +1,55 @@
-// sign up
-document.getElementById('btn_sign_up').addEventListener('click', function () {
+// update profile
+document.getElementById('btn_submit_profile').addEventListener('click', function () {
   var formFields = {
-    first_name: document.getElementById('sign_up_firstname').value,
-    last_name: document.getElementById('sign_up_lastname').value,
-    email: document.getElementById('sign_up_email').value,
-    password: document.getElementById('sign_up_password').value,
-    password_confirmation: document.getElementById('sign_up_password_confirm').value,
-    date_of_birth: document.getElementById('sign_up_birth').value
+    first_name: document.getElementById('first_name_profile').value,
+    last_name: document.getElementById('last_name_profile').value,
+    email: document.getElementById('email_profile').value,
+    date_of_birth: document.getElementById('date_of_birth_profile').value,
+    phone: document.getElementById('phone_profile').value,
+    address: document.getElementById('address_profile').value,
+    city: document.getElementById('city_profile').value,
+    state: document.getElementById('state_profile').value,
+    zip: document.getElementById('zip_profile').value
   }
 
-  fetchApi('POST','/api/users', formFields, function (response, statusCode) {
+  fetchApi('PATCH','/api/users', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       redirect('/current_user/dashboard')
     }
     else {
-      var errors = response.forEach(function(error, i){
+      var errors = response.forEach(function(error){
         var div = document.createElement("div")
         div.style.color = 'red'
         div.innerHTML = error
-        document.getElementById('sign_up_password_confirm').parentElement.appendChild(div)
+        document.getElementById('zip_profile').parentElement.appendChild(div)
       })
     }
   })
 })
-// login
-document.getElementById('btn_login').addEventListener('click', function () {
+// create event
+document.getElementById('btn_event_submit').addEventListener('click', function () {
   var formFields = {
-    email: document.getElementById('login_email').value,
-    password: document.getElementById('login_password').value
+    title: document.getElementById('event_title').value,
+    date: document.getElementById('event_date').value,
+    time: document.getElementById('event_time').value,
+    guests: document.getElementById('event_number_guests').value,
+    unlimited_guests: document.getElementById('event_unlimited').value,
+    children: document.getElementById('event_children').value,
+    alcohol: document.getElementById('event_alcohol').value,
+    food: document.getElementById('event_food').value,
+    description: document.getElementById('event_description').value
   }
-  fetchApi('POST', '/api/sign_in', formFields, function (response, statusCode) {
+  fetchApi('POST', '/api/events', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       location.reload()
     }
     else {
-      var div = document.createElement("div")
-      div.style.color = 'red'
-      div.innerHTML = response.error
-      document.getElementById('login_password').parentElement.appendChild(div)
+      var errors = response.forEach(function(error){
+        var div = document.createElement("div")
+        div.style.color = 'red'
+        div.innerHTML = error
+        document.getElementById('event_description').parentElement.appendChild(div)
+      })
     }
   })
 })
