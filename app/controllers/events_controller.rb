@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :destroy, :update]
 
   def index
-    @events = Event.all
+    @events = Event.where("date >= ?", Date.today)
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @events}

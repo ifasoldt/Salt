@@ -7,8 +7,10 @@ class Application < ApplicationRecord
   validate :event_has_enough_spots_left
 
   def event_has_enough_spots_left
-    if event.spots_left < quantity.to_i
-      errors.add(:event, "doesn't have enough spots left")
+    unless event.spots_left.is_a?(String)
+      if event.spots_left < quantity.to_i
+        errors.add(:event, "doesn't have enough spots left")
+      end
     end
   end
 end

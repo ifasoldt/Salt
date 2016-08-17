@@ -10,6 +10,7 @@ class Event < ApplicationRecord
   validate :date_cannot_be_earlier_today
   validate :guest_limit_xor_unlimited_guests
   has_many :thumbs
+  default_scope {order(:date, :time)}
 
   def spots_left
     @approved_guests = applications.where(status: 'approved').pluck(:quantity).inject(:+).to_i
