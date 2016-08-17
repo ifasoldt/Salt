@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:description, :food, :drink, :guest_limit, :time, :date, :serving_alcohol, :allow_children, :title, )
+    params.permit(:description, :food, :drink, :guest_limit, :time, :date, :alcohol_allowed, :allow_children, :title, :unlimited_guests)
   end
 
 end
