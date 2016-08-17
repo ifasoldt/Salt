@@ -7,16 +7,16 @@ class EventsController < ApplicationController
   def show
   end
 
-  def edit
-    render json: @event
-  end
-
   def create
     if @event.create(event_params)
       redirect_to event_path(@event)
     else
       render json: @event.errors, status: 400
     end
+  end
+
+  def edit
+    render json: @event
   end
 
   def update
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:host_id, :description, :food, :drink, :guest_limit, :time, :date)
+    params.permit(:host_id, :description, :food, :drink, :guest_limit, :time, :date, :serving_alcohol, :allow_children, :title)
   end
 
 end
