@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if /^\d{2}-\d{2}-\d{4}$/.match(params[:date_of_birth])
+    if /^\d{1,2}-\d{1,2}-\d{4}$/.match(params[:date_of_birth])
       @dob = Date.parse(params[:date_of_birth])
     else
       # see date_must_be_formatted_correctly validation in user model.
