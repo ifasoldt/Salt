@@ -31,8 +31,8 @@ class UsersController < ApplicationController
      # see date_must_be_formatted_correctly validation in user model.
      @dob = Date.parse('10-04-0987')
    end
-   @password = @user.password
-   if @user.update(user_params.merge(date_of_birth: @dob, password: @password, password_confirmation: @password))
+   Rails.logger.info user_params.inspect
+   if @user.update(user_params.merge(date_of_birth: @dob))
      create_address
      session[:email] = @user.email
      render json: @user

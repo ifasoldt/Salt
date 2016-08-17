@@ -1,3 +1,4 @@
+//removes all errors from modal
 function removeErrors (){
   var errors = document.querySelectorAll('.error')
   for (var i = 0; i < errors.length; i++) {

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
   validates :email, format: {with: /\A\S+@.+\.\S+\z/, message: "must be a valid email"}
   validates :email, uniqueness: true
-  validates :password, length: {minimum: 6}
+  validates :password, length: {minimum: 6}, on: :create
   validates :description, length: {maximum: 2000}, allow_nil: true
   validates :phone, numericality: {only_integer: true}, allow_blank: true
   validates :phone, length: {is: 10, message: 'must be in 1231231234 format'}, allow_blank: true

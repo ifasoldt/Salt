@@ -28,6 +28,9 @@ function fetchApi(method, endpoint, formFields, callback) {
   if (method.toUpperCase() === 'POST') {
 	  payload.body = JSON.stringify(formFields)
   }
+  if (method.toUpperCase() === 'PATCH') {
+	  payload.body = JSON.stringify(formFields)
+  }
 
   fetch(api + endpoint, payload)
     .then(function(response) {
