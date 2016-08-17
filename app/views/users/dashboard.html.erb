@@ -4,8 +4,8 @@
   <% end %>
 
 
-<a href="#" data-toggle="modal" data-target="#profileModal"><button id="editProfile" class="btn">Edit Profile</button></a>
-<a href="#" data-toggle="modal" data-target="#eventModal"><button id="createEvent" class="btn">Create Event</button></a>
+<a href="#" data-toggle="modal" data-target="#profileModal"><button class="btn">Edit Profile</button></a>
+<a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Create Event</button></a>
 <div class="modal fade" id="profileModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -140,7 +140,7 @@
           </div>
           <div class="form-group">
             <label for="event_time">Event Time</label>
-            <input type="text" data-enable-time="true" data-no-calendar="true" value="09:00" class="form-control flatpickr" id="event_time" name="event_time" required />
+            <input type="text" data-enable-time="true" data-no-calendar="true" value="17:00" class="form-control flatpickr" id="event_time" name="event_time" required />
           </div>
           <div class="form-group">
             <label for="event_number_guests">Number of Guests</label>
@@ -148,15 +148,18 @@
           </div>
           <div class="form-group">
             <label for="event_unlimited">No Guest Limit</label>
-            <input type="checkbox" id="event_unlimited" name="event_unlimited" />
+            <input type="hidden" name="event_unlimited" value="false" />
+            <input type="checkbox" id="event_unlimited" name="event_unlimited" value="true" />
           </div>
           <div class="form-group">
             <label for="event_children">Children Welcome</label>
-            <input type="checkbox" id="event_children" name="event_children" />
+            <input type="hidden" name="event_children" value="false" />
+            <input type="checkbox" id="event_children" name="event_children" value="true" />
           </div>
           <div class="form-group">
             <label for="event_alcohol">Alcohol Welcome</label>
-            <input type="checkbox" id="event_alcohol" name="event_alcohol"/>
+            <input type="hidden" name="event_alcohol" value="false" />
+            <input type="checkbox" id="event_alcohol" name="event_alcohol" value="true" />
           </div>
           <div class="form-group">
             <label for="event_food">Food/Drink</label>

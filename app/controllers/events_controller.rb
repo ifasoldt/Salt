@@ -8,11 +8,15 @@ class EventsController < ApplicationController
   end
 
   def create
+    # @allow_children = to_boolean(params[:allow_children])
+    # @alcohol_allowed = to_boolean(params[:alcohol_allowed])
+    # @unlimited_guests = to_boolean(params[:unlimited_guests])
+    # Rails.logger.info @unlimited_guests
     @event = Event.new(event_params.merge(host_id: current_user.id))
     if @event.save
-      redirect_to event_path(@event)
+      render json: @event, status: 200
     else
-      render json: @event.errors, status: 400
+      render json: @event.errors.full_messages, status: 400
     end
   end
 
@@ -39,7 +43,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:description, :food, :guest_limit, :time, :date, :alcohol_allowed, :allow_children, :title, :unlimited_guests)
+    params.permit(:description, :food, :guest_limit, :time, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests)
   end
+
+  # def to_boolean(str)
+  #   str == true
+  # end
 
 end

@@ -16,9 +16,9 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
     zip: document.getElementById('zip_profile').value
   }
 
-  fetchApi('PATCH','/api/users/' + current_id, formFields, function (response, statusCode) {
+  fetchApi('PATCH',`/api/users/${current_id}`, formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      redirect('/current_user/dashboard')
+      location.reload()
     }
     else {
       var errors = response.forEach(function(error){
@@ -43,9 +43,11 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
   }
   fetchApi('POST', '/api/events', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      location.reload()
+      console.log(response)
+      redirect(`/events/${response.id}`)
     }
     else {
+      console.log(response)
       var errors = response.forEach(function(error){
         createError(error, 'event_description')
       })
