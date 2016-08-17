@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
 resources :events, except: [:create, :update]
 resources :users, except:[:index, :edit, :create, :new, :update]
-resources :applications, only: [:create, :destroy]
 resources :thumbs, only: [:create]
 
 root 'welcome#index'
@@ -19,6 +18,8 @@ patch '/api/users/:id' => 'users#update'
 post 'api/events' => 'events#create'
 patch 'api/events/:id' => 'events#update'
 put 'api/events/:id' => 'events#update'
+post 'api/events/:event_id/applications' => 'applications#create'
+delete 'api/events/:event_id/applications/:id' => 'applications#destroy'
 
 
 # sign_in
