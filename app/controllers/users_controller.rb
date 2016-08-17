@@ -25,13 +25,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if /^\d{2}-\d{2}-\d{4}$/.match(params[:date_of_birth])
-      @dob = Date.parse(params[:date_of_birth])
-    else
-      # see date_must_be_formatted_correctly validation in user model.
-      @dob = Date.parse('10-04-0987')
-    end
-   if @user.update(user_params.merge(date_of_birth: @dob))
+   if /^\d{2}-\d{2}-\d{4}$/.match(params[:date_of_birth])
+     @dob = Date.parse(params[:date_of_birth])
+   else
+     # see date_must_be_formatted_correctly validation in user model.
+     @dob = Date.parse('10-04-0987')
+   end
+   @password = @user.password
+   if @user.update(user_params.merge(date_of_birth: @dob, password: @password, password_confirmation: @password))
      create_address
      session[:email] = @user.email
      render json: @user
@@ -54,6 +55,9 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:password, :password_confirmation, :email, :first_name, :last_name, :phone)
   end
+
+
+
 
   def create_address
     if @user.address
