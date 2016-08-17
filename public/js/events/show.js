@@ -27,8 +27,8 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     }
   })
 })
-var eventID2 = document.getElementById('current_event_id')
-var current_event_id = eventID2.getAttribute('data-id')
+var eventID_join = document.getElementById('current_event_join')
+var current_event_join = eventID_join.getAttribute('data-id')
 // edit event
 document.getElementById('btn_application_submit').addEventListener('click', function () {
   removeErrors()
@@ -36,7 +36,7 @@ document.getElementById('btn_application_submit').addEventListener('click', func
     quantity: document.getElementById('application_guests').value,
     message: document.getElementById('application_message').value
   }
-  fetchApi('POST', `/api/events/${current_event_id}/applications`, formFields, function (response, statusCode) {
+  fetchApi('POST', `/api/events/${current_event_join}/applications`, formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       console.log(response)
       // location.reload()

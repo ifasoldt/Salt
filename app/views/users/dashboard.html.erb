@@ -110,6 +110,7 @@
             <input type="text" class="form-control" value="<%= @user&.address&.zip %>" id="zip_profile" name="zip_profile" required />
           </div>
           <br />
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" id="btn_submit_profile" class="btn btn-default">
@@ -160,6 +161,10 @@
             <label for="event_alcohol">Alcohol Welcome</label>
             <!-- <input type="hidden" name="event_alcohol" value="false" /> -->
             <input type="checkbox" id="event_alcohol" name="event_alcohol" />
+          </div><div class="form-group">
+            <label for="event_filter">Filter Guests</label>
+            <!-- <input type="hidden" name="event_alcohol" value="false" /> -->
+            <input type="checkbox" id="event_filter" name="event_filter" />
           </div>
           <div class="form-group">
             <label for="event_food">Food/Drink</label>
@@ -170,6 +175,7 @@
             <textarea type="text" id="event_description" class="form-control text_input" name="event_description"></textarea>
           </div>
           <br />
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" id="btn_event_submit" class="btn btn-default">

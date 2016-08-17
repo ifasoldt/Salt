@@ -38,6 +38,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     unlimited_guests: document.getElementById('event_unlimited').checked,
     allow_children: document.getElementById('event_children').checked,
     alcohol_allowed: document.getElementById('event_alcohol').checked,
+    filter_guests: document.getElementById('event_filter').checked,
     food: document.getElementById('event_food').value,
     description: document.getElementById('event_description').value
   }
