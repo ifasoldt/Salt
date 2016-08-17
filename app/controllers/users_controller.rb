@@ -6,7 +6,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.date_of_birth = Date.parse(params[:date_of_birth])
+    if /^\d{2}-\d{2}-\d{4}$/.match(@user.date_of_birth)
+      @user.date_of_birth = Date.parse(params[:date_of_birth])
+    else
+      # see date_must_be_formatted_correctly validation in user model.
+      @user.date_of_birth = Date.parse('10-04-0987')
+    end
     if @user.save
       session[:email] = @user.email
       render json: @user

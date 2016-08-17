@@ -16,11 +16,29 @@ class User < ApplicationRecord
   validates :description, length: {maximum: 2000}, allow_nil: true
   validates :phone, numericality: {only_integer: true}, allow_blank: true
   validates :phone, length: {is: 10, message: 'must be in 1231231234 format'}, allow_blank: true
-  validates_date :date_of_birth, :before => lambda { 18.years.ago }, :before_message => "must be at least 18 years old"
+  validates_date :date_of_birth, :before => lambda { 18.years.ago }, :before_message => "must be at least 18 years old."
+  # see note below on date_must_be_formatted_correctly. Also if and unless seem to be opposite what they should be.
+  validates_date :date_of_birth, :after => lambda {125.years.ago}, :after_message => "Seriously? You aren't that old!", if: :special_date
+  validate :date_must_be_formatted_correctly
 
-  # def accepted_events
-  #   events.where
-  # end
+  def accepted_events
+    @events = []
+    applications.where(status: 'accepted').map{|application| @events << application.event}
+    @events
+  end
+
+# Hacky(clever?) way to get around the fact that I want to use the
+# validates_date gem and I don't want my user#create to break if the date is formatted incorrectly
+# and I want to return an error if user formats the date incorrectly.
+  def date_must_be_formatted_correctly
+    if date_of_birth == Date.parse('10-04-0987')
+      errors.add(:date_of_birth, "must be formatted correctly.")
+    end
+  end
+
+  def special_date
+    date_of_birth == Date.parse('10-04-0987')
+  end
 
 
 
