@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/css/dashboard/dashboard.css" />
   <% end %>
 
+
 <a href="#" data-toggle="modal" data-target="#profileModal"><button id="editProfile" class="btn">Edit Profile</button></a>
 <a href="#" data-toggle="modal" data-target="#eventModal"><button id="createEvent" class="btn">Create Event</button></a>
 <div class="modal fade" id="profileModal" role="dialog">
@@ -17,35 +18,37 @@
         <form method="post" action="#" enctype="multipart/form-data">
           <div class="form-group">
             <label for="first_name_profile">First Name</label>
-            <input type="text" class="form-control" id="first_name_profile" name="first_name_profile" required />
+            <input type="text" class="form-control" value="<%= @user.first_name %>" id="first_name_profile" name="first_name_profile" required />
           </div>
           <div class="form-group">
             <label for="last_name_profile">Last Name</label>
-            <input type="text" class="form-control" id="last_name_profile" name="last_name_profile" required />
+            <input type="text" class="form-control" value="<%= @user.last_name %>" id="last_name_profile" name="last_name_profile" required />
           </div>
           <div class="form-group">
             <label for="email_profile">Email</label>
-            <input type="text" class="form-control" id="email_profile" name="email_profile" required />
+            <input type="text" class="form-control" value="<%= @user.email %>" id="email_profile" name="email_profile" required />
           </div>
           <div class="form-group">
             <label for="date_of_birth_profile">Date of Birth <span class="text-muted">(DD-MM-YYYY)</span></label>
-            <input type="text" class="form-control" id="date_of_birth_profile" name="date_of_birth_profile" required />
+            <input type="text" class="form-control" value="<%= @user.date_of_birth %>" id="date_of_birth_profile" name="date_of_birth_profile" required />
           </div>
           <div class="form-group">
             <label for="phone_profile">Phone Number <span class="text-muted">(XXX-XXX-XXXX)</span></label>
-            <input type="text" class="form-control" id="phone_profile" name="phone_profile" required />
+            <input type="text" class="form-control" value="<%= @user&.phone %>" id="phone_profile" name="phone_profile" required />
           </div>
           <div class="form-group">
             <label for="street_profile">Address</label>
-            <input type="text" class="form-control" id="street_profile" name="street_profile" required />
+            <input type="text" class="form-control" id="street_profile" value="<%= @user&.address&.street %>" name="street_profile" required />
           </div>
           <div class="form-group">
             <label for="city_profile">City</label>
-            <input type="text" class="form-control" id="city_profile" name="city_profile" required />
+            <input type="text" class="form-control" value="<%= @user&.address&.city %>" id="city_profile" name="city_profile" required />
           </div>
           <div class="form-group">
             <label for="state_profile" >State</label>
-            <select id="state_profile" name="state_profile" class="form-control">
+            <select id="state_profile" name="state_profile" value="<%= @user&.address&.state %>" class="form-control">
+              <option disabled selected value> -- select a state -- </option>
+              <option value="AL">Alabama</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -101,7 +104,7 @@
           </div>
           <div class="form-group">
             <label for="zip_profile">Zip Code</label>
-            <input type="text" class="form-control" id="zip_profile" name="zip_profile" required />
+            <input type="text" class="form-control" value="<%= @user&.address&.zip %>" id="zip_profile" name="zip_profile" required />
           </div>
           <br />
       </div>
