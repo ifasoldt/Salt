@@ -29,7 +29,7 @@
             <input type="text" class="form-control" value="<%= @user.email %>" id="email_profile" name="email_profile" required />
           </div>
           <div class="form-group">
-            <label for="date_of_birth_profile">Date of Birth <span class="text-muted">(DD-MM-YYYY)</span></label>
+            <label for="date_of_birth_profile">Date Of Birth <span class="text-muted">(DD-MM-YYYY)</span></label>
             <input type="text" class="form-control" value="<%= @user.date_of_birth.strftime('%e-%m-%Y') %>" id="date_of_birth_profile" name="date_of_birth_profile" required />
           </div>
           <div class="form-group">
@@ -144,7 +144,7 @@
             <input type="text" data-enable-time="true" data-no-calendar="true" value="17:00" class="form-control flatpickr" id="event_time" name="event_time" required />
           </div>
           <div class="form-group">
-            <label for="event_number_guests">Number of Guests</label>
+            <label for="event_number_guests">Number Of Guests</label>
             <input type="text" class="form-control" id="event_number_guests" name="event_number_guests" required />
           </div>
           <div class="form-group">
@@ -162,7 +162,7 @@
             <!-- <input type="hidden" name="event_alcohol" value="false" /> -->
             <input type="checkbox" id="event_alcohol" name="event_alcohol" />
           </div><div class="form-group">
-            <label for="event_filter">Filter Guests</label>
+            <label for="event_filter">Guests Need To Be Approved <span class="text-muted">(Cannot Be Changed Once Created)</span></label>
             <!-- <input type="hidden" name="event_alcohol" value="false" /> -->
             <input type="checkbox" id="event_filter" name="event_filter" />
           </div>
@@ -171,7 +171,7 @@
             <textarea type="text" id="event_food" name="event_food" class="form-control text_input" /></textarea>
           </div>
           <div class="form-group">
-            <label for="event_description">Description of Event</label>
+            <label for="event_description">Description Of Event</label>
             <textarea type="text" id="event_description" class="form-control text_input" name="event_description"></textarea>
           </div>
           <br />

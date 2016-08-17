@@ -1,6 +1,6 @@
 <% content_for :stylesheets do %>
   <link rel="stylesheet" href="/css/flatpickr.min.css" />
-  <link rel="stylesheet" href="/css/index/index.css" />
+  <link rel="stylesheet" href="/css/welcome/index.css" />
 <% end %>
 
 <div class="jumbotron">
@@ -13,7 +13,7 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="index_neighborhood" class="index_text">Choose Your Neighborhood</label>
+        <label for="index_neighborhood" class="index_text">Neighborhood</label>
         <select id="index_neighborhood" name="index_neighborhood" class="form-control" data-date-format="d-m-Y">
           <option value="114">Acton</option>
           <option value="187">Airport</option>
@@ -164,7 +164,7 @@
 
 <% content_for :scripts do %>
   <script src="/js/flatpickr.min.js"></script>
-  <!-- <script src="/js/index/index.js"></script> -->
+  <!-- <script src="/js/welcome/index.js"></script> -->
   <script type="text/javascript">
       $("#index_date_from").flatpickr();
       $("#index_date_to").flatpickr();
