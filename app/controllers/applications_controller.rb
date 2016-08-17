@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  before_action :require_user only: [:create]
+  before_action :require_user, only: [:create]
 
   def create
     @application = Application.new(application_params.merge(user_id: current_user.id))
