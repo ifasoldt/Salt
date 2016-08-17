@@ -1,9 +1,13 @@
+//removes all errors from modal
 function removeErrors (){
   var errors = document.querySelectorAll('.error')
   for (var i = 0; i < errors.length; i++) {
     errors[i].parentElement.removeChild(errors[i])
   }
 }
+//get current user id
+var profile = document.getElementById('current_profile')
+var current_id = profile.getAttribute('data-id')
 // update profile
 document.getElementById('btn_submit_profile').addEventListener('click', function () {
   removeErrors()
@@ -19,7 +23,7 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
     zip: document.getElementById('zip_profile').value
   }
 
-  fetchApi('PATCH','/api/users', formFields, function (response, statusCode) {
+  fetchApi('PATCH','/api/users/' + current_id, formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       console.log(response)
       // redirect('/current_user/dashboard')
