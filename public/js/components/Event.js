@@ -12,8 +12,9 @@ class Event extends React.Component  {
     this.updateEvents()
   }
   updateEvents() {
-    fetchApi('GET', '/events', {}, (response) => {
-      this.setState({items: response})
+    fetchApi('GET', '/api/events.json', {}, (response) => {
+      console.log(response)
+      // this.setState({items: response})
     })
   }
     render() {

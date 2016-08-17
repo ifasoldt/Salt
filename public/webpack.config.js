@@ -3,8 +3,8 @@ module.exports = {
     eventsIndex: './js/events/index.js',
   },
   output: {
-    path: './js/',
-    publicPath: '/js/',
+    path: './js/events',
+    publicPath: '/js/events',
     filename: '[name].bundle.js',
   },
   devServer: {

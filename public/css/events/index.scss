@@ -4,3 +4,27 @@
   background-size: cover;
   height: 300px;
 }
+.eventContainer {
+  display: flex;
+  height: 500px;
+  flex-direction: column;
+  border: solid 2px black;
+  .imgContainer {
+    background-image: url('../../assets/Indianapolis.jpg');
+    background-position: center;
+    background-size: cover;
+    flex: 2;
+    .watchContainer {
+
+    }
+  }
+  .descContainer {
+    flex: 1;
+    img {
+      width: 70px;
+    }
+    .event_title {
+      margin: 10px 0;
+    }
+  }
+}
