@@ -6,7 +6,7 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
     email: document.getElementById('email_profile').value,
     date_of_birth: document.getElementById('date_of_birth_profile').value,
     phone: document.getElementById('phone_profile').value,
-    address: document.getElementById('address_profile').value,
+    street: document.getElementById('street_profile').value,
     city: document.getElementById('city_profile').value,
     state: document.getElementById('state_profile').value,
     zip: document.getElementById('zip_profile').value
@@ -14,10 +14,12 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 
   fetchApi('PATCH','/api/users', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
+      console.log(response)
       redirect('/current_user/dashboard')
     }
     else {
       var errors = response.forEach(function(error){
+        console.log(response)
         var div = document.createElement("div")
         div.style.color = 'red'
         div.innerHTML = error
