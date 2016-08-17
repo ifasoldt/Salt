@@ -34,6 +34,7 @@ class UsersController < ApplicationController
    if @user.update(user_params.merge(date_of_birth: @dob))
      create_address
      session[:email] = @user.email
+     render json: @user
    else
      render json: @user.errors.full_messages, status: 400
    end
