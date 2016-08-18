@@ -20,12 +20,13 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
   data.append('zip', document.getElementById('zip').value)
 
   fetchApiImages('PATCH',`/api/users/${current_id}`, data, function (response, statusCode) {
+    console.log(data)
     if (statusCode >= 200 && statusCode < 300) {
       location.reload()
     }
     else {
       var errors = response.forEach(function(error){
-        createError(error, 'zip_profile')
+        createError(error, 'zip')
       })
     }
   })
@@ -52,12 +53,12 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
   fetchApiImages('POST', '/api/events', data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       console.log(response)
-      // redirect(`/events/${response.id}`)
+      redirect(`/events/${response.id}`)
     }
     else {
       console.log(response)
       var errors = response.forEach(function(error){
-        createError(error, 'event_description')
+        createError(error, 'description')
       })
     }
   })
