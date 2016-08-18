@@ -31,7 +31,10 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
   var data = new FormData()
-  data.append('images_files', document.getElementById('images_files').files[0])
+  var pics = document.getElementById('images_files').files.length;
+  for (var x = 0; x < pics; x++) {
+    data.append('images_files[]', document.getElementById('images_files').files[x]);
+  }
   data.append('title', document.getElementById('title').value)
   data.append('date', document.getElementById('date').value)
   data.append('time', document.getElementById('time').value)
