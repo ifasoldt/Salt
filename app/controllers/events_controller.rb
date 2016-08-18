@@ -9,8 +9,6 @@ class EventsController < ApplicationController
   # has_scope :guest_limit
   # has_scope :only_future_events, default: nil, allow_blank: true
 
-
-
   def index
     @events = apply_scopes(Event).all
     respond_to do |format|

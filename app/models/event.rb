@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   has_many :thumbs
   has_many :images, as: :imageable, dependent: :destroy
   accepts_attachments_for :images, attachment: :file
-  
+
   validates :description, :food, :time, :title, presence: true
   validates :description, length: {maximum: 1000}
   validates :guest_limit, numericality: {greater_than_or_equal_to: 2}, allow_nil: true

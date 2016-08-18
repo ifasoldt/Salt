@@ -121,6 +121,7 @@ GEM
       thor (~> 0.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     has_scope (0.7.0)
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
@@ -271,6 +272,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  gmaps4rails
   has_scope
   jquery-rails
   listen (~> 3.0.5)
