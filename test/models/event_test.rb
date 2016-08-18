@@ -8,8 +8,6 @@ class EventTest < ActiveSupport::TestCase
   should have_many(:thumbs)
   should validate_presence_of(:description)
   should validate_presence_of(:food)
-  should validate_presence_of(:drink)
-  should validate_presence_of(:guest_limit)
   should validate_presence_of(:time)
   should allow_value('This is going to be a great event; Indeed, what an event!').for(:description)
   should_not allow_value('This is going to be a great event; Indeed, what an event!' * 50).for(:description)
