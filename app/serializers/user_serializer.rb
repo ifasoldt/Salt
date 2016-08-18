@@ -7,4 +7,8 @@ class UserSerializer < ActiveModel::Serializer
   has_many :thumbs
   has_many :images
 
+  def event_images
+    Refile.attachment_url(object, object.images.first, :fit, 400, 400)
+  end
+
 end
