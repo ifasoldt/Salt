@@ -22,6 +22,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params.merge(host_id: current_user.id))
+    if params[:user_address] == true
+      # what if current_user doesn't have an address yet? Also, same issue as trying to run validations on two models at same time.
+      @event.address = current_user.address
+    else
+      create_address
+    end
     # create_address
     if @event.save
       # its annoyingly hard to run validations here at the same time as on the event. Same as in the users controller
