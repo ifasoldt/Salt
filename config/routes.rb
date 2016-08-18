@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-resources :events, except: [:create, :update, :index]
+resources :events, except: [:create, :update]
 resources :users, except:[:index, :edit, :create, :new, :update]
 resources :thumbs, only: [:create]
 
@@ -15,7 +15,7 @@ get '/current_user/dashboard/' => 'users#dashboard'
 put '/api/users/:id' => 'users#update'
 patch '/api/users/:id' => 'users#update'
 # create event
-get '/api/events' => 'event#index'
+get '/api/events' => 'events#index'
 post '/api/events' => 'events#create'
 patch '/api/events/:id' => 'events#update'
 put '/api/events/:id' => 'events#update'

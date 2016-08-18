@@ -21515,19 +21515,81 @@
 	  }, {
 	    key: 'updateEvents',
 	    value: function updateEvents() {
+	      var _this2 = this;
+
 	      fetchApi('GET', '/api/events.json', {}, function (response) {
 	        console.log(response);
-	        // this.setState({items: response})
+	        _this2.setState({ events: response });
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var allEvents = this.state.events.map(function (event, key) {
-	        // var imgStyle = {
-	        //   backgroundImage: 'url(' + event.event_image + ')'
-	        // }
-	        return _react2.default.createElement('div', { className: 'col-xs-12 col-sm-6 col-md-4', key: key });
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'col-xs-12 col-sm-6 col-md-4', key: key },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'eventContainer' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'imgContainer' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'dateContainer text-center' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'date' },
+	                  event.date
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'time' },
+	                  '7:30pm'
+	                )
+	              ),
+	              _react2.default.createElement('i', { className: 'fa fa-heart-o watchIcon', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Watch Event' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'descContainer' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'profileContainer' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'thumbnailContainer' },
+	                  _react2.default.createElement('img', { src: '/assets/profileImage.png', alt: 'profile image', className: 'img-circle' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'nameContainer' },
+	                  _react2.default.createElement(
+	                    'h3',
+	                    { className: 'event_host' },
+	                    'Name of User'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'eventDescContainer' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'event_title' },
+	                  event.title
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'event_description' },
+	                  event.description
+	                )
+	              )
+	            )
+	          )
+	        );
 	      });
 	      return _react2.default.createElement(
 	        'div',

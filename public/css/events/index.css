@@ -7,9 +7,10 @@
 
 .eventContainer {
   display: flex;
-  height: 500px;
+  height: 350px;
   flex-direction: column;
-  border: solid 2px black;
+  border: solid 1px gray;
+  margin-bottom: 30px;
 }
 
 .eventContainer .imgContainer {
@@ -39,7 +40,7 @@
 
 .eventContainer .imgContainer .watchIcon {
   position: absolute;
-  top: 5px;
+  top: 7px;
   right: 25px;
   font-size: 30px;
   color: white;
@@ -54,6 +55,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  margin-top: 5px;
 }
 
 .eventContainer .descContainer .profileContainer {
@@ -64,6 +67,9 @@
 
 .eventContainer .descContainer .profileContainer .thumbnailContainer {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .eventContainer .descContainer .profileContainer .thumbnailContainer img {
@@ -72,11 +78,19 @@
 }
 
 .eventContainer .descContainer .profileContainer .nameContainer {
-  flex: 2;
+  flex: 5;
+  display: flex;
+  align-items: center;
+}
+
+.eventContainer .descContainer .profileContainer .nameContainer .event_host {
+  margin: 10px 0 10px 10px;
 }
 
 .eventContainer .descContainer .eventDescContainer {
   flex: 2;
+  display: flex;
+  flex-direction: column;
 }
 
 .eventContainer .descContainer .eventDescContainer .event_title {
