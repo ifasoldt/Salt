@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :set_event, only: [:show, :edit, :destroy, :update]
+  before_action :set_event, only: [:show, :edit, :destroy, :update]
   # has_scope :allow_children, :type => :boolean
   # has_scope :alcohol_allowed, :type => :boolean
   # has_scope :date
@@ -8,8 +8,6 @@ class EventsController < ApplicationController
   # # Pass "asc" or "desc" inside param. Don't know if this will work.
   # has_scope :guest_limit
   # has_scope :only_future_events, default: nil, allow_blank: true
-  #
-
 
   def index
     @events = apply_scopes(Event).all

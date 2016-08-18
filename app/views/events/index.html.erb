@@ -5,7 +5,8 @@
 
 
 <div class="jumbotron">
-
+  <a href="/"><button class="btn back_search_btn" ><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</button></a>
+  <h1 class="city_name text-center">Indianapolis</h1>
 </div>
 <div class="container">
   <div class="row">
@@ -43,15 +44,14 @@
 
 <% content_for :scripts do %>
   <script src="/js/flatpickr.min.js"></script>
-  <!-- <script src="/js/events/test.js"></script> -->
   <script src="js/events/eventsIndex.bundle.js"></script>
-  <script type="text/javascript">
-      // $("#event_date").flatpickr();
-      // $("#event_time").flatpickr();
-  </script>
-  <script>
+  <!-- <script type="text/javascript">
+      $("#event_date").flatpickr();
+      $("#event_time").flatpickr();
+  </script> -->
+  <!-- <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
-  </script>
+  </script> -->
 <% end %>
