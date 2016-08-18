@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817181355) do
+ActiveRecord::Schema.define(version: 20160818142542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20160817181355) do
     t.string   "status"
   end
 
+  create_table "birthdates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "year"
+    t.integer  "month"
+    t.integer  "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer  "host_id"
     t.text     "description"
@@ -53,15 +62,12 @@ ActiveRecord::Schema.define(version: 20160817181355) do
     t.boolean  "filter_guests"
   end
 
-  create_table "portfolio", force: :cascade do |t|
-    t.string  "title"
-    t.text    "description"
-    t.string  "repo"
-    t.date    "date"
-    t.string  "image"
-    t.integer "display_order"
-    t.string  "image_second"
-    t.boolean "featured"
+  create_table "images", force: :cascade do |t|
+    t.string   "file_id"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "thumbs", force: :cascade do |t|

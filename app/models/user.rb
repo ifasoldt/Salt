@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :thumbs
   has_many :host_thumbs, class_name: 'Thumb', foreign_key: 'host_id'
+  has_one :image, as: :imageable, dependent: :destroy
+  accepts_attachments_for :images
 
 
   validates :first_name, :last_name, :email, :date_of_birth, presence: true

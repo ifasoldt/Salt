@@ -6,8 +6,8 @@ class SignupTest < ActionDispatch::IntegrationTest
     visit(root_path)
     assert page.current_path == root_path
     click_link('Sign Up')
-    fill_in('First Name', with: 'Lydia')
-    fill_in('Last Name', with: 'Trout')
+    fill_in('sign_up_firstname', with: 'Lydia')
+    fill_in('sign_up_lastname', with: 'Trout')
     fill_in('sign_up_email', with: 'ltrout@gmail.com')
     fill_in('Date of Birth', with: '11-04-1955')
     fill_in('Password', with: 'playground')
