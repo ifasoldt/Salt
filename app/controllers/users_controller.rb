@@ -23,7 +23,6 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    render json: @user, include: ['hosted_events', 'hosted_events.applications']
   end
 
   def update

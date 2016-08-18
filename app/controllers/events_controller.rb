@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :destroy, :update]
-  has_scope :allow_children, :type => :boolean
-  has_scope :alcohol_allowed, :type => :boolean
-  has_scope :date
-  # Must be passed a hash like {by_period{starting_date: x, ending_date: y}}
-  has_scope :by_period, :using => [:starting_date, :ending_date], :type => :hash
-  # Pass "asc" or "desc" inside param. Don't know if this will work.
-  has_scope :guest_limit
-  has_scope :only_future_events, default: nil, allow_blank: true
-
+  # before_action :set_event, only: [:show, :edit, :destroy, :update]
+  # has_scope :allow_children, :type => :boolean
+  # has_scope :alcohol_allowed, :type => :boolean
+  # has_scope :date
+  # # Must be passed a hash like {by_period{starting_date: x, ending_date: y}}
+  # has_scope :by_period, :using => [:starting_date, :ending_date], :type => :hash
+  # # Pass "asc" or "desc" inside param. Don't know if this will work.
+  # has_scope :guest_limit
+  # has_scope :only_future_events, default: nil, allow_blank: true
+  #
 
 
   def index
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params.merge(host_id: current_user.id))
-    create_address
+    # create_address
     if @event.save
       # its annoyingly hard to run validations here at the same time as on the event. Same as in the users controller
       render json: @event, status: 200

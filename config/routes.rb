@@ -21,6 +21,7 @@ patch '/api/events/:id' => 'events#update'
 put '/api/events/:id' => 'events#update'
 post '/api/events/:event_id/applications' => 'applications#create'
 delete '/api/events/:event_id/applications/:id' => 'applications#destroy'
+get '/test_maps/' => 'welcome#test'
 
 
 

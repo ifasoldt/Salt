@@ -41,6 +41,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'validates_timeliness', '~> 4.0'
 gem 'has_scope'
 gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'gmaps4rails'
 
 
 # Use Capistrano for deployment
