@@ -1,4 +1,12 @@
 class Event < ApplicationRecord
+  scope :allow_children, -> {where(allow_children: true)}
+  scope :alcohol_allowed, -> {where(alcohol_allowed: true)}
+  scope :date, -> date {where(date: date)}
+  scope :by_period, -> starting_date, ending_date {where(date: starting_date..ending_date)}
+  scope :guest_limit, -> guest_limit {order(guest_limit: guest_limit)}
+  scope :only_future_events, ->(*) {where("date >= ?", Date.today)}
+  default_scope {order(:date, :time)}
+
   has_many :users, through: :applications
   belongs_to :host, class_name: 'User'
   has_many :applications, dependent: :destroy
@@ -34,5 +42,6 @@ private
       errors.add(:Please, "specify the number of guests or choose unlimited, but not both")
     end
   end
+
 
 end

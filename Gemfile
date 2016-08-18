@@ -39,6 +39,8 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'simple_form'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'validates_timeliness', '~> 4.0'
+gem 'has_scope'
+gem 'remotipart', github: 'mshibuya/remotipart'
 
 
 # Use Capistrano for deployment
@@ -53,6 +55,7 @@ end
 group :test do
   gem 'capybara', git: 'https://github.com/jnicklas/capybara.git'
   gem 'shoulda'
+  gem 'poltergeist'
 end
 
 group :development do

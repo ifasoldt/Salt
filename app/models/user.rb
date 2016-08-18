@@ -23,8 +23,16 @@ class User < ApplicationRecord
 
   def accepted_events
     @events = []
-    applications.where(status: 'accepted').map{|application| @events << application.event}
+    applications.where(status: 'approved').map{|application| @events << application.event}
     @events
+  end
+
+  def attended_events_count
+    applications.where(status: 'approved').count
+  end
+
+  def hosted_events_count
+    hosted_events.count
   end
 
 # Hacky(clever?) way to get around the fact that I want to use the
