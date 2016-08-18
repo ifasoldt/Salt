@@ -21,7 +21,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params.merge(host_id: current_user.id))
+    these_params = event_params.merge(host_id: current_user.id)
+    these_params[:images_files] = [these_params.delete(:images_files)]
+    @event = Event.new(these_params)
     # create_address
     if @event.save
       # its annoyingly hard to run validations here at the same time as on the event. Same as in the users controller
@@ -55,9 +57,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(
-    :description, :food, :guest_limit, :time, :date, :title,
-     :allow_children, :alcohol_allowed, :unlimited_guests, :filter_guests, images_files: [])
+    params.permit(:description, :food, :guest_limit, :time, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :filter_guests, :images_files)
   end
 
   def create_address
