@@ -32,6 +32,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
   removeErrors()
   var formFields = {
     title: document.getElementById('event_title').value,
+    images_files: document.getElementById('event_image').value,
     date: document.getElementById('event_date').value,
     time: document.getElementById('event_time').value,
     guest_limit: document.getElementById('event_number_guests').value,

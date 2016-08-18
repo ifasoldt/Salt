@@ -21523,6 +21523,11 @@
 	      });
 	    }
 	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      $('[data-toggle="tooltip"]').tooltip();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var allEvents = this.state.events.map(function (event, key) {

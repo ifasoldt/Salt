@@ -5,6 +5,19 @@
   height: 300px;
 }
 
+.jumbotron .back_search_btn {
+  position: absolute;
+  color: black;
+  top: 90px;
+  left: 10px;
+}
+
+.jumbotron .city_name {
+  color: white;
+  margin-top: 60px;
+  text-shadow: 1px 1px 1px black;
+}
+
 .eventContainer {
   display: flex;
   height: 350px;

@@ -17,6 +17,9 @@ class Event extends React.Component  {
       this.setState({events: response})
     })
   }
+  componentDidUpdate () {
+      $('[data-toggle="tooltip"]').tooltip();
+  }
     render() {
       var allEvents = this.state.events.map(function(event, key) {
         return (

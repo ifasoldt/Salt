@@ -3,6 +3,17 @@
   background-position: center;
   background-size: cover;
   height: 300px;
+  .back_search_btn {
+    position: absolute;
+    color: black;
+    top: 90px;
+    left: 10px;
+  }
+  .city_name {
+    color: white;
+    margin-top: 60px;
+    text-shadow: 1px 1px 1px black;
+  }
 }
 .eventContainer {
   display: flex;
