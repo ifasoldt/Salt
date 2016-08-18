@@ -39,7 +39,7 @@ class Event extends React.Component  {
                     <img src="/assets/profileImage.png" alt="profile image" className="img-circle" />
                   </div>
                   <div className="nameContainer">
-                    <h3 className="event_host">Name of User</h3>
+                    <h3 className="event_host">{event.host.first_name}</h3>
                   </div>
                 </div>
                 <div className="eventDescContainer">
