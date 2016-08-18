@@ -30,14 +30,14 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 // create event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
-  var images = document.getElementById('images_files')
   var data = new FormData()
-  data.append('images_files', images.files)
+  data.append('images_files', document.getElementById('images_files').files[0])
   data.append('title', document.getElementById('title').value)
   data.append('date', document.getElementById('date').value)
   data.append('time', document.getElementById('time').value)
   data.append('guest_limit', document.getElementById('guest_limit').value)
   data.append('unlimited_guests', document.getElementById('unlimited_guests').checked)
+  data.append('alcohol_allowed', document.getElementById('alcohol_allowed').checked)
   data.append('allow_children', document.getElementById('allow_children').checked)
   data.append('filter_guests', document.getElementById('filter_guests').checked)
   data.append('food', document.getElementById('food').value)
@@ -59,7 +59,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
   // }
   fetchApiImages('POST', '/api/events', data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      // console.log(response)
+      console.log(response)
       // redirect(`/events/${response.id}`)
     }
     else {
