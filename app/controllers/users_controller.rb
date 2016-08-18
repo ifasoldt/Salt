@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :require_user, only: [:dashboard]
 
   def show
   end
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    render json: @user, include: ['hosted_events', 'hosted_events.applications']
   end
 
   def update
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:password, :password_confirmation, :email, :first_name, :last_name, :phone)
+    params.permit(:password, :password_confirmation, :email, :first_name, :last_name, :phone, :images_files)
   end
 
 

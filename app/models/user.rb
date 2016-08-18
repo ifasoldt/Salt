@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :thumbs
   has_many :host_thumbs, class_name: 'Thumb', foreign_key: 'host_id'
+  has_one :image, as: :imageable, dependent: :destroy
+  accepts_attachments_for :images
 
 
   validates :first_name, :last_name, :email, :date_of_birth, presence: true
@@ -23,8 +25,16 @@ class User < ApplicationRecord
 
   def accepted_events
     @events = []
-    applications.where(status: 'accepted').map{|application| @events << application.event}
+    applications.where(status: 'approved').map{|application| @events << application.event}
     @events
+  end
+
+  def attended_events_count
+    applications.where(status: 'approved').count
+  end
+
+  def hosted_events_count
+    hosted_events.count
   end
 
 # Hacky(clever?) way to get around the fact that I want to use the

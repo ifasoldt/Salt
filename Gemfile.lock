@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/mshibuya/remotipart.git
+  revision: 88d9a7d55bde66acb6cf3a3c6036a5a1fc991d5e
+  specs:
+    remotipart (1.2.1)
+
+GIT
   remote: git://github.com/refile/refile-mini_magick.git
   revision: 9c74f7b61c794837a02af3f21d1be96286b7ce4d
   specs:
@@ -95,6 +101,7 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.5)
+    cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
@@ -114,6 +121,9 @@ GEM
       thor (~> 0.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    has_scope (0.7.0)
+      actionpack (>= 4.1, < 5.1)
+      activesupport (>= 4.1, < 5.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -145,6 +155,10 @@ GEM
       pkg-config (~> 1.1.7)
     pg (0.18.4)
     pkg-config (1.1.7)
+    poltergeist (1.10.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -257,9 +271,11 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  has_scope
   jquery-rails
   listen (~> 3.0.5)
   pg (~> 0.18)
+  poltergeist
   pry-rails
   puma (~> 3.0)
   rack-cors
@@ -268,6 +284,7 @@ DEPENDENCIES
   refile!
   refile-mini_magick!
   refile-postgres (~> 1.4)
+  remotipart!
   sass-rails (~> 5.0)
   shoulda
   simple_form
