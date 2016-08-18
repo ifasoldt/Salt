@@ -55,7 +55,9 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:description, :food, :guest_limit, :time, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :filter_guests, :images_files)
+    params.permit(
+    :description, :food, :guest_limit, :time, :date, :title,
+     :allow_children, :alcohol_allowed, :unlimited_guests, :filter_guests, images_files: [])
   end
 
   def create_address
