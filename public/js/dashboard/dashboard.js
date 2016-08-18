@@ -30,23 +30,37 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 // create event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
-  var formFields = {
-    title: document.getElementById('event_title').value,
-    images_files: document.getElementById('event_image').value,
-    date: document.getElementById('event_date').value,
-    time: document.getElementById('event_time').value,
-    guest_limit: document.getElementById('event_number_guests').value,
-    unlimited_guests: document.getElementById('event_unlimited').checked,
-    allow_children: document.getElementById('event_children').checked,
-    alcohol_allowed: document.getElementById('event_alcohol').checked,
-    filter_guests: document.getElementById('event_filter').checked,
-    food: document.getElementById('event_food').value,
-    description: document.getElementById('event_description').value
-  }
-  fetchApi('POST', '/api/events', formFields, function (response, statusCode) {
+  var images = document.getElementById('images_files')
+  var data = new FormData()
+  data.append('images_files', images.files)
+  data.append('title', document.getElementById('title').value)
+  data.append('date', document.getElementById('date').value)
+  data.append('time', document.getElementById('time').value)
+  data.append('guest_limit', document.getElementById('guest_limit').value)
+  data.append('unlimited_guests', document.getElementById('unlimited_guests').checked)
+  data.append('allow_children', document.getElementById('allow_children').checked)
+  data.append('filter_guests', document.getElementById('filter_guests').checked)
+  data.append('food', document.getElementById('food').value)
+  data.append('description', document.getElementById('description').value)
+
+
+  // data.append('user', 'hubot')
+  // var formFields = {
+  //   title: document.getElementById('title').value,
+  //   date: document.getElementById('date').value,
+  //   time: document.getElementById('time').value,
+  //   guest_limit: document.getElementById('guest_limit').value,
+  //   unlimited_guests: document.getElementById('unlimited_guests').checked,
+  //   allow_children: document.getElementById('allow_children').checked,
+  //   alcohol_allowed: document.getElementById('alcohol_allowed').checked,
+  //   filter_guests: document.getElementById('filter_guests').checked,
+  //   food: document.getElementById('food').value,
+  //   description: document.getElementById('description').value
+  // }
+  fetchApiImages('POST', '/api/events', data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      console.log(response)
-      redirect(`/events/${response.id}`)
+      // console.log(response)
+      // redirect(`/events/${response.id}`)
     }
     else {
       console.log(response)
