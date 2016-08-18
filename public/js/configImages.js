@@ -23,9 +23,9 @@ function fetchApiImages(method, endpoint, formFields, callback) {
 	  payload.body = formFields
 	  // payload.body = JSON.stringify(formFields)
   }
-  // if (method.toUpperCase() === 'PATCH') {
-	//   payload.body = JSON.stringify(formFields)
-  // }
+  if (method.toUpperCase() === 'PATCH') {
+	  payload.body = formFields
+  }
 
   fetch(api + endpoint, payload)
     .then(function(response) {

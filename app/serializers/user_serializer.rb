@@ -5,6 +5,6 @@ class UserSerializer < ActiveModel::Serializer
   has_many :events, through: :applications
   has_many :applications
   has_many :thumbs
-  has_one :image
+  has_many :images
 
 end
