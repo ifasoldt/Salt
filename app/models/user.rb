@@ -29,6 +29,10 @@ class User < ApplicationRecord
     @events
   end
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def attended_events_count
     applications.where(status: 'approved').count
   end
