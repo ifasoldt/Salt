@@ -27,9 +27,9 @@ class Event extends React.Component  {
             <div className="eventContainer">
               <div className="imgContainer">
                 <div className="dateContainer text-center">
-                  <span className="date">{event.date}</span>
+                  <span className="date">{event.formatted_date}</span>
                   <br/>
-                  <span className="time">{event.time}</span>
+                  <span className="time">{event.formatted_time}</span>
                 </div>
                 <i className="fa fa-heart-o watchIcon" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Watch Event"></i>
               </div>
@@ -45,6 +45,7 @@ class Event extends React.Component  {
                 <div className="eventDescContainer">
                   <h3 className="event_title">{event.title}</h3>
                   <p className="event_description">{event.description}</p>
+                  <p className="event_description">{event.spots_left}</p>
                 </div>
               </div>
             </div>

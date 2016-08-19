@@ -17,7 +17,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def formatted_time
-    object.time.strftime('%l:%M %P')
+    object&.time&.strftime('%l:%M %P')
   end
 
 
