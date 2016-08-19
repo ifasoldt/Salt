@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # has_scope :allow_children, :type => :boolean
   # has_scope :alcohol_allowed, :type => :boolean
   # has_scope :date
-  # # Must be passed a hash like {by_period{starting_date: x, ending_date: y}}
+  # # Must be passed a hash like {by_period: {starting_date: x, ending_date: y}}
   # has_scope :by_period, :using => [:starting_date, :ending_date], :type => :hash
   # # Pass "asc" or "desc" inside param. Don't know if this will work.
   # has_scope :guest_limit
@@ -21,16 +21,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params.merge(host_id: current_user.id))
-    if params[:user_address] == true
-      # what if current_user doesn't have an address yet? Also, same issue as trying to run validations on two models at same time.
-      @event.address = current_user.address
+    unless params[:user_address] == true
+      @event = Event.new(event_params.merge(host_id: current_user.id).merge({address_attributes: address_params}))
     else
-      create_address
+      @event = Event.new(event_params.merge(host_id: current_user.id))
+      @event.address = current_user.address
     end
-    # create_address
     if @event.save
-      # its annoyingly hard to run validations here at the same time as on the event. Same as in the users controller
       render json: @event, status: 200
     else
       render json: @event.errors.full_messages, status: 400
@@ -42,11 +39,19 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update(event_params)
-      create_address
-      render json: @event, status: 200
+    unless params[:user_address] == true
+      if @event.update(event_params.merge({address_attributes: address_params}))
+        render json: @event, status: 200
+      else
+        render json: @event.errors.full_messages, status: 400
+      end
     else
-      render json: @event.errors.full_messages, status: 400
+      if @event.update(event_params)
+        @event.address = current_user.address
+        render json: @event, status: 200
+      else
+        render json: @event.errors.full_messages, status: 400
+      end
     end
   end
 
@@ -62,14 +67,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.permit(:description, :food, :guest_limit, :time, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :filter_guests, images_files: [])
-  end
-
-  def create_address
-    if @event.address
-      @event.address.update(address_params)
-    else
-      @event.address = Address.create(address_params)
-    end
   end
 
   def address_params
