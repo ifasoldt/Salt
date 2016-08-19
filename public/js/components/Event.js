@@ -29,7 +29,7 @@ class Event extends React.Component  {
                 <div className="dateContainer text-center">
                   <span className="date">{event.date}</span>
                   <br/>
-                  <span className="time">7:30pm</span>
+                  <span className="time">{event.time}</span>
                 </div>
                 <i className="fa fa-heart-o watchIcon" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Watch Event"></i>
               </div>
@@ -39,7 +39,7 @@ class Event extends React.Component  {
                     <img src="/assets/profileImage.png" alt="profile image" className="img-circle" />
                   </div>
                   <div className="nameContainer">
-                    <h3 className="event_host">{event.host.first_name}</h3>
+                    <h3 className="event_host">{event.host.full_name}</h3>
                   </div>
                 </div>
                 <div className="eventDescContainer">

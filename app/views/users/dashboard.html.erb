@@ -13,7 +13,6 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Edit Profile</h4>
       </div>
-      <br />
       <div class="modal-body">
         <form method="post" action="#" id="current_profile" data-id="<%= @user.id %>" enctype="multipart/form-data">
           <div class="form-group">
@@ -40,8 +39,11 @@
             <label for="phone">Phone Number <span class="text-muted">(XXX-XXX-XXXX)</span></label>
             <input type="text" class="form-control" value="<%= @user&.phone %>" id="phone" name="phone"  />
           </div>
+          <br />
+          <h4>Address</h4>
+          <hr />
           <div class="form-group">
-            <label for="street">Address</label>
+            <label for="street">Street</label>
             <input type="text" class="form-control" id="street" value="<%= @user&.address&.street %>" name="street"  />
           </div>
           <div class="form-group">
@@ -50,7 +52,7 @@
           </div>
           <div class="form-group">
             <label for="state" >State</label>
-            <select id="stateEvent" name="state" selected="<%= @user&.address&.state %>" value="<%= @user&.address&.state %>" class="form-control">
+            <select id="state" name="state" selected="<%= @user&.address&.state %>" value="<%= @user&.address&.state %>" class="form-control">
               <% if @user&.address %>
                 <option selected value><%= @user&.address&.state %></option>
               <% else %>
@@ -113,7 +115,6 @@
             <label for="zip">Zip Code</label>
             <input type="text" class="form-control" value="<%= @user&.address&.zip %>" id="zip" name="zip"  />
           </div>
-          <br />
         </form>
       </div>
       <div class="modal-footer">
@@ -132,7 +133,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Event</h4>
       </div>
-      <br />
+
       <div class="modal-body">
         <form method="post" action="#" enctype="multipart/form-data">
           <div class="form-group">
@@ -156,7 +157,37 @@
             <input type="checkbox" id="user_address" name="user_address" />
           </div>
           <div class="form-group">
-            <label for="street">Address</label>
+            <label for="guest_limit">Number Of Guests</label>
+            <input type="text" class="form-control" id="guest_limit" name="guest_limit"  />
+          </div>
+          <div class="form-group">
+            <label for="unlimited_guests">No Guest Limit</label>
+            <input type="checkbox" id="unlimited_guests" name="unlimited_guests" />
+          </div>
+          <div class="form-group">
+            <label for="allow_children">Children Welcome</label>
+            <input type="checkbox" id="allow_children" name="allow_children" />
+          </div>
+          <div class="form-group">
+            <label for="alcohol_allowed">Alcohol Welcome</label>
+            <input type="checkbox" id="alcohol_allowed" name="alcohol_allowed" />
+          </div><div class="form-group">
+            <label for="filter_guests">Guests Need To Be Approved <span class="text-muted">(Cannot Be Changed Once Created)</span></label>
+            <input type="checkbox" id="filter_guests" name="filter_guests" />
+          </div>
+          <div class="form-group">
+            <label for="food">Food/Drink</label>
+            <textarea type="text" id="food" name="food" class="form-control text_input" /></textarea>
+          </div>
+          <div class="form-group">
+            <label for="description">Description Of Event</label>
+            <textarea type="text" id="description" class="form-control text_input" name="description"></textarea>
+          </div>
+          <br />
+          <h4>Event Address</h4>
+          <hr />
+          <div class="form-group">
+            <label for="street">Street</label>
             <input type="text" class="form-control" id="streetEvent" name="street"  />
           </div>
           <div class="form-group">
@@ -224,34 +255,6 @@
             <label for="zip">Zip Code</label>
             <input type="text" class="form-control" id="zipEvent" name="zip"  />
           </div>
-          <div class="form-group">
-            <label for="guest_limit">Number Of Guests</label>
-            <input type="text" class="form-control" id="guest_limit" name="guest_limit"  />
-          </div>
-          <div class="form-group">
-            <label for="unlimited_guests">No Guest Limit</label>
-            <input type="checkbox" id="unlimited_guests" name="unlimited_guests" />
-          </div>
-          <div class="form-group">
-            <label for="allow_children">Children Welcome</label>
-            <input type="checkbox" id="allow_children" name="allow_children" />
-          </div>
-          <div class="form-group">
-            <label for="alcohol_allowed">Alcohol Welcome</label>
-            <input type="checkbox" id="alcohol_allowed" name="alcohol_allowed" />
-          </div><div class="form-group">
-            <label for="filter_guests">Guests Need To Be Approved <span class="text-muted">(Cannot Be Changed Once Created)</span></label>
-            <input type="checkbox" id="filter_guests" name="filter_guests" />
-          </div>
-          <div class="form-group">
-            <label for="food">Food/Drink</label>
-            <textarea type="text" id="food" name="food" class="form-control text_input" /></textarea>
-          </div>
-          <div class="form-group">
-            <label for="description">Description Of Event</label>
-            <textarea type="text" id="description" class="form-control text_input" name="description"></textarea>
-          </div>
-          <br />
         </form>
       </div>
       <div class="modal-footer">

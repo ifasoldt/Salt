@@ -63,7 +63,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     else {
       console.log(response)
       var errors = response.forEach(function(error){
-        createError(error, 'description')
+        createError(error, 'zipEvent')
       })
     }
   })

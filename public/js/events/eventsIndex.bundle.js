@@ -21552,7 +21552,7 @@
 	                _react2.default.createElement(
 	                  'span',
 	                  { className: 'time' },
-	                  '7:30pm'
+	                  event.time
 	                )
 	              ),
 	              _react2.default.createElement('i', { className: 'fa fa-heart-o watchIcon', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Watch Event' })
@@ -21574,7 +21574,7 @@
 	                  _react2.default.createElement(
 	                    'h3',
 	                    { className: 'event_host' },
-	                    'Name of User'
+	                    event.host.full_name
 	                  )
 	                )
 	              ),
