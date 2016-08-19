@@ -25,6 +25,8 @@ class Event < ApplicationRecord
   validate :date_cannot_be_earlier_today
   validate :guest_limit_xor_unlimited_guests
 
+
+
   def spots_left
     @approved_guests = applications.where(status: 'approved').pluck(:quantity).inject(:+).to_i
     if guest_limit
