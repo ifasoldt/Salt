@@ -3,18 +3,27 @@ var current_event = eventID.getAttribute('data-id')
 // edit event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
-  var formFields = {
-    title: document.getElementById('event_title').value,
-    date: document.getElementById('event_date').value,
-    time: document.getElementById('event_time').value,
-    guest_limit: document.getElementById('event_number_guests').value,
-    unlimited_guests: document.getElementById('event_unlimited').checked,
-    allow_children: document.getElementById('event_children').checked,
-    alcohol_allowed: document.getElementById('event_alcohol').checked,
-    food: document.getElementById('event_food').value,
-    description: document.getElementById('event_description').value
+  var data = new FormData()
+  var pics = document.getElementById('images_files').files.length;
+  for (var x = 0; x < pics; x++) {
+    data.append('images_files[]', document.getElementById('images_files').files[x]);
   }
-  fetchApi('PATCH', `/api/events/${current_event}`, formFields, function (response, statusCode) {
+  data.append('title', document.getElementById('title').value)
+  data.append('date', document.getElementById('date').value)
+  data.append('time', document.getElementById('time').value)
+  data.append('user_address', document.getElementById('user_address').checked)
+  data.append('street', document.getElementById('streetEvent').value)
+  data.append('city', document.getElementById('cityEvent').value)
+  data.append('state', document.getElementById('stateEvent').value)
+  data.append('zip', document.getElementById('zipEvent').value)
+  data.append('guest_limit', document.getElementById('guest_limit').value)
+  data.append('unlimited_guests', document.getElementById('unlimited_guests').checked)
+  data.append('alcohol_allowed', document.getElementById('alcohol_allowed').checked)
+  data.append('allow_children', document.getElementById('allow_children').checked)
+  data.append('food', document.getElementById('food').value)
+  data.append('description', document.getElementById('description').value)
+
+  fetchApiImages('PATCH', `/api/events/${current_event}`, data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       console.log(response)
       location.reload()
@@ -22,7 +31,7 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     else {
       console.log(response)
       var errors = response.forEach(function(error){
-        createError(error, 'event_description')
+        createError(error, 'description')
       })
     }
   })
