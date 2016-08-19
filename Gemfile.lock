@@ -119,6 +119,10 @@ GEM
     ffi (1.9.14)
     figaro (1.1.1)
       thor (~> 0.14)
+    geokit (1.10.0)
+    geokit-rails (2.2.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
@@ -272,6 +276,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  geokit-rails
   gmaps4rails
   has_scope
   jquery-rails
