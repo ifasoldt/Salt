@@ -27,7 +27,6 @@
 }
 
 .eventContainer .imgContainer {
-  background-image: url("../../assets/Indianapolis.jpg");
   background-position: center;
   background-size: cover;
   flex: 2;

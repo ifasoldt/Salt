@@ -22,10 +22,13 @@ class Event extends React.Component  {
   }
     render() {
       var allEvents = this.state.events.map(function(event, key) {
+        var imgStyle = {
+          backgroundImage: `url(${event.event_images[0]})`
+        }
         return (
           <div className="col-xs-12 col-sm-6 col-md-4" key={key}>
             <div className="eventContainer">
-              <div className="imgContainer">
+              <div className="imgContainer" style={imgStyle}>
                 <div className="dateContainer text-center">
                   <span className="date">{event.formatted_date}</span>
                   <br/>
@@ -36,7 +39,7 @@ class Event extends React.Component  {
               <div className="descContainer">
                 <div className="profileContainer">
                   <div className="thumbnailContainer">
-                    <img src="/assets/profileImage.png" alt="profile image" className="img-circle" />
+                    <img src={event.host.user_image} alt="profile image" className="img-circle" />
                   </div>
                   <div className="nameContainer">
                     <h3 className="event_host">{event.host.full_name}</h3>
@@ -45,7 +48,6 @@ class Event extends React.Component  {
                 <div className="eventDescContainer">
                   <h3 className="event_title">{event.title}</h3>
                   <p className="event_description">{event.description}</p>
-                  <p className="event_description">{event.spots_left}</p>
                 </div>
               </div>
             </div>
