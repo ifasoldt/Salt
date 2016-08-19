@@ -1,16 +1,16 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :destroy, :update]
-  # has_scope :allow_children, :type => :boolean
-  # has_scope :alcohol_allowed, :type => :boolean
-  # has_scope :date
-  # # Must be passed a hash like {by_period: {starting_date: x, ending_date: y}}
-  # has_scope :by_period, :using => [:starting_date, :ending_date], :type => :hash
-  # # Pass "asc" or "desc" inside param. Don't know if this will work.
-  # has_scope :guest_limit
-  # has_scope :only_future_events, default: nil, allow_blank: true
+  has_scope :allow_children, :type => :boolean
+  has_scope :alcohol_allowed, :type => :boolean
+  has_scope :date
+  # Must be passed a hash like {by_period: {starting_date: x, ending_date: y}}
+  has_scope :by_period, :using => [:starting_date, :ending_date], :type => :hash
+  # Pass "asc" or "desc" inside param. Don't know if this will work.
+  has_scope :guest_limit
+  has_scope :only_future_events, default: nil, allow_blank: true
 
   def index
-    @events = apply_scopes(Event).all
+    @events = apply_scopes(Event.nearby(params[:location])).all
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @events}

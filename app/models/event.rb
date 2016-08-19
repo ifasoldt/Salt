@@ -51,5 +51,12 @@ private
     end
   end
 
+  #location can be an address or a lat/long array
+  def self.nearby(location)
+    address_ids = Address.close_events(location).ids
+    @nearby_events = Event.joins(:address).where("addresses.id IN (?)", address_ids)
+    @nearby_events
+  end
+
 
 end

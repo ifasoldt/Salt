@@ -9,8 +9,9 @@ class WelcomeController < ApplicationController
 
     # @events = Event.where
     # @events = Event.joins(:address).where(addresses: close_events(@event.address.full_address)
-    address_ids = Address.close_events(@event.address.full_address).ids
-    @events = Event.joins(:address).where("addresses.id IN (?)", address_ids)
+    # address_ids = Address.close_events(@event.address.full_address).ids
+    # @events = Event.joins(:address).where("addresses.id IN (?)", address_ids)
+    @events = Event.nearby('Greencastle, IN')
     respond_to do |format|
       format.json {
       @markers = events_markers(@events)
