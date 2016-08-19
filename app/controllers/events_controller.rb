@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    unless params[:user_address] == true
+    unless params[:user_address] == "true"
       @event = Event.new(event_params.merge(host_id: current_user.id).merge({address_attributes: address_params}))
     else
       @event = Event.new(event_params.merge(host_id: current_user.id))
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    unless params[:user_address] == true
+    unless params[:user_address] == "true"
       if @event.update(event_params.merge({address_attributes: address_params}))
         render json: @event, status: 200
       else
