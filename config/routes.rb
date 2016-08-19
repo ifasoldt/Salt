@@ -16,6 +16,7 @@ put '/api/users/:id' => 'users#update'
 patch '/api/users/:id' => 'users#update'
 # create event
 get '/api/events' => 'events#index'
+get '/api/events/:id' => 'events#show'
 post '/api/events' => 'events#create'
 patch '/api/events/:id' => 'events#update'
 put '/api/events/:id' => 'events#update'

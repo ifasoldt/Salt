@@ -1,3 +1,125 @@
+.contentRow {
+  margin-top: 40px;
+}
+
+#slider .slick-slide {
+  height: 250px;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContainer .headContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.mainContainer .headContainer .titleContainer {
+  flex: 2;
+}
+
+.mainContainer .headContainer .titleContainer .eventTitle {
+  margin: 0;
+}
+
+.mainContainer .headContainer .spotsContainer {
+  flex-direction: column;
+  flex: 1;
+}
+
+.mainContainer .headContainer .spotsContainer .goingContainer {
+  flex: 1;
+}
+
+.mainContainer .headContainer .spotsContainer .openContainer {
+  flex: 1;
+}
+
+.mainContainer .descContainer {
+  flex: 1;
+}
+
+.mainContainer .descContainer .eventDate {
+  display: inline-block;
+}
+
+.mainContainer .descContainer .eventTime {
+  display: inline-block;
+}
+
+.mainContainer .descContainer .eventDesc {
+  text-decoration: underline;
+}
+
+.mainContainer .descContainer .foodDesc {
+  text-decoration: underline;
+}
+
+.mainContainer .highlightsContainer {
+  flex: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: white !important;
+}
+
+.slick-next {
+  right: 5px !important;
+}
+
+.slick-prev {
+  z-index: 5;
+  left: 5px !important;
+}
+
+.hostProfileContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.hostProfileContainer .hostImgContainer {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hostProfileContainer .hostImgContainer .hostImg {
+  height: 100%;
+}
+
+.hostProfileContainer .hostTextContainer {
+  flex: 2;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.hostProfileContainer .hostTextContainer .hostNameContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hostProfileContainer .hostTextContainer .hostNameContainer .hostsName {
+  margin: 0;
+}
+
+.hostProfileContainer .hostTextContainer .hostBioContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hostProfileContainer .hostTextContainer .hostBioContainer .hostBio {
+  margin: 0;
+}
+
 .text_input {
   height: 80px;
 }

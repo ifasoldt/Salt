@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :description, :food, :guest_limit, :spots_left, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :time, :filter_guests, :event_images, :formated_date, :formatted_time
+  attributes :id, :description, :food, :guest_limit, :spots_left, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :time, :filter_guests, :event_images, :formatted_date, :formatted_time, :confirmed_guests
   belongs_to :host, class_name: 'User'
   has_many :images
 
@@ -17,7 +17,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def formatted_time
-    object.time.strftime('%-l:%M %P')
+    object&.time&.strftime('%-l:%M %P')
   end
 
 

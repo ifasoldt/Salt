@@ -1,3 +1,103 @@
+.contentRow {
+  margin-top: 40px;
+}
+#slider {
+  .slick-slide {
+    height: 250px;
+  }
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  .headContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    .titleContainer {
+      flex: 2;
+      .eventTitle {
+        margin: 0;
+      }
+    }
+    .spotsContainer {
+      flex-direction: column;
+      flex: 1;
+      .goingContainer {
+        flex: 1;
+      }
+      .openContainer {
+        flex: 1;
+      }
+    }
+  }
+  .descContainer {
+    flex: 1;
+    .eventDate {
+      display: inline-block;
+    }
+    .eventTime {
+      display: inline-block;
+    }
+    .eventDesc {
+      text-decoration: underline;
+    }
+    .foodDesc {
+      text-decoration: underline;
+    }
+  }
+  .highlightsContainer {
+    flex: 1;
+  }
+}
+.slick-prev:before, .slick-next:before {
+  color: white !important;
+}
+.slick-next {
+  right: 5px !important;
+}
+.slick-prev {
+  z-index: 5;
+  left: 5px !important;
+}
+
+.hostProfileContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  .hostImgContainer {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    .hostImg {
+      height: 100%;
+    }
+  }
+  .hostTextContainer {
+    flex: 2;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    .hostNameContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      .hostsName {
+        margin: 0;
+      }
+    }
+    .hostBioContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      .hostBio {
+        margin: 0;
+      }
+    }
+  }
+}
+
 .text_input {
   height: 80px;
 }

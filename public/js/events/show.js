@@ -1,5 +1,6 @@
 var eventID = document.getElementById('current_event')
 var current_event = eventID.getAttribute('data-id')
+
 // edit event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
