@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_one :address, as: :addressable, dependent: :destroy
+  accepts_nested_attributes_for :address
   has_many :hosted_events, class_name: 'Event', foreign_key: 'host_id', dependent: :destroy
   has_many :events, through: :applications
   has_many :applications, dependent: :destroy
