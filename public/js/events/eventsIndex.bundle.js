@@ -21531,6 +21531,9 @@
 	    key: 'render',
 	    value: function render() {
 	      var allEvents = this.state.events.map(function (event, key) {
+	        var imgStyle = {
+	          backgroundImage: 'url(' + event.event_images[0] + ')'
+	        };
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'col-xs-12 col-sm-6 col-md-4', key: key },
@@ -21539,20 +21542,20 @@
 	            { className: 'eventContainer' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'imgContainer' },
+	              { className: 'imgContainer', style: imgStyle },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'dateContainer text-center' },
 	                _react2.default.createElement(
 	                  'span',
 	                  { className: 'date' },
-	                  event.date
+	                  event.formatted_date
 	                ),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                  'span',
 	                  { className: 'time' },
-	                  event.time
+	                  event.formatted_time
 	                )
 	              ),
 	              _react2.default.createElement('i', { className: 'fa fa-heart-o watchIcon', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Watch Event' })
@@ -21566,7 +21569,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'thumbnailContainer' },
-	                  _react2.default.createElement('img', { src: '/assets/profileImage.png', alt: 'profile image', className: 'img-circle' })
+	                  _react2.default.createElement('img', { src: event.host.user_image, alt: 'profile image', className: 'img-circle' })
 	                ),
 	                _react2.default.createElement(
 	                  'div',
