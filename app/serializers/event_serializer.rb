@@ -12,12 +12,12 @@ class EventSerializer < ActiveModel::Serializer
     ev_images
   end
 
-  def formated_date
+  def formatted_date
     object.date.strftime('%A, %b. %d')
   end
 
   def formatted_time
-    object.time.strftime('%l:%M %P')
+    object.time.strftime('%-l:%M %P')
   end
 
 
