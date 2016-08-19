@@ -78,6 +78,7 @@
 }
 
 .eventContainer .descContainer .profileContainer .thumbnailContainer {
+  height: 100%;
   flex: 1;
   display: flex;
   align-items: center;
@@ -86,7 +87,6 @@
 
 .eventContainer .descContainer .profileContainer .thumbnailContainer img {
   height: 100%;
-  width: 100%;
 }
 
 .eventContainer .descContainer .profileContainer .nameContainer {

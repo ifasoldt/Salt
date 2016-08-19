@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
     eventsIndex: './js/events/index.js',
+    showEvent: './js/events/showEvent.js'
   },
   output: {
     path: './js/events',

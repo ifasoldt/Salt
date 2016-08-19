@@ -14,6 +14,7 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
   data.append('email', document.getElementById('email').value)
   data.append('date_of_birth', document.getElementById('date_of_birth').value)
   data.append('phone', document.getElementById('phone').value)
+  data.append('description', document.getElementById('descriptionBio').value)
   data.append('street', document.getElementById('street').value)
   data.append('city', document.getElementById('city').value)
   data.append('state', document.getElementById('state').value)

@@ -39,6 +39,10 @@
             <label for="phone">Phone Number <span class="text-muted">(XXX-XXX-XXXX)</span></label>
             <input type="text" class="form-control" value="<%= @user&.phone %>" id="phone" name="phone"  />
           </div>
+          <div class="form-group">
+            <label for="description">Give A Brief Description Of Yourself</label>
+            <textarea type="text" id="descriptionBio" class="form-control text_input" name="description"><%= @user&.description %></textarea>
+          </div>
           <br />
           <h4>Address</h4>
           <hr />
@@ -54,7 +58,7 @@
             <label for="state" >State</label>
             <select id="state" name="state" selected="<%= @user&.address&.state %>" value="<%= @user&.address&.state %>" class="form-control">
               <% if @user&.address %>
-                <option selected value><%= @user&.address&.state %></option>
+                <option selected value="<%= @user&.address&.state %>"><%= @user&.address&.state %></option>
               <% else %>
                 <option disabled selected value> -- select a state -- </option>
               <% end %>
@@ -153,10 +157,6 @@
             <input type="text" data-enable-time="true" data-no-calendar="true" value="17:00" class="form-control flatpickr" id="time" name="time"  />
           </div>
           <div class="form-group">
-            <label for="user_address">Event Will Be Hosted At Your Address</label>
-            <input type="checkbox" id="user_address" name="user_address" />
-          </div>
-          <div class="form-group">
             <label for="guest_limit">Number Of Guests</label>
             <input type="text" class="form-control" id="guest_limit" name="guest_limit"  />
           </div>
@@ -186,6 +186,10 @@
           <br />
           <h4>Event Address</h4>
           <hr />
+          <div class="form-group">
+            <label for="user_address">Event Will Be Hosted At Your Address</label>
+            <input type="checkbox" id="user_address" name="user_address" />
+          </div>
           <div class="form-group">
             <label for="street">Street</label>
             <input type="text" class="form-control" id="streetEvent" name="street"  />

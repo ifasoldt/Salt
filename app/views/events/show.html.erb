@@ -1,7 +1,16 @@
 <% content_for :stylesheets do %>
   <link rel="stylesheet" href="/css/flatpickr.min.css" />
   <link rel="stylesheet" href="/css/events/show.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
 <% end %>
+
+<div class="container" id="showEvent">
+  
+</div>
+
+
+
 
 <% if @event.host_id == current_user&.id %>
   <a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Edit Event</button></a>
@@ -34,10 +43,6 @@
           <div class="form-group">
             <label for="images_files">Event Image</label>
             <input type="file" class="form-control" name="images_files" id="images_files" multiple />
-          </div>
-          <div class="form-group">
-            <label for="user_address">Event Will Be Hosted At Your Address</label>
-            <input type="checkbox" id="user_address" name="user_address" />
           </div>
           <div class="form-group">
             <label for="guest_limit">Number Of Guests</label>
@@ -78,6 +83,10 @@
           <br />
           <h4>Event Address</h4>
           <hr />
+          <div class="form-group">
+            <label for="user_address">Event Will Be Hosted At Your Address</label>
+            <input type="checkbox" id="user_address" name="user_address" />
+          </div>
           <div class="form-group">
             <label for="street">Address</label>
             <input type="text" class="form-control" id="streetEvent" value="<%= @event.address&.street %>" name="street"  />
@@ -194,7 +203,9 @@
 
 <% content_for :scripts do %>
   <script src="/js/flatpickr.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
   <script src="/js/events/show.js"></script>
+  <script src="/js/events/showEvent.bundle.js"></script>
   <script src="/js/configImages.js"></script>
   <script type="text/javascript">
       $("#date").flatpickr();
