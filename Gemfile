@@ -42,6 +42,7 @@ gem 'validates_timeliness', '~> 4.0'
 gem 'has_scope'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'gmaps4rails'
+gem 'geokit-rails'
 
 
 # Use Capistrano for deployment
