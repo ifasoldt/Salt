@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   has_one :address, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :address
   validates_associated :address
+  validates_presence_of :address
   has_many :thumbs
   has_many :images, as: :imageable, dependent: :destroy
   accepts_attachments_for :images, attachment: :file
