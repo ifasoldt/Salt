@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   scope :by_period, -> starting_date, ending_date {where(date: starting_date..ending_date)}
   scope :guest_limit, -> guest_limit {order(guest_limit: guest_limit)}
   scope :only_future_events, ->(*) {where("date >= ?", Date.today)}
-  default_scope {order(:date, :time)}
+  scope :chronological, -> (*) {order(:date, :time)}
 
   has_many :users, through: :applications
   belongs_to :host, class_name: 'User'

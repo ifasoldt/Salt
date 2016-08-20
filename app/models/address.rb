@@ -4,7 +4,7 @@ class Address < ApplicationRecord
   belongs_to :addressable, polymorphic: true, optional: true
   validates :street, :city, :zip, :state, presence: true
   validates :zip, length: {is: 5}
-  scope :close_events, -> (event) { within(20, :origin => event)}
+  scope :close_events, -> (event) { within(10, :origin => event)}
   # validate :is_a_real_address
 
   def full_address
