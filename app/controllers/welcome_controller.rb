@@ -27,7 +27,7 @@ class WelcomeController < ApplicationController
     Gmaps4rails.build_markers(events) do |event, marker|
       marker.lat event.address.lat
       marker.lng event.address.lng
-      marker.infowindow "<img width='100' height='100' src='#{Refile.attachment_url(event.images.first, :file, :fit, 400, 400)}' /> #{event.description}"
+      marker.infowindow "<div class='panel panel-default'><img class='img-rounded m-x-auto img-responsive' width='120' height='120' src='#{Refile.attachment_url(event.images.first, :file, :fill, 400, 400)}' /> <div text-center> #{event.description}</div></div>"
     end
   end
 
