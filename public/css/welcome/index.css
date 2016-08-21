@@ -5,6 +5,40 @@
   height: 400px;
 }
 
+.searchContainer {
+  margin-top: 130px;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchContainer .form-control {
+  border-radius: 0;
+}
+
+.searchContainer .cityContainer {
+  flex: 4;
+}
+
+.searchContainer .dateFrom {
+  flex: 2;
+}
+
+.searchContainer .dateTo {
+  flex: 2;
+}
+
+.searchContainer button {
+  border-radius: 0;
+}
+
+.searchContainer a {
+  color: black;
+}
+
+.searchContainer .buttonContainer {
+  flex: 1;
+}
+
 .index_text {
   font-size: 20px;
   color: white;

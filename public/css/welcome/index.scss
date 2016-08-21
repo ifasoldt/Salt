@@ -4,6 +4,32 @@
   background-size: cover;
   height: 400px;
 }
+.searchContainer {
+  margin-top: 130px;
+  display: flex;
+  flex-direction: row;
+  .form-control {
+    border-radius: 0;
+  }
+  .cityContainer {
+    flex: 4;
+  }
+  .dateFrom {
+    flex: 2;
+  }
+  .dateTo {
+    flex: 2;
+  }
+  button {
+    border-radius: 0;
+  }
+  a {
+    color: black;
+  }
+  .buttonContainer {
+    flex: 1;
+  }
+}
 .index_text {
   font-size: 20px;
   color: white;
