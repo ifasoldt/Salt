@@ -4,129 +4,27 @@
 <% end %>
 
 <div class="jumbotron">
-  <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-2">
-    <form method="post" action="#" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="index_city" class="index_text">Choose Your City</label>
-        <select id="index_city" name="index_city" class="form-control" data-date-format="d-m-Y">
-          <option value="Indianapolis">Indianapolis</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="index_neighborhood" class="index_text">Neighborhood</label>
-        <select id="index_neighborhood" name="index_neighborhood" class="form-control" data-date-format="d-m-Y">
-          <option value="114">Acton</option>
-          <option value="187">Airport</option>
-          <option value="170">Allisonville</option>
-          <option value="189">Ameriplex</option>
-          <option value="162">Arlington Woods</option>
-          <option value="196">Augusta / New Augusta</option>
-          <option value="205">Beech Grove</option>
-          <option value="195">Brendonwood</option>
-          <option value="203">Broad Ripple</option>
-          <option value="183">Butler-Tarkington/Rocky Ripple</option>
-          <option value="176">Camby</option>
-          <option value="131">Canterbury-Chatard</option>
-          <option value="186">Castleton</option>
-          <option value="171">Chapel Hill / Ben Davis</option>
-          <option value="202">Christian Park</option>
-          <option value="204">Clearwater</option>
-          <option value="159">Clermont</option>
-          <option value="181">College Park</option>
-          <option value="168">Crooked Creek</option>
-          <option value="128">Crown Hill</option>
-          <option value="122">Crows Nest</option>
-          <option value="117">Cumberland</option>
-          <option value="120">Delaware Trails</option>
-          <option value="130">Devington</option>
-          <option value="165">Devon</option>
-          <option value="125">Devonshire</option>
-          <option value="142">Downtown</option>
-          <option value="201">Eagle Creek</option>
-          <option value="180">Eagledale</option>
-          <option value="154">East Gate</option>
-          <option value="166">East Warren</option>
-          <option value="145">Eastside</option>
-          <option value="111">Edgewood</option>
-          <option value="191">Fairgrounds</option>
-          <option value="126">Far Eastside</option>
-          <option value="178">Five Points</option>
-          <option value="190">Forest Manor</option>
-          <option value="127">Fountain Square</option>
-          <option value="209">Galludet</option>
-          <option value="152">Garden City</option>
-          <option value="177">Garfield Park</option>
-          <option value="157">Geist</option>
-          <option value="167">Glendale</option>
-          <option value="160">Glenns Valley</option>
-          <option value="194">Hill Valley</option>
-          <option value="185">Homecroft</option>
-          <option value="193">I-65 / South Emerson</option>
-          <option value="139">I-69/Fall Creek</option>
-          <option value="148">International Marketplace</option>
-          <option value="198">Irvington</option>
-          <option value="133">Key Meadows</option>
-          <option value="197">Keystone at the Crossing</option>
-          <option value="144">Lawrence-Fort Ben-Oaklandon</option>
-          <option value="164">Lawrence</option>
-          <option value="179">Linden Wood</option>
-          <option value="146">Mapleton / Fall Creek</option>
-          <option value="118">Marian - Cold Springs</option>
-          <option value="206">Mars Hill</option>
-          <option value="116">Martindale - Brightwood</option>
-          <option value="136">Maywood</option>
-          <option value="138">Meadows</option>
-          <option value="119">Meridian Hills/Williams Creek</option>
-          <option value="182">Meridian Kessler</option>
-          <option value="147">Millersville</option>
-          <option value="135">Near Eastside</option>
-          <option value="153">Near NW - Riverside</option>
-          <option value="132">Near Northside</option>
-          <option value="124">Near Southeast</option>
-          <option value="149">Near Southside</option>
-          <option value="207">Near Westside</option>
-          <option value="113">New Bethel</option>
-          <option value="123">Nora / Far Northside</option>
-          <option value="172">North Central</option>
-          <option value="174">North Perry</option>
-          <option value="115">Northwest High School</option>
-          <option value="140">Park 100</option>
-          <option value="156">Park Fletcher</option>
-          <option value="169">Poplar Grove</option>
-          <option value="192">Ravenswood</option>
-          <option value="155">Raymond Park</option>
-          <option value="175">Snacks / Guion Creek</option>
-          <option value="161">South Franklin</option>
-          <option value="184">South Perry</option>
-          <option value="200">Southdale</option>
-          <option value="134">Southeast Warren</option>
-          <option value="121">Southeast</option>
-          <option value="163">Southern Dunes</option>
-          <option value="199">Southport</option>
-          <option value="151">Speedway</option>
-          <option value="158">St Vincent / Greenbriar</option>
-          <option value="141">Stout Field</option>
-          <option value="112">Sunshine Gardens</option>
-          <option value="173">Traders Point</option>
-          <option value="137">University Heights</option>
-          <option value="208">Valley Mills</option>
-          <option value="129">Wanamaker</option>
-          <option value="143">West Indianapolis</option>
-          <option value="188">West Newton</option>
-          <option value="150">Wynnedale / Spring Hill</option>
-        </select>
-      </div>
-    </form>
-  </div>
-  <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-2">
-    <form method="post" action="#" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="index_date_from" class="index_text">Date From</label>
-        <input type="text" class="form-control flatpickr" data-date-format="d-m-Y" id="index_date_from" name="index_date_from" required />
-      </div>
-      <div class="form-group">
-        <label for="index_date_to" class="index_text">Date To</label>
-        <input type="text" class="form-control flatpickr" data-date-format="d-m-Y" id="index_date_to" name="index_date_to" required />
+  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+    <form method="get" action="#" enctype="multipart/form-data">
+      <div class="searchContainer">
+        <div class="cityContainer">
+          <div class="form-group">
+            <input type="text" class="form-control" id="location" name="location" placeholder="What Do You Want To Search" required />
+          </div>
+        </div>
+        <div class="dateFrom">
+          <div class="form-group">
+            <input type="text" class="form-control flatpickr" data-date-format="d-m-Y" id="index_date_from" name="index_date_from" placeholder="From" required />
+          </div>
+        </div>
+        <div class="dateTo">
+          <div class="form-group">
+            <input type="text" class="form-control flatpickr" data-date-format="d-m-Y" id="index_date_to" name="index_date_to" placeholder="To" required />
+          </div>
+        </div>
+        <div class="buttonContainer">
+          <a><button class="btn" id="submitIndexSearch">Search</button></a>
+        </div>
       </div>
     </form>
   </div>
@@ -164,7 +62,7 @@
 
 <% content_for :scripts do %>
   <script src="/js/flatpickr.min.js"></script>
-  <!-- <script src="/js/welcome/index.js"></script> -->
+  <script src="/js/welcome/welcome.js"></script>
   <script type="text/javascript">
       $("#index_date_from").flatpickr();
       $("#index_date_to").flatpickr();
