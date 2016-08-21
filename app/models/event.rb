@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   scope :by_period, -> starting_date, ending_date {where(date: starting_date..ending_date)}
   scope :guest_limit, -> guest_limit {order(guest_limit: guest_limit)}
   scope :only_future_events, ->(*) {where("date >= ?", Date.today)}
-  default_scope {order(:date, :time)}
+  scope :chronological, -> (*) {order(:date, :time)}
 
   has_many :users, through: :applications
   belongs_to :host, class_name: 'User'
@@ -50,6 +50,13 @@ private
     unless (guest_limit.blank?) ^ (unlimited_guests == false)
       errors.add(:Please, "specify the number of guests or choose unlimited, but not both")
     end
+  end
+
+  #location can be an address or a lat/long array
+  def self.nearby(location)
+    address_ids = Address.close_events(location).ids
+    @nearby_events = Event.joins(:address).where("addresses.id IN (?)", address_ids)
+    @nearby_events
   end
 
 
