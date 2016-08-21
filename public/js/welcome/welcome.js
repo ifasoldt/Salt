@@ -3,10 +3,8 @@ document.getElementById('submitIndexSearch').addEventListener('click', function 
   perior
   var formFields = {
     location: document.getElementById('location').value,
-    by_period: {
-      starting_date: document.getElementById('index_date_from').value,
-      ending_date: document.getElementById('index_date_from').value
-    }
+    starting_date: document.getElementById('index_date_from').value,
+    ending_date: document.getElementById('index_date_from').value
   }
 
   fetchApi('GET','/api/events', formFields, function (response, statusCode) {
