@@ -43,6 +43,7 @@ gem 'has_scope'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'gmaps4rails'
 gem 'geokit-rails'
+gem 'sendgrid'
 
 
 # Use Capistrano for deployment

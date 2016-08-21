@@ -13,7 +13,13 @@ class EventsController < ApplicationController
   has_scope :chronological, default: nil, allow_blank: true
 
   def index
-      @events = apply_scopes(Event).all.nearby(params[:location])
+    # breaks if no params[:location] Temp fix below.
+    if params[:location]
+      @events = apply_scopes(Event).all&.nearby(params[:location])
+    else
+      @events = apply_scopes(Event).all
+    end
+
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @events}
