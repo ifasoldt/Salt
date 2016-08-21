@@ -14,4 +14,10 @@ class Application < ApplicationRecord
       end
     end
   end
+  # 
+  # def application_expires
+  #   if event.
+  #   end
+  # end
+
 end
