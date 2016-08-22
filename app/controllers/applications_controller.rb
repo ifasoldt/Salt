@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
   before_action :require_user, only: [:create]
-  before_action :require_host, only: [:update]
   before_action :set_application, only: [:update, :destroy]
+  before_action :require_host, only: [:update]
 
   def create
     @application = current_user.applications.new(application_params.merge(user_id: current_user.id))
@@ -43,6 +43,6 @@ class ApplicationsController < ApplicationController
   end
 
   def require_host
-    redirect_back(fallback_location: root_path, flash: {danger: "You're not allowed to do that"}) unless @application.host == current_user
+    redirect_back(fallback_location: root_path, flash: {danger: "You're not allowed to do that"}) unless @application.event.host == current_user
   end
 end
