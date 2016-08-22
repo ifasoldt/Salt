@@ -16,13 +16,15 @@ footer {
     height: 100%;
     text-align: center;
     padding-bottom: 20px;
+    z-index: 10;
+    position: relative;
     .footer_logo {
         display: inline-block;
-        width: 200px;
-        margin-top: 20px;
+        width: 100px;
+        margin-top: 6px;
     }
     .footer_links {
-      margin-top: 20px;
+      margin-top: 4px;
         a {
             color: white;
             text-decoration: none;
@@ -32,15 +34,52 @@ footer {
             }
         }
         h5 {
-            font-size: 20px;
+            font-size: 14px;
             margin-bottom: 0px;
         }
     }
     .social_links {
-      font-size: 20px;
-      margin-top: 8px;
+      font-size: 14px;
+      margin-top: 6px;
       a {
           color: white;
       }
     }
+}
+@media screen and (min-width: 768px) {
+  footer {
+      background-color: black;
+      height: 100%;
+      text-align: center;
+      padding-bottom: 20px;
+      z-index: 10;
+      position: relative;
+      .footer_logo {
+          display: inline-block;
+          width: 140px;
+          margin-top: 10px;
+      }
+      .footer_links {
+        margin-top: 10px;
+          a {
+              color: white;
+              text-decoration: none;
+              transition: 0.3s;
+              &:hover, &:focus {
+                  color: pink;
+              }
+          }
+          h5 {
+              font-size: 20px;
+              margin-bottom: 0px;
+          }
+      }
+      .social_links {
+        font-size: 20px;
+        margin-top: 8px;
+        a {
+            color: white;
+        }
+      }
+  }
 }

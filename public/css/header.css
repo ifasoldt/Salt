@@ -67,9 +67,16 @@ nav a {
   transform: translateY(0px);
 }
 
+.margin-top {
+  padding-top: 80px;
+}
+
 header {
   background-color: black;
   height: 80px;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
 }
 
 .header_img {

@@ -4,7 +4,6 @@ class Event extends React.Component  {
   constructor(props) {
     super(props)
     this.updateEvents = this.updateEvents.bind(this)
-    this.updateMap = this.updateMap.bind(this)
     this.state = {
       events: [],
       markerArray: []
@@ -25,9 +24,10 @@ class Event extends React.Component  {
         markerArray: array
       })
     })
-    this.updateMap()
   }
-    updateMap() {
+  componentDidUpdate () {
+      $('[data-toggle="tooltip"]').tooltip()
+
       var handler = Gmaps.build('Google')
       var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
 
@@ -37,18 +37,15 @@ class Event extends React.Component  {
         handler.fitMapToBounds();
       })
   }
-  componentDidUpdate () {
-      $('[data-toggle="tooltip"]').tooltip();
-  }
     render() {
       var allEvents = this.state.events.map(function(event, key) {
         var imgStyle = {
           backgroundImage: `url(${event.event_images[0]})`
         }
         return (
-          <div className="col-xs-12 col-sm-6" key={key}>
-            <div className="eventContainer">
-              <div className="imgContainer" style={imgStyle}>
+          <div className="col-xs-12 col-md-6" key={key}>
+            <div className="eventContainer" style={imgStyle}>
+              <div className="imgContainer">
                 <div className="dateContainer text-center">
                   <span className="date">{event.formatted_date}</span>
                   <br/>
@@ -62,12 +59,13 @@ class Event extends React.Component  {
                     <img src={event.host.user_image} alt="profile image" className="img-circle" />
                   </div>
                   <div className="nameContainer">
-                    <h3 className="event_host">{event.host.full_name}</h3>
+                    <h3 className="event_host">{event.host.first_name}</h3>
                   </div>
                 </div>
                 <div className="eventDescContainer">
                   <h3 className="event_title">{event.title}</h3>
-                  <p className="event_description">{event.description}</p>
+                  <p className="event_guests">Guest Limit: {event.guest_limit}</p>
+                  <p className="event_spots_left">Spots Open: {event.spots_left}</p>
                 </div>
               </div>
             </div>
@@ -75,14 +73,16 @@ class Event extends React.Component  {
         )
       })
       return (
-      <div className="row">
-        <div className="col-xs-12 col-sm-7">
+      <div>
+        <div id="map"></div>
+        <div className="container-fluid content_area">
           <div className="row">
-            {allEvents}
+            <div className="col-xs-12 col-sm-7">
+              {allEvents}
+            </div>
+            <div className="col-xs-12 col-sm-5">
+            </div>
           </div>
-        </div>
-        <div className="col-xs-12 col-sm-5">
-          <div id="map"></div>
         </div>
       </div>
     )

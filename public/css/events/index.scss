@@ -1,40 +1,26 @@
-.jumbotron {
-  background-image: url('../../assets/Indianapolis.jpg');
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-  .back_search_btn {
-    position: absolute;
-    color: black;
-    top: 90px;
-    left: 10px;
-  }
-  .city_name {
-    color: white;
-    margin-top: 60px;
-    text-shadow: 1px 1px 1px black;
-  }
-}
 #map {
+  position: relative;
   width: 100%;
-  height: 400px;
+  height: 50vh;
+}
+.content_area {
+  padding-top: 10px;
 }
 .eventContainer {
   display: flex;
-  height: 350px;
+  height: 250px;
   flex-direction: column;
   border: solid 1px gray;
   margin-bottom: 30px;
+  background-position: center;
+  background-size: cover;
   .imgContainer {
-    background-position: center;
-    background-size: cover;
     flex: 2;
     .dateContainer {
-      color: white;
       position: absolute;
       top: 0px;
       left: 15px;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(255, 255, 255, 0.6);
       display: inline-block;
       padding: 5px;
       .date {
@@ -59,39 +45,58 @@
   .descContainer {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    padding: 10px;
+    flex-direction: row;
+    padding: 5px;
     margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
     .profileContainer {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex: 1;
       .thumbnailContainer {
         height: 100%;
-        flex: 1;
+        flex: 4;
         display: flex;
         align-items: center;
         justify-content: center;
         img {
-          width: 100%;
+          width: 60px;
         }
       }
       .nameContainer {
-        flex: 5;
+        flex: 1;
         display: flex;
-        align-items: center;
+        justify-content: center;
         .event_host {
-          margin: 10px 0 10px 10px;
+          font-size: 12px;
+          margin: 0;
         }
       }
     }
     .eventDescContainer {
       flex: 2;
-      display: flex;
-      flex-direction: column;
       .event_title {
         margin: 10px 0;
       }
+      .event_guests {
+        display: inline-block;
+      }
+      .event_spots_left {
+        display: inline-block;
+        margin-left: 5px;
+      }
     }
+  }
+}
+@media screen and (min-width: 768px) {
+  #map {
+    position: fixed !important;
+    right: 0px;
+    top: 80px;
+    width: 40%;
+    height: 90vh;
+  }
+  .content_area {
+    padding-top: 20px;
   }
 }

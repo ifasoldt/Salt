@@ -21501,7 +21501,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props));
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
-	    _this.updateMap = _this.updateMap.bind(_this);
 	    _this.state = {
 	      events: [],
 	      markerArray: []
@@ -21530,12 +21529,13 @@
 	          markerArray: array
 	        });
 	      });
-	      this.updateMap();
 	    }
 	  }, {
-	    key: 'updateMap',
-	    value: function updateMap() {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
 	      var _this3 = this;
+
+	      $('[data-toggle="tooltip"]').tooltip();
 
 	      var handler = Gmaps.build('Google');
 	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
@@ -21547,11 +21547,6 @@
 	      });
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      $('[data-toggle="tooltip"]').tooltip();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var allEvents = this.state.events.map(function (event, key) {
@@ -21560,13 +21555,13 @@
 	        };
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'col-xs-12 col-sm-6', key: key },
+	          { className: 'col-xs-12 col-md-6', key: key },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'eventContainer' },
+	            { className: 'eventContainer', style: imgStyle },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'imgContainer', style: imgStyle },
+	              { className: 'imgContainer' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'dateContainer text-center' },
@@ -21601,7 +21596,7 @@
 	                  _react2.default.createElement(
 	                    'h3',
 	                    { className: 'event_host' },
-	                    event.host.full_name
+	                    event.host.first_name
 	                  )
 	                )
 	              ),
@@ -21615,8 +21610,15 @@
 	                ),
 	                _react2.default.createElement(
 	                  'p',
-	                  { className: 'event_description' },
-	                  event.description
+	                  { className: 'event_guests' },
+	                  'Guest Limit: ',
+	                  event.guest_limit
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'event_spots_left' },
+	                  'Spots Open: ',
+	                  event.spots_left
 	                )
 	              )
 	            )
@@ -21625,20 +21627,21 @@
 	      });
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'row' },
+	        null,
+	        _react2.default.createElement('div', { id: 'map' }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-xs-12 col-sm-7' },
+	          { className: 'container-fluid content_area' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'row' },
-	            allEvents
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12 col-sm-7' },
+	              allEvents
+	            ),
+	            _react2.default.createElement('div', { className: 'col-xs-12 col-sm-5' })
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-xs-12 col-sm-5' },
-	          _react2.default.createElement('div', { id: 'map' })
 	        )
 	      );
 	    }
