@@ -1,0 +1,7 @@
+<h2>Great News <%= @application.user.first_name %>!</h2>
+<p>Your request to join the Salt event,<%= @application.event.title %>, has been approved! You are on the guest list for the upcoming event.</p>
+<!-- needs to be current_user_dashboard_path when in production... -->
+<p>New details about the event are now available on your Salt <%= link_to 'dashboard', current_user_dashboard_url %> including the exact address of the event. Additionally directions to the event can be obtained by clicking <%= link_to "here", "http://maps.google.com/maps?saddr=#{@application.user&.address&.full_address || nil}&daddr=#{@application.event.address.full_address}" %>
+</p>
+<p>Meet Someone Different!</p>
+<p>The Salt Staff</p>

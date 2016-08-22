@@ -1,5 +1,13 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  ActionMailer::Base.smtp_settings = {
+  :address => "smtp.sendgrid.net",
+  :port => 587,
+  :domain => "https://guarded-bayou-26088.herokuapp.com",
+  :authentication => :plain,
+  :user_name => ENV["sendgrid_username"],
+  :password => ENV["sendgrid_password"],
+}
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -27,7 +35,9 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
 
   config.action_mailer.perform_caching = false
 
