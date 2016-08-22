@@ -2,20 +2,18 @@
   margin-top: 40px;
 }
 #slider {
+  margin-top: 10px;
   .slick-slide {
-    height: 250px;
+    height: 320px;
   }
 }
 .mainContainer {
   display: flex;
   flex-direction: column;
   .headContainer {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
     .titleContainer {
-      flex: 2;
       .eventTitle {
+        font-size: 50px;
         margin: 0;
       }
     }
@@ -62,11 +60,11 @@
 
 .hostProfileContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100px;
   .hostImgContainer {
     height: 100%;
-    flex: 1;
+    flex: 4;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -75,14 +73,7 @@
     }
   }
   .hostTextContainer {
-    flex: 2;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    .hostNameContainer {
-      flex: 1;
-      display: flex;
-      align-items: center;
+    flex: 1;
       .hostsName {
         margin: 0;
       }
@@ -95,7 +86,6 @@
         margin: 0;
       }
     }
-  }
 }
 
 .text_input {

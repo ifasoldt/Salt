@@ -21501,8 +21501,10 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props));
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
+	    _this.updateMap = _this.updateMap.bind(_this);
 	    _this.state = {
-	      events: []
+	      events: [],
+	      markerArray: []
 	    };
 	    return _this;
 	  }
@@ -21517,9 +21519,31 @@
 	    value: function updateEvents() {
 	      var _this2 = this;
 
-	      fetchApi('GET', '/api/events.json', {}, function (response) {
+	      fetchApi('GET', '/events.json' + window.location.search, {}, function (response) {
 	        console.log(response);
-	        _this2.setState({ events: response });
+	        var array = response.map(function (event) {
+	          return event.event_marker[0];
+	        });
+	        console.log(array);
+	        _this2.setState({
+	          events: response,
+	          markerArray: array
+	        });
+	      });
+	      this.updateMap();
+	    }
+	  }, {
+	    key: 'updateMap',
+	    value: function updateMap() {
+	      var _this3 = this;
+
+	      var handler = Gmaps.build('Google');
+	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
+
+	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
+	        var markers = handler.addMarkers(_this3.state.markerArray, { animation: 'DROP' });
+	        handler.bounds.extendWith(markers);
+	        handler.fitMapToBounds();
 	      });
 	    }
 	  }, {
@@ -21536,7 +21560,7 @@
 	        };
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'col-xs-12 col-sm-6 col-md-4', key: key },
+	          { className: 'col-xs-12 col-sm-6', key: key },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'eventContainer' },
@@ -21601,8 +21625,21 @@
 	      });
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        allEvents
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-xs-12 col-sm-7' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            allEvents
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-xs-12 col-sm-5' },
+	          _react2.default.createElement('div', { id: 'map' })
+	        )
 	      );
 	    }
 	  }]);

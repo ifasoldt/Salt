@@ -21575,137 +21575,15 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row contentRow' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12 col-sm-4' },
-	            _react2.default.createElement(
-	              'div',
-	              { id: 'slider' },
-	              sliderImageElements
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12 col-sm-8' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'mainContainer' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'headContainer' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'titleContainer' },
-	                  _react2.default.createElement(
-	                    'h1',
-	                    { className: 'eventTitle' },
-	                    this.state.events.title
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'spotsContainer' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'goingContainer' },
-	                    _react2.default.createElement(
-	                      'span',
-	                      null,
-	                      this.state.events.confirmed_guests,
-	                      ' attending'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'openContainer' },
-	                    _react2.default.createElement(
-	                      'span',
-	                      null,
-	                      this.state.events.spots_left,
-	                      ' spots left'
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'descContainer' },
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'eventDate' },
-	                  this.state.events.formatted_date,
-	                  ' @'
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'eventTime' },
-	                  this.state.events.formatted_time
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'eventDesc' },
-	                  'Description of Event:'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'eventDescText' },
-	                  this.state.events.description
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'foodDesc' },
-	                  'Description of Food:'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'foodDescText' },
-	                  this.state.events.food
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'highlightsContainer' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Children Welcome: ',
-	                  _react2.default.createElement(
-	                    'span',
-	                    { style: this.state.events.allow_children ? greenColor : redColor },
-	                    this.state.events.allow_children ? 'Yes' : 'No'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Alcohol Welcome: ',
-	                  _react2.default.createElement(
-	                    'span',
-	                    { style: this.state.events.alcohol_allowed ? greenColor : redColor },
-	                    this.state.events.alcohol_allowed ? 'Yes' : 'No'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'No Size Limit: ',
-	                  _react2.default.createElement(
-	                    'span',
-	                    { style: this.state.events.unlimited_guests ? greenColor : redColor },
-	                    this.state.events.unlimited_guests ? 'Yes' : 'No'
-	                  )
-	                )
-	              )
-	            )
-	          )
+	          { id: 'slider' },
+	          sliderImageElements
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: 'row whitebar' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-12 col-sm-4' },
+	            { className: 'col-xs-12 col-sm-8' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'hostProfileContainer' },
@@ -21718,21 +21596,114 @@
 	                'div',
 	                { className: 'hostTextContainer' },
 	                _react2.default.createElement(
+	                  'h2',
+	                  { className: 'hostsName text-center' },
+	                  this.state.host.first_name
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'mainContainer' },
+	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'hostNameContainer' },
+	                  { className: 'headContainer' },
 	                  _react2.default.createElement(
-	                    'h2',
-	                    { className: 'hostsName' },
-	                    this.state.host.full_name
+	                    'h1',
+	                    { className: 'eventTitle' },
+	                    this.state.events.title
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'eventDate' },
+	                    this.state.events.formatted_date,
+	                    ' @'
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'eventTime' },
+	                    this.state.events.formatted_time
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    this.state.events.confirmed_guests,
+	                    ' attending'
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    this.state.events.spots_left,
+	                    ' spots left'
 	                  )
 	                ),
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'hostBioContainer' },
+	                  { className: 'descContainer' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'eventDesc' },
+	                    'Description of Event:'
+	                  ),
 	                  _react2.default.createElement(
 	                    'p',
-	                    { className: 'hostBio' },
-	                    this.state.host.description
+	                    { className: 'eventDescText' },
+	                    this.state.events.description
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'foodDesc' },
+	                    'Description of Food:'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'foodDescText' },
+	                    this.state.events.food
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'highlightsContainer' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Children Welcome: ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { style: this.state.events.allow_children ? greenColor : redColor },
+	                      this.state.events.allow_children ? 'Yes' : 'No'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Alcohol Welcome: ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { style: this.state.events.alcohol_allowed ? greenColor : redColor },
+	                      this.state.events.alcohol_allowed ? 'Yes' : 'No'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'No Size Limit: ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { style: this.state.events.unlimited_guests ? greenColor : redColor },
+	                      this.state.events.unlimited_guests ? 'Yes' : 'No'
+	                    )
 	                  )
 	                )
 	              )

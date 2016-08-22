@@ -5,8 +5,8 @@
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
 <% end %>
 
-<div class="container" id="showEvent">
-  
+<div id="showEvent">
+
 </div>
 
 
@@ -99,7 +99,7 @@
             <label for="state" >State</label>
             <select id="stateEvent" name="state" selected="<%= @event.address&.state %>" value="<%= @event.address&.state %>" class="form-control">
               <% if @event.address %>
-                <option selected value><%= @event.address&.state %></option>
+                <option selected value="<%= @event.address&.state %>"><%= @event.address&.state %></option>
               <% else %>
                 <option disabled selected value> -- select a state -- </option>
               <% end %>

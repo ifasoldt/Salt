@@ -2,8 +2,12 @@
   margin-top: 40px;
 }
 
+#slider {
+  margin-top: 10px;
+}
+
 #slider .slick-slide {
-  height: 250px;
+  height: 320px;
 }
 
 .mainContainer {
@@ -11,17 +15,8 @@
   flex-direction: column;
 }
 
-.mainContainer .headContainer {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-}
-
-.mainContainer .headContainer .titleContainer {
-  flex: 2;
-}
-
 .mainContainer .headContainer .titleContainer .eventTitle {
+  font-size: 50px;
   margin: 0;
 }
 
@@ -77,13 +72,13 @@
 
 .hostProfileContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100px;
 }
 
 .hostProfileContainer .hostImgContainer {
   height: 100%;
-  flex: 1;
+  flex: 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,29 +89,20 @@
 }
 
 .hostProfileContainer .hostTextContainer {
-  flex: 2;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-}
-
-.hostProfileContainer .hostTextContainer .hostNameContainer {
   flex: 1;
-  display: flex;
-  align-items: center;
 }
 
-.hostProfileContainer .hostTextContainer .hostNameContainer .hostsName {
+.hostProfileContainer .hostTextContainer .hostsName {
   margin: 0;
 }
 
-.hostProfileContainer .hostTextContainer .hostBioContainer {
+.hostProfileContainer .hostBioContainer {
   flex: 1;
   display: flex;
   align-items: center;
 }
 
-.hostProfileContainer .hostTextContainer .hostBioContainer .hostBio {
+.hostProfileContainer .hostBioContainer .hostBio {
   margin: 0;
 }
 
