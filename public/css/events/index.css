@@ -1,18 +1,38 @@
+body {
+  background-color: #e8e8e8;
+}
+
 #map {
   position: relative;
   width: 100%;
   height: 50vh;
 }
 
+.filterBox {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 45px;
+}
+
+.filterBox .guestLimitLabel {
+  margin-left: 10px;
+}
+
 .content_area {
   padding-top: 10px;
+}
+
+.form-control {
+  display: inline-block;
+  margin: 5px 10px;
+  width: 10%;
 }
 
 .eventContainer {
   display: flex;
   height: 250px;
   flex-direction: column;
-  border: solid 1px gray;
   margin-bottom: 30px;
   background-position: center;
   background-size: cover;
@@ -116,6 +136,11 @@
     height: 90vh;
   }
   .content_area {
-    padding-top: 20px;
+    padding-top: 60px;
+  }
+  .filterBox {
+    z-index: 5;
+    position: fixed;
+    width: 60%;
   }
 }

@@ -21501,9 +21501,16 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props));
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
+	    _this.filterChildren = _this.filterChildren.bind(_this);
+	    _this.filterAlcohol = _this.filterAlcohol.bind(_this);
+	    _this.filterGuests = _this.filterGuests.bind(_this);
+	    _this.filteredSearch = _this.filteredSearch.bind(_this);
 	    _this.state = {
 	      events: [],
-	      markerArray: []
+	      markerArray: [],
+	      childrenAllowed: '',
+	      alcoholAllowed: '',
+	      guestLimit: ''
 	    };
 	    return _this;
 	  }
@@ -21519,11 +21526,9 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/events.json' + window.location.search, {}, function (response) {
-	        console.log(response);
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
 	        });
-	        console.log(array);
 	        _this2.setState({
 	          events: response,
 	          markerArray: array
@@ -21547,8 +21552,47 @@
 	      });
 	    }
 	  }, {
+	    key: 'filterGuests',
+	    value: function filterGuests(e) {
+	      this.setState({ guestLimit: e.target.value });
+	      this.filteredSearch();
+	    }
+	  }, {
+	    key: 'filterChildren',
+	    value: function filterChildren(e) {
+	      this.setState({ childrenAllowed: e.target.value });
+	      this.filteredSearch();
+	    }
+	  }, {
+	    key: 'filterAlcohol',
+	    value: function filterAlcohol(e) {
+	      this.setState({ alcoholAllowed: e.target.value });
+	      this.filteredSearch();
+	    }
+	  }, {
+	    key: 'filteredSearch',
+	    value: function filteredSearch() {
+	      var _this4 = this;
+
+	      fetchApi('GET', '/events.json' + window.location.search + '&guest_limit=' + this.state.guestLimit + '&allow_children=' + this.state.childrenAllowed + '&alcohol_allowed=' + this.state.alcoholAllowed, {}, function (response) {
+	        console.log(_this4.state.guestLimit);
+	        console.log(_this4.state.childrenAllowed);
+	        console.log(_this4.state.alcoholAllowed);
+	        console.log(response);
+	        var array = response.map(function (event) {
+	          return event.event_marker[0];
+	        });
+	        _this4.setState({
+	          events: response,
+	          markerArray: array
+	        });
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this5 = this;
+
 	      var allEvents = this.state.events.map(function (event, key) {
 	        var imgStyle = {
 	          backgroundImage: 'url(' + event.event_images[0] + ')'
@@ -21628,6 +21672,88 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'filterBox' },
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'guestLimit', className: 'guestLimitLabel' },
+	            'Guest Limit'
+	          ),
+	          _react2.default.createElement(
+	            'select',
+	            { onChange: function onChange(e) {
+	                return _this5.filterGuests(e);
+	              }, className: 'form-control', name: 'guestLimit', value: this.state.guestLimit },
+	            _react2.default.createElement(
+	              'option',
+	              { value: '' },
+	              '-'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'asc' },
+	              'ASC'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'desc' },
+	              'DESC'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'childrenAllowed', className: 'childrenAllowedLabel' },
+	            'Children Allowed'
+	          ),
+	          _react2.default.createElement(
+	            'select',
+	            { onChange: function onChange(e) {
+	                return _this5.filterChildren(e);
+	              }, className: 'form-control', name: 'childrenAllowed', value: this.state.childrenAllowed },
+	            _react2.default.createElement(
+	              'option',
+	              { value: '' },
+	              '-'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'true' },
+	              'Yes'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'false' },
+	              'No'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'alcoholAllowed', className: 'alcoholAllowedLabel' },
+	            'Alcohol Allowed'
+	          ),
+	          _react2.default.createElement(
+	            'select',
+	            { onChange: function onChange(e) {
+	                return _this5.filterAlcohol(e);
+	              }, className: 'form-control', name: 'alcoholAllowed', value: this.state.alcoholAllowed },
+	            _react2.default.createElement(
+	              'option',
+	              { value: '' },
+	              '-'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'true' },
+	              'Yes'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'false' },
+	              'No'
+	            )
+	          )
+	        ),
 	        _react2.default.createElement('div', { id: 'map' }),
 	        _react2.default.createElement(
 	          'div',

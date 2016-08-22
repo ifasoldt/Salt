@@ -4,9 +4,16 @@ class Event extends React.Component  {
   constructor(props) {
     super(props)
     this.updateEvents = this.updateEvents.bind(this)
+    this.filterChildren = this.filterChildren.bind(this)
+    this.filterAlcohol = this.filterAlcohol.bind(this)
+    this.filterGuests = this.filterGuests.bind(this)
+    this.filteredSearch = this.filteredSearch.bind(this)
     this.state = {
       events: [],
-      markerArray: []
+      markerArray: [],
+      childrenAllowed: '',
+      alcoholAllowed: '',
+      guestLimit: ''
     }
   }
   componentDidMount () {
@@ -14,11 +21,9 @@ class Event extends React.Component  {
   }
   updateEvents() {
     fetchApi('GET',`/events.json${window.location.search}`, {}, (response) => {
-      console.log(response)
       var array = response.map(function(event){
         return event.event_marker[0]
       })
-      console.log(array)
       this.setState({
         events: response,
         markerArray: array
@@ -36,6 +41,33 @@ class Event extends React.Component  {
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
       })
+  }
+  filterGuests(e) {
+    this.setState({guestLimit: e.target.value})
+    this.filteredSearch()
+  }
+  filterChildren (e) {
+    this.setState({childrenAllowed: e.target.value})
+    this.filteredSearch()
+  }
+  filterAlcohol (e) {
+    this.setState({alcoholAllowed: e.target.value})
+    this.filteredSearch()
+  }
+  filteredSearch () {
+    fetchApi('GET',`/events.json${window.location.search}&guest_limit=${this.state.guestLimit}&allow_children=${this.state.childrenAllowed}&alcohol_allowed=${this.state.alcoholAllowed}`, {}, (response) => {
+      console.log(this.state.guestLimit)
+      console.log(this.state.childrenAllowed)
+      console.log(this.state.alcoholAllowed)
+      console.log(response)
+      var array = response.map(function(event){
+        return event.event_marker[0]
+      })
+      this.setState({
+        events: response,
+        markerArray: array
+      })
+    })
   }
     render() {
       var allEvents = this.state.events.map(function(event, key) {
@@ -74,6 +106,26 @@ class Event extends React.Component  {
       })
       return (
       <div>
+        <div className="filterBox">
+          <label htmlFor="guestLimit" className="guestLimitLabel">Guest Limit</label>
+          <select onChange={(e) => this.filterGuests(e)} className="form-control" name="guestLimit" value={this.state.guestLimit}>
+            <option value="">-</option>
+            <option value="asc">ASC</option>
+            <option value="desc">DESC</option>
+          </select>
+          <label htmlFor="childrenAllowed" className="childrenAllowedLabel">Children Allowed</label>
+          <select onChange={(e) => this.filterChildren(e)} className="form-control" name="childrenAllowed" value={this.state.childrenAllowed}>
+            <option value="">-</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+          <label htmlFor="alcoholAllowed" className="alcoholAllowedLabel">Alcohol Allowed</label>
+          <select onChange={(e) => this.filterAlcohol(e)} className="form-control" name="alcoholAllowed" value={this.state.alcoholAllowed}>
+            <option value="">-</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
         <div id="map"></div>
         <div className="container-fluid content_area">
           <div className="row">
