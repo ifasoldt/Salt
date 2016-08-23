@@ -23,6 +23,10 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    respond_to do |format|
+      format.html {render :dashboard}
+      format.json {render json: @user}
+    end
   end
 
   def update

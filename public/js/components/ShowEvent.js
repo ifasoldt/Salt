@@ -4,15 +4,45 @@ class ShowEvent extends React.Component  {
   constructor(props) {
     super(props)
     this.updateEvents = this.updateEvents.bind(this)
+    this.commentsChange = this.commentsChange.bind(this)
+    this.post = this.post.bind(this)
+
     this.state = {
       events: [],
       sliderImages: [],
       host: [],
-      markerArray: []
+      markerArray: [],
+      comments: []
     }
   }
   componentDidMount () {
     this.updateEvents()
+    var handler = Gmaps.build('Google')
+    var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
+    handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
+    var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
+    handler.bounds.extendWith(markers)
+    handler.fitMapToBounds()
+    handler.getMap().setZoom(14)
+  })
+  }
+  post(e) {
+    if (e.key === 'Enter') {
+      fetchApi('POST',`/events/${this.state.events.id}/comments`, {body: e.target.value}, (response, statusCode) => {
+        //success
+        if (statusCode >= 200 && statusCode < 300) {
+          // this.setState({value: e.target.value})
+          this.updateEvents()
+        }
+        //api failed
+        else {
+          alert('Error')
+        }
+      })
+    }
+  }
+  commentsChange(e) {
+    this.setState({value: e.target.value})
   }
   updateEvents() {
     fetchApi('GET', `/api/events/${current_event}.json`, {}, (response) => {
@@ -21,19 +51,12 @@ class ShowEvent extends React.Component  {
         events: response,
         sliderImages: response.event_images,
         host: response.host,
-        markerArray: response.event_marker
+        markerArray: response.event_marker,
+        comments: response.comments
       })
     })
   }
   componentDidUpdate () {
-      var handler = Gmaps.build('Google')
-      var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
-      handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
-      var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
-      handler.bounds.extendWith(markers)
-      handler.fitMapToBounds()
-      handler.getMap().setZoom(14)
-    })
     $("#slider").slick({
       infinite: true,
       arrows: true,
@@ -70,6 +93,22 @@ class ShowEvent extends React.Component  {
           backgroundSize: 'cover',
         }
         return <div style={imageStyle} className="slideImageStyle" key={key}></div>
+      })
+      var all_comments = this.state.comments.map(function(comment, key){
+        return(
+          <div className="commentContainer" key={key}>
+            <div className="rightContainer">
+                <div className="nameIconContainer">
+                    <div className="nameContainer">
+                        <h3>{comment.user.full_name}</h3>
+                    </div>
+                </div>
+                <div className="bodyContainer">
+                    <p>{comment.body}</p>
+                </div>
+            </div>
+          </div>
+        )
       })
       return (
         <div>
@@ -113,14 +152,21 @@ class ShowEvent extends React.Component  {
                     <h3 className="eventDesc">Event Description:</h3>
                     <h4 className="eventDescText">{this.state.events.description}</h4>
                     <h3 className="foodDesc">Details:</h3>
-                    <h4 className="foodDescText">Food/Drink:{this.state.events.food}</h4>
-                    <h4>Children Welcome: <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
-                    <h4>Alcohol Welcome: <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
-                    <h4>Guest Limit: <span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
+                    <h4 className="foodDescText"><strong>Food/Drink:</strong>{this.state.events.food}</h4>
+                    <h4><strong>Children Welcome?:</strong> <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
+                    <h4><strong>Alcohol Welcome?:</strong> <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
+                    <h4><strong>Guest Limit:</strong><span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
                   </div>
                 </div>
               </div>
               <div className="col-xs-6" id="map" style={{height: '600px'}}></div>
+            </div>
+          </div>
+          <div className="container-fluid comments-area">
+            <div>
+              <input type="text" placeholder="what do you wish to transmit?" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+              <br />
+              {all_comments}
             </div>
           </div>
         </div>

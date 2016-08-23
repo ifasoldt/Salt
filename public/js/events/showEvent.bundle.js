@@ -21502,11 +21502,15 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShowEvent).call(this, props));
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
+	    _this.commentsChange = _this.commentsChange.bind(_this);
+	    _this.post = _this.post.bind(_this);
+
 	    _this.state = {
 	      events: [],
 	      sliderImages: [],
 	      host: [],
-	      markerArray: []
+	      markerArray: [],
+	      comments: []
 	    };
 	    return _this;
 	  }
@@ -21514,36 +21518,61 @@
 	  _createClass(ShowEvent, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      var _this2 = this;
+
 	      this.updateEvents();
+	      var handler = Gmaps.build('Google');
+	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
+	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
+	        var markers = handler.addMarkers(_this2.state.markerArray, { animation: 'DROP' });
+	        handler.bounds.extendWith(markers);
+	        handler.fitMapToBounds();
+	        handler.getMap().setZoom(14);
+	      });
+	    }
+	  }, {
+	    key: 'post',
+	    value: function post(e) {
+	      var _this3 = this;
+
+	      if (e.key === 'Enter') {
+	        fetchApi('POST', '/events/' + this.state.events.id + '/comments', { body: e.target.value }, function (response, statusCode) {
+	          //success
+	          if (statusCode >= 200 && statusCode < 300) {
+	            // this.setState({value: e.target.value})
+	            _this3.updateEvents();
+	          }
+	          //api failed
+	          else {
+	              alert('Error');
+	            }
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'commentsChange',
+	    value: function commentsChange(e) {
+	      this.setState({ value: e.target.value });
 	    }
 	  }, {
 	    key: 'updateEvents',
 	    value: function updateEvents() {
-	      var _this2 = this;
+	      var _this4 = this;
 
 	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
 	        console.log(response);
-	        _this2.setState({
+	        _this4.setState({
 	          events: response,
 	          sliderImages: response.event_images,
 	          host: response.host,
-	          markerArray: response.event_marker
+	          markerArray: response.event_marker,
+	          comments: response.comments
 	        });
 	      });
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var _this3 = this;
-
-	      var handler = Gmaps.build('Google');
-	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
-	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
-	        var markers = handler.addMarkers(_this3.state.markerArray, { animation: 'DROP' });
-	        handler.bounds.extendWith(markers);
-	        handler.fitMapToBounds();
-	        handler.getMap().setZoom(14);
-	      });
 	      $("#slider").slick({
 	        infinite: true,
 	        arrows: true,
@@ -21582,6 +21611,38 @@
 	          backgroundSize: 'cover'
 	        };
 	        return _react2.default.createElement('div', { style: imageStyle, className: 'slideImageStyle', key: key });
+	      });
+	      var all_comments = this.state.comments.map(function (comment, key) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'commentContainer', key: key },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'rightContainer' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'nameIconContainer' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'nameContainer' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  comment.user.full_name
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bodyContainer' },
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                comment.body
+	              )
+	            )
+	          )
+	        );
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -21696,13 +21757,22 @@
 	                  _react2.default.createElement(
 	                    'h4',
 	                    { className: 'foodDescText' },
-	                    'Food/Drink:',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Food/Drink:'
+	                    ),
 	                    this.state.events.food
 	                  ),
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Children Welcome: ',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Children Welcome?:'
+	                    ),
+	                    ' ',
 	                    _react2.default.createElement(
 	                      'span',
 	                      { style: this.state.events.allow_children ? greenColor : redColor },
@@ -21712,7 +21782,12 @@
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Alcohol Welcome: ',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Alcohol Welcome?:'
+	                    ),
+	                    ' ',
 	                    _react2.default.createElement(
 	                      'span',
 	                      { style: this.state.events.alcohol_allowed ? greenColor : redColor },
@@ -21722,7 +21797,11 @@
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Guest Limit: ',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Guest Limit:'
+	                    ),
 	                    _react2.default.createElement(
 	                      'span',
 	                      { style: this.state.events.unlimited_guests ? redColor : greenColor },
@@ -21733,6 +21812,17 @@
 	              )
 	            ),
 	            _react2.default.createElement('div', { className: 'col-xs-6', id: 'map', style: { height: '600px' } })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid comments-area' },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('input', { type: 'text', placeholder: 'what do you wish to transmit?', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
+	            _react2.default.createElement('br', null),
+	            all_comments
 	          )
 	        )
 	      );

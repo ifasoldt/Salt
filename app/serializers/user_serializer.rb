@@ -9,7 +9,7 @@ class UserSerializer < ActiveModel::Serializer
 
   def user_image
     #object.images.first is sometimes nil so file_attacher method breaks... Need to wrap in an if statement.
-    Refile.attachment_url(object.images.first, :file, :fit, 400, 400) if object.images.first
+    Refile.attachment_url(object.images.first, :file, :fill, 400, 400) if object.images.first
   end
 
 end

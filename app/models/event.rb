@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   scope :chronological, -> (*) {order(:date, :time)}
 
   has_many :users, through: :applications
+  has_many :comments
   belongs_to :host, class_name: 'User'
   has_many :applications, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
@@ -33,7 +34,7 @@ class Event < ApplicationRecord
     if guest_limit
       return guest_limit - confirmed_guests
     else
-      return "The host has not limited the size of this meal"
+      return "The host has not limited the number of"
     end
   end
 
