@@ -8,7 +8,8 @@ class ShowEvent extends React.Component  {
       events: [],
       sliderImages: [],
       host: [],
-      markerArray: []
+      markerArray: [],
+      comments: []
     }
   }
   componentDidMount () {
@@ -21,7 +22,8 @@ class ShowEvent extends React.Component  {
         events: response,
         sliderImages: response.event_images,
         host: response.host,
-        markerArray: response.event_marker
+        markerArray: response.event_marker,
+        comments: response.comments
       })
     })
   }
@@ -70,6 +72,22 @@ class ShowEvent extends React.Component  {
         }
         return <div style={imageStyle} className="slideImageStyle" key={key}></div>
       })
+      var all_comments = this.state.comments.map(function(comment, key){
+        return(
+          <div className="commentContainer" key={key}>
+            <div className="rightContainer">
+                <div className="nameIconContainer">
+                    <div className="nameContainer">
+                        <h3>{comment.user.full_name}</h3>
+                    </div>
+                </div>
+                <div className="bodyContainer">
+                    <p>{comment.body}</p>
+                </div>
+            </div>
+          </div>
+        )
+      })
       return (
         <div>
           <div id="slider">
@@ -112,14 +130,21 @@ class ShowEvent extends React.Component  {
                     <h3 className="eventDesc">Event Description:</h3>
                     <h4 className="eventDescText">{this.state.events.description}</h4>
                     <h3 className="foodDesc">Details:</h3>
-                    <h4 className="foodDescText">Food/Drink:{this.state.events.food}</h4>          
-                    <h4>Children Welcome: <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
-                    <h4>Alcohol Welcome: <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
-                    <h4>Guest Limit: <span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
+                    <h4 className="foodDescText"><strong>Food/Drink:</strong>{this.state.events.food}</h4>
+                    <h4><strong>Children Welcome?:</strong> <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
+                    <h4><strong>Alcohol Welcome?:</strong> <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
+                    <h4><strong>Guest Limit:</strong><span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
                   </div>
                 </div>
               </div>
               <div className="col-xs-6" id="map" style={{height: '600px'}}></div>
+            </div>
+          </div>
+          <div className="container-fluid comments-area">
+            <div>
+              <input type="text" placeholder="what do you wish to transmit?" className="form-control" onKeyPress={this.comment} value={this.state.value} onChange={this.commentsChange} />
+              <br />
+              {all_comments}
             </div>
           </div>
         </div>

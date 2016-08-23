@@ -21451,7 +21451,8 @@
 	      events: [],
 	      sliderImages: [],
 	      host: [],
-	      markerArray: []
+	      markerArray: [],
+	      comments: []
 	    };
 	    return _this;
 	  }
@@ -21472,7 +21473,8 @@
 	          events: response,
 	          sliderImages: response.event_images,
 	          host: response.host,
-	          markerArray: response.event_marker
+	          markerArray: response.event_marker,
+	          comments: response.comments
 	        });
 	      });
 	    }
@@ -21526,6 +21528,38 @@
 	          backgroundSize: 'cover'
 	        };
 	        return _react2.default.createElement('div', { style: imageStyle, className: 'slideImageStyle', key: key });
+	      });
+	      var all_comments = this.state.comments.map(function (comment, key) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'commentContainer', key: key },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'rightContainer' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'nameIconContainer' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'nameContainer' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  comment.user.full_name
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bodyContainer' },
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                comment.body
+	              )
+	            )
+	          )
+	        );
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -21640,13 +21674,22 @@
 	                  _react2.default.createElement(
 	                    'h4',
 	                    { className: 'foodDescText' },
-	                    'Food/Drink:',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Food/Drink:'
+	                    ),
 	                    this.state.events.food
 	                  ),
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Children Welcome: ',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Children Welcome?:'
+	                    ),
+	                    ' ',
 	                    _react2.default.createElement(
 	                      'span',
 	                      { style: this.state.events.allow_children ? greenColor : redColor },
@@ -21656,7 +21699,12 @@
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Alcohol Welcome: ',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Alcohol Welcome?:'
+	                    ),
+	                    ' ',
 	                    _react2.default.createElement(
 	                      'span',
 	                      { style: this.state.events.alcohol_allowed ? greenColor : redColor },
@@ -21666,7 +21714,11 @@
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Guest Limit: ',
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'Guest Limit:'
+	                    ),
 	                    _react2.default.createElement(
 	                      'span',
 	                      { style: this.state.events.unlimited_guests ? redColor : greenColor },
@@ -21677,6 +21729,17 @@
 	              )
 	            ),
 	            _react2.default.createElement('div', { className: 'col-xs-6', id: 'map', style: { height: '600px' } })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid comments-area' },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('input', { type: 'text', placeholder: 'what do you wish to transmit?', className: 'form-control', onKeyPress: this.comment, value: this.state.value, onChange: this.commentsChange }),
+	            _react2.default.createElement('br', null),
+	            all_comments
 	          )
 	        )
 	      );

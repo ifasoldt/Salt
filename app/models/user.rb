@@ -5,6 +5,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address, reject_if: :all_blank
   has_many :hosted_events, class_name: 'Event', foreign_key: 'host_id', dependent: :destroy
   has_many :events, through: :applications
+  has_many :comments
   has_many :applications, dependent: :destroy
   has_many :thumbs
   has_many :host_thumbs, class_name: 'Thumb', foreign_key: 'host_id'
