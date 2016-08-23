@@ -12,10 +12,6 @@
   flex-direction: column;
   .headContainer {
     .titleContainer {
-      .eventTitle {
-        font-size: 50px;
-        margin: 0;
-      }
     }
     .spotsContainer {
       flex-direction: column;
@@ -45,6 +41,7 @@
   }
   .highlightsContainer {
     flex: 1;
+    margin:0
   }
 }
 .slick-prev:before, .slick-next:before {
@@ -87,7 +84,15 @@
       }
     }
 }
-
+.profile-text-margin {
+  margin-top: 31px;
+}
 .text_input {
-  height: 80px;
+  height: 8
+  0px;
+}
+
+.eventTitle {
+  font-size: 60px;
+  margin: 0;
 }
