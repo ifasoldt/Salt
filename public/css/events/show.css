@@ -120,3 +120,18 @@
 .comments-area {
   margin-top: 45px;
 }
+
+.commentContainer {
+  box-sizing: border-box;
+}
+
+.commentName {
+  display: inline-block;
+  margin: 0;
+}
+
+.commentDateTime {
+  display: inline-block;
+  float: right;
+  margin: 3px 0 0 0;
+}

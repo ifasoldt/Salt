@@ -21560,31 +21560,33 @@
 	      var all_comments = this.state.comments.map(function (comment, key) {
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'commentContainer', key: key },
+	          { className: 'panel panel-default commentContainer', key: key },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'rightContainer' },
+	            { className: 'panel-heading rightContainer' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'nameIconContainer' },
+	              { className: 'panel-title nameContainer' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'nameContainer' },
-	                _react2.default.createElement(
-	                  'h3',
-	                  null,
-	                  comment.user.full_name
-	                )
+	                'h4',
+	                { className: 'commentName' },
+	                comment.user.full_name,
+	                ' says:'
+	              ),
+	              _react2.default.createElement(
+	                'h5',
+	                { className: 'commentDateTime' },
+	                comment.formated_created_at
 	              )
-	            ),
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'panel-body bodyContainer' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'bodyContainer' },
-	              _react2.default.createElement(
-	                'p',
-	                null,
-	                comment.body
-	              )
+	              'p',
+	              null,
+	              comment.body
 	            )
 	          )
 	        );

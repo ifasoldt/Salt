@@ -96,16 +96,15 @@ class ShowEvent extends React.Component  {
       })
       var all_comments = this.state.comments.map(function(comment, key){
         return(
-          <div className="commentContainer" key={key}>
-            <div className="rightContainer">
-                <div className="nameIconContainer">
-                    <div className="nameContainer">
-                        <h3>{comment.user.full_name}</h3>
-                    </div>
-                </div>
-                <div className="bodyContainer">
-                    <p>{comment.body}</p>
-                </div>
+          <div className="panel panel-default commentContainer" key={key}>
+            <div className="panel-heading rightContainer">
+              <div className="panel-title nameContainer">
+                <h4 className="commentName">{comment.user.full_name} says:</h4>
+                <h5 className="commentDateTime">{comment.formated_created_at}</h5>
+              </div>
+            </div>
+            <div className="panel-body bodyContainer">
+              <p>{comment.body}</p>
             </div>
           </div>
         )
