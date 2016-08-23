@@ -1,8 +1,3 @@
-fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
-  console.log(response)
-
-})
-
 //get current user id
 var profile = document.getElementById('current_profile')
 var current_id = profile.getAttribute('data-id')
@@ -26,7 +21,6 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
   data.append('zip', document.getElementById('zip').value)
 
   fetchApiImages('PATCH',`/api/users/${current_id}`, data, function (response, statusCode) {
-    console.log(data)
     if (statusCode >= 200 && statusCode < 300) {
       location.reload()
     }
@@ -63,11 +57,9 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
 
   fetchApiImages('POST', '/api/events', data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      console.log(response)
       redirect(`/events/${response.id}`)
     }
     else {
-      console.log(response)
       var errors = response.forEach(function(error){
         createError(error, 'zipEvent')
       })
