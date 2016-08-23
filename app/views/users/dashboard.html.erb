@@ -3,6 +3,57 @@
     <link rel="stylesheet" href="/css/dashboard/dashboard.css" />
   <% end %>
 
+  <div id="renderUser">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 user_info">
+          <img class="user_image img-responsive" src="/assets/profileImage.png" />
+          <h4>Events Attended: 2</h4>
+          <h4>Events Hosted: 4</h4>
+          <h4>10/13/1989</h4>
+          <h4>317-987-3436</h4>
+          <h3>Address:</h3>
+          <h4>6140 Norwaldo Ave</h4>
+          <h4 class="user_city">Indianapolis,</h4>
+          <h4 class="user_state">Indiana</h4>
+          <h4 class="user_zip">46220</h4>
+        </div>
+        <div class="col-xs-12 col-sm-7">
+          <h2>{this.state.user.full_name}</h2>
+          <h4>{this.state.user.description}</h4>
+          <ul class="nav nav-pills">
+            <li role="presentation">
+              <a href="#">Events Hosting</a>
+            <li role="presentation">
+              <a href="#">Events Attending</a>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dropdown <span class="caret"></span> </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="panel panel-default">
+            <div class="panel-heading">Event Title</div>
+            <table class="table">
+              <thead> <tr> <th>Name</th> <th>Guests</th> <th>Messages</th> <th>Approved</th> </tr> </thead>
+              <tbody>
+                <tr> <th scope="row" class="user_profile"><img class="profile_image img-circle" src="/assets/profileImage.png" /><a>Jake Willingham</a></th> <td>4</td> <td><i>I really want to be there</i></td> <td><i class="fa fa-check-circle" aria-hidden="true"></i><i class="fa fa-times-circle deny_application" aria-hidden="true"></i></td> </tr>
+
+                <tr> <th scope="row" class="user_profile"><img class="profile_image img-circle" src="/assets/profileImage.png" /><a>Isaiah Fasoldt</a></th> <td>3</td> <td><i>Don't accept my invitation</i></td> <td><i class="fa fa-check-circle" aria-hidden="true"></i><i class="fa fa-times-circle deny_application" aria-hidden="true"></i></td> </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <a href="#" data-toggle="modal" data-target="#profileModal"><button class="btn">Edit Profile</button></a>
 <a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Create Event</button></a>
@@ -275,6 +326,7 @@
     <script src="/js/flatpickr.min.js"></script>
     <script src="/js/dashboard/dashboard.js"></script>
     <script src="/js/configImages.js"></script>
+    <!-- <script src="/js/userDashboard.bundle.js"></script> -->
     <script type="text/javascript">
         $("#date").flatpickr();
         $("#time").flatpickr();

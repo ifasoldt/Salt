@@ -1,3 +1,8 @@
+fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
+  console.log(response)
+
+})
+
 //get current user id
 var profile = document.getElementById('current_profile')
 var current_id = profile.getAttribute('data-id')

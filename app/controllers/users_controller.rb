@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       format.html {render :dashboard}
-      format.json {render json: @user}
+      format.json {render json: @user, include: ['address', 'hosted_events', 'hosted_events.applications', 'events', 'applications' 'thumbs', 'images']}
     end
   end
 

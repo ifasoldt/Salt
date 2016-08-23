@@ -3,6 +3,7 @@ class EventSerializer < ActiveModel::Serializer
   belongs_to :host, class_name: 'User'
   has_many :images
   has_many :comments
+  has_many :applications
 
 
   def event_images

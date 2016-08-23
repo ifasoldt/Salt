@@ -1,3 +1,38 @@
+body {
+  background-color: #e8e8e8;
+}
+
+.user_info h3, .user_info h4 {
+  margin: 0;
+}
+
+.user_info .user_image {
+  width: 300px;
+}
+
+.user_info .user_city, .user_info .user_state {
+  display: inline-block;
+}
+
+td {
+  vertical-align: middle !important;
+}
+
+.user_profile .profile_image {
+  width: 40px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.user_profile a {
+  color: black;
+  cursor: pointer;
+}
+
+.deny_application {
+  margin-left: 10px;
+}
+
 .text_input {
   height: 80px;
 }
