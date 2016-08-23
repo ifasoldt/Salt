@@ -34,8 +34,16 @@ class Event < ApplicationRecord
     if guest_limit
       return guest_limit - confirmed_guests
     else
-      return "The host has not limited the number of"
+      return "Unlimited"
     end
+  end
+
+  def formatted_date
+    date.strftime('%A, %b. %d')
+  end
+
+  def formatted_time
+    self&.time&.strftime('%-l:%M %P')
   end
 
 

@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   def show
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @event}
+      format.json {render json: @event, include: ['comments', 'comments.user', 'host', 'images'] }
     end
   end
 

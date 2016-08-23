@@ -12,14 +12,6 @@ class EventSerializer < ActiveModel::Serializer
     end
     ev_images
   end
-
-  def formatted_date
-    object.date.strftime('%A, %b. %d')
-  end
-
-  def formatted_time
-    object&.time&.strftime('%-l:%M %P')
-  end
   #
   # def test
   #   respond_to do |format|
@@ -36,7 +28,15 @@ class EventSerializer < ActiveModel::Serializer
       marker.lat object.address.lat + ([0.000002, 0.000003, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008].sample) * ([-1, 1].sample)
       marker.lng object.address.lng + ([0.000002, 0.000003, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008].sample) * ([-1, 1].sample)
       if object.images.any?
-        marker.infowindow "<img class='img-responsive' width='100' height='100' src='#{Refile.attachment_url(object.images.first, :file, :fit, 400, 400)}' /> #{object.description}"
+        # event name, date, time link to event. Guest limit Space Left
+        marker.infowindow "<div class='infoWindow'>
+        <div class='eventInfoTitle'><a href='/events/#{object.id}'}>#{object.title}</a></div>
+          <div class='eventInfoImage'>
+            <img class='img-responsive' width='200' height='200' src='#{Refile.attachment_url(object.images.first, :file, :fit, 400, 400)}' />
+          </div>
+          <div class='eventInfoDateTime'>#{object.formatted_date} at #{object.formatted_time}</div>
+          <div class='eventInfoGuestLimit'> Guest Limit #{object.guest_limit} Spots Left: #{object.spots_left} </div>
+        </div>"
       end
     end
   end

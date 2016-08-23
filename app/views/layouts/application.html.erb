@@ -35,7 +35,7 @@
                 <% end %>
               </nav>
               <div class="header_profile">
-                <a href="/current_user/dashboard" alt="Profile Image"><img src="/assets/profileImage.png" class="img-circle header_profile_image" /></a>
+                <a href="/current_user/dashboard" alt="Profile Image"><%= image_tag(attachment_url(current_user.images.first, :file, :fill, 300, 300), :class => "img-circle header_profile_image") %></a>
               </div>
             </div>
           </div>
