@@ -1,7 +1,8 @@
 module.exports = {
   entry: {
     eventsIndex: './js/events/index.js',
-    showEvent: './js/events/showEvent.js'
+    showEvent: './js/events/showEvent.js',
+    userDashboard: './js/dashboard/userDashboard.js'
   },
   output: {
     path: './js/events',
