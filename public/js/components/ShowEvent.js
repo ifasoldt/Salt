@@ -163,10 +163,13 @@ class ShowEvent extends React.Component  {
             </div>
           </div>
           <div className="container-fluid comments-area">
-            <div>
-              <input type="text" placeholder="what do you wish to transmit?" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
-              <br />
+            <div className="col-xs-10 col-xs-offset-1">
+            <h3 className="commentsTitle"><strong>Questions? Comments? Leave them here.</strong></h3>
+            <hr />
               {all_comments}
+              <br />
+              <div><strong>Comments</strong></div>
+              <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
             </div>
           </div>
         </div>
