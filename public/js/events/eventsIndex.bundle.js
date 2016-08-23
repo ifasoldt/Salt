@@ -21501,9 +21501,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props));
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
-	    _this.filterChildren = _this.filterChildren.bind(_this);
-	    _this.filterAlcohol = _this.filterAlcohol.bind(_this);
-	    _this.filterGuests = _this.filterGuests.bind(_this);
 	    _this.filteredSearch = _this.filteredSearch.bind(_this);
 	    _this.state = {
 	      events: [],
@@ -21526,6 +21523,7 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/events.json' + window.location.search, {}, function (response) {
+	        console.log(response);
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
 	        });
@@ -21575,9 +21573,9 @@
 	      var _this4 = this;
 
 	      fetchApi('GET', '/events.json' + window.location.search + '&guest_limit=' + this.state.guestLimit + '&allow_children=' + this.state.childrenAllowed + '&alcohol_allowed=' + this.state.alcoholAllowed, {}, function (response) {
-	        console.log(_this4.state.guestLimit);
-	        console.log(_this4.state.childrenAllowed);
-	        console.log(_this4.state.alcoholAllowed);
+	        console.log('sort guests = ' + _this4.state.guestLimit);
+	        console.log('children allowed = ' + _this4.state.childrenAllowed);
+	        console.log('alcohol allowed = ' + _this4.state.alcoholAllowed);
 	        console.log(response);
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
@@ -21587,6 +21585,17 @@
 	          markerArray: array
 	        });
 	      });
+	    }
+	  }, {
+	    key: 'redirect',
+	    value: function redirect(e) {
+	      if (e.target.classList.contains('hostProfile')) {
+	        var newLocation = e.target.getAttribute('data-id');
+	        window.location.pathname = 'users/' + newLocation;
+	      } else {
+	        var newLocation = e.target.getAttribute('data-id');
+	        window.location.pathname = 'events/' + newLocation;
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -21602,22 +21611,24 @@
 	          { className: 'col-xs-12 col-md-6', key: key },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'eventContainer', style: imgStyle },
+	            { onClick: function onClick(e) {
+	                return _this5.redirect(e);
+	              }, className: 'eventContainer', 'data-id': event.id, style: imgStyle },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'imgContainer' },
+	              { className: 'imgContainer', 'data-id': event.id },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'dateContainer text-center' },
+	                { className: 'dateContainer text-center', 'data-id': event.id },
 	                _react2.default.createElement(
 	                  'span',
-	                  { className: 'date' },
+	                  { className: 'date', 'data-id': event.id },
 	                  event.formatted_date
 	                ),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                  'span',
-	                  { className: 'time' },
+	                  { className: 'time', 'data-id': event.id },
 	                  event.formatted_time
 	                )
 	              ),
@@ -21625,42 +21636,42 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'descContainer' },
+	              { className: 'descContainer', 'data-id': event.id },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'profileContainer' },
+	                { className: 'profileContainer', 'data-id': event.id },
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'thumbnailContainer' },
-	                  _react2.default.createElement('img', { src: event.host.user_image, alt: 'profile image', className: 'img-circle' })
+	                  { className: 'thumbnailContainer', 'data-id': event.id },
+	                  _react2.default.createElement('img', { src: event.host.user_image, 'data-id': event.host.id, alt: 'profile image', className: 'img-circle hostProfile' })
 	                ),
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'nameContainer' },
+	                  { className: 'nameContainer', 'data-id': event.id },
 	                  _react2.default.createElement(
 	                    'h3',
-	                    { className: 'event_host' },
+	                    { className: 'event_host', 'data-id': event.id },
 	                    event.host.first_name
 	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'eventDescContainer' },
+	                { className: 'eventDescContainer', 'data-id': event.id },
 	                _react2.default.createElement(
 	                  'h3',
-	                  { className: 'event_title' },
+	                  { className: 'event_title', 'data-id': event.id },
 	                  event.title
 	                ),
 	                _react2.default.createElement(
 	                  'p',
-	                  { className: 'event_guests' },
+	                  { className: 'event_guests', 'data-id': event.id },
 	                  'Guest Limit: ',
 	                  event.guest_limit
 	                ),
 	                _react2.default.createElement(
 	                  'p',
-	                  { className: 'event_spots_left' },
+	                  { className: 'event_spots_left', 'data-id': event.id },
 	                  'Spots Open: ',
 	                  event.spots_left
 	                )
@@ -21676,81 +21687,93 @@
 	          'div',
 	          { className: 'filterBox' },
 	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'guestLimit', className: 'guestLimitLabel' },
-	            'Guest Limit'
-	          ),
-	          _react2.default.createElement(
-	            'select',
-	            { onChange: function onChange(e) {
-	                return _this5.filterGuests(e);
-	              }, className: 'form-control', name: 'guestLimit', value: this.state.guestLimit },
+	            'div',
+	            { className: 'container1' },
 	            _react2.default.createElement(
-	              'option',
-	              { value: '' },
-	              '-'
+	              'label',
+	              { htmlFor: 'guestLimit', className: 'guestLimitLabel' },
+	              'Guest Limit'
 	            ),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'asc' },
-	              'ASC'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'desc' },
-	              'DESC'
+	              'select',
+	              { onChange: function onChange(e) {
+	                  return _this5.filterGuests(e);
+	                }, className: 'form-control', name: 'guestLimit', value: this.state.guestLimit },
+	              _react2.default.createElement(
+	                'option',
+	                { value: '' },
+	                '-'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'asc' },
+	                'Ascending'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'desc' },
+	                'Descending'
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'childrenAllowed', className: 'childrenAllowedLabel' },
-	            'Children Allowed'
-	          ),
-	          _react2.default.createElement(
-	            'select',
-	            { onChange: function onChange(e) {
-	                return _this5.filterChildren(e);
-	              }, className: 'form-control', name: 'childrenAllowed', value: this.state.childrenAllowed },
+	            'div',
+	            { className: 'container2' },
 	            _react2.default.createElement(
-	              'option',
-	              { value: '' },
-	              '-'
+	              'label',
+	              { htmlFor: 'childrenAllowed', className: 'childrenAllowedLabel' },
+	              'Children Allowed'
 	            ),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'true' },
-	              'Yes'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'false' },
-	              'No'
+	              'select',
+	              { onChange: function onChange(e) {
+	                  return _this5.filterChildren(e);
+	                }, className: 'form-control', name: 'childrenAllowed', value: this.state.childrenAllowed },
+	              _react2.default.createElement(
+	                'option',
+	                { value: '' },
+	                '-'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'true' },
+	                'Yes'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'false' },
+	                'No'
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'alcoholAllowed', className: 'alcoholAllowedLabel' },
-	            'Alcohol Allowed'
-	          ),
-	          _react2.default.createElement(
-	            'select',
-	            { onChange: function onChange(e) {
-	                return _this5.filterAlcohol(e);
-	              }, className: 'form-control', name: 'alcoholAllowed', value: this.state.alcoholAllowed },
+	            'div',
+	            { className: 'container3' },
 	            _react2.default.createElement(
-	              'option',
-	              { value: '' },
-	              '-'
+	              'label',
+	              { htmlFor: 'alcoholAllowed', className: 'alcoholAllowedLabel' },
+	              'Alcohol Allowed'
 	            ),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'true' },
-	              'Yes'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'false' },
-	              'No'
+	              'select',
+	              { onChange: function onChange(e) {
+	                  return _this5.filterAlcohol(e);
+	                }, className: 'form-control', name: 'alcoholAllowed', value: this.state.alcoholAllowed },
+	              _react2.default.createElement(
+	                'option',
+	                { value: '' },
+	                '-'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'true' },
+	                'Yes'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'false' },
+	                'No'
+	              )
 	            )
 	          )
 	        ),

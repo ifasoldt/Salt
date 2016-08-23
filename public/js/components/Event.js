@@ -4,9 +4,6 @@ class Event extends React.Component  {
   constructor(props) {
     super(props)
     this.updateEvents = this.updateEvents.bind(this)
-    this.filterChildren = this.filterChildren.bind(this)
-    this.filterAlcohol = this.filterAlcohol.bind(this)
-    this.filterGuests = this.filterGuests.bind(this)
     this.filteredSearch = this.filteredSearch.bind(this)
     this.state = {
       events: [],
@@ -21,6 +18,7 @@ class Event extends React.Component  {
   }
   updateEvents() {
     fetchApi('GET',`/events.json${window.location.search}`, {}, (response) => {
+      console.log(response)
       var array = response.map(function(event){
         return event.event_marker[0]
       })
@@ -56,9 +54,9 @@ class Event extends React.Component  {
   }
   filteredSearch () {
     fetchApi('GET',`/events.json${window.location.search}&guest_limit=${this.state.guestLimit}&allow_children=${this.state.childrenAllowed}&alcohol_allowed=${this.state.alcoholAllowed}`, {}, (response) => {
-      console.log(this.state.guestLimit)
-      console.log(this.state.childrenAllowed)
-      console.log(this.state.alcoholAllowed)
+      console.log('sort guests = ' + this.state.guestLimit)
+      console.log('children allowed = ' + this.state.childrenAllowed)
+      console.log('alcohol allowed = ' + this.state.alcoholAllowed)
       console.log(response)
       var array = response.map(function(event){
         return event.event_marker[0]
@@ -69,35 +67,45 @@ class Event extends React.Component  {
       })
     })
   }
+  redirect (e) {
+    if (e.target.classList.contains('hostProfile')) {
+      var newLocation = e.target.getAttribute('data-id')
+      window.location.pathname = `users/${newLocation}`
+    }
+    else {
+      var newLocation = e.target.getAttribute('data-id')
+      window.location.pathname = `events/${newLocation}`
+    }
+  }
     render() {
-      var allEvents = this.state.events.map(function(event, key) {
+      var allEvents = this.state.events.map((event, key) => {
         var imgStyle = {
           backgroundImage: `url(${event.event_images[0]})`
         }
         return (
           <div className="col-xs-12 col-md-6" key={key}>
-            <div className="eventContainer" style={imgStyle}>
-              <div className="imgContainer">
-                <div className="dateContainer text-center">
-                  <span className="date">{event.formatted_date}</span>
+            <div onClick={(e) => this.redirect(e)} className="eventContainer" data-id={event.id} style={imgStyle}>
+              <div className="imgContainer" data-id={event.id}>
+                <div className="dateContainer text-center" data-id={event.id}>
+                  <span className="date" data-id={event.id}>{event.formatted_date}</span>
                   <br/>
-                  <span className="time">{event.formatted_time}</span>
+                  <span className="time" data-id={event.id}>{event.formatted_time}</span>
                 </div>
                 <i className="fa fa-heart-o watchIcon" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Watch Event"></i>
               </div>
-              <div className="descContainer">
-                <div className="profileContainer">
-                  <div className="thumbnailContainer">
-                    <img src={event.host.user_image} alt="profile image" className="img-circle" />
+              <div className="descContainer" data-id={event.id}>
+                <div className="profileContainer" data-id={event.id}>
+                  <div className="thumbnailContainer" data-id={event.id}>
+                    <img src={event.host.user_image} data-id={event.host.id} alt="profile image" className="img-circle hostProfile" />
                   </div>
-                  <div className="nameContainer">
-                    <h3 className="event_host">{event.host.first_name}</h3>
+                  <div className="nameContainer" data-id={event.id}>
+                    <h3 className="event_host" data-id={event.id}>{event.host.first_name}</h3>
                   </div>
                 </div>
-                <div className="eventDescContainer">
-                  <h3 className="event_title">{event.title}</h3>
-                  <p className="event_guests">Guest Limit: {event.guest_limit}</p>
-                  <p className="event_spots_left">Spots Open: {event.spots_left}</p>
+                <div className="eventDescContainer" data-id={event.id}>
+                  <h3 className="event_title" data-id={event.id}>{event.title}</h3>
+                  <p className="event_guests" data-id={event.id}>Guest Limit: {event.guest_limit}</p>
+                  <p className="event_spots_left" data-id={event.id}>Spots Open: {event.spots_left}</p>
                 </div>
               </div>
             </div>
@@ -107,24 +115,30 @@ class Event extends React.Component  {
       return (
       <div>
         <div className="filterBox">
-          <label htmlFor="guestLimit" className="guestLimitLabel">Guest Limit</label>
-          <select onChange={(e) => this.filterGuests(e)} className="form-control" name="guestLimit" value={this.state.guestLimit}>
-            <option value="">-</option>
-            <option value="asc">ASC</option>
-            <option value="desc">DESC</option>
-          </select>
-          <label htmlFor="childrenAllowed" className="childrenAllowedLabel">Children Allowed</label>
-          <select onChange={(e) => this.filterChildren(e)} className="form-control" name="childrenAllowed" value={this.state.childrenAllowed}>
-            <option value="">-</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-          <label htmlFor="alcoholAllowed" className="alcoholAllowedLabel">Alcohol Allowed</label>
-          <select onChange={(e) => this.filterAlcohol(e)} className="form-control" name="alcoholAllowed" value={this.state.alcoholAllowed}>
-            <option value="">-</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
+          <div className="container1">
+            <label htmlFor="guestLimit" className="guestLimitLabel">Guest Limit</label>
+            <select onChange={(e) => this.filterGuests(e)} className="form-control" name="guestLimit" value={this.state.guestLimit}>
+              <option value="">-</option>
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+          <div className="container2">
+            <label htmlFor="childrenAllowed" className="childrenAllowedLabel">Children Allowed</label>
+            <select onChange={(e) => this.filterChildren(e)} className="form-control" name="childrenAllowed" value={this.state.childrenAllowed}>
+              <option value="">-</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div className="container3">
+            <label htmlFor="alcoholAllowed" className="alcoholAllowedLabel">Alcohol Allowed</label>
+            <select onChange={(e) => this.filterAlcohol(e)} className="form-control" name="alcoholAllowed" value={this.state.alcoholAllowed}>
+              <option value="">-</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
         </div>
         <div id="map"></div>
         <div className="container-fluid content_area">

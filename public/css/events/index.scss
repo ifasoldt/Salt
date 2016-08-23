@@ -7,12 +7,21 @@ body {
   height: 50vh;
 }
 .filterBox {
+  display: flex;
+  flex-direction: row;
   position: relative;
   background-color: white;
   width: 100%;
-  height: 45px;
-  .guestLimitLabel {
-    margin-left: 10px;
+  height: 46px;
+  .container1, .container2, .container3 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+      text-align: right;
+      margin: 0;
+    }
   }
 }
 .content_area {
@@ -21,7 +30,7 @@ body {
 .form-control {
   display: inline-block;
   margin: 5px 10px;
-  width: 10%;
+  width: 50%;
 }
 .eventContainer {
   display: flex;
@@ -30,6 +39,7 @@ body {
   margin-bottom: 30px;
   background-position: center;
   background-size: cover;
+  cursor: pointer;
   .imgContainer {
     flex: 2;
     .dateContainer {
@@ -40,10 +50,10 @@ body {
       display: inline-block;
       padding: 5px;
       .date {
-        font-size: 15px;
+        font-size: 20px;
       }
       .time {
-        font-size: 12px;
+        font-size: 16px;
       }
     }
     .watchIcon {
@@ -63,7 +73,6 @@ body {
     display: flex;
     flex-direction: row;
     padding: 5px;
-    margin-top: 5px;
     background-color: rgba(255, 255, 255, 0.6);
     .profileContainer {
       display: flex;
@@ -90,7 +99,7 @@ body {
       }
     }
     .eventDescContainer {
-      flex: 2;
+      flex: 3;
       .event_title {
         margin: 10px 0;
       }
