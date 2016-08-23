@@ -5,12 +5,14 @@ class Event extends React.Component  {
     super(props)
     this.updateEvents = this.updateEvents.bind(this)
     this.filteredSearch = this.filteredSearch.bind(this)
+    this.noResults = this.noResults.bind(this)
     this.state = {
       events: [],
       markerArray: [],
       childrenAllowed: '',
       alcoholAllowed: '',
-      guestLimit: ''
+      guestLimit: '',
+      noResultsFound: ''
     }
   }
   componentDidMount () {
@@ -18,7 +20,7 @@ class Event extends React.Component  {
   }
   updateEvents() {
     fetchApi('GET',`/events.json${window.location.search}`, {}, (response) => {
-      console.log(response)
+      this.noResults(response)
       var array = response.map(function(event){
         return event.event_marker[0]
       })
@@ -42,22 +44,31 @@ class Event extends React.Component  {
   }
   filterGuests(e) {
     this.setState({guestLimit: e.target.value})
-    this.filteredSearch()
+    this.filteredSearch({
+      alcoholAllowed: this.state.alcoholAllowed,
+      childrenAllowed: this.state.childrenAllowed,
+      guestLimit: e.target.value,
+    })
   }
   filterChildren (e) {
     this.setState({childrenAllowed: e.target.value})
-    this.filteredSearch()
+    this.filteredSearch({
+      alcoholAllowed: this.state.alcoholAllowed,
+      childrenAllowed: e.target.value,
+      guestLimit: this.state.guestLimit,
+    })
   }
   filterAlcohol (e) {
     this.setState({alcoholAllowed: e.target.value})
-    this.filteredSearch()
+    this.filteredSearch({
+      alcoholAllowed: e.target.value,
+      childrenAllowed: this.state.childrenAllowed,
+      guestLimit: this.state.guestLimit,
+    })
   }
-  filteredSearch () {
-    fetchApi('GET',`/events.json${window.location.search}&guest_limit=${this.state.guestLimit}&allow_children=${this.state.childrenAllowed}&alcohol_allowed=${this.state.alcoholAllowed}`, {}, (response) => {
-      console.log('sort guests = ' + this.state.guestLimit)
-      console.log('children allowed = ' + this.state.childrenAllowed)
-      console.log('alcohol allowed = ' + this.state.alcoholAllowed)
-      console.log(response)
+  filteredSearch (filters) {
+    fetchApi('GET',`/events.json${window.location.search}&guest_limit=${filters.guestLimit}&allow_children=${filters.childrenAllowed}&alcohol_allowed=${filters.alcoholAllowed}`, {}, (response) => {
+      this.noResults(response)
       var array = response.map(function(event){
         return event.event_marker[0]
       })
@@ -66,6 +77,18 @@ class Event extends React.Component  {
         markerArray: array
       })
     })
+  }
+  noResults (results) {
+    if (results.length === 0) {
+      this.setState({
+        noResultsFound: 'No Search Results Were Found'
+      })
+    }
+    else {
+      this.setState({
+        noResultsFound: ''
+      })
+    }
   }
   redirect (e) {
     if (e.target.classList.contains('hostProfile')) {
@@ -144,6 +167,7 @@ class Event extends React.Component  {
         <div className="container-fluid content_area">
           <div className="row">
             <div className="col-xs-12 col-sm-7">
+              <span>{this.state.noResultsFound}</span>
               {allEvents}
             </div>
             <div className="col-xs-12 col-sm-5">
