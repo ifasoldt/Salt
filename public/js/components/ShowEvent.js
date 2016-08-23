@@ -4,6 +4,9 @@ class ShowEvent extends React.Component  {
   constructor(props) {
     super(props)
     this.updateEvents = this.updateEvents.bind(this)
+    this.commentsChange = this.commentsChange.bind(this)
+    this.post = this.post.bind(this)
+
     this.state = {
       events: [],
       sliderImages: [],
@@ -14,6 +17,32 @@ class ShowEvent extends React.Component  {
   }
   componentDidMount () {
     this.updateEvents()
+    var handler = Gmaps.build('Google')
+    var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
+    handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
+    var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
+    handler.bounds.extendWith(markers)
+    handler.fitMapToBounds()
+    handler.getMap().setZoom(14)
+  })
+  }
+  post(e) {
+    if (e.key === 'Enter') {
+      fetchApi('POST',`/events/${this.state.events.id}/comments`, {body: e.target.value}, (response, statusCode) => {
+        //success
+        if (statusCode >= 200 && statusCode < 300) {
+          // this.setState({value: e.target.value})
+          this.updateEvents()
+        }
+        //api failed
+        else {
+          alert('Error')
+        }
+      })
+    }
+  }
+  commentsChange(e) {
+    this.setState({value: e.target.value})
   }
   updateEvents() {
     fetchApi('GET', `/api/events/${current_event}.json`, {}, (response) => {
@@ -28,14 +57,6 @@ class ShowEvent extends React.Component  {
     })
   }
   componentDidUpdate () {
-      var handler = Gmaps.build('Google')
-      var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
-      handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
-      var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
-      handler.bounds.extendWith(markers)
-      handler.fitMapToBounds()
-      handler.getMap().setZoom(14)
-    })
     $("#slider").slick({
       infinite: false,
       arrows: true,
@@ -142,7 +163,7 @@ class ShowEvent extends React.Component  {
           </div>
           <div className="container-fluid comments-area">
             <div>
-              <input type="text" placeholder="what do you wish to transmit?" className="form-control" onKeyPress={this.comment} value={this.state.value} onChange={this.commentsChange} />
+              <input type="text" placeholder="what do you wish to transmit?" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
               <br />
               {all_comments}
             </div>
