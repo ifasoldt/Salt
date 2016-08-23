@@ -2,11 +2,11 @@ module.exports = {
   entry: {
     eventsIndex: './js/events/index.js',
     showEvent: './js/events/showEvent.js',
-    userDashboard: './js/dashboard/userDashboard.js'
+    userDashboard: './js/dashboard/userDashboard.js',
   },
   output: {
-    path: './js/events',
-    publicPath: '/js/events',
+    path: './js',
+    publicPath: '/js',
     filename: '[name].bundle.js',
   },
   devServer: {

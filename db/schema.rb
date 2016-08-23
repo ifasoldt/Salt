@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(version: 20160823132935) do
     t.string   "status"
   end
 
-  create_table "birthdates", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "year"
-    t.integer  "month"
-    t.integer  "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -113,9 +104,6 @@ ActiveRecord::Schema.define(version: 20160823132935) do
     t.date     "date_of_birth"
   end
 
-<<<<<<< HEAD
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
-=======
->>>>>>> 7f580be7c0166048293827538ec9fa5f160755eb
 end

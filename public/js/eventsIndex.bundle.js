@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/js/events";
+/******/ 	__webpack_require__.p = "/js";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -54,13 +54,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _ShowEvent = __webpack_require__(176);
+	var _Event = __webpack_require__(175);
 
-	var _ShowEvent2 = _interopRequireDefault(_ShowEvent);
+	var _Event2 = _interopRequireDefault(_Event);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_ShowEvent2.default, null), document.getElementById('showEvent'));
+	_reactDom2.default.render(_react2.default.createElement(_Event2.default, null), document.getElementById('renderEvents'));
 
 /***/ },
 /* 1 */
@@ -21469,8 +21469,7 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 175 */,
-/* 176 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21493,152 +21492,213 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ShowEvent = function (_React$Component) {
-	  _inherits(ShowEvent, _React$Component);
+	var Event = function (_React$Component) {
+	  _inherits(Event, _React$Component);
 
-	  function ShowEvent(props) {
-	    _classCallCheck(this, ShowEvent);
+	  function Event(props) {
+	    _classCallCheck(this, Event);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShowEvent).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props));
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
-	    _this.commentsChange = _this.commentsChange.bind(_this);
-	    _this.post = _this.post.bind(_this);
-
+	    _this.filteredSearch = _this.filteredSearch.bind(_this);
+	    _this.noResults = _this.noResults.bind(_this);
 	    _this.state = {
 	      events: [],
-	      sliderImages: [],
-	      host: [],
 	      markerArray: [],
-	      comments: []
+	      childrenAllowed: '',
+	      alcoholAllowed: '',
+	      guestLimit: '',
+	      noResultsFound: ''
 	    };
 	    return _this;
 	  }
 
-	  _createClass(ShowEvent, [{
+	  _createClass(Event, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var _this2 = this;
-
 	      this.updateEvents();
-	      var handler = Gmaps.build('Google');
-	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
-	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
-	        var markers = handler.addMarkers(_this2.state.markerArray, { animation: 'DROP' });
-	        handler.bounds.extendWith(markers);
-	        handler.fitMapToBounds();
-	        handler.getMap().setZoom(14);
-	      });
-	    }
-	  }, {
-	    key: 'post',
-	    value: function post(e) {
-	      var _this3 = this;
-
-	      if (e.key === 'Enter') {
-	        fetchApi('POST', '/events/' + this.state.events.id + '/comments', { body: e.target.value }, function (response, statusCode) {
-	          //success
-	          if (statusCode >= 200 && statusCode < 300) {
-	            // this.setState({value: e.target.value})
-	            _this3.updateEvents();
-	          }
-	          //api failed
-	          else {
-	              alert('Error');
-	            }
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'commentsChange',
-	    value: function commentsChange(e) {
-	      this.setState({ value: e.target.value });
 	    }
 	  }, {
 	    key: 'updateEvents',
 	    value: function updateEvents() {
-	      var _this4 = this;
+	      var _this2 = this;
 
-	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
-	        console.log(response);
-	        _this4.setState({
+	      fetchApi('GET', '/events.json' + window.location.search, {}, function (response) {
+	        _this2.noResults(response);
+	        var array = response.map(function (event) {
+	          return event.event_marker[0];
+	        });
+	        _this2.setState({
 	          events: response,
-	          sliderImages: response.event_images,
-	          host: response.host,
-	          markerArray: response.event_marker,
-	          comments: response.comments
+	          markerArray: array
 	        });
 	      });
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      $("#slider").slick({
-	        infinite: true,
-	        arrows: true,
-	        speed: 500,
-	        fade: true,
-	        cssEase: 'linear',
-	        responsive: [{
-	          breakpoint: 768,
-	          settings: {
-	            slidesToShow: 1,
-	            infinite: true,
-	            arrows: true,
-	            speed: 500,
-	            fade: true,
-	            cssEase: 'linear'
-	          }
-	        }, {
-	          breakpoint: 300,
-	          settings: "unslick"
-	        }]
+	      var _this3 = this;
+
+	      $('[data-toggle="tooltip"]').tooltip();
+
+	      var handler = Gmaps.build('Google');
+	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
+
+	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
+	        var markers = handler.addMarkers(_this3.state.markerArray, { animation: 'DROP' });
+	        handler.bounds.extendWith(markers);
+	        handler.fitMapToBounds();
 	      });
+	    }
+	  }, {
+	    key: 'filterGuests',
+	    value: function filterGuests(e) {
+	      this.setState({ guestLimit: e.target.value });
+	      this.filteredSearch({
+	        alcoholAllowed: this.state.alcoholAllowed,
+	        childrenAllowed: this.state.childrenAllowed,
+	        guestLimit: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'filterChildren',
+	    value: function filterChildren(e) {
+	      this.setState({ childrenAllowed: e.target.value });
+	      this.filteredSearch({
+	        alcoholAllowed: this.state.alcoholAllowed,
+	        childrenAllowed: e.target.value,
+	        guestLimit: this.state.guestLimit
+	      });
+	    }
+	  }, {
+	    key: 'filterAlcohol',
+	    value: function filterAlcohol(e) {
+	      this.setState({ alcoholAllowed: e.target.value });
+	      this.filteredSearch({
+	        alcoholAllowed: e.target.value,
+	        childrenAllowed: this.state.childrenAllowed,
+	        guestLimit: this.state.guestLimit
+	      });
+	    }
+	  }, {
+	    key: 'filteredSearch',
+	    value: function filteredSearch(filters) {
+	      var _this4 = this;
+
+	      fetchApi('GET', '/events.json' + window.location.search + '&guest_limit=' + filters.guestLimit + '&allow_children=' + filters.childrenAllowed + '&alcohol_allowed=' + filters.alcoholAllowed, {}, function (response) {
+	        _this4.noResults(response);
+	        var array = response.map(function (event) {
+	          return event.event_marker[0];
+	        });
+	        _this4.setState({
+	          events: response,
+	          markerArray: array
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'noResults',
+	    value: function noResults(results) {
+	      if (results.length === 0) {
+	        this.setState({
+	          noResultsFound: 'No Search Results Were Found'
+	        });
+	      } else {
+	        this.setState({
+	          noResultsFound: ''
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'redirect',
+	    value: function redirect(e) {
+	      if (e.target.classList.contains('hostProfile')) {
+	        var newLocation = e.target.getAttribute('data-id');
+	        window.location.pathname = 'users/' + newLocation;
+	      } else {
+	        var newLocation = e.target.getAttribute('data-id');
+	        window.location.pathname = 'events/' + newLocation;
+	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var greenColor = {
-	        color: 'lightgreen'
-	      };
-	      var redColor = {
-	        color: 'red'
-	      };
-	      var sliderImageElements = this.state.sliderImages.map(function (image, key) {
-	        var imageStyle = {
-	          backgroundImage: 'url(' + image + ')',
-	          backgroundPosition: 'center',
-	          backgroundSize: 'cover'
+	      var _this5 = this;
+
+	      var allEvents = this.state.events.map(function (event, key) {
+	        var imgStyle = {
+	          backgroundImage: 'url(' + event.event_images[0] + ')'
 	        };
-	        return _react2.default.createElement('div', { style: imageStyle, className: 'slideImageStyle', key: key });
-	      });
-	      var all_comments = this.state.comments.map(function (comment, key) {
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'commentContainer', key: key },
+	          { className: 'col-xs-12 col-md-6', key: key },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'rightContainer' },
+	            { onClick: function onClick(e) {
+	                return _this5.redirect(e);
+	              }, className: 'eventContainer', 'data-id': event.id, style: imgStyle },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'nameIconContainer' },
+	              { className: 'imgContainer', 'data-id': event.id },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'nameContainer' },
+	                { className: 'dateContainer text-center', 'data-id': event.id },
 	                _react2.default.createElement(
-	                  'h3',
-	                  null,
-	                  comment.user.full_name
+	                  'span',
+	                  { className: 'date', 'data-id': event.id },
+	                  event.formatted_date
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'time', 'data-id': event.id },
+	                  event.formatted_time
 	                )
-	              )
+	              ),
+	              _react2.default.createElement('i', { className: 'fa fa-heart-o watchIcon', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Watch Event' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'bodyContainer' },
+	              { className: 'descContainer', 'data-id': event.id },
 	              _react2.default.createElement(
-	                'p',
-	                null,
-	                comment.body
+	                'div',
+	                { className: 'profileContainer', 'data-id': event.id },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'thumbnailContainer', 'data-id': event.id },
+	                  _react2.default.createElement('img', { src: event.host.user_image, 'data-id': event.host.id, alt: 'profile image', className: 'img-circle hostProfile' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'nameContainer', 'data-id': event.id },
+	                  _react2.default.createElement(
+	                    'h3',
+	                    { className: 'event_host', 'data-id': event.id },
+	                    event.host.first_name
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'eventDescContainer', 'data-id': event.id },
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'event_title', 'data-id': event.id },
+	                  event.title
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'event_guests', 'data-id': event.id },
+	                  'Guest Limit: ',
+	                  event.guest_limit
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'event_spots_left', 'data-id': event.id },
+	                  'Spots Open: ',
+	                  event.spots_left
+	                )
 	              )
 	            )
 	          )
@@ -21649,190 +21709,126 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'slider' },
-	          sliderImageElements
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid' },
+	          { className: 'filterBox' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'row whitebar' },
+	            { className: 'container1' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-4 col-sm-2' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'hostProfileContainer' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'row hostImgContainer' },
-	                  _react2.default.createElement('img', { src: this.state.host.user_image, className: 'img-circle hostImg', alt: '' })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'row hostTextContainer profile-text-margin' },
-	                  _react2.default.createElement(
-	                    'h2',
-	                    { className: 'hostsName text-center' },
-	                    this.state.host.first_name
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement('div', { className: 'col-xs-4 col-sm-2' })
+	              'label',
+	              { htmlFor: 'guestLimit', className: 'guestLimitLabel' },
+	              'Guest Limit'
 	            ),
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'text-center col-xs-12 col-sm-4' },
+	              'select',
+	              { onChange: function onChange(e) {
+	                  return _this5.filterGuests(e);
+	                }, className: 'form-control', name: 'guestLimit', value: this.state.guestLimit },
 	              _react2.default.createElement(
-	                'h1',
-	                { className: 'eventTitle' },
-	                this.state.events.title
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-6 col-sm-3' },
-	              _react2.default.createElement('img', { src: '/assets/calendar-icon.png', className: 'col-xs-4 img-responsive', alt: '' }),
-	              _react2.default.createElement(
-	                'h4',
-	                { className: 'eventDate' },
-	                this.state.events.formatted_date
+	                'option',
+	                { value: '' },
+	                '-'
 	              ),
 	              _react2.default.createElement(
-	                'h4',
-	                { className: 'eventTime' },
-	                this.state.events.formatted_time
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: ' col-xs-6 col-sm-3' },
-	              _react2.default.createElement('img', { src: '/assets/guests.png', className: 'col-xs-4 img-responsive', alt: '' }),
+	                'option',
+	                { value: 'asc' },
+	                'Ascending'
+	              ),
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'col-xs-8 guests-nums' },
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'row' },
-	                  this.state.events.confirmed_guests,
-	                  ' attending'
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'row' },
-	                  this.state.events.spots_left,
-	                  ' spots left'
-	                )
+	                'option',
+	                { value: 'desc' },
+	                'Descending'
 	              )
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
+	            { className: 'container2' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'childrenAllowed', className: 'childrenAllowedLabel' },
+	              'Children Allowed'
+	            ),
+	            _react2.default.createElement(
+	              'select',
+	              { onChange: function onChange(e) {
+	                  return _this5.filterChildren(e);
+	                }, className: 'form-control', name: 'childrenAllowed', value: this.state.childrenAllowed },
+	              _react2.default.createElement(
+	                'option',
+	                { value: '' },
+	                '-'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'true' },
+	                'Yes'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'false' },
+	                'No'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'container3' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'alcoholAllowed', className: 'alcoholAllowedLabel' },
+	              'Alcohol Allowed'
+	            ),
+	            _react2.default.createElement(
+	              'select',
+	              { onChange: function onChange(e) {
+	                  return _this5.filterAlcohol(e);
+	                }, className: 'form-control', name: 'alcoholAllowed', value: this.state.alcoholAllowed },
+	              _react2.default.createElement(
+	                'option',
+	                { value: '' },
+	                '-'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'true' },
+	                'Yes'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'false' },
+	                'No'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('div', { id: 'map' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid content_area' },
+	          _react2.default.createElement(
+	            'div',
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-xs-6' },
+	              { className: 'col-xs-12 col-sm-7' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'mainContainer' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'descContainer' },
-	                  _react2.default.createElement(
-	                    'h3',
-	                    { className: 'eventDesc' },
-	                    'Event Description:'
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    { className: 'eventDescText' },
-	                    this.state.events.description
-	                  ),
-	                  _react2.default.createElement(
-	                    'h3',
-	                    { className: 'foodDesc' },
-	                    'Details:'
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    { className: 'foodDescText' },
-	                    _react2.default.createElement(
-	                      'strong',
-	                      null,
-	                      'Food/Drink:'
-	                    ),
-	                    this.state.events.food
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
-	                    _react2.default.createElement(
-	                      'strong',
-	                      null,
-	                      'Children Welcome?:'
-	                    ),
-	                    ' ',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { style: this.state.events.allow_children ? greenColor : redColor },
-	                      this.state.events.allow_children ? 'Yes' : 'No'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
-	                    _react2.default.createElement(
-	                      'strong',
-	                      null,
-	                      'Alcohol Welcome?:'
-	                    ),
-	                    ' ',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { style: this.state.events.alcohol_allowed ? greenColor : redColor },
-	                      this.state.events.alcohol_allowed ? 'Yes' : 'No'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
-	                    _react2.default.createElement(
-	                      'strong',
-	                      null,
-	                      'Guest Limit:'
-	                    ),
-	                    _react2.default.createElement(
-	                      'span',
-	                      { style: this.state.events.unlimited_guests ? redColor : greenColor },
-	                      this.state.events.guest_limit || "Unlimited"
-	                    )
-	                  )
-	                )
-	              )
+	                'span',
+	                null,
+	                this.state.noResultsFound
+	              ),
+	              allEvents
 	            ),
-	            _react2.default.createElement('div', { className: 'col-xs-6', id: 'map', style: { height: '600px' } })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid comments-area' },
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement('input', { type: 'text', placeholder: 'what do you wish to transmit?', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
-	            _react2.default.createElement('br', null),
-	            all_comments
+	            _react2.default.createElement('div', { className: 'col-xs-12 col-sm-5' })
 	          )
 	        )
 	      );
 	    }
 	  }]);
 
-	  return ShowEvent;
+	  return Event;
 	}(_react2.default.Component);
 
-	exports.default = ShowEvent;
+	exports.default = Event;
 
 /***/ }
 /******/ ]);

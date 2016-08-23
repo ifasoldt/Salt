@@ -5,7 +5,7 @@ class UserDashboard extends React.Component  {
     super(props)
     this.updateUser = this.updateUser.bind(this)
     this.state = {
-      user: []
+      user: {}
     }
   }
   componentDidMount () {
@@ -20,10 +20,13 @@ class UserDashboard extends React.Component  {
     })
   }
     render() {
-
       return (
-        <div>
-
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-12">
+              <h2>{this.state.user.full_name}</h2>
+            </div>
+          </div>
         </div>
       )
     }
