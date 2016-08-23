@@ -21502,12 +21502,14 @@
 
 	    _this.updateEvents = _this.updateEvents.bind(_this);
 	    _this.filteredSearch = _this.filteredSearch.bind(_this);
+	    _this.noResults = _this.noResults.bind(_this);
 	    _this.state = {
 	      events: [],
 	      markerArray: [],
 	      childrenAllowed: '',
 	      alcoholAllowed: '',
-	      guestLimit: ''
+	      guestLimit: '',
+	      noResultsFound: ''
 	    };
 	    return _this;
 	  }
@@ -21523,7 +21525,7 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/events.json' + window.location.search, {}, function (response) {
-	        console.log(response);
+	        _this2.noResults(response);
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
 	        });
@@ -21553,30 +21555,39 @@
 	    key: 'filterGuests',
 	    value: function filterGuests(e) {
 	      this.setState({ guestLimit: e.target.value });
-	      this.filteredSearch();
+	      this.filteredSearch({
+	        alcoholAllowed: this.state.alcoholAllowed,
+	        childrenAllowed: this.state.childrenAllowed,
+	        guestLimit: e.target.value
+	      });
 	    }
 	  }, {
 	    key: 'filterChildren',
 	    value: function filterChildren(e) {
 	      this.setState({ childrenAllowed: e.target.value });
-	      this.filteredSearch();
+	      this.filteredSearch({
+	        alcoholAllowed: this.state.alcoholAllowed,
+	        childrenAllowed: e.target.value,
+	        guestLimit: this.state.guestLimit
+	      });
 	    }
 	  }, {
 	    key: 'filterAlcohol',
 	    value: function filterAlcohol(e) {
 	      this.setState({ alcoholAllowed: e.target.value });
-	      this.filteredSearch();
+	      this.filteredSearch({
+	        alcoholAllowed: e.target.value,
+	        childrenAllowed: this.state.childrenAllowed,
+	        guestLimit: this.state.guestLimit
+	      });
 	    }
 	  }, {
 	    key: 'filteredSearch',
-	    value: function filteredSearch() {
+	    value: function filteredSearch(filters) {
 	      var _this4 = this;
 
-	      fetchApi('GET', '/events.json' + window.location.search + '&guest_limit=' + this.state.guestLimit + '&allow_children=' + this.state.childrenAllowed + '&alcohol_allowed=' + this.state.alcoholAllowed, {}, function (response) {
-	        console.log('sort guests = ' + _this4.state.guestLimit);
-	        console.log('children allowed = ' + _this4.state.childrenAllowed);
-	        console.log('alcohol allowed = ' + _this4.state.alcoholAllowed);
-	        console.log(response);
+	      fetchApi('GET', '/events.json' + window.location.search + '&guest_limit=' + filters.guestLimit + '&allow_children=' + filters.childrenAllowed + '&alcohol_allowed=' + filters.alcoholAllowed, {}, function (response) {
+	        _this4.noResults(response);
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
 	        });
@@ -21585,6 +21596,19 @@
 	          markerArray: array
 	        });
 	      });
+	    }
+	  }, {
+	    key: 'noResults',
+	    value: function noResults(results) {
+	      if (results.length === 0) {
+	        this.setState({
+	          noResultsFound: 'No Search Results Were Found'
+	        });
+	      } else {
+	        this.setState({
+	          noResultsFound: ''
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'redirect',
@@ -21787,6 +21811,11 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'col-xs-12 col-sm-7' },
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                this.state.noResultsFound
+	              ),
 	              allEvents
 	            ),
 	            _react2.default.createElement('div', { className: 'col-xs-12 col-sm-5' })

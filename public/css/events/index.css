@@ -8,6 +8,10 @@ body {
   height: 50vh;
 }
 
+#renderEvents {
+  min-height: 100vh;
+}
+
 .filterBox {
   display: flex;
   flex-direction: row;
