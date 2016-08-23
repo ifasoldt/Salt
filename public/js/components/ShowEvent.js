@@ -35,23 +35,24 @@ class ShowEvent extends React.Component  {
       handler.getMap().setZoom(14)
     })
     $("#slider").slick({
-      infinite: false,
+      infinite: true,
       arrows: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
       responsive: [{
-          breakpoint: 1024,
+          breakpoint: 768,
           settings: {
             slidesToShow: 1,
-            infinite: true
-          }
-        }, {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            dots: true
+            infinite: true,
+            arrows: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear',
           }
         }, {
           breakpoint: 300,
-          settings: "unslick"
+          settings: "unslick",
         }]
     })
   }
@@ -75,36 +76,36 @@ class ShowEvent extends React.Component  {
           <div id="slider">
             {sliderImageElements}
           </div>
-          <div className="row whitebar">
-            <div className="col-xs-4 col-sm-2">
-              <div className="hostProfileContainer">
-                <div className="row hostImgContainer">
-                  <img src={this.state.host.user_image} className="img-circle hostImg" alt="" />
-                </div>
-                <div className="row hostTextContainer profile-text-margin">
-                  <h2 className="hostsName text-center">{this.state.host.first_name}</h2>
-                </div>
-              </div>
-              <div className="col-xs-4 col-sm-2">
-              </div>
-            </div>
-            <div className="text-center col-xs-12 col-sm-4">
-              <h1 className="eventTitle">{this.state.events.title}</h1>
-            </div>
-            <div className="col-xs-6 col-sm-3">
-              <img src="/assets/calendar-icon.png" className="col-xs-4 img-responsive" alt="" />
-              <h4 className="eventDate">{this.state.events.formatted_date}</h4>
-              <h4 className="eventTime">{this.state.events.formatted_time}</h4>
-            </div>
-            <div className=" col-xs-6 col-sm-3">
-              <img src="/assets/guests.png" className="col-xs-4 img-responsive" alt="" />
-              <div className="col-xs-8 guests-nums">
-                <h4 className="row">{this.state.events.confirmed_guests} attending</h4>
-                <h4 className="row">{this.state.events.spots_left} spots left</h4>
-              </div>
-            </div>
-          </div>
           <div className="container-fluid">
+            <div className="row whitebar">
+              <div className="col-xs-4 col-sm-2">
+                <div className="hostProfileContainer">
+                  <div className="row hostImgContainer">
+                    <img src={this.state.host.user_image} className="img-circle hostImg" alt="" />
+                  </div>
+                  <div className="row hostTextContainer profile-text-margin">
+                    <h2 className="hostsName text-center">{this.state.host.first_name}</h2>
+                  </div>
+                </div>
+                <div className="col-xs-4 col-sm-2">
+                </div>
+              </div>
+              <div className="text-center col-xs-12 col-sm-4">
+                <h1 className="eventTitle">{this.state.events.title}</h1>
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                <img src="/assets/calendar-icon.png" className="col-xs-4 img-responsive" alt="" />
+                <h4 className="eventDate">{this.state.events.formatted_date}</h4>
+                <h4 className="eventTime">{this.state.events.formatted_time}</h4>
+              </div>
+              <div className=" col-xs-6 col-sm-3">
+                <img src="/assets/guests.png" className="col-xs-4 img-responsive" alt="" />
+                <div className="col-xs-8 guests-nums">
+                  <h4 className="row">{this.state.events.confirmed_guests} attending</h4>
+                  <h4 className="row">{this.state.events.spots_left} spots left</h4>
+                </div>
+              </div>
+            </div>
             <div className="row">
               <div className="col-xs-6">
                 <div className="mainContainer">
@@ -112,7 +113,7 @@ class ShowEvent extends React.Component  {
                     <h3 className="eventDesc">Event Description:</h3>
                     <h4 className="eventDescText">{this.state.events.description}</h4>
                     <h3 className="foodDesc">Details:</h3>
-                    <h4 className="foodDescText">Food/Drink:{this.state.events.food}</h4>          
+                    <h4 className="foodDescText">Food/Drink:{this.state.events.food}</h4>
                     <h4>Children Welcome: <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
                     <h4>Alcohol Welcome: <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
                     <h4>Guest Limit: <span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
