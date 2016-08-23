@@ -7,7 +7,8 @@ class ShowEvent extends React.Component  {
     this.state = {
       events: [],
       sliderImages: [],
-      host: []
+      host: [],
+      markerArray: []
     }
   }
   componentDidMount () {
@@ -19,11 +20,20 @@ class ShowEvent extends React.Component  {
       this.setState({
         events: response,
         sliderImages: response.event_images,
-        host: response.host
+        host: response.host,
+        markerArray: response.event_marker
       })
     })
   }
   componentDidUpdate () {
+      var handler = Gmaps.build('Google')
+      var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
+      handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
+      var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
+      handler.bounds.extendWith(markers)
+      handler.fitMapToBounds()
+      handler.getMap().setZoom(14)
+    })
     $("#slider").slick({
       infinite: false,
       arrows: true,
@@ -66,41 +76,50 @@ class ShowEvent extends React.Component  {
             {sliderImageElements}
           </div>
           <div className="row whitebar">
-            <div className="col-xs-12 col-sm-8">
+            <div className="col-xs-4 col-sm-2">
               <div className="hostProfileContainer">
-                <div className="hostImgContainer">
+                <div className="row hostImgContainer">
                   <img src={this.state.host.user_image} className="img-circle hostImg" alt="" />
                 </div>
-                <div className="hostTextContainer">
+                <div className="row hostTextContainer profile-text-margin">
                   <h2 className="hostsName text-center">{this.state.host.first_name}</h2>
                 </div>
               </div>
+              <div className="col-xs-4 col-sm-2">
+              </div>
+            </div>
+            <div className="text-center col-xs-12 col-sm-4">
+              <h1 className="eventTitle">{this.state.events.title}</h1>
+            </div>
+            <div className="col-xs-6 col-sm-3">
+              <img src="/assets/calendar-icon.png" className="col-xs-4 img-responsive" alt="" />
+              <h4 className="eventDate">{this.state.events.formatted_date}</h4>
+              <h4 className="eventTime">{this.state.events.formatted_time}</h4>
+            </div>
+            <div className=" col-xs-6 col-sm-3">
+              <img src="/assets/guests.png" className="col-xs-4 img-responsive" alt="" />
+              <div className="col-xs-8 guests-nums">
+                <h4 className="row">{this.state.events.confirmed_guests} attending</h4>
+                <h4 className="row">{this.state.events.spots_left} spots left</h4>
+              </div>
             </div>
           </div>
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
-              <div className="col-xs-12">
+              <div className="col-xs-6">
                 <div className="mainContainer">
-                  <div className="headContainer">
-                    <h1 className="eventTitle">{this.state.events.title}</h1>
-                    <h4 className="eventDate">{this.state.events.formatted_date} @</h4>
-                    <h4 className="eventTime">{this.state.events.formatted_time}</h4>
-                    <span>{this.state.events.confirmed_guests} attending</span>
-                    <span>{this.state.events.spots_left} spots left</span>
-                  </div>
                   <div className="descContainer">
-                    <h4 className="eventDesc">Description of Event:</h4>
-                    <p className="eventDescText">{this.state.events.description}</p>
-                    <h4 className="foodDesc">Description of Food:</h4>
-                    <p className="foodDescText">{this.state.events.food}</p>
-                  </div>
-                  <div className="highlightsContainer">
-                    <p>Children Welcome: <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></p>
-                    <p>Alcohol Welcome: <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></p>
-                    <p>No Size Limit: <span style={this.state.events.unlimited_guests ? greenColor : redColor}>{this.state.events.unlimited_guests ? 'Yes' : 'No'}</span></p>
+                    <h3 className="eventDesc">Event Description:</h3>
+                    <h4 className="eventDescText">{this.state.events.description}</h4>
+                    <h3 className="foodDesc">Details:</h3>
+                    <h4 className="foodDescText">Food/Drink:{this.state.events.food}</h4>          
+                    <h4>Children Welcome: <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
+                    <h4>Alcohol Welcome: <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
+                    <h4>Guest Limit: <span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
                   </div>
                 </div>
               </div>
+              <div className="col-xs-6" id="map" style={{height: '600px'}}></div>
             </div>
           </div>
         </div>
