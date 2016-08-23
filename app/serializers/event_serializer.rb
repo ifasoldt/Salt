@@ -35,7 +35,9 @@ class EventSerializer < ActiveModel::Serializer
     Gmaps4rails.build_markers([object]) do |object, marker|
       marker.lat object.address.lat + ([0.000002, 0.000003, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008].sample) * ([-1, 1].sample)
       marker.lng object.address.lng + ([0.000002, 0.000003, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008].sample) * ([-1, 1].sample)
-      marker.infowindow "<img class='img-responsive' width='100' height='100' src='#{Refile.attachment_url(object.images.first, :file, :fit, 400, 400)}' /> #{object.description}"
+      if object.images.any?
+        marker.infowindow "<img class='img-responsive' width='100' height='100' src='#{Refile.attachment_url(object.images.first, :file, :fit, 400, 400)}' /> #{object.description}"
+      end
     end
   end
 

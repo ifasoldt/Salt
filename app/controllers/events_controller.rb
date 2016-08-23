@@ -38,7 +38,8 @@ class EventsController < ApplicationController
     else
       @event = Event.new(event_params.merge(host_id: current_user.id))
       #currently letting me save even if current_user.address is nil
-      @event.address = current_user.address
+      # overwriting current_user_address
+      @event.address = current_user.address.dup
     end
     if @event.save
       render json: @event, status: 200

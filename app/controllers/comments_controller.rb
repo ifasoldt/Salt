@@ -1,8 +1,14 @@
 class CommentsController < ApplicationController
+  before_action :require_user
 
   def create
-    @comment = Comment.new(comment_params)
-    
+    @event = Event.find(params[:event_id])
+    @comment = @event.comments.new(comment_params.merge(user_id: current_user.id))
+    if @comment.save
+      render json: @comment
+    else
+      render json: @comment.errors.full_messages
+    end
   end
 
   def update

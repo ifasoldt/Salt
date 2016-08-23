@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-resources :events, except: [:create, :update]
+resources :events, except: [:create, :update] do
+  resources :comments, only: [:create, :update, :destroy]
+end
 resources :users, except:[:index, :edit, :create, :new, :update]
 resources :thumbs, only: [:create]
 
