@@ -27566,7 +27566,7 @@
 
 	    _this.updateUser = _this.updateUser.bind(_this);
 	    _this.state = {
-	      user: {}
+	      attendingEvents: []
 	    };
 	    return _this;
 	  }
@@ -27584,27 +27584,99 @@
 	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
 	        console.log(response);
 	        _this2.setState({
-	          user: response
+	          attendingEvents: response.events
 	        });
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var greenColor = {
+	        color: 'lightgreen'
+	      };
+	      var orangeColor = {
+	        color: 'orange'
+	      };
+	      var eventsAttending = this.state.attendingEvents.map(function (event, key) {
+	        return _react2.default.createElement(
+	          'tr',
+	          { key: key },
+	          _react2.default.createElement(
+	            'td',
+	            { scope: 'row', className: 'user_profile' },
+	            _react2.default.createElement('img', { className: 'profile_image img-circle', src: event.event_images[0] }),
+	            _react2.default.createElement(
+	              'a',
+	              null,
+	              event.title
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            event.formatted_date,
+	            ' @ ',
+	            event.formatted_time
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            event.spots_left
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { style: orangeColor },
+	              'pending'
+	            )
+	          )
+	        );
+	      });
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container-fluid' },
+	        { className: 'panel panel-default' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: 'panel-heading' },
+	          'Events Attending'
+	        ),
+	        _react2.default.createElement(
+	          'table',
+	          { className: 'table' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
+	            'thead',
+	            null,
 	            _react2.default.createElement(
-	              'h2',
+	              'tr',
 	              null,
-	              this.state.user.full_name
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Title'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'When'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Spots Open'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Approved'
+	              )
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'tbody',
+	            null,
+	            eventsAttending
 	          )
 	        )
 	      );
