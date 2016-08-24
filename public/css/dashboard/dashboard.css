@@ -33,8 +33,13 @@ td {
   cursor: pointer;
 }
 
+.accept_application {
+  cursor: pointer;
+}
+
 .deny_application {
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .text_input {

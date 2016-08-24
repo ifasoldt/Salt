@@ -27403,6 +27403,8 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hosting).call(this, props));
 
 	    _this.updateUser = _this.updateUser.bind(_this);
+	    _this.applicationCheck = _this.applicationCheck.bind(_this);
+	    _this.updateApplications = _this.updateApplications.bind(_this);
 	    _this.state = {
 	      hostedEvents: []
 	    };
@@ -27420,6 +27422,7 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
+	        console.log(response);
 	        var hostingEvents = response.hosted_events.map(function (events) {
 	          return events;
 	        });
@@ -27429,8 +27432,46 @@
 	      });
 	    }
 	  }, {
+	    key: 'applicationCheck',
+	    value: function applicationCheck(e) {
+	      var eventID = e.target.getAttribute('data-id');
+	      var appID = e.target.getAttribute('data-app-id');
+	      console.log(eventID, appID);
+	      this.updateApplications(eventID, appID);
+	    }
+	  }, {
+	    key: 'updateApplications',
+	    value: function updateApplications(eventID, appID) {
+	      var _this3 = this;
+
+	      fetchApi('PATCH', 'events/' + eventID + '/applications/' + appID, {}, function (response) {
+	        var hostingEvents = response.hosted_events.map(function (events) {
+	          return events;
+	        });
+	        _this3.setState({
+	          hostedEvents: hostingEvents
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      $('[data-toggle="tooltip"]').tooltip();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this4 = this;
+
+	      var greenColor = {
+	        color: 'lightgreen'
+	      };
+	      var orangeColor = {
+	        color: 'orange'
+	      };
+	      var redColor = {
+	        color: 'red'
+	      };
 	      var eventsHosting = this.state.hostedEvents.map(function (event, key) {
 	        var eventApplications = event.applications.map(function (app, key) {
 	          return _react2.default.createElement(
@@ -27463,8 +27504,39 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              _react2.default.createElement('i', { className: 'fa fa-check-circle', 'aria-hidden': 'true' }),
-	              _react2.default.createElement('i', { className: 'fa fa-times-circle deny_application', 'aria-hidden': 'true' })
+	              function () {
+	                switch (app.status) {
+	                  case "approved":
+	                    return _react2.default.createElement(
+	                      'span',
+	                      { style: greenColor },
+	                      'approved'
+	                    );
+	                  case "denied":
+	                    return _react2.default.createElement(
+	                      'span',
+	                      { style: redColor },
+	                      'denied'
+	                    );
+	                  case "pending":
+	                    return _react2.default.createElement(
+	                      'div',
+	                      null,
+	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                          return _this4.applicationCheck(e);
+	                        }, 'data-id': _this4.state.hostedEvents.id, 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
+	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                          return _this4.applicationCheck(e);
+	                        }, 'data-id': _this4.state.hostedEvents.id, 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
+	                    );
+	                  default:
+	                    return _react2.default.createElement(
+	                      'span',
+	                      { style: Color },
+	                      'pending'
+	                    );
+	                }
+	              }()
 	            )
 	          );
 	        });
@@ -27503,7 +27575,7 @@
 	                _react2.default.createElement(
 	                  'th',
 	                  null,
-	                  'Approved'
+	                  'Status'
 	                )
 	              )
 	            ),
