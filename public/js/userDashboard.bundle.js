@@ -54,7 +54,6 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-<<<<<<< HEAD
 	var _reactRouter = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _UserDashboard = __webpack_require__(174);
@@ -66,19 +65,6 @@
 	var _Hosting2 = _interopRequireDefault(_Hosting);
 
 	var _Attending = __webpack_require__(176);
-=======
-	var _reactRouter = __webpack_require__(177);
-
-	var _UserDashboard = __webpack_require__(240);
-
-	var _UserDashboard2 = _interopRequireDefault(_UserDashboard);
-
-	var _Hosting = __webpack_require__(241);
-
-	var _Hosting2 = _interopRequireDefault(_Hosting);
-
-	var _Attending = __webpack_require__(242);
->>>>>>> 8626bc537a3ed9e95a801fa4770bdce17abd58c2
 
 	var _Attending2 = _interopRequireDefault(_Attending);
 
@@ -790,7 +776,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule reactProdInvariant
-	 * 
+	 *
 	 */
 	'use strict';
 
@@ -1354,7 +1340,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * 
+	 *
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -1599,7 +1585,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule getIteratorFn
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -1645,7 +1631,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule KeyEscapeUtils
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -6284,7 +6270,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule accumulateInto
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -6348,7 +6334,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule forEachAccumulated
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -7610,7 +7596,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactFeatureFlags
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -8917,7 +8903,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule isTextInputElement
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -12412,7 +12398,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * 
+	 *
 	 * @typechecks static-only
 	 */
 
@@ -16250,7 +16236,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactNodeTypes
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -16296,7 +16282,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	/*eslint-disable no-self-compare */
@@ -16531,7 +16517,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule flattenChildren
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -16707,7 +16693,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactServerUpdateQueue
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -18863,7 +18849,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * 
+	 *
 	 */
 
 	var isTextNode = __webpack_require__(151);
@@ -21343,7 +21329,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule adler32
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -21536,17 +21522,12 @@
 	    _classCallCheck(this, UserDashboard);
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UserDashboard).call(this, props));
-
-<<<<<<< HEAD
 	    _this.updateUser = _this.updateUser.bind(_this);
 	    _this.state = {
 	      user: {},
 	      address: {}
 	    };
 	    return _this;
-=======
-	    delete route.children;
->>>>>>> 8626bc537a3ed9e95a801fa4770bdce17abd58c2
 	  }
 
 	  _createClass(UserDashboard, [{
@@ -21570,8 +21551,6 @@
 	        });
 	      });
 	    }
-<<<<<<< HEAD
-=======
 	    /* eslint-disable no-empty */
 	  } catch (e) {}
 	  /* eslint-enable no-empty */
