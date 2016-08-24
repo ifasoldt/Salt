@@ -12,6 +12,12 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      render json: @comment
+    else
+      render json: @comment.errors.full_messages
+    end
   end
 
   def destroy
@@ -21,6 +27,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.permit(:body)
+    params.permit(:body, :flagged)
   end
 end

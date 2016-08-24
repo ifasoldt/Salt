@@ -35,7 +35,13 @@
                 <% end %>
               </nav>
               <div class="header_profile">
-                <a href="/current_user/dashboard" alt="Profile Image"><%= image_tag(attachment_url(current_user.images.first, :file, :fill, 300, 300), :class => "img-circle header_profile_image") %></a>
+                <a href="/current_user/dashboard" alt="Profile Image">
+                   <% if current_user  %>
+                    <%= image_tag(attachment_url(current_user.images.first, :file, :fill, 300, 300), :class => "img-circle header_profile_image")%>
+                  <% else %>
+                   <%= image_tag('http://unstats.un.org/unsd/trade/events/2015/abudhabi/img/no-pic.png', :class => "img-circle header_profile_image") %>
+                  <% end %>
+                  </a>
               </div>
             </div>
           </div>

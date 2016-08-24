@@ -6,6 +6,8 @@ class ShowEvent extends React.Component  {
     this.updateEvents = this.updateEvents.bind(this)
     this.commentsChange = this.commentsChange.bind(this)
     this.post = this.post.bind(this)
+    this.setCommentId = this.setCommentId.bind(this)
+    this.flag = this.flag.bind(this)
 
     this.state = {
       mapLoaded: false,
@@ -13,14 +15,40 @@ class ShowEvent extends React.Component  {
       sliderImages: [],
       host: [],
       markerArray: [],
-      comments: []
+      comments: [],
+      hiddenComments: [],
+      commentId: ''
     }
   }
   componentDidMount () {
-    this.updateEvents().then(function(){
+    this.updateEvents()
+  }
 
+  flag() {
+    fetchApi('PATCH', `/events/${this.state.events.id}/comments/${this.state.commentId}`, {flagged: true}, (response, statusCode) =>{
+      //success
+      if (statusCode >= 200 && statusCode < 300) {
+        var hiddenComments = this.state.hiddenComments
+        hiddenComments.push(this.state.commentId)
+        console.log(hiddenComments)
+        // works
+        console.log(this.state.events)
+        // comes back null
+        console.log(this.state.commentId)
+        // this.setState({hiddenComments: this.state.hiddenComments.concat(this.state.commentId)})
+        this.setState({hiddenComments: hiddenComments})
+        console.log(this.state.hiddenComments)
+        // this.updateEvents()
+      }
+      else {
+        alert('Error')
+      }
     })
+    this.setState({commentId:''})
+  }
 
+  setCommentId(e) {
+    this.setState({commentId: e.target.getAttribute('data-id')})
   }
 
   post(e) {
@@ -29,7 +57,6 @@ class ShowEvent extends React.Component  {
         //success
         if (statusCode >= 200 && statusCode < 300) {
           // this.setState({value: e.target.value})
-          this.updateEvents()
           this.setState({value: ''})
         }
         //api failed
@@ -103,20 +130,26 @@ class ShowEvent extends React.Component  {
         }
         return <div style={imageStyle} className="slideImageStyle" key={key}></div>
       })
-      var all_comments = this.state.comments.map(function(comment, key){
-        return(
-          <div className="panel panel-default commentContainer" key={key}>
-            <div className="panel-heading rightContainer">
-              <div className="panel-title nameContainer">
-                <h4 className="commentName">{comment.user.full_name} says:</h4>
-                <img src="/assets/flag.png" className="commentFlag" style={{height:'10px'}} data-toggle="modal" data-target=".commentFlag-modal"/>
-                <h5 className="commentDateTime">{comment.formated_created_at}</h5>
+      var all_comments = this.state.comments.map((comment, key) => {
+        console.log(this.state.hiddenComments)
+        if(!this.state.hiddenComments.includes(comment.id) && comment.flagged != true){
+          return(
+            <div className="panel panel-default commentContainer" key={key}>
+              <div className="panel-heading rightContainer">
+                <div className="panel-title nameContainer">
+                  <h4 className="commentName">{comment.user.full_name} says:</h4>
+                  <img src="/assets/flag.png" className="commentFlag" style={{height:'10px'}} data-id={comment.id} onClick={this.setCommentId} data-toggle="modal" data-target="#commentFlag-modal"/>
+                  <h5 className="commentDateTime">{comment.formated_created_at}</h5>
+                </div>
+              </div>
+              <div className="panel-body bodyContainer">
+                <p>{comment.body}</p>
               </div>
             </div>
-            <div className="panel-body bodyContainer">
-              <p>{comment.body}</p>
-            </div>
-          </div>
+          )
+        }
+        return(
+          <div></div>
         )
       })
       return (
@@ -173,18 +206,28 @@ class ShowEvent extends React.Component  {
           </div>
           <div className="container-fluid comments-area">
             <div className="col-xs-10 col-xs-offset-1">
-            <h3 className="commentsTitle"><strong>Questions? Comments? Leave them here.</strong></h3>
+            <h3 className="commentsTitle"><strong>Questions? Comments? Leave them below.</strong></h3>
+            <a href="#comment"> Jump to comment form</a>
             <hr />
               {all_comments}
               <br />
               <div><strong>Comments</strong></div>
-              <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+              <a name="comment"></a><input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
             </div>
           </div>
-          <div className="modal fade commentFlag-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-lg">
+          <div className="modal fade" id="commentFlag-modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
               <div className="modal-content">
-                Hi!
+                <div className="modal-header">
+                  <h4 className="modal-title" id="myModalLabel">Flag A Comment</h4>
+                </div>
+                <div className="modal-body">
+                  Do you wish to flag this comment as inappropriate or misleading?
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" className="btn btn-danger" onClick={this.flag}>Flag Comment</button>
+                </div>
               </div>
             </div>
           </div>
