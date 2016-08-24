@@ -15,6 +15,11 @@ body {
 td {
   vertical-align: middle !important;
 }
+.nav.nav-pills {
+  a {
+    cursor: pointer;
+  }
+}
 .user_profile {
   .profile_image {
     width: 40px;
