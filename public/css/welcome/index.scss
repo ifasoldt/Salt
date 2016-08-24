@@ -5,9 +5,9 @@
   height: 400px;
 }
 .searchContainer {
-  margin-top: 130px;
+  margin-top: 80px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   .form-control {
     border-radius: 0;
   }
@@ -36,8 +36,11 @@
   text-shadow: 1px 1px 1px black;
 }
 .info_container {
-  padding: 0 120px;
+  padding: 0 60px;
   margin-bottom: 50px;
+}
+.salt_info {
+  margin-bottom: 20px;
 }
 .info_img {
   font-size: 80px;
@@ -45,4 +48,26 @@
 .info_text {
   padding: 0 40px;
   font-size: 16px;
+}
+
+@media screen and (min-width: 500px) {
+  .searchContainer {
+    margin-top: 130px;
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 768px) {
+  .salt_info {
+    margin-bottom: 0px;
+  }
+  .info_text {
+    padding: 0;
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .info_text {
+      padding: 0 40px;
+  }
 }

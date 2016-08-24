@@ -43,6 +43,16 @@ body {
   width: 50%;
 }
 
+.eventInfoTitle {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .eventContainer {
   display: flex;
   height: 250px;
@@ -130,6 +140,10 @@ body {
 
 .eventContainer .descContainer .eventDescContainer .event_title {
   margin: 10px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 180px;
 }
 
 .eventContainer .descContainer .eventDescContainer .event_guests {
@@ -139,6 +153,12 @@ body {
 .eventContainer .descContainer .eventDescContainer .event_spots_left {
   display: inline-block;
   margin-left: 5px;
+}
+
+@media screen and (min-width: 500px) {
+  .eventContainer .descContainer .eventDescContainer .event_title {
+    width: 280px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -157,14 +177,16 @@ body {
     position: fixed;
     width: 60%;
   }
+  .eventContainer .descContainer .eventDescContainer .event_title {
+    width: 230px;
+  }
 }
 
-.eventInfoTitle {
-  font-size: 40px;
-  font-weight: bolder;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+@media screen and (min-width: 992px) {
+  .eventContainer .descContainer .eventDescContainer .event_title {
+    width: 180px;
+  }
+  .eventContainer .descContainer .eventDescContainer .event_guests, .eventContainer .descContainer .eventDescContainer .event_spots_left {
+    font-size: 13px;
+  }
 }
