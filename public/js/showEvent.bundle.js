@@ -21463,29 +21463,19 @@
 	  _createClass(ShowEvent, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var _this2 = this;
-
-	      this.updateEvents();
-	      var handler = Gmaps.build('Google');
-	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
-	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
-	        var markers = handler.addMarkers(_this2.state.markerArray, { animation: 'DROP' });
-	        handler.bounds.extendWith(markers);
-	        handler.fitMapToBounds();
-	        handler.getMap().setZoom(14);
-	      });
+	      this.updateEvents().then(function () {});
 	    }
 	  }, {
 	    key: 'post',
 	    value: function post(e) {
-	      var _this3 = this;
+	      var _this2 = this;
 
 	      if (e.key === 'Enter') {
 	        fetchApi('POST', '/events/' + this.state.events.id + '/comments', { body: e.target.value }, function (response, statusCode) {
 	          //success
 	          if (statusCode >= 200 && statusCode < 300) {
 	            // this.setState({value: e.target.value})
-	            _this3.updateEvents();
+	            _this2.updateEvents();
 	          }
 	          //api failed
 	          else {
@@ -21502,11 +21492,11 @@
 	  }, {
 	    key: 'updateEvents',
 	    value: function updateEvents() {
-	      var _this4 = this;
+	      var _this3 = this;
 
 	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
 	        console.log(response);
-	        _this4.setState({
+	        _this3.setState({
 	          events: response,
 	          sliderImages: response.event_images,
 	          host: response.host,
@@ -21518,6 +21508,16 @@
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
+	      var _this4 = this;
+
+	      var handler = Gmaps.build('Google');
+	      var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
+	      handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
+	        var markers = handler.addMarkers(_this4.state.markerArray, { animation: 'DROP' });
+	        handler.bounds.extendWith(markers);
+	        handler.fitMapToBounds();
+	        handler.getMap().setZoom(14);
+	      });
 	      $("#slider").slick({
 	        infinite: true,
 	        arrows: true,
