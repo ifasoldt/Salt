@@ -8,6 +8,7 @@ class ShowEvent extends React.Component  {
     this.post = this.post.bind(this)
 
     this.state = {
+      mapLoaded: false,
       events: [],
       sliderImages: [],
       host: [],
@@ -29,6 +30,7 @@ class ShowEvent extends React.Component  {
         if (statusCode >= 200 && statusCode < 300) {
           // this.setState({value: e.target.value})
           this.updateEvents()
+          this.setState({value: ''})
         }
         //api failed
         else {
@@ -53,6 +55,7 @@ class ShowEvent extends React.Component  {
     })
   }
   componentDidUpdate () {
+    if (!this.state.mapLoaded){
       var handler = Gmaps.build('Google')
       var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
       handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
@@ -61,6 +64,8 @@ class ShowEvent extends React.Component  {
       handler.fitMapToBounds()
       handler.getMap().setZoom(14)
       })
+    this.state.mapLoaded = true
+    }
     $("#slider").slick({
       infinite: true,
       arrows: true,
@@ -104,6 +109,7 @@ class ShowEvent extends React.Component  {
             <div className="panel-heading rightContainer">
               <div className="panel-title nameContainer">
                 <h4 className="commentName">{comment.user.full_name} says:</h4>
+                <img src="/assets/flag.png" className="commentFlag" style={{height:'10px'}} data-toggle="modal" data-target=".commentFlag-modal"/>
                 <h5 className="commentDateTime">{comment.formated_created_at}</h5>
               </div>
             </div>
@@ -173,6 +179,13 @@ class ShowEvent extends React.Component  {
               <br />
               <div><strong>Comments</strong></div>
               <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+            </div>
+          </div>
+          <div className="modal fade commentFlag-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-lg">
+              <div className="modal-content">
+                Hi!
+              </div>
             </div>
           </div>
         </div>
