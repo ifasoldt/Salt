@@ -42,6 +42,22 @@ td {
   cursor: pointer;
 }
 
+.nameHeader {
+  width: 30%;
+}
+
+.quantityHeader {
+  width: 10%;
+}
+
+.messageHeader {
+  width: 45%;
+}
+
+.statusHeader {
+  width: 15%;
+}
+
 .accept_application {
   cursor: pointer;
 }

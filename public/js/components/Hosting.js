@@ -83,10 +83,10 @@ class Hosting extends React.Component  {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Guests</th>
-                  <th>Messages</th>
-                  <th>Status</th>
+                  <th className="nameHeader">Name</th>
+                  <th className="quantityHeader">Guests</th>
+                  <th className="messageHeader">Messages</th>
+                  <th className="statusHeader">Status</th>
                 </tr>
               </thead>
               <tbody>

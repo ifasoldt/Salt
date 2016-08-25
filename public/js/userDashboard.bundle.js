@@ -27557,22 +27557,22 @@
 	                null,
 	                _react2.default.createElement(
 	                  'th',
-	                  null,
+	                  { className: 'nameHeader' },
 	                  'Name'
 	                ),
 	                _react2.default.createElement(
 	                  'th',
-	                  null,
+	                  { className: 'quantityHeader' },
 	                  'Guests'
 	                ),
 	                _react2.default.createElement(
 	                  'th',
-	                  null,
+	                  { className: 'messageHeader' },
 	                  'Messages'
 	                ),
 	                _react2.default.createElement(
 	                  'th',
-	                  null,
+	                  { className: 'statusHeader' },
 	                  'Status'
 	                )
 	              )
