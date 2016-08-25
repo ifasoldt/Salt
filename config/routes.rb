@@ -13,6 +13,8 @@ root 'welcome#index'
 post '/api/users' => 'users#create'
 # user_dashboard
 get '/current_user/dashboard/' => 'users#dashboard'
+get 'current_user/dashboard/hosting' => 'users#dashboard'
+get 'current_user/dashboard/attending' => 'users#dashboard'
 # user update
 put '/api/users/:id' => 'users#update'
 patch '/api/users/:id' => 'users#update'
@@ -27,6 +29,8 @@ patch '/api/events/:event_id/applications/:id' => 'applications#update'
 put '/api/events/:event_id/applications/:id' => 'applications#update'
 delete '/api/events/:event_id/applications/:id' => 'applications#destroy'
 get '/test_maps/' => 'welcome#test'
+
+
 
 
 

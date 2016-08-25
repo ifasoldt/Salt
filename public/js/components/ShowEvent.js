@@ -17,7 +17,8 @@ class ShowEvent extends React.Component  {
       markerArray: [],
       comments: [],
       hiddenComments: [],
-      commentId: ''
+      commentId: '',
+      value: ''
     }
   }
   componentDidMount () {
@@ -29,7 +30,7 @@ class ShowEvent extends React.Component  {
       //success
       if (statusCode >= 200 && statusCode < 300) {
         var hiddenComments = this.state.hiddenComments
-        hiddenComments.push(this.state.commentId)
+        hiddenComments.push(Number(this.state.commentId))
         console.log(hiddenComments)
         // works
         console.log(this.state.events)
@@ -39,12 +40,12 @@ class ShowEvent extends React.Component  {
         this.setState({hiddenComments: hiddenComments})
         console.log(this.state.hiddenComments)
         // this.updateEvents()
+        this.setState({commentId:''})
       }
       else {
         alert('Error')
       }
     })
-    this.setState({commentId:''})
   }
 
   setCommentId(e) {
@@ -57,7 +58,9 @@ class ShowEvent extends React.Component  {
         //success
         if (statusCode >= 200 && statusCode < 300) {
           // this.setState({value: e.target.value})
-          this.setState({value: ''})
+          var newComments = this.state.comments
+          newComments.push(response)
+          this.setState({value: '', comments:newComments})
         }
         //api failed
         else {

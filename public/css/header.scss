@@ -107,3 +107,33 @@ header {
     }
   }
 }
+
+.navSearchContainer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchImageContainer{
+  margin-right: -20px;
+}
+
+#navSearchImage{
+  height:25px;
+  margin-top: 4px;
+  cursor:pointer;
+}
+
+#navSearchLocation{
+  width:100%;
+  display: block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0
+}
