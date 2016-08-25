@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="/css/flatpickr.min.css" />
   <link rel="stylesheet" href="/css/welcome/index.css" />
 <% end %>
-
+<div class="frontPageMargin"></div>
 <div class="jumbotron">
   <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
     <form method="get" action="#" enctype="multipart/form-data">
@@ -64,7 +64,11 @@
   <script src="/js/flatpickr.min.js"></script>
   <script src="/js/welcome/welcome.js"></script>
   <script type="text/javascript">
-      $("#index_date_from").flatpickr();
-      $("#index_date_to").flatpickr();
+    var start = document.getElementById("index_date_from").flatpickr({
+      minDate: new Date()})
+    var end = document.getElementById("index_date_to").flatpickr({
+      minDate: new Date()})
+    start.config.onChange = dateObj => end.set("minDate", dateObj.fp_incr(1))
+    end.config.onChange = dateObj => start.set("maxDate", dateObj.fp_incr(-1))
   </script>
 <% end %>
