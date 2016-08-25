@@ -44,6 +44,7 @@ gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'gmaps4rails'
 gem 'geokit-rails'
 gem 'sendgrid'
+gem 'chronic'
 
 
 # Use Capistrano for deployment
