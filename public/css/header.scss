@@ -15,7 +15,7 @@ nav a {
 	color: #fff;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	text-shadow: 1px 1px 1px black;
   font-size: 14px;
 }
 .nav_effect {
@@ -56,6 +56,112 @@ nav a {
 	opacity: 1;
 	transform: translateY(0px);
 }
+.navSearchContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24px;
+  input {
+    width: 100%;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  .navCityContainer {
+    flex: 4;
+  }
+  .navDateFrom {
+    flex: 1;
+  }
+  .navDateTo {
+    flex: 1;
+  }
+  .navButtonContainer {
+    display: flex;
+    align-items: center;
+    flex: 0.5;
+    cursor: pointer;
+    #navSubmitSearch {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .navSearchIcon {
+      font-size: 18px;
+      color: white;
+    }
+  }
+}
+.hiddenError {
+  visibility: hidden;
+}
+.error {
+  color: red;
+  position: relative;
+  z-index: 10;
+}
+.navBarMobile {
+  position: fixed;
+  z-index: 5;
+  top: 80px;
+  margin-right: 12px;
+  width: 92%;
+}
+.navMobileSearchIcon {
+  font-size: 24px;
+  margin-top: 25px;
+  left: 116px;
+  position: absolute;
+  z-index: 8;
+  a {
+    color: white;
+    cursor: pointer;
+  }
+  a:hover {
+    color: white;
+  }
+}
+.anchorClicked {
+  color: gray;
+}
+.navMobileSearchContainer {
+  display: flex;
+  flex-direction: row;
+  input {
+    width: 100%;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  .navMobileCityContainer {
+    flex: 4;
+  }
+  .navMobileDateFrom {
+    flex: 2;
+  }
+  .navMobileDateTo {
+    flex: 2;
+  }
+  .navMobileButtonContainer {
+    display: flex;
+    align-items: center;
+    flex: 0.1;
+    cursor: pointer;
+    #navMobileSubmitSearch {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+.hideSearch {
+  visibility: hidden;
+  transition: 0.3s;
+}
+
 .margin-top {
   padding-top: 80px;
 }
@@ -67,7 +173,10 @@ header {
   z-index: 5;
 }
 .header_img {
-  margin-top: 5px;
+  margin-top: 2px;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
   img {
     width: 80px;
     margin-top: 20px;
@@ -108,32 +217,16 @@ header {
   }
 }
 
-.navSearchContainer {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: row;
-}
-
-.searchImageContainer{
-  margin-right: -20px;
-}
-
-#navSearchImage{
-  height:25px;
-  margin-top: 4px;
-  cursor:pointer;
-}
-
-#navSearchLocation{
-  width:100%;
-  display: block;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 0
-}
+// #navSearchLocation{
+//   width:100%;
+//   display: block;
+//   height: 34px;
+//   padding: 6px 12px;
+//   font-size: 14px;
+//   line-height: 1.42857143;
+//   color: #555;
+//   background-color: #fff;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+//   margin: 0
+// }

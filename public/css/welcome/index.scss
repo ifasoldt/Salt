@@ -1,8 +1,22 @@
+header {
+  background-color: transparent !important;
+  position: absolute !important;
+}
+.homePageHidden {
+  display: none;
+}
+.frontPageMargin {
+  margin-top: -80px !important;
+}
+.navMobileSearchIcon {
+  display: none !important;
+}
 .jumbotron {
   background-image: url('../../assets/food.jpg');
   background-position: center;
   background-size: cover;
   height: 400px;
+  margin-bottom: 0px;
 }
 .searchContainer {
   margin-top: 80px;

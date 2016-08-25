@@ -62,7 +62,9 @@ class UserDashboard extends React.Component  {
                     </ul>
                   </li>
                 </ul>
+                <div className="scroll_box">
                 {this.props.children}
+                </div>
               </div>
             </div>
           </div>
