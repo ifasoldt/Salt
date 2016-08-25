@@ -21812,10 +21812,10 @@
 	                      null,
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this4.applicationCheck(e);
-	                        }, 'data-id': app.app_event_id, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
+	                        }, 'data-id': app.app_event_id, style: greenColor, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this4.applicationCheck(e);
-	                        }, 'data-id': app.app_event_id, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
+	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
 	                    );
 	                  default:
 	                    return _react2.default.createElement(
