@@ -4,6 +4,8 @@ var current_id = profile.getAttribute('data-id')
 // update profile
 document.getElementById('btn_submit_profile').addEventListener('click', function () {
   removeErrors()
+  var buttonDisable = document.getElementById('btn_submit_profile')
+  buttonDisable.setAttribute('disabled', true)
   var data = new FormData()
   var pics = document.getElementById('images_files_profile').files.length;
   for (var x = 0; x < pics; x++) {
@@ -22,9 +24,11 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 
   fetchApiImages('PATCH',`/api/users/${current_id}`, data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
+      buttonDisable.removeAttribute('disabled')
       location.reload()
     }
     else {
+      buttonDisable.removeAttribute('disabled')
       var errors = response.forEach(function(error){
         createError(error, 'zip')
       })
@@ -34,6 +38,8 @@ document.getElementById('btn_submit_profile').addEventListener('click', function
 // create event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
+  var buttonDisable = document.getElementById('btn_event_submit')
+  buttonDisable.setAttribute('disabled', true)
   var data = new FormData()
   var pics = document.getElementById('images_files').files.length;
   for (var x = 0; x < pics; x++) {
@@ -58,8 +64,10 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
   fetchApiImages('POST', '/api/events', data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       redirect(`/events/${response.id}`)
+      buttonDisable.removeAttribute('disabled')
     }
     else {
+      buttonDisable.removeAttribute('disabled')
       var errors = response.forEach(function(error){
         createError(error, 'zipEvent')
       })
