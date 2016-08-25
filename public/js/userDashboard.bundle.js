@@ -27518,10 +27518,10 @@
 	                      null,
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this4.applicationCheck(e);
-	                        }, 'data-id': app.app_event_id, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
+	                        }, 'data-id': app.app_event_id, style: greenColor, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this4.applicationCheck(e);
-	                        }, 'data-id': app.app_event_id, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
+	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
 	                    );
 	                  default:
 	                    return _react2.default.createElement(
@@ -27661,6 +27661,9 @@
 	      var orangeColor = {
 	        color: 'orange'
 	      };
+	      var redColor = {
+	        color: 'red'
+	      };
 	      var eventsAttending = this.state.attendingEvents.map(function (event, key) {
 	        return _react2.default.createElement(
 	          'tr',
@@ -27690,11 +27693,34 @@
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            _react2.default.createElement(
-	              'span',
-	              { style: orangeColor },
-	              'pending'
-	            )
+	            function () {
+	              switch (event.applications[0].status) {
+	                case "approved":
+	                  return _react2.default.createElement(
+	                    'span',
+	                    { style: greenColor },
+	                    'approved'
+	                  );
+	                case "denied":
+	                  return _react2.default.createElement(
+	                    'span',
+	                    { style: redColor },
+	                    'denied'
+	                  );
+	                case "pending":
+	                  return _react2.default.createElement(
+	                    'span',
+	                    { style: orangeColor },
+	                    'pending'
+	                  );
+	                default:
+	                  return _react2.default.createElement(
+	                    'span',
+	                    { style: orangeColor },
+	                    'pending'
+	                  );
+	              }
+	            }()
 	          )
 	        );
 	      });

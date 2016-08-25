@@ -27,6 +27,9 @@ class Attending extends React.Component  {
         var orangeColor = {
           color: 'orange'
         }
+        var redColor = {
+          color: 'red'
+        }
         var eventsAttending = this.state.attendingEvents.map((event, key) => {
           return (
               <tr key={key}>
@@ -36,7 +39,16 @@ class Attending extends React.Component  {
                 </td>
                 <td>{event.formatted_date} @ {event.formatted_time}</td>
                 <td>{event.spots_left}</td>
-                <td><span style={orangeColor}>pending</span></td>
+                <td>
+                  {(() => {
+                    switch (event.applications[0].status) {
+                      case "approved": return <span style={greenColor}>approved</span>;
+                      case "denied": return <span style={redColor}>denied</span>;
+                      case "pending":  return <span style={orangeColor}>pending</span>;
+                      default: return <span style={orangeColor}>pending</span>;
+                    }
+                  })()}
+                </td>
               </tr>
             )
         })
