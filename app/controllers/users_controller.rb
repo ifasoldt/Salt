@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    if /^\d{1,2}-\d{1,2}-\d{4}$/.match(params[:date_of_birth])
-      @dob = Date.parse(params[:date_of_birth])
+    if Chronic.parse(params[:date_of_birth])
+      @dob = Chronic.parse(params[:date_of_birth])
     else
-      # see date_must_be_formatted_correctly validation in user model.
+    # see date_must_be_formatted_correctly validation in user model.
       @dob = Date.parse('10-04-0987')
     end
     @user = User.new(user_params.merge(date_of_birth: @dob))
@@ -30,18 +30,19 @@ class UsersController < ApplicationController
   end
 
   def update
-   if /^\d{2}-\d{2}-\d{4}$/.match(params[:date_of_birth])
-     @dob = Date.parse(params[:date_of_birth])
-   else
-     # see date_must_be_formatted_correctly validation in user model.
-     @dob = Date.parse('10-04-0987')
-   end
-   if @user.update(user_params.merge({address_attributes: address_params}))
-     session[:email] = @user.email
-     render json: @user
-   else
-     render json: @user.errors.full_messages, status: 400
-   end
+    if Chronic.parse(params[:date_of_birth])
+      @dob = Chronic.parse(params[:date_of_birth])
+    else
+    # see date_must_be_formatted_correctly validation in user model.
+      @dob = Date.parse('10-04-0987')
+    end
+    Rails.logger.info @dob
+    if @user.update(user_params.merge({address_attributes: address_params}).merge(date_of_birth: @dob))
+      session[:email] = @user.email
+      render json: @user
+    else
+      render json: @user.errors.full_messages, status: 400
+    end
   end
 
   def destroy

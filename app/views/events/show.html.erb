@@ -14,7 +14,9 @@
 
 <% if @event.host_id == current_user&.id %>
   <a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Edit Event</button></a>
-  <% else %>
+<% elsif @event.applications.where(user_id: current_user).length != 0 %>
+  <%= button_to "Leave Event", event_application_delete_path(@event, @event.applications.where(user_id: current_user).first), :class => "btn", :method => :delete %>
+<% else %>
   <a href="#" data-toggle="modal" data-target="#joinEventModal"><button class="btn">Join Event</button></a>
 <% end %>
 
