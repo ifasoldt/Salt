@@ -26,6 +26,9 @@
           <button type="button" class="btn" id="submitIndexSearch">Search</button>
         </div>
       </div>
+      <div id="searchError" class="hiddenError error">
+        All Fields Need Values
+      </div>
     </form>
   </div>
 </div>
@@ -63,12 +66,4 @@
 <% content_for :scripts do %>
   <script src="/js/flatpickr.min.js"></script>
   <script src="/js/welcome/welcome.js"></script>
-  <script type="text/javascript">
-    var start = document.getElementById("index_date_from").flatpickr({
-      minDate: new Date()})
-    var end = document.getElementById("index_date_to").flatpickr({
-      minDate: new Date()})
-    start.config.onChange = dateObj => end.set("minDate", dateObj.fp_incr(1))
-    end.config.onChange = dateObj => start.set("maxDate", dateObj.fp_incr(-1))
-  </script>
 <% end %>
