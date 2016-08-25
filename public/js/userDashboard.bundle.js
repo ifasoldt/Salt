@@ -27422,7 +27422,6 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
-	        console.log(response);
 	        var hostingEvents = response.hosted_events.map(function (events) {
 	          return events;
 	        });
@@ -27436,21 +27435,16 @@
 	    value: function applicationCheck(e) {
 	      var eventID = e.target.getAttribute('data-id');
 	      var appID = e.target.getAttribute('data-app-id');
-	      console.log(eventID, appID);
-	      this.updateApplications(eventID, appID);
+	      var status = e.target.getAttribute('data-stat-id');
+	      this.updateApplications(eventID, appID, status);
 	    }
 	  }, {
 	    key: 'updateApplications',
-	    value: function updateApplications(eventID, appID) {
+	    value: function updateApplications(eventID, appID, status) {
 	      var _this3 = this;
 
-	      fetchApi('PATCH', 'events/' + eventID + '/applications/' + appID, {}, function (response) {
-	        var hostingEvents = response.hosted_events.map(function (events) {
-	          return events;
-	        });
-	        _this3.setState({
-	          hostedEvents: hostingEvents
-	        });
+	      fetchApi('PATCH', '/api/events/' + eventID + '/applications/' + appID, { status: status }, function (response) {
+	        _this3.updateUser();
 	      });
 	    }
 	  }, {
@@ -27524,10 +27518,10 @@
 	                      null,
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this4.applicationCheck(e);
-	                        }, 'data-id': _this4.state.hostedEvents.id, 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
+	                        }, 'data-id': app.app_event_id, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this4.applicationCheck(e);
-	                        }, 'data-id': _this4.state.hostedEvents.id, 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
+	                        }, 'data-id': app.app_event_id, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
 	                    );
 	                  default:
 	                    return _react2.default.createElement(

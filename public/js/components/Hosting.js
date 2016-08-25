@@ -16,7 +16,6 @@ class Hosting extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
-      console.log(response)
       var hostingEvents = response.hosted_events.map((events) => {
         return events
       })
@@ -28,17 +27,12 @@ class Hosting extends React.Component  {
   applicationCheck (e) {
     var eventID = e.target.getAttribute('data-id')
     var appID = e.target.getAttribute('data-app-id')
-    console.log(eventID, appID)
-    this.updateApplications(eventID, appID)
+    var status = e.target.getAttribute('data-stat-id')
+    this.updateApplications(eventID, appID, status)
   }
-  updateApplications (eventID, appID) {
-    fetchApi('PATCH',`events/${eventID}/applications/${appID}`, {}, (response) => {
-      var hostingEvents = response.hosted_events.map((events) => {
-        return events
-      })
-      this.setState({
-        hostedEvents: hostingEvents
-      })
+  updateApplications (eventID, appID, status) {
+    fetchApi('PATCH',`/api/events/${eventID}/applications/${appID}`, {status: status}, (response) => {
+      this.updateUser()
     })
   }
   componentDidUpdate () {
@@ -70,8 +64,8 @@ class Hosting extends React.Component  {
                       case "approved": return <span style={greenColor}>approved</span>;
                       case "denied": return <span style={redColor}>denied</span>;
                       case "pending":  return <div>
-                        <i onClick={(e) => this.applicationCheck(e)} data-id={this.state.hostedEvents.id} data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
-                        <i onClick={(e) => this.applicationCheck(e)} data-id={this.state.hostedEvents.id} data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
+                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
+                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
                       </div>;
                       default: return <span style={Color}>pending</span>;
                     }
