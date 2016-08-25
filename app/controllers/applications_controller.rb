@@ -25,7 +25,8 @@ class ApplicationsController < ApplicationController
 
   def destroy
     @application.destroy
-    render json: @application
+    redirect_back(fallback_location: root_path)
+    # render json: @application
   end
 
   private
