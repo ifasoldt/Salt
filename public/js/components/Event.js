@@ -33,6 +33,7 @@ class Event extends React.Component  {
         events: response,
         markerArray: array
       })
+      updateMap()
     })
   }
   updateMap() {
