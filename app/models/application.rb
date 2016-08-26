@@ -5,6 +5,7 @@ class Application < ApplicationRecord
   validates :quantity, numericality: {only_integer: true, message: 'of guests must be specified'}
   validates :message, length: {maximum: 1000}, allow_blank: true
   validate :event_has_enough_spots_left, if: :event
+  default_scope { order(created_at: 'DESC') }
 
 #breaking my model tests why?
   def event_has_enough_spots_left
@@ -14,7 +15,7 @@ class Application < ApplicationRecord
       end
     end
   end
-  # 
+  #
   # def application_expires
   #   if event.
   #   end
