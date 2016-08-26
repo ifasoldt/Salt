@@ -21521,7 +21521,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.updateEvents();
-	      this.updateMap();
 	    }
 	  }, {
 	    key: 'updateEvents',
@@ -21537,6 +21536,7 @@
 	          events: response,
 	          markerArray: array
 	        });
+	        _this2.updateMap();
 	      });
 	    }
 	  }, {
