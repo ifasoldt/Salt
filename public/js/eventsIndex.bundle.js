@@ -21454,7 +21454,9 @@
 	      childrenAllowed: '',
 	      alcoholAllowed: '',
 	      guestLimit: '',
-	      noResultsFound: ''
+	      noResultsFound: '',
+	      noLocationFound: '',
+	      mapText: 'NoMapOverlay'
 	    };
 	    return _this;
 	  }
@@ -21474,7 +21476,7 @@
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
 	        });
-	        _this2.setState({
+	        var location = _this2.setState({
 	          events: response,
 	          markerArray: array
 	        });
@@ -21498,6 +21500,32 @@
 	        console.log(_this3.state.markerArray.length);
 	        if (_this3.state.markerArray.length == 1) {
 	          handler.getMap().setZoom(14);
+	        } else if (_this3.state.markerArray.length == 0) {
+	          var context = _this3;
+	          var geocoder;
+	          geocoder = new google.maps.Geocoder();
+	          var location = window.location.search.split("&")[0].replace("?", "").split("=")[1];
+	          geocoder.geocode({ 'address': location }, function (results, status) {
+	            if (status == 'OK') {
+	              console.log(results);
+	              handler.getMap().setZoom(10);
+	              handler.map.centerOn(results[0].geometry.location);
+	              console.log(context);
+	              if (context.noLocationFound != '' && context.mapText != 'ComingSoon') {
+	                context.setState({
+	                  mapText: 'ComingSoon',
+	                  noLocationFound: ''
+	                });
+	              }
+	            } else {
+	              console.log(context);
+	              if (context.noLocationFound != 'Location was not found') {
+	                context.setState({
+	                  noLocationFound: 'Location was not found'
+	                });
+	              }
+	            }
+	          });
 	        }
 	      });
 	    }
@@ -21751,7 +21779,11 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement('div', { id: 'map' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: this.state.mapText },
+	          _react2.default.createElement('div', { id: 'map' })
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'container-fluid content_area' },
@@ -21764,7 +21796,9 @@
 	              _react2.default.createElement(
 	                'span',
 	                null,
-	                this.state.noResultsFound
+	                this.state.noResultsFound,
+	                ', ',
+	                this.state.noLocationFound
 	              ),
 	              allEvents
 	            ),

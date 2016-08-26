@@ -12,7 +12,9 @@ class Event extends React.Component  {
       childrenAllowed: '',
       alcoholAllowed: '',
       guestLimit: '',
-      noResultsFound: ''
+      noResultsFound: '',
+      noLocationFound: '',
+      mapText:'NoMapOverlay'
     }
   }
   componentDidMount () {
@@ -24,6 +26,7 @@ class Event extends React.Component  {
       var array = response.map(function(event){
         return event.event_marker[0]
       })
+      var location =
       this.setState({
         events: response,
         markerArray: array
@@ -44,6 +47,35 @@ class Event extends React.Component  {
         console.log(this.state.markerArray.length)
         if(this.state.markerArray.length == 1){
           handler.getMap().setZoom(14)
+        }
+        else if(this.state.markerArray.length == 0){
+          var context = this
+          var geocoder
+          geocoder = new google.maps.Geocoder()
+          var location = window.location.search.split("&")[0].replace("?","").split("=")[1]
+          geocoder.geocode({'address': location}, function(results, status){
+            if(status == 'OK'){
+              console.log(results)
+              handler.getMap().setZoom(10)
+              handler.map.centerOn(results[0].geometry.location)
+              console.log(context)
+              if ((context.noLocationFound != '') && (context.mapText != 'ComingSoon')){
+              context.setState({
+                mapText: 'ComingSoon',
+                noLocationFound: ''
+              })
+            }
+            }
+            else{
+              console.log(context)
+                if(context.noLocationFound != 'Location was not found'){
+                context.setState({
+                  noLocationFound: 'Location was not found'
+                })
+              }
+            }
+          })
+
         }
       })
   }
@@ -168,11 +200,13 @@ class Event extends React.Component  {
             </select>
           </div>
         </div>
-        <div id="map"></div>
+        <div className={this.state.mapText}>
+          <div id="map"></div>
+        </div>
         <div className="container-fluid content_area">
           <div className="row">
             <div className="col-xs-12 col-sm-7">
-              <span>{this.state.noResultsFound}</span>
+              <span>{this.state.noResultsFound}, {this.state.noLocationFound}</span>
               {allEvents}
             </div>
             <div className="col-xs-12 col-sm-5">
