@@ -1,7 +1,8 @@
 // sign up
 document.getElementById('btn_sign_up').addEventListener('click', function () {
   removeErrors()
-
+  var buttonDisable = document.getElementById('btn_sign_up')
+  buttonDisable.setAttribute('disabled', true)
   var formFields = {
     first_name: document.getElementById('sign_up_firstname').value,
     last_name: document.getElementById('sign_up_lastname').value,
@@ -14,8 +15,10 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
   fetchApi('POST','/api/users', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       redirect('/current_user/dashboard')
+      buttonDisable.removeAttribute('disabled')
     }
     else {
+      buttonDisable.removeAttribute('disabled')
       var responseErrors = response.forEach(function(error){
         createError(error, 'sign_up_password_confirm')
       })
@@ -25,6 +28,8 @@ document.getElementById('btn_sign_up').addEventListener('click', function () {
 // login
 document.getElementById('btn_login').addEventListener('click', function () {
   removeErrors()
+  var buttonDisable = document.getElementById('btn_login')
+  buttonDisable.setAttribute('disabled', true)
   var formFields = {
     email: document.getElementById('login_email').value,
     password: document.getElementById('login_password').value
@@ -32,8 +37,10 @@ document.getElementById('btn_login').addEventListener('click', function () {
   fetchApi('POST', '/api/sign_in', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       location.reload()
+      buttonDisable.removeAttribute('disabled')
     }
     else {
+      buttonDisable.removeAttribute('disabled')
       createError(response.error, 'login_password')
     }
   })

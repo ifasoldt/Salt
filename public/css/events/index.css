@@ -12,6 +12,10 @@ body {
   min-height: 100vh;
 }
 
+.navBarMobile {
+  top: 130px !important;
+}
+
 .filterBox {
   display: flex;
   flex-direction: row;
@@ -31,21 +35,15 @@ body {
 .filterBox .container1 label, .filterBox .container2 label, .filterBox .container3 label {
   text-align: right;
   margin: 0;
+  margin-right: 2px;
 }
 
 .content_area {
   padding-top: 10px;
 }
 
-.form-control {
-  display: inline-block;
-  margin: 5px 10px;
-  width: 50%;
-}
-
 .eventInfoTitle {
-  font-size: 40px;
-  font-weight: bolder;
+  font-size: 20px;
 }
 
 a {
@@ -176,6 +174,11 @@ a {
     z-index: 5;
     position: fixed;
     width: 60%;
+  }
+  .filterBox .form-control {
+    display: inline-block;
+    margin: 5px 10px;
+    width: 50%;
   }
   .eventContainer .descContainer .eventDescContainer .event_title {
     width: 230px;

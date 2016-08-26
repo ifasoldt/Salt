@@ -4,6 +4,8 @@ var current_event = eventID.getAttribute('data-id')
 // edit event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()
+  var buttonDisable = document.getElementById('btn_event_submit')
+  buttonDisable.setAttribute('disabled', true)
   var data = new FormData()
   var pics = document.getElementById('images_files').files.length;
   for (var x = 0; x < pics; x++) {
@@ -26,11 +28,11 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
 
   fetchApiImages('PATCH', `/api/events/${current_event}`, data, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      console.log(response)
       location.reload()
+      buttonDisable.removeAttribute('disabled')
     }
     else {
-      console.log(response)
+      buttonDisable.removeAttribute('disabled')
       var errors = response.forEach(function(error){
         createError(error, 'zipEvent')
       })
@@ -42,17 +44,19 @@ var current_event_join = eventID_join.getAttribute('data-id')
 // edit event
 document.getElementById('btn_application_submit').addEventListener('click', function () {
   removeErrors()
+  var buttonDisable = document.getElementById('btn_application_submit')
+  buttonDisable.setAttribute('disabled', true)
   var formFields = {
     quantity: document.getElementById('application_guests').value,
     message: document.getElementById('application_message').value
   }
   fetchApi('POST', `/api/events/${current_event_join}/applications`, formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
-      console.log(response)
       location.reload()
+      buttonDisable.removeAttribute('disabled')
     }
     else {
-      console.log(response)
+      buttonDisable.removeAttribute('disabled')
       var errors = response.forEach(function(error){
         createError(error, 'application_message')
       })
