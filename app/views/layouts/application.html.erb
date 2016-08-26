@@ -33,6 +33,7 @@
                       <div class="navCityContainer">
                         <div class="form-group">
                           <input type="text" class="form-control" id="navLocation" name="navLocation" placeholder="Where Do You Want To Search?" required />
+                          <span id="error" class="hiddenError error">All Fields Need Values</span>
                         </div>
                       </div>
                       <div class="navDateFrom">
@@ -40,14 +41,14 @@
                           <input type="text" class="form-control flatpickr" data-date-format="m-d-Y" id="nav_starting_date" name="nav_starting_date" placeholder="From" required />
                         </div>
                       </div>
+                      <div class="navArrowContainer">
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                      </div>
                       <div class="navDateTo">
                         <div class="form-group">
                           <input type="text" class="form-control flatpickr" data-date-format="m-d-Y" id="nav_ending_date" name="nav_ending_date" placeholder="To" required />
                         </div>
                       </div>
-                    </div>
-                    <div id="error" class="hiddenError error">
-                      All Fields Need Values
                     </div>
                   </form>
                 </div>

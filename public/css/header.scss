@@ -61,6 +61,10 @@ nav a {
   display: flex;
   flex-direction: row;
   margin-top: 24px;
+  .form-control {
+    font-size: 18px;
+    color: white;
+  }
   input {
     width: 100%;
     background-color: transparent;
@@ -68,6 +72,7 @@ nav a {
   }
   .form-group {
     margin-bottom: 0;
+    height: 36px;
   }
   .form-control {
     border-radius: 0;
@@ -76,15 +81,27 @@ nav a {
     flex: 4;
   }
   .navDateFrom {
-    flex: 1;
+    flex: 2;
     input {
+      text-align: center;
       background-color: transparent;
       border: 0;
     }
   }
+  .navArrowContainer {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      font-size: 30px;
+      color: #555;
+    }
+  }
   .navDateTo {
-    flex: 1;
+    flex: 2;
     input {
+      text-align: center;
       background-color: transparent;
       border: 0;
     }
@@ -113,6 +130,7 @@ nav a {
   color: red;
   position: relative;
   z-index: 10;
+  margin-left: 12px;
 }
 .navBarMobile {
   position: fixed;
@@ -153,6 +171,7 @@ nav a {
   .navMobileCityContainer {
     flex: 4;
     input {
+      font-size: 12px;
       border-top: 2px solid black;
       border-bottom: 2px solid black;
       border-left: 2px solid black;
@@ -160,8 +179,9 @@ nav a {
     }
   }
   .navMobileDateFrom {
-    flex: 2;
+    flex: 3;
     input {
+      font-size: 12px;
       border-top: 2px solid black;
       border-bottom: 2px solid black;
       border-left: 0;
@@ -169,12 +189,13 @@ nav a {
     }
   }
   .navMobileDateTo {
-    flex: 2;
+    flex: 3;
     input {
+      font-size: 12px;
       border-top: 2px solid black;
       border-bottom: 2px solid black;
       border-left: 0;
-      border-right: 0;
+      border-right: 2px solid black;
     }
   }
   .navMobileButtonContainer {
@@ -183,6 +204,7 @@ nav a {
     flex: 0.1;
     cursor: pointer;
     button {
+      margin-left: -2px;
       background-color: black;
       color: white;
       border-top-right-radius: 5px;
@@ -212,10 +234,6 @@ header {
   .form-control:focus {
     outline: 0;
     box-shadow: none;
-  }
-  .form-control {
-    font-size: 18px;
-    color: white;
   }
 }
 .header_img {
