@@ -73,6 +73,11 @@ nav a {
   margin-top: 24px;
 }
 
+.navSearchContainer .form-control {
+  font-size: 18px;
+  color: white;
+}
+
 .navSearchContainer input {
   width: 100%;
   background-color: transparent;
@@ -81,6 +86,7 @@ nav a {
 
 .navSearchContainer .form-group {
   margin-bottom: 0;
+  height: 36px;
 }
 
 .navSearchContainer .form-control {
@@ -92,19 +98,33 @@ nav a {
 }
 
 .navSearchContainer .navDateFrom {
-  flex: 1;
+  flex: 2;
 }
 
 .navSearchContainer .navDateFrom input {
+  text-align: center;
   background-color: transparent;
   border: 0;
 }
 
+.navSearchContainer .navArrowContainer {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navSearchContainer .navArrowContainer i {
+  font-size: 30px;
+  color: #555;
+}
+
 .navSearchContainer .navDateTo {
-  flex: 1;
+  flex: 2;
 }
 
 .navSearchContainer .navDateTo input {
+  text-align: center;
   background-color: transparent;
   border: 0;
 }
@@ -136,6 +156,9 @@ nav a {
   color: red;
   position: relative;
   z-index: 10;
+  text-shadow: 1px 1px 1px black;
+  font-size: 18px;
+  margin-left: 12px;
 }
 
 .navBarMobile {
@@ -189,6 +212,7 @@ nav a {
 }
 
 .navMobileSearchContainer .navMobileCityContainer input {
+  font-size: 12px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
@@ -196,10 +220,11 @@ nav a {
 }
 
 .navMobileSearchContainer .navMobileDateFrom {
-  flex: 2;
+  flex: 3;
 }
 
 .navMobileSearchContainer .navMobileDateFrom input {
+  font-size: 12px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   border-left: 0;
@@ -207,14 +232,15 @@ nav a {
 }
 
 .navMobileSearchContainer .navMobileDateTo {
-  flex: 2;
+  flex: 3;
 }
 
 .navMobileSearchContainer .navMobileDateTo input {
+  font-size: 12px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   border-left: 0;
-  border-right: 0;
+  border-right: 2px solid black;
 }
 
 .navMobileSearchContainer .navMobileButtonContainer {
@@ -225,6 +251,7 @@ nav a {
 }
 
 .navMobileSearchContainer .navMobileButtonContainer button {
+  margin-left: -2px;
   background-color: black;
   color: white;
   border-top-right-radius: 5px;
@@ -257,11 +284,6 @@ header {
 header .form-control:focus {
   outline: 0;
   box-shadow: none;
-}
-
-header .form-control {
-  font-size: 18px;
-  color: white;
 }
 
 .header_img {

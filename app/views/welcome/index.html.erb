@@ -17,6 +17,9 @@
             <input type="text" class="form-control flatpickr" data-date-format="m-d-Y" id="index_date_from" name="starting_date" placeholder="From" data-allow-input=true required />
           </div>
         </div>
+        <div class="indexArrowContainer">
+          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </div>
         <div class="dateTo">
           <div class="form-group">
             <input type="text" class="form-control flatpickr" data-date-format="m-d-Y" id="index_date_to" name="ending_date" placeholder="To" data-allow-input=true required />
@@ -26,9 +29,7 @@
           <button type="button" class="btn" id="submitIndexSearch">Search</button>
         </div>
       </div>
-      <div id="searchError" class="hiddenError error">
-        All Fields Need Values
-      </div>
+      <span id="searchError" class="hiddenError errorIndex">All Fields Need Values</span>
     </form>
   </div>
 </div>
