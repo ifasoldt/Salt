@@ -1,6 +1,9 @@
 class ConversationsController < ApplicationController
 
   def index
-    current_user.conversations
+    render json: current_user.conversations
+  end
+
+  def show
   end
 end

@@ -6,7 +6,7 @@ class ApplicationStatusChangeMailer < ApplicationMailer
   end
 
   def application_rejected_email(application)
-    @application = @application
+    @application = application
     mail( :to => @application.user.email, :subject => "Your Request To Join The Event #{@application.event.title} Has Been Denied")
   end
 
