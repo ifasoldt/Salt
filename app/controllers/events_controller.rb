@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include Geokit::Geocoders
   before_action :set_event, only: [:show, :edit, :destroy, :update]
   before_action :format_params, only: [:index]
   has_scope :allow_children, :type => :boolean
@@ -15,7 +16,12 @@ class EventsController < ApplicationController
   def index
     # breaks if no params[:location] Temp fix below.
     if params[:location]
-      @events = apply_scopes(Event).all&.nearby(params[:location])
+      loc = GoogleGeocoder.geocode(params[:location])
+      if loc.success
+        @events = apply_scopes(Event).all&.nearby(params[:location])
+      else
+        @events = []
+      end
     else
       @events = apply_scopes(Event).all
     end
@@ -39,7 +45,7 @@ class EventsController < ApplicationController
       @event = Event.new(event_params.merge(host_id: current_user.id))
       #currently letting me save even if current_user.address is nil
       # overwriting current_user_address
-      @event.address = current_user.address.dup
+      @event.address = current_user.address&.dup
     end
     if @event.save
       render json: @event, status: 200
