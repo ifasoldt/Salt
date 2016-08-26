@@ -20,7 +20,6 @@ class Event extends React.Component  {
   }
   componentDidMount () {
     this.updateEvents()
-    this.updateMap()
   }
   updateEvents() {
     fetchApi('GET',`/events.json${window.location.search}`, {}, (response) => {
@@ -33,7 +32,7 @@ class Event extends React.Component  {
         events: response,
         markerArray: array
       })
-      updateMap()
+      this.updateMap()
     })
   }
   updateMap() {
