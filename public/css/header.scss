@@ -8,6 +8,7 @@ a {
 a:hover, a:focus {
   text-decoration: none;
 }
+
 nav a {
 	position: relative;
 	display: inline-block;
@@ -62,6 +63,8 @@ nav a {
   margin-top: 24px;
   input {
     width: 100%;
+    background-color: transparent;
+    border: 0;
   }
   .form-group {
     margin-bottom: 0;
@@ -74,18 +77,28 @@ nav a {
   }
   .navDateFrom {
     flex: 1;
+    input {
+      background-color: transparent;
+      border: 0;
+    }
   }
   .navDateTo {
     flex: 1;
+    input {
+      background-color: transparent;
+      border: 0;
+    }
   }
   .navButtonContainer {
     display: flex;
-    align-items: center;
+    justify-content: center;
     flex: 0.5;
     cursor: pointer;
     #navSubmitSearch {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      background-color: transparent;
+      border: 0;
     }
     .navSearchIcon {
       font-size: 18px;
@@ -139,23 +152,47 @@ nav a {
   }
   .navMobileCityContainer {
     flex: 4;
+    input {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-left: 2px solid black;
+      border-right: 0;
+    }
   }
   .navMobileDateFrom {
     flex: 2;
+    input {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-left: 0;
+      border-right: 0;
+    }
   }
   .navMobileDateTo {
     flex: 2;
+    input {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-left: 0;
+      border-right: 0;
+    }
   }
   .navMobileButtonContainer {
     display: flex;
     align-items: center;
     flex: 0.1;
     cursor: pointer;
-    #navMobileSubmitSearch {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    button {
+      background-color: black;
+      color: white;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      transition: 0.3s;
     }
   }
+}
+.navSearchIcon {
+  color: white;
 }
 .hideSearch {
   visibility: hidden;
@@ -171,6 +208,15 @@ header {
   position: fixed;
   width: 100%;
   z-index: 5;
+  font-size: 18px;
+  .form-control:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+  .form-control {
+    font-size: 18px;
+    color: white;
+  }
 }
 .header_img {
   margin-top: 2px;

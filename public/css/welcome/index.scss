@@ -22,17 +22,45 @@ header {
   margin-top: 80px;
   display: flex;
   flex-direction: column;
+  input {
+    border: none;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
   .form-control {
     border-radius: 0;
   }
+  .form-control:focus {
+    outline: 0;
+    box-shadow: none;
+  }
   .cityContainer {
     flex: 4;
+    input {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-left: 2px solid black;
+      border-right: 0;
+    }
   }
   .dateFrom {
     flex: 2;
+    input {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-right: 0;
+      border-left: 0;
+    }
   }
   .dateTo {
     flex: 2;
+    input {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-right: 0;
+      border-left: 0;
+    }
   }
   button {
     border-radius: 0;
@@ -42,6 +70,16 @@ header {
   }
   .buttonContainer {
     flex: 1;
+    button {
+      background-color: black;
+      color: white;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      transition: 0.3s;
+    }
+    button:hover {
+      color: pink;
+    }
   }
 }
 .index_text {

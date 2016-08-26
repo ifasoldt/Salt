@@ -75,6 +75,8 @@ nav a {
 
 .navSearchContainer input {
   width: 100%;
+  background-color: transparent;
+  border: 0;
 }
 
 .navSearchContainer .form-group {
@@ -93,13 +95,23 @@ nav a {
   flex: 1;
 }
 
+.navSearchContainer .navDateFrom input {
+  background-color: transparent;
+  border: 0;
+}
+
 .navSearchContainer .navDateTo {
   flex: 1;
 }
 
+.navSearchContainer .navDateTo input {
+  background-color: transparent;
+  border: 0;
+}
+
 .navSearchContainer .navButtonContainer {
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex: 0.5;
   cursor: pointer;
 }
@@ -107,6 +119,8 @@ nav a {
 .navSearchContainer .navButtonContainer #navSubmitSearch {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: transparent;
+  border: 0;
 }
 
 .navSearchContainer .navButtonContainer .navSearchIcon {
@@ -174,12 +188,33 @@ nav a {
   flex: 4;
 }
 
+.navMobileSearchContainer .navMobileCityContainer input {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 0;
+}
+
 .navMobileSearchContainer .navMobileDateFrom {
   flex: 2;
 }
 
+.navMobileSearchContainer .navMobileDateFrom input {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 0;
+  border-right: 0;
+}
+
 .navMobileSearchContainer .navMobileDateTo {
   flex: 2;
+}
+
+.navMobileSearchContainer .navMobileDateTo input {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 0;
+  border-right: 0;
 }
 
 .navMobileSearchContainer .navMobileButtonContainer {
@@ -189,9 +224,16 @@ nav a {
   cursor: pointer;
 }
 
-.navMobileSearchContainer .navMobileButtonContainer #navMobileSubmitSearch {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.navMobileSearchContainer .navMobileButtonContainer button {
+  background-color: black;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: 0.3s;
+}
+
+.navSearchIcon {
+  color: white;
 }
 
 .hideSearch {
@@ -209,6 +251,17 @@ header {
   position: fixed;
   width: 100%;
   z-index: 5;
+  font-size: 18px;
+}
+
+header .form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+header .form-control {
+  font-size: 18px;
+  color: white;
 }
 
 .header_img {

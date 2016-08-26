@@ -27506,15 +27506,22 @@
 	                switch (app.status) {
 	                  case "approved":
 	                    return _react2.default.createElement(
-	                      'span',
-	                      { style: greenColor },
-	                      'approved'
+	                      'div',
+	                      null,
+	                      _react2.default.createElement(
+	                        'span',
+	                        { style: greenColor },
+	                        'Approved'
+	                      ),
+	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                          return _this4.applicationCheck(e);
+	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Remove From Event', 'aria-hidden': 'true' })
 	                    );
 	                  case "denied":
 	                    return _react2.default.createElement(
 	                      'span',
 	                      { style: redColor },
-	                      'denied'
+	                      'Denied'
 	                    );
 	                  case "pending":
 	                    return _react2.default.createElement(
@@ -27531,7 +27538,7 @@
 	                    return _react2.default.createElement(
 	                      'span',
 	                      { style: Color },
-	                      'pending'
+	                      'Pending'
 	                    );
 	                }
 	              }()
@@ -27633,6 +27640,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Attending).call(this, props));
 
 	    _this.updateUser = _this.updateUser.bind(_this);
+	    _this.leaveEvent = _this.leaveEvent.bind(_this);
 	    _this.state = {
 	      attendingEvents: []
 	    };
@@ -27645,20 +27653,38 @@
 	      this.updateUser();
 	    }
 	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      $('[data-toggle="tooltip"]').tooltip();
+	    }
+	  }, {
 	    key: 'updateUser',
 	    value: function updateUser() {
 	      var _this2 = this;
 
 	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
-	        console.log(response);
 	        _this2.setState({
 	          attendingEvents: response.events
 	        });
 	      });
 	    }
 	  }, {
+	    key: 'leaveEvent',
+	    value: function leaveEvent(e) {
+	      var _this3 = this;
+
+	      var event_id = e.target.getAttribute('data-id');
+	      var app_id = e.target.getAttribute('data-app-id');
+
+	      fetchApi('DELETE', '/api/events/' + event_id + '/applications/' + app_id, {}, function (response) {
+	        _this3.updateUser();
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this4 = this;
+
 	      var greenColor = {
 	        color: 'lightgreen'
 	      };
@@ -27701,27 +27727,41 @@
 	              switch (event.applications[0].status) {
 	                case "approved":
 	                  return _react2.default.createElement(
-	                    'span',
-	                    { style: greenColor },
-	                    'approved'
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                      'span',
+	                      { style: greenColor },
+	                      'Approved'
+	                    ),
+	                    _react2.default.createElement('i', { onClick: function onClick(e) {
+	                        return _this4.leaveEvent(e);
+	                      }, 'data-id': event.id, style: redColor, 'data-app-id': event.applications[0].id, className: 'fa fa-times-circle leave_event', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Leave Event', 'aria-hidden': 'true' })
 	                  );
 	                case "denied":
 	                  return _react2.default.createElement(
 	                    'span',
 	                    { style: redColor },
-	                    'denied'
+	                    'Denied'
 	                  );
 	                case "pending":
 	                  return _react2.default.createElement(
-	                    'span',
-	                    { style: orangeColor },
-	                    'pending'
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                      'span',
+	                      { style: orangeColor },
+	                      'Pending'
+	                    ),
+	                    _react2.default.createElement('i', { onClick: function onClick(e) {
+	                        return _this4.leaveEvent(e);
+	                      }, 'data-id': event.id, style: redColor, 'data-app-id': event.applications[0].id, className: 'fa fa-times-circle leave_event', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Leave Event', 'aria-hidden': 'true' })
 	                  );
 	                default:
 	                  return _react2.default.createElement(
 	                    'span',
 	                    { style: orangeColor },
-	                    'pending'
+	                    'Pending'
 	                  );
 	              }
 	            }()

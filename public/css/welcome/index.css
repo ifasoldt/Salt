@@ -29,20 +29,54 @@ header {
   flex-direction: column;
 }
 
+.searchContainer input {
+  border: none;
+}
+
+.searchContainer .form-group {
+  margin-bottom: 0;
+}
+
 .searchContainer .form-control {
   border-radius: 0;
+}
+
+.searchContainer .form-control:focus {
+  outline: 0;
+  box-shadow: none;
 }
 
 .searchContainer .cityContainer {
   flex: 4;
 }
 
+.searchContainer .cityContainer input {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 0;
+}
+
 .searchContainer .dateFrom {
   flex: 2;
 }
 
+.searchContainer .dateFrom input {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 0;
+  border-left: 0;
+}
+
 .searchContainer .dateTo {
   flex: 2;
+}
+
+.searchContainer .dateTo input {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 0;
+  border-left: 0;
 }
 
 .searchContainer button {
@@ -55,6 +89,18 @@ header {
 
 .searchContainer .buttonContainer {
   flex: 1;
+}
+
+.searchContainer .buttonContainer button {
+  background-color: black;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: 0.3s;
+}
+
+.searchContainer .buttonContainer button:hover {
+  color: pink;
 }
 
 .index_text {

@@ -2,11 +2,14 @@ body {
   background-color: #e8e8e8;
 }
 .user_info {
+  padding-left: 50px;
+  padding-top: 20px;
   h3, h4 {
     margin: 0;
   }
   .user_image {
     width: 300px;
+    border-radius: 10px;
   }
   .user_city, .user_state {
     display: inline-block;
@@ -57,6 +60,10 @@ td {
   cursor: pointer;
 }
 .deny_application {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.leave_event {
   margin-left: 10px;
   cursor: pointer;
 }

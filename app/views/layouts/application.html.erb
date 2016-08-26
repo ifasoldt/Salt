@@ -27,6 +27,9 @@
                 <div class="hidden-xs visible-sm visible-md visible-lg">
                   <form method="get" action="#" enctype="multipart/form-data">
                     <div class="navSearchContainer">
+                      <div class="navButtonContainer center-block">
+                        <button type="button" class="btn" id="navSubmitSearch"><i class="fa fa-search navSearchIcon" aria-hidden="true"></i></button>
+                      </div>
                       <div class="navCityContainer">
                         <div class="form-group">
                           <input type="text" class="form-control" id="navLocation" name="navLocation" placeholder="Where Do You Want To Search?" required />
@@ -41,9 +44,6 @@
                         <div class="form-group">
                           <input type="text" class="form-control flatpickr" data-date-format="m-d-Y" id="nav_ending_date" name="nav_ending_date" placeholder="To" required />
                         </div>
-                      </div>
-                      <div class="navButtonContainer center-block">
-                        <button type="button" class="btn" id="navSubmitSearch"><i class="fa fa-search navSearchIcon" aria-hidden="true"></i></button>
                       </div>
                     </div>
                     <div id="error" class="hiddenError error">

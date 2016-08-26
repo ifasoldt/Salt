@@ -2,12 +2,18 @@ body {
   background-color: #e8e8e8;
 }
 
+.user_info {
+  padding-left: 50px;
+  padding-top: 20px;
+}
+
 .user_info h3, .user_info h4 {
   margin: 0;
 }
 
 .user_info .user_image {
   width: 300px;
+  border-radius: 10px;
 }
 
 .user_info .user_city, .user_info .user_state {
@@ -63,6 +69,11 @@ td {
 }
 
 .deny_application {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.leave_event {
   margin-left: 10px;
   cursor: pointer;
 }
