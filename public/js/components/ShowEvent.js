@@ -57,7 +57,8 @@ class ShowEvent extends React.Component  {
       fetchApi('POST',`/events/${this.state.events.id}/comments`, {body: e.target.value}, (response, statusCode) => {
         if (statusCode >= 200 && statusCode < 300) {
           var newComments = this.state.comments
-          newComments.push(response)
+          newComments.unshift(response)
+          
           this.setState({value: '', comments: newComments})
         }
         else {
