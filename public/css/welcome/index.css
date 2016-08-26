@@ -48,6 +48,7 @@ header {
 
 .searchContainer .cityContainer {
   flex: 4;
+  height: 34px;
 }
 
 .searchContainer .cityContainer input {
@@ -55,10 +56,13 @@ header {
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-right: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .searchContainer .dateFrom {
   flex: 2;
+  height: 34px;
 }
 
 .searchContainer .dateFrom input {
@@ -66,10 +70,28 @@ header {
   border-bottom: 2px solid black;
   border-right: 0;
   border-left: 0;
+  text-align: center;
+}
+
+.searchContainer .indexArrowContainer {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: white;
+}
+
+.searchContainer .indexArrowContainer i {
+  font-size: 30px;
+  color: #555;
 }
 
 .searchContainer .dateTo {
   flex: 2;
+  height: 34px;
 }
 
 .searchContainer .dateTo input {
@@ -77,6 +99,7 @@ header {
   border-bottom: 2px solid black;
   border-right: 0;
   border-left: 0;
+  text-align: center;
 }
 
 .searchContainer button {
@@ -89,6 +112,7 @@ header {
 
 .searchContainer .buttonContainer {
   flex: 1;
+  height: 34px;
 }
 
 .searchContainer .buttonContainer button {
