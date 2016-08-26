@@ -52,7 +52,7 @@ class UserDashboard extends React.Component  {
                     <a onClick={() => browserHistory.push('/current_user/dashboard/attending')}>Events Attending</a>
                   </li>
                   <li role="presentation" className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dropdown <span className="caret"></span> </a>
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span className="caret"></span> </a>
                     <ul className="dropdown-menu">
                       <li><a href="#">Action</a></li>
                       <li><a href="#">Another action</a></li>

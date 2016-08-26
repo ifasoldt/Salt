@@ -55,14 +55,11 @@ class ShowEvent extends React.Component  {
   post(e) {
     if (e.key === 'Enter') {
       fetchApi('POST',`/events/${this.state.events.id}/comments`, {body: e.target.value}, (response, statusCode) => {
-        //success
         if (statusCode >= 200 && statusCode < 300) {
-          // this.setState({value: e.target.value})
           var newComments = this.state.comments
           newComments.push(response)
-          this.setState({value: '', comments:newComments})
+          this.setState({value: '', comments: newComments})
         }
-        //api failed
         else {
           alert('Error')
         }
@@ -209,13 +206,11 @@ class ShowEvent extends React.Component  {
           </div>
           <div className="container-fluid comments-area">
             <div className="col-xs-10 col-xs-offset-1">
-            <h3 className="commentsTitle"><strong>Questions? Comments? Leave them below.</strong></h3>
-            <a href="#comment"> Jump to comment form</a>
-            <hr />
-              {all_comments}
-              <br />
-              <div><strong>Comments</strong></div>
-              <a name="comment"></a><input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+              <h3 className="commentsTitle"><strong>Questions and Comments</strong></h3>
+              <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+              <div className="commentsScrollBox">
+                {all_comments}
+              </div>
             </div>
           </div>
           <div className="modal fade" id="commentFlag-modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

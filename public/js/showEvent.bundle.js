@@ -21563,17 +21563,13 @@
 
 	      if (e.key === 'Enter') {
 	        fetchApi('POST', '/events/' + this.state.events.id + '/comments', { body: e.target.value }, function (response, statusCode) {
-	          //success
 	          if (statusCode >= 200 && statusCode < 300) {
-	            // this.setState({value: e.target.value})
 	            var newComments = _this3.state.comments;
 	            newComments.push(response);
 	            _this3.setState({ value: '', comments: newComments });
+	          } else {
+	            alert('Error');
 	          }
-	          //api failed
-	          else {
-	              alert('Error');
-	            }
 	        });
 	      }
 	    }
@@ -21876,28 +21872,15 @@
 	              _react2.default.createElement(
 	                'strong',
 	                null,
-	                'Questions? Comments? Leave them below.'
+	                'Questions and Comments'
 	              )
 	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#comment' },
-	              ' Jump to comment form'
-	            ),
-	            _react2.default.createElement('hr', null),
-	            all_comments,
-	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('input', { type: 'text', placeholder: 'Type a comment here', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
 	            _react2.default.createElement(
 	              'div',
-	              null,
-	              _react2.default.createElement(
-	                'strong',
-	                null,
-	                'Comments'
-	              )
-	            ),
-	            _react2.default.createElement('a', { name: 'comment' }),
-	            _react2.default.createElement('input', { type: 'text', placeholder: 'Type a comment here', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange })
+	              { className: 'commentsScrollBox' },
+	              all_comments
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
