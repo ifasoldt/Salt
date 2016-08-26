@@ -113,6 +113,24 @@
   margin: 0;
 }
 
+.eventInfoTitle {
+  font-size: 18px;
+}
+
+.eventInfoTitle a {
+  color: black;
+  text-decoration: none;
+}
+
+.commentsScrollBox {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 400px;
+  overflow: scroll;
+}
+
 .commentTitle {
   font-weight: bolder;
 }
