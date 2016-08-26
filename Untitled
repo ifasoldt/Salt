@@ -1,0 +1,2 @@
+messages conversation:references body:text
+conversations sender_id:integer recipient_id:integer 
