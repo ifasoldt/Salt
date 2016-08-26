@@ -25,7 +25,7 @@ class ApplicationsController < ApplicationController
 
   def destroy
     @application.destroy
-    render status: 200
+    render json: @application, status: 200
   end
 
   private
