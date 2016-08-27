@@ -60,9 +60,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _conversation = __webpack_require__(174);
+	var _message = __webpack_require__(172);
 
-	var _conversation2 = _interopRequireDefault(_conversation);
+	var _message2 = _interopRequireDefault(_message);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72,41 +72,113 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Inbox = function (_React$Component) {
-	  _inherits(Inbox, _React$Component);
+	var MessageBox = function (_React$Component) {
+	  _inherits(MessageBox, _React$Component);
 
-	  function Inbox() {
-	    _classCallCheck(this, Inbox);
+	  function MessageBox(props) {
+	    _classCallCheck(this, MessageBox);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Inbox).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MessageBox).call(this, props));
+
+	    _this.post = _this.post.bind(_this);
+	    _this.messageChange = _this.messageChange.bind(_this);
+	    _this.state = {
+	      messages: _this.props.conversation.messages,
+	      value: ''
+	    };
+	    return _this;
 	  }
 
-	  _createClass(Inbox, [{
+	  _createClass(MessageBox, [{
+	    key: 'post',
+	    value: function post(e) {
+	      var _this2 = this;
+
+	      fetchApi('POST', '/messages', { body: this.state.value, recipient_id: this.props.conversation.message_partner.id }, function (response, statusCode) {
+	        if (statusCode >= 200 && statusCode < 300) {
+	          var newMessages = _this2.state.messages;
+	          newMessages.unshift(response);
+	          _this2.setState({ value: '', messages: newMessages });
+	        } else {
+	          alert(response);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'messageChange',
+	    value: function messageChange(e) {
+	      this.setState({ value: e.target.value });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var conversations = this.props.conversations.map(function (conversation, key) {
-	        return _react2.default.createElement(_conversation2.default, { conversation: conversation, key: key });
+	      var allMessages = this.state.messages.map(function (message, key) {
+	        return _react2.default.createElement(_message2.default, { message: message, key: key });
 	      });
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        conversations
+	        { className: 'container-fluid' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-4 user_info' },
+	            _react2.default.createElement('img', { className: 'user_image img-responsive', src: this.props.conversation.message_partner.user_image }),
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Name: ',
+	              this.props.conversation.message_partner.first_name
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Description: ',
+	              this.props.conversation.message_partner.description
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-8' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Compose a new message to ',
+	              this.props.conversation.message_partner.first_name
+	            ),
+	            _react2.default.createElement('textarea', { style: { height: '80px' }, type: 'text', className: 'form-control', value: this.state.value, onChange: this.messageChange }),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'button', className: 'btn btn-success', onClick: this.post },
+	              'Send Message'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-8' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              ' Conversation '
+	            ),
+	            allMessages
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
-	  return Inbox;
+	  return MessageBox;
 	}(_react2.default.Component);
 
-	fetchApi('GET', '/conversations.json', {}, function (response, statusCode) {
+	fetchApi('GET', '/conversations/' + window.location.pathname.split("/")[2] + '.json', {}, function (response, statusCode) {
 	  console.log(response);
-	  var conversations = response;
-	  _reactDom2.default.render(_react2.default.createElement(Inbox, { conversations: conversations }), document.getElementById('inbox'));
+	  var conversation = response;
+	  _reactDom2.default.render(_react2.default.createElement(MessageBox, { conversation: conversation }), document.getElementById('MessageBox'));
 	});
 
-	exports.default = Inbox;
-
-	// inbox, conversation, message-box, messages
+	exports.default = MessageBox;
 
 /***/ },
 /* 1 */
@@ -21460,9 +21532,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 172 */,
-/* 173 */,
-/* 174 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21485,57 +21555,52 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Conversation = function (_React$Component) {
-	  _inherits(Conversation, _React$Component);
+	var Message = function (_React$Component) {
+	  _inherits(Message, _React$Component);
 
-	  function Conversation() {
-	    _classCallCheck(this, Conversation);
+	  function Message() {
+	    _classCallCheck(this, Message);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Conversation).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Message).apply(this, arguments));
 	  }
 
-	  _createClass(Conversation, [{
+	  _createClass(Message, [{
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props.message.body);
 	      return _react2.default.createElement(
-	        "a",
-	        { href: "/conversations/" + this.props.conversation.id },
+	        "div",
+	        { className: "col-xs-12 message-container well well-lg" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-xs-10" },
+	          { className: "message-picture col-xs-2" },
+	          _react2.default.createElement("img", { className: "img-rounded img-responsive", src: this.props.message.author.user_image }),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-xs-2" },
-	            _react2.default.createElement("img", { className: "img-responsive", src: this.props.conversation.message_partner.user_image })
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-xs-2" },
-	            _react2.default.createElement(
-	              "h5",
-	              null,
-	              this.props.conversation.message_partner.first_name
-	            ),
-	            _react2.default.createElement(
-	              "h5",
-	              null,
-	              this.props.conversation.messages[0].created_at
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-xs-8" },
-	            this.props.conversation.messages[0].body
+	            { className: "message-date" },
+	            this.props.message.created_at
 	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "message-body col-xs-8 col-xs-offset-1" },
+	          this.props.message.body.split('\n').map(function (item) {
+	            return _react2.default.createElement(
+	              "span",
+	              null,
+	              item,
+	              _react2.default.createElement("br", null)
+	            );
+	          })
 	        )
 	      );
 	    }
 	  }]);
 
-	  return Conversation;
+	  return Message;
 	}(_react2.default.Component);
 
-	exports.default = Conversation;
+	exports.default = Message;
 
 /***/ }
 /******/ ]);

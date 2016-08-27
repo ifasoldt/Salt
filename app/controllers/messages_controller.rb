@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
     # But I want to find them right here.
     @conversation = Conversation.unscoped.find_by(sender_id: params[:recipient_id], recipient_id: current_user.id)
     unless @conversation
-      @conversation = Conversation.unscoped.find_or_create_by(sender_id: current_user.id], recipient_id: params[:recipient_id])
+      @conversation = Conversation.unscoped.find_or_create_by(sender_id: current_user.id, recipient_id: params[:recipient_id])
     end
-    @message = @conversation.messages.new(message_params)
+    @message = @conversation.messages.new(message_params.merge(author_id: current_user.id))
     if @message.save
       render json: @message
     else

@@ -8,8 +8,11 @@ class UserSerializer < ActiveModel::Serializer
   has_many :images
 
   def user_image
-    #object.images.first is sometimes nil so file_attacher method breaks... Need to wrap in an if statement.
-    Refile.attachment_url(object.images.first, :file, :fill, 400, 400) if object.images.first
+    if object.images.first
+      Refile.attachment_url(object.images.first, :file, :fill, 400, 400)
+    else
+      "/assets/no_pic.png"
+    end
   end
 
 end

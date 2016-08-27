@@ -54,7 +54,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Event = __webpack_require__(172);
+	var _Event = __webpack_require__(173);
 
 	var _Event2 = _interopRequireDefault(_Event);
 
@@ -21414,7 +21414,8 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 172 */
+/* 172 */,
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

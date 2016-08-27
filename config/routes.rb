@@ -7,6 +7,7 @@ end
 resources :users, except:[:index, :edit, :create, :new, :update]
 resources :thumbs, only: [:create]
 resources :conversations, only: [:index, :show]
+resources :messages, only: [:create]
 
 root 'welcome#index'
 

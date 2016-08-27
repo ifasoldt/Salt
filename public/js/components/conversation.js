@@ -3,7 +3,7 @@ import React from 'react'
 class Conversation extends React.Component  {
   render(){
     return(
-      <a href={"/conversation/" + this.props.conversation.id}>
+      <a href={"/conversations/" + this.props.conversation.id}>
         <div className="col-xs-10" >
           <div className="col-xs-2">
             <img className="img-responsive" src={this.props.conversation.message_partner.user_image} />

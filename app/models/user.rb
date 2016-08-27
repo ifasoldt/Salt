@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # doesn't validate presence of address if all_blank
   accepts_nested_attributes_for :address, reject_if: :all_blank
   has_many :hosted_events, class_name: 'Event', foreign_key: 'host_id', dependent: :destroy
+  has_many :authored_messages, class_name: 'Message', foreign_key: 'author_id'
   # has_many :conversations, ->(user){ where("conversations.sender_id = :user_id OR conversations.recipient_id = :user_id", user_id: user.id) }
   has_many :events, through: :applications
   has_many :comments

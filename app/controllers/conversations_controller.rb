@@ -9,6 +9,9 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    render json: @conversation
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @conversation, include: ['messages', 'messages.author', 'message_partner']}
+    end
   end
 end
