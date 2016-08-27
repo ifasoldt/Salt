@@ -15,4 +15,8 @@ class UserSerializer < ActiveModel::Serializer
     end
   end
 
+  def date_of_birth
+    object[:date_of_birth].strftime('%B %d, %Y')
+  end  
+
 end

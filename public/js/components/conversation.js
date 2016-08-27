@@ -1,6 +1,7 @@
 import React from 'react'
 
 class Conversation extends React.Component  {
+  
   render(){
     return(
       <a href={"/conversations/" + this.props.conversation.id}>
