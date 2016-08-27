@@ -1,0 +1,11 @@
+.conversation-container{
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color:black;
+}
+
+.message-preview{
+  font-size: 20px;
+}

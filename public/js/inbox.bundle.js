@@ -21502,30 +21502,30 @@
 	        { href: "/conversations/" + this.props.conversation.id },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-xs-10" },
+	          { className: "col-xs-10 conversation-container" },
 	          _react2.default.createElement(
 	            "div",
 	            { className: "col-xs-2" },
-	            _react2.default.createElement("img", { className: "img-responsive", src: this.props.conversation.message_partner.user_image })
+	            _react2.default.createElement("img", { className: "img-responsive img-circle", src: this.props.conversation.message_partner.user_image })
 	          ),
 	          _react2.default.createElement(
 	            "div",
 	            { className: "col-xs-2" },
 	            _react2.default.createElement(
-	              "h5",
+	              "h4",
 	              null,
 	              this.props.conversation.message_partner.first_name
 	            ),
 	            _react2.default.createElement(
-	              "h5",
+	              "h4",
 	              null,
 	              this.props.conversation.messages[0].created_at
 	            )
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-xs-8" },
-	            this.props.conversation.messages[0].body
+	            { className: "col-xs-8 message-preview" },
+	            this.props.conversation.message_preview.split(';')[1]
 	          )
 	        )
 	      );
