@@ -27215,68 +27215,153 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-12 col-sm-4 user_info' },
-	            _react2.default.createElement('img', { className: 'user_image img-responsive', src: this.state.user.user_image }),
+	            _react2.default.createElement('img', { className: 'user_image center-block img-responsive', src: this.state.user.user_image }),
 	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              'Events Attended: ',
-	              this.state.user.attended_events_count
+	              'div',
+	              { className: 'center-block eventsInfoBox' },
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                _react2.default.createElement(
+	                  'span',
+	                  null,
+	                  'Events Attended:'
+	                ),
+	                ' ',
+	                this.state.user.attended_events_count
+	              ),
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                _react2.default.createElement(
+	                  'span',
+	                  null,
+	                  'Events Hosted:'
+	                ),
+	                ' ',
+	                this.state.user.hosted_events_count
+	              )
 	            ),
 	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              'Events Hosted: ',
-	              this.state.user.hosted_events_count
-	            ),
-	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              this.state.user.date_of_birth
-	            ),
-	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              this.state.user.phone
-	            ),
-	            _react2.default.createElement(
-	              'h3',
-	              null,
-	              'Address:'
-	            ),
-	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              this.state.address.street
-	            ),
-	            _react2.default.createElement(
-	              'h4',
-	              { className: 'user_city' },
-	              this.state.address.city,
-	              ','
-	            ),
-	            _react2.default.createElement(
-	              'h4',
-	              { className: 'user_state' },
-	              this.state.address.state
-	            ),
-	            _react2.default.createElement(
-	              'h4',
-	              { className: 'user_zip' },
-	              this.state.address.zip
+	              'div',
+	              { className: 'center-block personelInfoBox' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'personelContainer' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'iconContainer' },
+	                  _react2.default.createElement('i', { className: 'fa fa-birthday-cake', 'aria-hidden': 'true' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'infoContainer' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'Date of Birth'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    this.state.user.date_of_birth
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'personelContainer' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'iconContainer' },
+	                  _react2.default.createElement('i', { className: 'fa fa-phone-square', 'aria-hidden': 'true' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'infoContainer' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'Phone Number'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    this.state.user.phone
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'personelContainer' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'iconContainer' },
+	                  _react2.default.createElement('i', { className: 'fa fa-globe', 'aria-hidden': 'true' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'infoContainer' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'Address:'
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    this.state.address.street
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'user_city' },
+	                    this.state.address.city,
+	                    ','
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'user_state' },
+	                    this.state.address.state
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'user_zip' },
+	                    this.state.address.zip
+	                  )
+	                )
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-12 col-sm-7' },
 	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              this.state.user.full_name
+	              'div',
+	              { className: 'profileNameBox' },
+	              _react2.default.createElement(
+	                'h1',
+	                null,
+	                'Welcome Back, ',
+	                this.state.user.full_name
+	              )
 	            ),
 	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              this.state.user.description
+	              'div',
+	              { className: 'aboutMeBox' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                'About You:'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'aboutMeDescriptionBox' },
+	                _react2.default.createElement(
+	                  'h5',
+	                  null,
+	                  this.state.user.description
+	                )
+	              )
 	            ),
 	            _react2.default.createElement(
 	              'ul',

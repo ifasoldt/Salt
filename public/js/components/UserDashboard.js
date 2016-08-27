@@ -30,20 +30,54 @@ class UserDashboard extends React.Component  {
         <div className="container-fluid">
           <div className="row">
               <div className="col-xs-12 col-sm-4 user_info">
-                <img className="user_image img-responsive" src={this.state.user.user_image} />
-                <h4>Events Attended: {this.state.user.attended_events_count}</h4>
-                <h4>Events Hosted: {this.state.user.hosted_events_count}</h4>
-                <h4>{this.state.user.date_of_birth}</h4>
-                <h4>{this.state.user.phone}</h4>
-                <h3>Address:</h3>
-                <h4>{this.state.address.street}</h4>
-                <h4 className="user_city">{this.state.address.city},</h4>
-                <h4 className="user_state">{this.state.address.state}</h4>
-                <h4 className="user_zip">{this.state.address.zip}</h4>
+                <img className="user_image center-block img-responsive" src={this.state.user.user_image} />
+                <div className="center-block eventsInfoBox">
+                  <span><span>Events Attended:</span> {this.state.user.attended_events_count}</span>
+                  <span><span>Events Hosted:</span> {this.state.user.hosted_events_count}</span>
+                </div>
+                <div className="center-block personelInfoBox">
+                  <div className="personelContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-birthday-cake" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h4>Date of Birth</h4>
+                      <p>{this.state.user.date_of_birth}</p>
+                    </div>
+                  </div>
+                  <div className="personelContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-phone-square" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h4>Phone Number</h4>
+                      <p>{this.state.user.phone}</p>
+                    </div>
+                  </div>
+                  <div className="personelContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h4>Address:</h4>
+                      <div>{this.state.address.street}</div>
+                      <span className="user_city">{this.state.address.city},</span>
+                      <span className="user_state">{this.state.address.state}</span>
+                      <span className="user_zip">{this.state.address.zip}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="col-xs-12 col-sm-7">
-                <h2>{this.state.user.full_name}</h2>
-                <h4>{this.state.user.description}</h4>
+                <div className="profileNameBox">
+                  <h1>Welcome Back, {this.state.user.full_name}</h1>
+                </div>
+                <div className="aboutMeBox">
+                  <h3>About You:</h3>
+                  <div className="aboutMeDescriptionBox">
+                    <h5>{this.state.user.description}</h5>
+                  </div>
+                </div>
                 <ul className="nav nav-pills">
                   <li role="presentation">
                     <a onClick={() => browserHistory.push('/current_user/dashboard/hosting')}>Events Hosting</a>

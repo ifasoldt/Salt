@@ -12,4 +12,8 @@ class UserSerializer < ActiveModel::Serializer
     Refile.attachment_url(object.images.first, :file, :fill, 400, 400) if object.images.first
   end
 
+  def date_of_birth
+    object[:date_of_birth].strftime('%B %d, %Y')
+  end  
+
 end

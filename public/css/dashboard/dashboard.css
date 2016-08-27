@@ -3,12 +3,7 @@ body {
 }
 
 .user_info {
-  padding-left: 50px;
-  padding-top: 20px;
-}
-
-.user_info h3, .user_info h4 {
-  margin: 0;
+  margin-top: 20px;
 }
 
 .user_info .user_image {
@@ -16,25 +11,101 @@ body {
   border-radius: 10px;
 }
 
-.user_info .user_city, .user_info .user_state {
-  display: inline-block;
+.user_info .eventsInfoBox {
+  padding: 10px;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user_info .personelInfoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.user_info .personelInfoBox .personelContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.user_info .personelInfoBox .personelContainer .iconContainer {
+  font-size: 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_info .personelInfoBox .personelContainer .infoContainer {
+  flex: 3;
+}
+
+.user_info .user_state, .user_info .user_zip {
+  margin-left: 4px;
+}
+
+.profileNameBox {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.profileNameBox h1 {
+  margin: 0;
+}
+
+.aboutMeBox {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.aboutMeBox h3, .aboutMeBox h5 {
+  margin: 0;
+}
+
+.aboutMeBox .aboutMeDescriptionBox {
+  padding: 10px;
+  border-top: 1px solid black;
 }
 
 .scroll_box {
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 5px;
+  border-top-left-radius: 0px;
   background-color: white;
   overflow-y: scroll;
-  height: 400px;
+  height: 500px;
+  border: 1px solid black;
 }
 
 td {
   vertical-align: middle !important;
 }
 
+.nav.nav-pills {
+  margin-top: 10px;
+}
+
 .nav.nav-pills a {
   cursor: pointer;
+  color: black;
+  font-size: 20px;
+}
+
+.nav.nav-pills a:hover {
+  background-color: inherit;
 }
 
 .user_profile .profile_image {
@@ -46,6 +117,12 @@ td {
 .user_profile a {
   color: black;
   cursor: pointer;
+}
+
+.panel-heading {
+  background-color: black !important;
+  color: white !important;
+  border-bottom: 0 !important;
 }
 
 .nameHeader {
