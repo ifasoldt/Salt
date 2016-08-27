@@ -6,6 +6,7 @@ resources :events, except: [:create, :update] do
 end
 resources :users, except:[:index, :edit, :create, :new, :update]
 resources :thumbs, only: [:create]
+resources :conversations, only: [:index, :show]
 
 root 'welcome#index'
 
