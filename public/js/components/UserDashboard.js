@@ -71,9 +71,7 @@ class UserDashboard extends React.Component  {
               <div className="col-xs-12 col-sm-7">
                 <div className="profileNameBox">
                   <h1>Welcome Back, {this.state.user.full_name}</h1>
-                </div>
-                <div className="aboutMeBox">
-                  <h3>About You:</h3>
+                  <h3 className="aboutYou">About You:</h3>
                   <div className="aboutMeDescriptionBox">
                     <h5>{this.state.user.description}</h5>
                   </div>

@@ -1,6 +1,11 @@
 var eventID = document.getElementById('current_event')
 var current_event = eventID.getAttribute('data-id')
 
+$(document).ready(function(){
+  $("#date").flatpickr()
+  $("#time").flatpickr()
+})
+
 // edit event
 document.getElementById('btn_event_submit').addEventListener('click', function () {
   removeErrors()

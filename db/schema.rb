@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(version: 20160826193919) do
     t.string   "status"
   end
 
-  create_table "birthdates", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "year"
-    t.integer  "month"
-    t.integer  "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"

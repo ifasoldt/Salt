@@ -47,29 +47,22 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin-top: 20px;
-  h1 {
+  h1, h3, h5 {
     margin: 0;
   }
-}
-.aboutMeBox {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
-  h3, h5 {
-    margin: 0;
+  .aboutYou {
+    margin-top: 20px;
   }
   .aboutMeDescriptionBox {
     padding: 10px;
     border-top: 1px solid black;
   }
 }
+
 .scroll_box {
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 5px;
-  border-top-left-radius: 0px;
   background-color: white;
   overflow-y: scroll;
   height: 500px;
