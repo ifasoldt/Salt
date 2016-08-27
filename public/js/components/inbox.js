@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Conversation from './conversation'
 
-class Inbox extends React.Component  {
+class Inbox extends React.Component {
   render(){
     var conversations = this.props.conversations.map((conversation, key) => {
       return <Conversation conversation={conversation} key={key}/>
@@ -15,10 +15,11 @@ class Inbox extends React.Component  {
   }
 }
 
-fetchApi('GET', `/events/${this.state.events.id}/comments/${this.state.commentId}`, {}, (response, statusCode) =>{
+fetchApi('GET', `/conversations.json`, {}, (response, statusCode) =>{
+  console.log(response)
   var conversations = response
   ReactDOM.render(<Inbox conversations={conversations}/>, document.getElementById('inbox'))
-}
+})
 
 
 export default Inbox
