@@ -27363,7 +27363,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-12 col-sm-6 col-sm-8' },
+	            { className: 'col-xs-12 col-sm-6 col-md-8' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'profileNameBox' },

@@ -100,6 +100,7 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .profileNameBox h1, .profileNameBox h3, .profileNameBox h5 {
@@ -115,15 +116,20 @@ body {
   border-top: 1px solid black;
 }
 
+.profileNameBox .aboutMeDescriptionBox h5 {
+  font-size: 18px;
+}
+
 .scroll_box {
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 5px;
   background-color: white;
   overflow-y: scroll;
-  height: 486px;
+  height: 500px;
   border: 1px solid black;
   margin-bottom: 40px;
+  width: 95%;
 }
 
 td {
@@ -193,4 +199,13 @@ td {
 
 .text_input {
   height: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .profileNameBox {
+    width: 95%;
+  }
+  .scroll_box {
+    width: 95;
+  }
 }

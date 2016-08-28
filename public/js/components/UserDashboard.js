@@ -75,7 +75,7 @@ class UserDashboard extends React.Component  {
                   <a href="#" data-toggle="modal" data-target="#profileModal"><button className="btn">Edit Profile</button></a>
                 </div>
               </div>
-              <div className="col-xs-12 col-sm-6 col-sm-8">
+              <div className="col-xs-12 col-sm-6 col-md-8">
                 <div className="profileNameBox">
                   <h1>Welcome Back, {this.state.user.full_name}</h1>
                   <h3 className="aboutYou">About You:</h3>
