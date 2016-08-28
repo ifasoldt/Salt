@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 
 class UserDashboard extends React.Component  {
   constructor(props) {
@@ -29,11 +29,13 @@ class UserDashboard extends React.Component  {
       return (
         <div className="container-fluid">
           <div className="row">
-              <div className="col-xs-12 col-sm-4 user_info">
-                <img className="user_image center-block img-responsive" src={this.state.user.user_image} />
-                <div className="center-block eventsInfoBox">
-                  <span><span>Events Attended:</span> {this.state.user.attended_events_count}</span>
-                  <span><span>Events Hosted:</span> {this.state.user.hosted_events_count}</span>
+              <div className="col-xs-12 col-sm-6 col-md-4 user_info">
+                <div className="center-block profileImageBox">
+                  <img className="user_image center-block img-responsive" src={this.state.user.user_image} />
+                  <div className="center-block eventsInfoBox">
+                    <span>{this.state.user.hosted_events_count}<span className="eventsSpan">events hosted</span> </span>
+                    <span>{this.state.user.attended_events_count}<span className="eventsSpan">events attended</span> </span>
+                  </div>
                 </div>
                 <div className="center-block personelInfoBox">
                   <div className="personelContainer">
@@ -60,15 +62,19 @@ class UserDashboard extends React.Component  {
                     </div>
                     <div className="infoContainer">
                       <h4>Address:</h4>
-                      <div>{this.state.address.street}</div>
+                      <div className="user_street">{this.state.address.street}</div>
                       <span className="user_city">{this.state.address.city},</span>
                       <span className="user_state">{this.state.address.state}</span>
                       <span className="user_zip">{this.state.address.zip}</span>
                     </div>
                   </div>
                 </div>
+                <div className="center-block buttonsBox">
+                  <a href="#" data-toggle="modal" data-target="#eventModal"><button className="btn">Create Event</button></a>
+                  <a href="#" data-toggle="modal" data-target="#profileModal"><button className="btn">Edit Profile</button></a>
+                </div>
               </div>
-              <div className="col-xs-12 col-sm-7">
+              <div className="col-xs-12 col-sm-6 col-sm-8">
                 <div className="profileNameBox">
                   <h1>Welcome Back, {this.state.user.full_name}</h1>
                   <h3 className="aboutYou">About You:</h3>
@@ -78,20 +84,13 @@ class UserDashboard extends React.Component  {
                 </div>
                 <ul className="nav nav-pills">
                   <li role="presentation">
-                    <a onClick={() => browserHistory.push('/current_user/dashboard/hosting')}>Events Hosting</a>
+                    <Link onlyActiveOnIndex activeStyle={{color:'pink'}} to='/current_user/dashboard'>Events Hosting</Link>
                   </li>
                   <li role="presentation">
-                    <a onClick={() => browserHistory.push('/current_user/dashboard/attending')}>Events Attending</a>
+                    <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/attending'>Events Attending</Link>
                   </li>
-                  <li role="presentation" className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span className="caret"></span> </a>
-                    <ul className="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li role="separator" className="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                    </ul>
+                  <li role="presentation">
+                    <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/messages'>Messages</Link>
                   </li>
                 </ul>
                 <div className="scroll_box">

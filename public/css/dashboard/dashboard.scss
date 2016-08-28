@@ -3,30 +3,48 @@ body {
 }
 .user_info {
   margin-top: 20px;
+  .profileImageBox {
+    width: 75%;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
   .user_image {
     width: 300px;
     border-radius: 10px;
   }
   .eventsInfoBox {
-    padding: 10px;
-    width: 70%;
+    padding-top: 5px;
+    font-size: 17px;
     display: flex;
     justify-content: space-around;
+    .eventsSpan {
+      margin-left: 3px;
+    }
   }
   .personelInfoBox {
     display: flex;
     flex-direction: column;
     padding: 10px;
     background-color: white;
-    width: 60%;
+    width: 75%;
     border: 1px solid black;
     border-radius: 5px;
+    margin-bottom: 20px;
+    h4 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 17px;
+    }
     .personelContainer {
       display: flex;
       flex: 1;
       flex-direction: row;
       .iconContainer {
-        font-size: 20px;
+        font-size: 30px;
         flex: 1;
         display: flex;
         align-items: center;
@@ -35,10 +53,29 @@ body {
       .infoContainer {
         flex: 3;
       }
+      .user_street, .user_city, .user_state, .user_zip {
+        font-size: 17px;
+      }
     }
   }
   .user_state, .user_zip {
     margin-left: 4px;
+  }
+  .buttonsBox {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: white;
+    width: 75%;
+    border: 1px solid black;
+    border-radius: 5px;
+    button {
+      background-color: black;
+      color: white;
+    }
+    button:hover {
+      color: pink;
+    }
   }
 }
 .profileNameBox {
@@ -65,8 +102,9 @@ body {
   border-radius: 5px;
   background-color: white;
   overflow-y: scroll;
-  height: 500px;
+  height: 486px;
   border: 1px solid black;
+  margin-bottom: 40px;
 }
 
 td {
