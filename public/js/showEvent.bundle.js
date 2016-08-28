@@ -21509,6 +21509,7 @@
 	    _this.setCommentId = _this.setCommentId.bind(_this);
 	    _this.flag = _this.flag.bind(_this);
 	    _this.messageHost = _this.messageHost.bind(_this);
+	    _this.mountSlider = _this.mountSlider.bind(_this);
 	    _this.messageChange = _this.messageChange.bind(_this);
 
 	    _this.state = {
@@ -21552,26 +21553,12 @@
 	    value: function flag() {
 	      var _this3 = this;
 
-	      fetchApi('PATCH', '/events/' + this.state.events.id + '/comments/' + this.state.commentId, { flagged: true }, function (response, statusCode) {
-	        //success
-	        if (statusCode >= 200 && statusCode < 300) {
-	          // is it weird to use jquery here?
-	          $('#commentFlag-modal').modal('hide');
-	          var hiddenComments = _this3.state.hiddenComments;
-	          hiddenComments.push(Number(_this3.state.commentId));
-	          console.log(hiddenComments);
-	          // works
-	          console.log(_this3.state.events);
-	          // comes back null
-	          console.log(_this3.state.commentId);
-	          // this.setState({hiddenComments: this.state.hiddenComments.concat(this.state.commentId)})
-	          _this3.setState({ hiddenComments: hiddenComments });
-	          console.log(_this3.state.hiddenComments);
-	          // this.updateEvents()
-	          _this3.setState({ commentId: '' });
-	        } else {
-	          alert('Error');
-	        }
+	      fetchApi('PATCH', '/events/' + this.state.events.id + '/comments/' + this.state.commentId, { flagged: true }, function (response) {
+	        $('#commentFlag-modal').modal('hide');
+	        var hiddenCommentsList = _this3.state.hiddenComments;
+	        hiddenCommentsList.push(Number(_this3.state.commentId));
+	        _this3.setState({ hiddenComments: hiddenCommentsList });
+	        _this3.setState({ commentId: '' });
 	      });
 	    }
 	  }, {
@@ -21608,37 +21595,8 @@
 	      this.setState({ messageValue: e.target.value });
 	    }
 	  }, {
-	    key: 'updateEvents',
-	    value: function updateEvents() {
-	      var _this5 = this;
-
-	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
-	        console.log(response);
-	        _this5.setState({
-	          events: response,
-	          sliderImages: response.event_images,
-	          host: response.host,
-	          markerArray: response.event_marker,
-	          comments: response.comments
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      var _this6 = this;
-
-	      if (!this.state.mapLoaded) {
-	        var handler = Gmaps.build('Google');
-	        var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
-	        handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
-	          var markers = handler.addMarkers(_this6.state.markerArray, { animation: 'DROP' });
-	          handler.bounds.extendWith(markers);
-	          handler.fitMapToBounds();
-	          handler.getMap().setZoom(14);
-	        });
-	        this.state.mapLoaded = true;
-	      }
+	    key: 'mountSlider',
+	    value: function mountSlider() {
 	      $("#slider").slick({
 	        infinite: true,
 	        arrows: true,
@@ -21662,6 +21620,40 @@
 	      });
 	    }
 	  }, {
+	    key: 'updateEvents',
+	    value: function updateEvents() {
+	      var _this5 = this;
+
+	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
+	        console.log(response);
+	        _this5.setState({
+	          events: response,
+	          sliderImages: response.event_images,
+	          host: response.host,
+	          markerArray: response.event_marker,
+	          comments: response.comments
+	        });
+	        _this5.mountSlider();
+	      });
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      var _this6 = this;
+
+	      if (!this.state.mapLoaded) {
+	        var handler = Gmaps.build('Google');
+	        var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
+	        handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
+	          var markers = handler.addMarkers(_this6.state.markerArray, { animation: 'DROP' });
+	          handler.bounds.extendWith(markers);
+	          handler.fitMapToBounds();
+	          handler.getMap().setZoom(14);
+	        });
+	        this.state.mapLoaded = true;
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this7 = this;
@@ -21682,15 +21674,12 @@
 	      });
 	      var msg_button = "";
 	      // button is rendering momentarily and then dissapearing
-	      if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) {
-	        msg_button = "";
-	      } else {
-	        msg_button = _react2.default.createElement(
-	          'button',
-	          { type: 'button', className: 'btn btn-primary message-button', 'data-toggle': 'modal', 'data-target': '#messageHostModal' },
-	          'Message Host'
-	        );
-	      }
+	      // if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id){
+	      //   msg_button = ""
+	      // }
+	      // else {
+	      //   msg_button = <button type="button" className="btn center-block message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
+	      // }
 
 	      var all_comments = this.state.comments.map(function (comment, key) {
 	        if (!_this7.state.hiddenComments.includes(comment.id) && comment.flagged != true) {
@@ -21705,15 +21694,21 @@
 	                { className: 'panel-title nameContainer' },
 	                _react2.default.createElement(
 	                  'h4',
-	                  { className: 'commentName' },
+	                  null,
 	                  comment.user.full_name,
 	                  ' says:'
 	                ),
-	                _react2.default.createElement('img', { src: '/assets/flag.png', className: 'commentFlag', style: { height: '10px' }, 'data-id': comment.id, onClick: _this7.setCommentId, 'data-toggle': 'modal', 'data-target': '#commentFlag-modal' }),
 	                _react2.default.createElement(
-	                  'h5',
-	                  { className: 'commentDateTime' },
-	                  comment.formated_created_at
+	                  'div',
+	                  { className: 'timeFlagContainer' },
+	                  _react2.default.createElement(
+	                    'h5',
+	                    null,
+	                    comment.formatted_created_at
+	                  ),
+	                  _react2.default.createElement('i', { className: 'fa fa-flag commentFlag', 'aria-hidden': 'true', 'data-toggle': 'modal', 'data-target': '#commentFlag-modal', 'data-id': comment.id, onClick: function onClick(e) {
+	                      return _this7.setCommentId(e);
+	                    } })
 	                )
 	              )
 	            ),
@@ -21728,7 +21723,7 @@
 	            )
 	          );
 	        }
-	        return _react2.default.createElement('div', null);
+	        return _react2.default.createElement('div', { key: key });
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -21743,154 +21738,211 @@
 	          { className: 'container-fluid' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'row whitebar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-4 col-sm-2' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'hostProfileContainer' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'row hostImgContainer' },
-	                  _react2.default.createElement('img', { src: this.state.host.user_image, className: 'img-circle hostImg', alt: '' })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'row hostTextContainer profile-text-margin' },
-	                  _react2.default.createElement(
-	                    'h2',
-	                    { className: 'hostsName text-center' },
-	                    this.state.host.first_name
-	                  )
-	                )
-	              ),
-	              msg_button,
-	              _react2.default.createElement('div', { className: 'col-xs-4 col-sm-2' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'text-center col-xs-12 col-sm-4' },
-	              _react2.default.createElement(
-	                'h1',
-	                { className: 'eventTitle' },
-	                this.state.events.title
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-6 col-sm-3' },
-	              _react2.default.createElement('img', { src: '/assets/calendar-icon.png', className: 'col-xs-4 img-responsive', alt: '' }),
-	              _react2.default.createElement(
-	                'h4',
-	                { className: 'eventDate' },
-	                this.state.events.formatted_date
-	              ),
-	              _react2.default.createElement(
-	                'h4',
-	                { className: 'eventTime' },
-	                this.state.events.formatted_time
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: ' col-xs-6 col-sm-3' },
-	              _react2.default.createElement('img', { src: '/assets/guests.png', className: 'col-xs-4 img-responsive', alt: '' }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'col-xs-8 guests-nums' },
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'row' },
-	                  this.state.events.confirmed_guests,
-	                  ' attending'
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'row' },
-	                  this.state.events.spots_left,
-	                  ' spots left'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-xs-6' },
+	              { className: 'col-xs-12 hidden-sm hidden-md hidden-lg' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'mainContainer' },
+	                { className: 'detailsContainer' },
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'descContainer' },
+	                  { className: 'titleContainer' },
 	                  _react2.default.createElement(
-	                    'h3',
-	                    { className: 'eventDesc' },
-	                    'Event Description:'
-	                  ),
+	                    'h1',
+	                    { className: 'eventTitle' },
+	                    this.state.events.title
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'detailsBottomContainer' },
 	                  _react2.default.createElement(
-	                    'h4',
-	                    { className: 'eventDescText' },
-	                    this.state.events.description
-	                  ),
-	                  _react2.default.createElement(
-	                    'h3',
-	                    { className: 'foodDesc' },
-	                    'Details:'
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    { className: 'foodDescText' },
+	                    'div',
+	                    { className: 'calendarContainer' },
 	                    _react2.default.createElement(
-	                      'strong',
-	                      null,
-	                      'Food/Drink:'
+	                      'div',
+	                      { className: 'iconContainer' },
+	                      _react2.default.createElement('i', { className: 'fa fa-calendar', 'aria-hidden': 'true' })
 	                    ),
-	                    this.state.events.food
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'datesContainer' },
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.formatted_date
+	                      ),
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.formatted_time
+	                      )
+	                    )
 	                  ),
 	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
+	                    'div',
+	                    { className: 'guestsContainer' },
 	                    _react2.default.createElement(
-	                      'strong',
+	                      'div',
+	                      { className: 'iconContainer' },
+	                      _react2.default.createElement('i', { className: 'fa fa-users', 'aria-hidden': 'true' })
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'numbersContainer' },
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.confirmed_guests,
+	                        ' attending'
+	                      ),
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.spots_left,
+	                        ' spots left'
+	                      )
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12 col-sm-4' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'hostProfileBox center-block', 'data-id': this.state.id },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'hostImgBox center-block' },
+	                  _react2.default.createElement('img', { src: this.state.host.user_image, className: 'img-responsive center-block hostImg', alt: '' }),
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'hostsName text-center' },
+	                    this.state.host.full_name
+	                  )
+	                ),
+	                msg_button
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'eventInfoBox center-block' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'eventDescContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'iconContainer' },
+	                    _react2.default.createElement('i', { className: 'fa fa-cutlery', 'aria-hidden': 'true' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'infoContainer' },
+	                    _react2.default.createElement(
+	                      'h3',
+	                      null,
+	                      'Event Description:'
+	                    ),
+	                    _react2.default.createElement(
+	                      'h4',
+	                      null,
+	                      this.state.events.description
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'detailsSubContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'iconContainer' },
+	                    _react2.default.createElement('i', { className: 'fa fa-sticky-note-o', 'aria-hidden': 'true' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'infoContainer' },
+	                    _react2.default.createElement(
+	                      'h3',
+	                      null,
+	                      'Details:'
+	                    ),
+	                    _react2.default.createElement(
+	                      'h4',
+	                      null,
+	                      this.state.events.food
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'eventSpecificBox center-block' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'childrenContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'iconContainer' },
+	                    _react2.default.createElement('i', { className: 'fa fa-child', 'aria-hidden': 'true' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'infoContainer' },
+	                    _react2.default.createElement(
+	                      'h3',
 	                      null,
 	                      'Children Welcome?:'
 	                    ),
-	                    ' ',
 	                    _react2.default.createElement(
-	                      'span',
+	                      'h3',
 	                      { style: this.state.events.allow_children ? greenColor : redColor },
 	                      this.state.events.allow_children ? 'Yes' : 'No'
 	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'alcoholContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'iconContainer' },
+	                    _react2.default.createElement('i', { className: 'fa fa-beer', 'aria-hidden': 'true' })
 	                  ),
 	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
+	                    'div',
+	                    { className: 'infoContainer' },
 	                    _react2.default.createElement(
-	                      'strong',
+	                      'h3',
 	                      null,
 	                      'Alcohol Welcome?:'
 	                    ),
-	                    ' ',
 	                    _react2.default.createElement(
-	                      'span',
+	                      'h3',
 	                      { style: this.state.events.alcohol_allowed ? greenColor : redColor },
 	                      this.state.events.alcohol_allowed ? 'Yes' : 'No'
 	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'guestInfoContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'iconContainer' },
+	                    _react2.default.createElement('i', { className: 'fa fa-users', 'aria-hidden': 'true' })
 	                  ),
 	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
+	                    'div',
+	                    { className: 'infoContainer' },
 	                    _react2.default.createElement(
-	                      'strong',
+	                      'h3',
 	                      null,
 	                      'Guest Limit:'
 	                    ),
 	                    _react2.default.createElement(
-	                      'span',
+	                      'h3',
 	                      { style: this.state.events.unlimited_guests ? redColor : greenColor },
 	                      this.state.events.guest_limit || "Unlimited"
 	                    )
@@ -21898,29 +21950,98 @@
 	                )
 	              )
 	            ),
-	            _react2.default.createElement('div', { className: 'col-xs-6', id: 'map', style: { height: '600px' } })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid comments-area' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-10 col-xs-offset-1' },
-	            _react2.default.createElement(
-	              'h3',
-	              { className: 'commentsTitle' },
-	              _react2.default.createElement(
-	                'strong',
-	                null,
-	                'Questions and Comments'
-	              )
-	            ),
-	            _react2.default.createElement('input', { type: 'text', placeholder: 'Type a comment here', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'commentsScrollBox' },
-	              all_comments
+	              { className: 'col-xs-12 col-sm-8' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'hidden-xs' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'detailsContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'titleContainer' },
+	                    _react2.default.createElement(
+	                      'h1',
+	                      { className: 'eventTitle' },
+	                      this.state.events.title
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'calendarContainer' },
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'iconContainer' },
+	                      _react2.default.createElement('i', { className: 'fa fa-calendar', 'aria-hidden': 'true' })
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'datesContainer' },
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.formatted_date
+	                      ),
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.formatted_time
+	                      )
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'guestsContainer' },
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'iconContainer' },
+	                      _react2.default.createElement('i', { className: 'fa fa-users', 'aria-hidden': 'true' })
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'numbersContainer' },
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.confirmed_guests,
+	                        ' attending'
+	                      ),
+	                      _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.events.spots_left,
+	                        ' spots left'
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'mapBox' },
+	                _react2.default.createElement('div', { id: 'map' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'commentsBox' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'commentsTitle' },
+	                  _react2.default.createElement(
+	                    'strong',
+	                    null,
+	                    'Questions and Comments'
+	                  )
+	                ),
+	                _react2.default.createElement('input', { type: 'text', placeholder: 'Type a comment here', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'commentsScrollBox' },
+	                  all_comments
+	                )
+	              )
 	            )
 	          )
 	        ),

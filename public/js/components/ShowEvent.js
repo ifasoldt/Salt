@@ -9,6 +9,7 @@ class ShowEvent extends React.Component  {
     this.setCommentId = this.setCommentId.bind(this)
     this.flag = this.flag.bind(this)
     this.messageHost = this.messageHost.bind(this)
+    this.mountSlider = this.mountSlider.bind(this)
     this.messageChange = this.messageChange.bind(this)
 
     this.state = {
@@ -40,29 +41,13 @@ class ShowEvent extends React.Component  {
       }
     })
   }
-
   flag() {
-    fetchApi('PATCH', `/events/${this.state.events.id}/comments/${this.state.commentId}`, {flagged: true}, (response, statusCode) =>{
-      //success
-      if (statusCode >= 200 && statusCode < 300) {
-        // is it weird to use jquery here?
-        $('#commentFlag-modal').modal('hide')
-        var hiddenComments = this.state.hiddenComments
-        hiddenComments.push(Number(this.state.commentId))
-        console.log(hiddenComments)
-        // works
-        console.log(this.state.events)
-        // comes back null
-        console.log(this.state.commentId)
-        // this.setState({hiddenComments: this.state.hiddenComments.concat(this.state.commentId)})
-        this.setState({hiddenComments: hiddenComments})
-        console.log(this.state.hiddenComments)
-        // this.updateEvents()
-        this.setState({commentId:''})
-      }
-      else {
-        alert('Error')
-      }
+    fetchApi('PATCH', `/events/${this.state.events.id}/comments/${this.state.commentId}`, {flagged: true}, (response) => {
+      $('#commentFlag-modal').modal('hide')
+      var hiddenCommentsList = this.state.hiddenComments
+      hiddenCommentsList.push(Number(this.state.commentId))
+      this.setState({hiddenComments: hiddenCommentsList})
+      this.setState({commentId:''})
     })
   }
 
@@ -91,30 +76,7 @@ class ShowEvent extends React.Component  {
   messageChange(e) {
     this.setState({messageValue: e.target.value})
   }
-  updateEvents() {
-    fetchApi('GET', `/api/events/${current_event}.json`, {}, (response) => {
-      console.log(response)
-      this.setState({
-        events: response,
-        sliderImages: response.event_images,
-        host: response.host,
-        markerArray: response.event_marker,
-        comments: response.comments
-      })
-    })
-  }
-  componentDidUpdate () {
-    if (!this.state.mapLoaded){
-      var handler = Gmaps.build('Google')
-      var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
-      handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
-      var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
-      handler.bounds.extendWith(markers)
-      handler.fitMapToBounds()
-      handler.getMap().setZoom(14)
-      })
-    this.state.mapLoaded = true
-    }
+  mountSlider () {
     $("#slider").slick({
       infinite: true,
       arrows: true,
@@ -137,6 +99,32 @@ class ShowEvent extends React.Component  {
         }]
     })
   }
+  updateEvents() {
+    fetchApi('GET', `/api/events/${current_event}.json`, {}, (response) => {
+      console.log(response)
+      this.setState({
+        events: response,
+        sliderImages: response.event_images,
+        host: response.host,
+        markerArray: response.event_marker,
+        comments: response.comments
+      })
+      this.mountSlider()
+    })
+  }
+  componentDidUpdate () {
+    if (!this.state.mapLoaded){
+      var handler = Gmaps.build('Google')
+      var mapStyle = [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
+      handler.buildMap({ provider: {styles: mapStyle, scrollwheel: false}, internal: {id: 'map'}}, () => {
+      var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
+      handler.bounds.extendWith(markers)
+      handler.fitMapToBounds()
+      handler.getMap().setZoom(14)
+      })
+    this.state.mapLoaded = true
+    }
+  }
     render() {
       var greenColor = {
         color: 'lightgreen'
@@ -148,28 +136,30 @@ class ShowEvent extends React.Component  {
         var imageStyle = {
           backgroundImage: `url(${image})`,
           backgroundPosition: 'center',
-          backgroundSize: 'cover',
+          backgroundSize: 'cover'
         }
         return <div style={imageStyle} className="slideImageStyle" key={key}></div>
       })
       var msg_button = ""
       // button is rendering momentarily and then dissapearing
-      if(document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id){
-        msg_button = ""
-      }
-      else {
-        msg_button = <button type="button" className="btn btn-primary message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
-      }
+      // if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id){
+      //   msg_button = ""
+      // }
+      // else {
+      //   msg_button = <button type="button" className="btn center-block message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
+      // }
 
       var all_comments = this.state.comments.map((comment, key) => {
-        if(!this.state.hiddenComments.includes(comment.id) && comment.flagged != true){
-          return(
+        if (!this.state.hiddenComments.includes(comment.id) && comment.flagged != true){
+          return (
             <div className="panel panel-default commentContainer" key={key}>
               <div className="panel-heading rightContainer">
                 <div className="panel-title nameContainer">
-                  <h4 className="commentName">{comment.user.full_name} says:</h4>
-                  <img src="/assets/flag.png" className="commentFlag" style={{height:'10px'}} data-id={comment.id} onClick={this.setCommentId} data-toggle="modal" data-target="#commentFlag-modal"/>
-                  <h5 className="commentDateTime">{comment.formated_created_at}</h5>
+                  <h4>{comment.user.full_name} says:</h4>
+                  <div className="timeFlagContainer">
+                    <h5>{comment.formatted_created_at}</h5>
+                    <i className="fa fa-flag commentFlag" aria-hidden="true" data-toggle="modal" data-target="#commentFlag-modal" data-id={comment.id} onClick={(e) => this.setCommentId(e)}></i>
+                  </div>
                 </div>
               </div>
               <div className="panel-body bodyContainer">
@@ -179,7 +169,7 @@ class ShowEvent extends React.Component  {
           )
         }
         return(
-          <div></div>
+          <div key={key}></div>
         )
       })
       return (
@@ -188,59 +178,128 @@ class ShowEvent extends React.Component  {
             {sliderImageElements}
           </div>
           <div className="container-fluid">
-            <div className="row whitebar">
-              <div className="col-xs-4 col-sm-2">
-                <div className="hostProfileContainer">
-                  <div className="row hostImgContainer">
-                    <img src={this.state.host.user_image} className="img-circle hostImg" alt="" />
-                  </div>
-                  <div className="row hostTextContainer profile-text-margin">
-                    <h2 className="hostsName text-center">{this.state.host.first_name}</h2>
-                  </div>
-                </div>
-                  {msg_button}
-                <div className="col-xs-4 col-sm-2">
-                </div>
-              </div>
-              <div className="text-center col-xs-12 col-sm-4">
-                <h1 className="eventTitle">{this.state.events.title}</h1>
-              </div>
-              <div className="col-xs-6 col-sm-3">
-                <img src="/assets/calendar-icon.png" className="col-xs-4 img-responsive" alt="" />
-                <h4 className="eventDate">{this.state.events.formatted_date}</h4>
-                <h4 className="eventTime">{this.state.events.formatted_time}</h4>
-              </div>
-              <div className=" col-xs-6 col-sm-3">
-                <img src="/assets/guests.png" className="col-xs-4 img-responsive" alt="" />
-                <div className="col-xs-8 guests-nums">
-                  <h4 className="row">{this.state.events.confirmed_guests} attending</h4>
-                  <h4 className="row">{this.state.events.spots_left} spots left</h4>
-                </div>
-              </div>
-            </div>
             <div className="row">
-              <div className="col-xs-6">
-                <div className="mainContainer">
-                  <div className="descContainer">
-                    <h3 className="eventDesc">Event Description:</h3>
-                    <h4 className="eventDescText">{this.state.events.description}</h4>
-                    <h3 className="foodDesc">Details:</h3>
-                    <h4 className="foodDescText"><strong>Food/Drink:</strong>{this.state.events.food}</h4>
-                    <h4><strong>Children Welcome?:</strong> <span style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</span></h4>
-                    <h4><strong>Alcohol Welcome?:</strong> <span style={this.state.events.alcohol_allowed ? greenColor : redColor}>{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</span></h4>
-                    <h4><strong>Guest Limit:</strong><span style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</span></h4>
+              <div className="col-xs-12 hidden-sm hidden-md hidden-lg">
+                <div className="detailsContainer">
+                  <div className="titleContainer">
+                    <h1 className="eventTitle">{this.state.events.title}</h1>
+                  </div>
+                  <div className="detailsBottomContainer">
+                    <div className="calendarContainer">
+                      <div className="iconContainer">
+                        <i className="fa fa-calendar" aria-hidden="true"></i>
+                      </div>
+                      <div className="datesContainer">
+                        <h4>{this.state.events.formatted_date}</h4>
+                        <h4>{this.state.events.formatted_time}</h4>
+                      </div>
+                    </div>
+                    <div className="guestsContainer">
+                      <div className="iconContainer">
+                        <i className="fa fa-users" aria-hidden="true"></i>
+                      </div>
+                      <div className="numbersContainer">
+                        <h4>{this.state.events.confirmed_guests} attending</h4>
+                        <h4>{this.state.events.spots_left} spots left</h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-xs-6" id="map" style={{height: '600px'}}></div>
-            </div>
-          </div>
-          <div className="container-fluid comments-area">
-            <div className="col-xs-10 col-xs-offset-1">
-              <h3 className="commentsTitle"><strong>Questions and Comments</strong></h3>
-              <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
-              <div className="commentsScrollBox">
-                {all_comments}
+              <div className="col-xs-12 col-sm-4">
+                <div className="hostProfileBox center-block" data-id={this.state.id}>
+                  <div className="hostImgBox center-block">
+                    <img src={this.state.host.user_image} className="img-responsive center-block hostImg" alt="" />
+                    <h2 className="hostsName text-center">{this.state.host.full_name}</h2>
+                  </div>
+                  {msg_button}
+                </div>
+                <div className="eventInfoBox center-block">
+                  <div className="eventDescContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-cutlery" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h3>Event Description:</h3>
+                      <h4>{this.state.events.description}</h4>
+                    </div>
+                  </div>
+                  <div className="detailsSubContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-sticky-note-o" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h3>Details:</h3>
+                      <h4>{this.state.events.food}</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="eventSpecificBox center-block">
+                  <div className="childrenContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-child" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h3>Children Welcome?:</h3>
+                      <h3 style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</h3>
+                    </div>
+                  </div>
+                  <div className="alcoholContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-beer" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h3>Alcohol Welcome?:</h3>
+                      <h3 style={this.state.events.alcohol_allowed ? greenColor : redColor} >{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</h3>
+                    </div>
+                  </div>
+                  <div className="guestInfoContainer">
+                    <div className="iconContainer">
+                      <i className="fa fa-users" aria-hidden="true"></i>
+                    </div>
+                    <div className="infoContainer">
+                      <h3>Guest Limit:</h3>
+                      <h3 style={this.state.events.unlimited_guests ? redColor : greenColor}>{this.state.events.guest_limit || "Unlimited"}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                <div className="hidden-xs">
+                  <div className="detailsContainer">
+                    <div className="titleContainer">
+                      <h1 className="eventTitle">{this.state.events.title}</h1>
+                    </div>
+                    <div className="calendarContainer">
+                      <div className="iconContainer">
+                        <i className="fa fa-calendar" aria-hidden="true"></i>
+                      </div>
+                      <div className="datesContainer">
+                        <h4>{this.state.events.formatted_date}</h4>
+                        <h4>{this.state.events.formatted_time}</h4>
+                      </div>
+                    </div>
+                    <div className="guestsContainer">
+                      <div className="iconContainer">
+                        <i className="fa fa-users" aria-hidden="true"></i>
+                      </div>
+                      <div className="numbersContainer">
+                        <h4>{this.state.events.confirmed_guests} attending</h4>
+                        <h4>{this.state.events.spots_left} spots left</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mapBox">
+                  <div id="map"></div>
+                </div>
+                <div className="commentsBox">
+                  <h3 className="commentsTitle"><strong>Questions and Comments</strong></h3>
+                  <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+                  <div className="commentsScrollBox">
+                    {all_comments}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

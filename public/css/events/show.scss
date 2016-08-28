@@ -1,3 +1,6 @@
+body {
+  background-color: #e8e8e8;
+}
 .contentRow {
   margin-top: 40px;
 }
@@ -5,43 +8,7 @@
   .slick-slide {
     height: 320px;
   }
-}
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  .headContainer {
-    .titleContainer {
-    }
-    .spotsContainer {
-      flex-direction: column;
-      flex: 1;
-      .goingContainer {
-        flex: 1;
-      }
-      .openContainer {
-        flex: 1;
-      }
-    }
-  }
-  .descContainer {
-    flex: 1;
-    .eventDate {
-      display: inline-block;
-    }
-    .eventTime {
-      display: inline-block;
-    }
-    .eventDesc {
-      text-decoration: underline;
-    }
-    .foodDesc {
-      text-decoration: underline;
-    }
-  }
-  .highlightsContainer {
-    flex: 1;
-    margin:0
-  }
+  margin-bottom: 20px;
 }
 .slick-prev:before, .slick-next:before {
   color: white !important;
@@ -55,91 +22,286 @@
   z-index: 5;
   left: 5px !important;
 }
-
-.hostProfileContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  .hostImgContainer {
-    height: 100%;
-    flex: 4;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    .hostImg {
-      height: 100%;
-    }
-  }
-  .hostTextContainer {
-    flex: 1;
-      .hostsName {
-        margin: 0;
-      }
-    }
-    .hostBioContainer {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      .hostBio {
-        margin: 0;
-      }
-    }
-}
-.profile-text-margin {
-  margin-top: 31px;
-}
-.text_input {
-  height: 8
-  0px;
-}
-
-.eventTitle {
-  font-size: 60px;
-  margin: 0;
-}
-
-.eventInfoTitle {
-  font-size: 18px;
-  a {
-    color: black;
-    text-decoration: none;
-  }
-}
-.commentsScrollBox {
-  margin-top: 20px;
-  padding: 10px;
+.hostProfileBox {
+  background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  height: 400px;
-  overflow: scroll;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  .hostImg {
+    border-radius: 10px;
+  }
+  button {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+  }
+  button:hover {
+    color: pink;
+  }
 }
-.commentTitle {
-  font-weight: bolder;
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+  }
+  .detailsBottomContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  .calendarContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    .iconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      font-size: 30px;
+    }
+    .datesContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 2;
+      h4 {
+        font-size: 18px;
+      }
+    }
+  }
+  .guestsContainer {
+    flex: 1;
+    display: flex;
+    flex: row;
+    .iconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      font-size: 30px;
+    }
+    .numbersContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 2;
+      h4 {
+        font-size: 18px;
+      }
+    }
+  }
+}
+#map {
+  height: 200px;
+}
+.mapBox {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+}
+.eventInfoBox {
+  display: flex;
+  flex: row;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  .eventDescContainer {
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  .detailsSubContainer {
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  h4, h3 {
+    margin: 10px 0;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  .iconContainer {
+    font-size: 30px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .infoContainer {
+    flex: 2;
+  }
+}
+.eventSpecificBox {
+  display: flex;
+  flex: row;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  h4, h3 {
+    margin: 10px 0;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  .iconContainer {
+    font-size: 30px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .infoContainer {
+    flex: 2;
+  }
+  .childrenContainer {
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  .alcoholContainer {
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  .guestInfoContainer {
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+}
+.commentsBox {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  .commentsScrollBox {
+    margin-top: 10px;
+    overflow: scroll;
+    height: 300px;
+  }
+  .commentsTitle {
+    margin: 10px 0;
+  }
+  .panel-heading {
+    background-color: black;
+    color: white;
+  }
+  .commentFlag {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .nameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .timeFlagContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+.buttonContainer {
+  margin-bottom: 20px;
+  button {
+    color: white;
+    background-color: black;
+    transition: 0.3s;
+  }
+  button:hover {
+    color: pink;
+  }
 }
 
-.comments-area{
-  margin-top: 45px;
+@media screen and (min-width: 500px) {
+  .eventInfoBox, .hostProfileBox, .eventSpecificBox {
+    width: 75%;
+  }
+  .commentsBox, .mapBox, .detailsContainer {
+    width: 95%;
+  }
 }
-.commentContainer{
-  box-sizing: border-box;
-}
-
-.commentName{
-  display:inline-block;
-  margin: 0;
-}
-
-.commentDateTime{
-  display: inline-block;
-  float: right;
-  margin: 3px 0 0 0;
-  color:gray;
-}
-
-.commentFlag{
-  display: inline-block;
-  height: 12px;
-  float: right;
-  margin: 3px 0 0 15px;
-  cursor:pointer;
+@media screen and (min-width: 768px) {
+  .detailsContainer {
+    flex-direction: row;
+  }
+  .detailsContainer {
+    .titleContainer {
+      h1 {
+        font-size: 32px;
+      }
+    }
+    .detailsBottomContainer {
+      display: flex;
+      flex-direction: row;
+    }
+    .calendarContainer {
+      .iconContainer {
+      }
+      .datesContainer {
+        h4 {
+          font-size: 20px;
+        }
+      }
+    }
+    .guestsContainer {
+      .iconContainer {
+      }
+      .numbersContainer {
+        h4 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  #map {
+    height: 300px;
+  }
+  .commentsBox {
+    .commentsScrollBox {
+      height: 400px;
+    }
+  }
 }

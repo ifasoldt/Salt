@@ -9,16 +9,22 @@
 
 </div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="buttonContainer">
+        <% if @event.host_id == current_user&.id %>
+          <a href="#" data-toggle="modal" data-target="#eventModal"><button class="center-block btn">Edit Event</button></a>
+        <% elsif @event.applications.where(user_id: current_user).length != 0 %>
+          <%= button_to "Leave Event", event_application_delete_path(@event, @event.applications.where(user_id: current_user).first), :class => "btn", :method => :delete %>
+        <% else %>
+          <a href="#" data-toggle="modal" data-target="#joinEventModal"><button class="center-block btn">Join Event</button></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-
-<% if @event.host_id == current_user&.id %>
-  <a href="#" data-toggle="modal" data-target="#eventModal"><button class="btn">Edit Event</button></a>
-<% elsif @event.applications.where(user_id: current_user).length != 0 %>
-  <%= button_to "Leave Event", event_application_delete_path(@event, @event.applications.where(user_id: current_user).first), :class => "btn", :method => :delete %>
-<% else %>
-  <a href="#" data-toggle="modal" data-target="#joinEventModal"><button class="btn">Join Event</button></a>
-<% end %>
 
 
 <div class="modal fade" id="eventModal" role="dialog">
