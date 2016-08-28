@@ -8,6 +8,8 @@ class ShowEvent extends React.Component  {
     this.post = this.post.bind(this)
     this.setCommentId = this.setCommentId.bind(this)
     this.flag = this.flag.bind(this)
+    this.messageHost = this.messageHost.bind(this)
+    this.messageChange = this.messageChange.bind(this)
 
     this.state = {
       mapLoaded: false,
@@ -18,17 +20,33 @@ class ShowEvent extends React.Component  {
       comments: [],
       hiddenComments: [],
       commentId: '',
-      value: ''
+      value: '',
+      messageValue:''
     }
   }
   componentDidMount () {
     this.updateEvents()
+  }
+  messageHost(e) {
+    fetchApi('POST',`/messages`, {body: this.state.messageValue, recipient_id: this.state.host.id}, (response, statusCode) => {
+      if (statusCode >= 200 && statusCode < 300) {
+        // is it weird to use jquery here?
+        $('#messageHostModal').modal('hide')
+        this.setState({messageValue: ''})
+      }
+      else {
+        // fix this when have time
+        alert(response)
+      }
+    })
   }
 
   flag() {
     fetchApi('PATCH', `/events/${this.state.events.id}/comments/${this.state.commentId}`, {flagged: true}, (response, statusCode) =>{
       //success
       if (statusCode >= 200 && statusCode < 300) {
+        // is it weird to use jquery here?
+        $('#commentFlag-modal').modal('hide')
         var hiddenComments = this.state.hiddenComments
         hiddenComments.push(Number(this.state.commentId))
         console.log(hiddenComments)
@@ -58,7 +76,7 @@ class ShowEvent extends React.Component  {
         if (statusCode >= 200 && statusCode < 300) {
           var newComments = this.state.comments
           newComments.unshift(response)
-          
+
           this.setState({value: '', comments: newComments})
         }
         else {
@@ -69,6 +87,9 @@ class ShowEvent extends React.Component  {
   }
   commentsChange(e) {
     this.setState({value: e.target.value})
+  }
+  messageChange(e) {
+    this.setState({messageValue: e.target.value})
   }
   updateEvents() {
     fetchApi('GET', `/api/events/${current_event}.json`, {}, (response) => {
@@ -131,8 +152,16 @@ class ShowEvent extends React.Component  {
         }
         return <div style={imageStyle} className="slideImageStyle" key={key}></div>
       })
+      var msg_button = ""
+      // button is rendering momentarily and then dissapearing
+      if(document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id){
+        msg_button = ""
+      }
+      else {
+        msg_button = <button type="button" className="btn btn-primary message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
+      }
+
       var all_comments = this.state.comments.map((comment, key) => {
-        console.log(this.state.hiddenComments)
         if(!this.state.hiddenComments.includes(comment.id) && comment.flagged != true){
           return(
             <div className="panel panel-default commentContainer" key={key}>
@@ -169,6 +198,7 @@ class ShowEvent extends React.Component  {
                     <h2 className="hostsName text-center">{this.state.host.first_name}</h2>
                   </div>
                 </div>
+                  {msg_button}
                 <div className="col-xs-4 col-sm-2">
                 </div>
               </div>
@@ -226,6 +256,22 @@ class ShowEvent extends React.Component  {
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <button type="button" className="btn btn-danger" onClick={this.flag}>Flag Comment</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal fade" id="messageHostModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title" id="myModalLabel">Message The Host Of This Event</h4>
+                </div>
+                <div className="modal-body">
+                <textarea style={{height:'80px'}} type="text" className="form-control" value={this.state.messageValue} onChange={this.messageChange}></textarea>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" className="btn btn-primary" onClick={this.messageHost}>Message Host</button>
                 </div>
               </div>
             </div>

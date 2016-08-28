@@ -21453,6 +21453,8 @@
 	    _this.post = _this.post.bind(_this);
 	    _this.setCommentId = _this.setCommentId.bind(_this);
 	    _this.flag = _this.flag.bind(_this);
+	    _this.messageHost = _this.messageHost.bind(_this);
+	    _this.messageChange = _this.messageChange.bind(_this);
 
 	    _this.state = {
 	      mapLoaded: false,
@@ -21463,7 +21465,8 @@
 	      comments: [],
 	      hiddenComments: [],
 	      commentId: '',
-	      value: ''
+	      value: '',
+	      messageValue: ''
 	    };
 	    return _this;
 	  }
@@ -21474,25 +21477,43 @@
 	      this.updateEvents();
 	    }
 	  }, {
+	    key: 'messageHost',
+	    value: function messageHost(e) {
+	      var _this2 = this;
+
+	      fetchApi('POST', '/messages', { body: this.state.messageValue, recipient_id: this.state.host.id }, function (response, statusCode) {
+	        if (statusCode >= 200 && statusCode < 300) {
+	          // is it weird to use jquery here?
+	          $('#messageHostModal').modal('hide');
+	          _this2.setState({ messageValue: '' });
+	        } else {
+	          // fix this when have time
+	          alert(response);
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'flag',
 	    value: function flag() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      fetchApi('PATCH', '/events/' + this.state.events.id + '/comments/' + this.state.commentId, { flagged: true }, function (response, statusCode) {
 	        //success
 	        if (statusCode >= 200 && statusCode < 300) {
-	          var hiddenComments = _this2.state.hiddenComments;
-	          hiddenComments.push(Number(_this2.state.commentId));
+	          // is it weird to use jquery here?
+	          $('#commentFlag-modal').modal('hide');
+	          var hiddenComments = _this3.state.hiddenComments;
+	          hiddenComments.push(Number(_this3.state.commentId));
 	          console.log(hiddenComments);
 	          // works
-	          console.log(_this2.state.events);
+	          console.log(_this3.state.events);
 	          // comes back null
-	          console.log(_this2.state.commentId);
+	          console.log(_this3.state.commentId);
 	          // this.setState({hiddenComments: this.state.hiddenComments.concat(this.state.commentId)})
-	          _this2.setState({ hiddenComments: hiddenComments });
-	          console.log(_this2.state.hiddenComments);
+	          _this3.setState({ hiddenComments: hiddenComments });
+	          console.log(_this3.state.hiddenComments);
 	          // this.updateEvents()
-	          _this2.setState({ commentId: '' });
+	          _this3.setState({ commentId: '' });
 	        } else {
 	          alert('Error');
 	        }
@@ -21506,15 +21527,15 @@
 	  }, {
 	    key: 'post',
 	    value: function post(e) {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      if (e.key === 'Enter') {
 	        fetchApi('POST', '/events/' + this.state.events.id + '/comments', { body: e.target.value }, function (response, statusCode) {
 	          if (statusCode >= 200 && statusCode < 300) {
-	            var newComments = _this3.state.comments;
+	            var newComments = _this4.state.comments;
 	            newComments.unshift(response);
 
-	            _this3.setState({ value: '', comments: newComments });
+	            _this4.setState({ value: '', comments: newComments });
 	          } else {
 	            alert('Error');
 	          }
@@ -21527,13 +21548,18 @@
 	      this.setState({ value: e.target.value });
 	    }
 	  }, {
+	    key: 'messageChange',
+	    value: function messageChange(e) {
+	      this.setState({ messageValue: e.target.value });
+	    }
+	  }, {
 	    key: 'updateEvents',
 	    value: function updateEvents() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
 	        console.log(response);
-	        _this4.setState({
+	        _this5.setState({
 	          events: response,
 	          sliderImages: response.event_images,
 	          host: response.host,
@@ -21545,13 +21571,13 @@
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var _this5 = this;
+	      var _this6 = this;
 
 	      if (!this.state.mapLoaded) {
 	        var handler = Gmaps.build('Google');
 	        var mapStyle = [{ "featureType": "administrative", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "transit", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.local", "stylers": [{ "visibility": "on" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "stylers": [{ "color": "#84afa3" }, { "lightness": 52 }] }, { "stylers": [{ "saturation": -17 }, { "gamma": 0.36 }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#3f518c" }] }];
 	        handler.buildMap({ provider: { styles: mapStyle, scrollwheel: false }, internal: { id: 'map' } }, function () {
-	          var markers = handler.addMarkers(_this5.state.markerArray, { animation: 'DROP' });
+	          var markers = handler.addMarkers(_this6.state.markerArray, { animation: 'DROP' });
 	          handler.bounds.extendWith(markers);
 	          handler.fitMapToBounds();
 	          handler.getMap().setZoom(14);
@@ -21583,7 +21609,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this6 = this;
+	      var _this7 = this;
 
 	      var greenColor = {
 	        color: 'lightgreen'
@@ -21599,9 +21625,19 @@
 	        };
 	        return _react2.default.createElement('div', { style: imageStyle, className: 'slideImageStyle', key: key });
 	      });
+	      var msg_button = "";
+	      if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) {
+	        msg_button = "";
+	      } else {
+	        msg_button = _react2.default.createElement(
+	          'button',
+	          { type: 'button', className: 'btn btn-primary message-button', 'data-toggle': 'modal', 'data-target': '#messageHostModal' },
+	          'Message Host'
+	        );
+	      }
+
 	      var all_comments = this.state.comments.map(function (comment, key) {
-	        console.log(_this6.state.hiddenComments);
-	        if (!_this6.state.hiddenComments.includes(comment.id) && comment.flagged != true) {
+	        if (!_this7.state.hiddenComments.includes(comment.id) && comment.flagged != true) {
 	          return _react2.default.createElement(
 	            'div',
 	            { className: 'panel panel-default commentContainer', key: key },
@@ -21617,7 +21653,7 @@
 	                  comment.user.full_name,
 	                  ' says:'
 	                ),
-	                _react2.default.createElement('img', { src: '/assets/flag.png', className: 'commentFlag', style: { height: '10px' }, 'data-id': comment.id, onClick: _this6.setCommentId, 'data-toggle': 'modal', 'data-target': '#commentFlag-modal' }),
+	                _react2.default.createElement('img', { src: '/assets/flag.png', className: 'commentFlag', style: { height: '10px' }, 'data-id': comment.id, onClick: _this7.setCommentId, 'data-toggle': 'modal', 'data-target': '#commentFlag-modal' }),
 	                _react2.default.createElement(
 	                  'h5',
 	                  { className: 'commentDateTime' },
@@ -21673,6 +21709,7 @@
 	                  )
 	                )
 	              ),
+	              msg_button,
 	              _react2.default.createElement('div', { className: 'col-xs-4 col-sm-2' })
 	            ),
 	            _react2.default.createElement(
@@ -21866,6 +21903,46 @@
 	                  'button',
 	                  { type: 'button', className: 'btn btn-danger', onClick: this.flag },
 	                  'Flag Comment'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'modal fade', id: 'messageHostModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel', 'aria-hidden': 'true' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'modal-dialog', role: 'document' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'modal-content' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-header' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'modal-title', id: 'myModalLabel' },
+	                  'Message The Host Of This Event'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-body' },
+	                _react2.default.createElement('textarea', { style: { height: '80px' }, type: 'text', className: 'form-control', value: this.state.messageValue, onChange: this.messageChange })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-footer' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+	                  'Cancel'
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-primary', onClick: this.messageHost },
+	                  'Message Host'
 	                )
 	              )
 	            )
