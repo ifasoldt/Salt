@@ -21552,6 +21552,7 @@
 	  _createClass(Conversation, [{
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props.conversation.message_preview);
 	      return _react2.default.createElement(
 	        "a",
 	        { href: "/conversations/" + this.props.conversation.id },
@@ -21580,7 +21581,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "col-xs-8 message-preview" },
-	            this.props.conversation.message_preview.split(';')[1]
+	            this.props.conversation.message_preview
 	          )
 	        )
 	      );

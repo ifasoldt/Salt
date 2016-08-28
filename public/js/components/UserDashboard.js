@@ -15,12 +15,13 @@ class UserDashboard extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
+      console.log(response)
       var hostingEvents = response.hosted_events.map((events) => {
         return events
       })
       this.setState({
         user: response,
-        address: response.address,
+        address: (response.address || {street: "", state: "", zip: "", city: ""}),
         hostedEvents: hostingEvents
       })
     })

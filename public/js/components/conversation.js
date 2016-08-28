@@ -1,8 +1,8 @@
 import React from 'react'
 
 class Conversation extends React.Component  {
-  
   render(){
+    console.log(this.props.conversation.message_preview)
     return(
       <a href={"/conversations/" + this.props.conversation.id}>
         <div className="col-xs-10 conversation-container" >
@@ -14,7 +14,7 @@ class Conversation extends React.Component  {
             <h4>{this.props.conversation.messages[0].created_at}</h4>
           </div>
           <div className="col-xs-8 message-preview">
-          {this.props.conversation.message_preview.split(';')[1]}
+            {this.props.conversation.message_preview}
           </div>
         </div>
       </a>

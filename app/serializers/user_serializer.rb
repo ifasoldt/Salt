@@ -17,6 +17,6 @@ class UserSerializer < ActiveModel::Serializer
 
   def date_of_birth
     object[:date_of_birth].strftime('%B %d, %Y')
-  end  
+  end
 
 end
