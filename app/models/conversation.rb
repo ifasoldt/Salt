@@ -4,8 +4,4 @@ class Conversation < ApplicationRecord
   belongs_to :recipient, class_name: 'User'
   # see note in messages controller#create
   default_scope { where.not(messages_count: nil).order(created_at: 'DESC')}
-
-  def message_preview
-    truncate(messages[0].body, length: 50, omission: '... (continued)')
-  end
 end
