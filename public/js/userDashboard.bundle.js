@@ -27140,12 +27140,13 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
+	        console.log(response);
 	        var hostingEvents = response.hosted_events.map(function (events) {
 	          return events;
 	        });
 	        _this2.setState({
 	          user: response,
-	          address: response.address,
+	          address: response.address || { street: "", state: "", zip: "", city: "" },
 	          hostedEvents: hostingEvents
 	        });
 	      });

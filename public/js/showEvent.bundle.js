@@ -21626,6 +21626,7 @@
 	        return _react2.default.createElement('div', { style: imageStyle, className: 'slideImageStyle', key: key });
 	      });
 	      var msg_button = "";
+	      // button is rendering momentarily and then dissapearing
 	      if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) {
 	        msg_button = "";
 	      } else {
