@@ -31,6 +31,15 @@ class UserDashboard extends React.Component  {
         <div className="container-fluid">
           <div className="row">
               <div className="col-xs-12 col-sm-6 col-md-4 user_info">
+                <div className="visible-xs hidden-sm hidden-md hidden-lg">
+                  <div className="profileNameBox">
+                    <h1>Welcome Back, {this.state.user.full_name}</h1>
+                    <h3 className="aboutYou">About You:</h3>
+                    <div className="aboutMeDescriptionBox">
+                      <h5>{this.state.user.description}</h5>
+                    </div>
+                  </div>
+                </div>
                 <div className="center-block profileImageBox">
                   <img className="user_image center-block img-responsive" src={this.state.user.user_image} />
                   <div className="center-block eventsInfoBox">
@@ -76,11 +85,13 @@ class UserDashboard extends React.Component  {
                 </div>
               </div>
               <div className="col-xs-12 col-sm-6 col-md-8">
-                <div className="profileNameBox">
-                  <h1>Welcome Back, {this.state.user.full_name}</h1>
-                  <h3 className="aboutYou">About You:</h3>
-                  <div className="aboutMeDescriptionBox">
-                    <h5>{this.state.user.description}</h5>
+                <div className="hidden-xs visible-sm visible-md visible-lg">
+                  <div className="profileNameBox">
+                    <h1>Welcome Back, {this.state.user.full_name}</h1>
+                    <h3 className="aboutYou">About You:</h3>
+                    <div className="aboutMeDescriptionBox">
+                      <h5>{this.state.user.description}</h5>
+                    </div>
                   </div>
                 </div>
                 <ul className="nav nav-pills">

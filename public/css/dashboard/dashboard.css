@@ -2,12 +2,9 @@ body {
   background-color: #e8e8e8;
 }
 
-.user_info {
-  margin-top: 20px;
-}
-
 .user_info .profileImageBox {
-  width: 75%;
+  margin-top: 20px;
+  width: 100%;
   padding: 10px;
   background-color: white;
   margin-bottom: 20px;
@@ -35,7 +32,7 @@ body {
   flex-direction: column;
   padding: 10px;
   background-color: white;
-  width: 75%;
+  width: 100%;
   border: 1px solid black;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -80,7 +77,7 @@ body {
   justify-content: space-around;
   padding: 10px;
   background-color: white;
-  width: 75%;
+  width: 100%;
   border: 1px solid black;
   border-radius: 5px;
 }
@@ -88,6 +85,7 @@ body {
 .user_info .buttonsBox button {
   background-color: black;
   color: white;
+  transition: 0.3s;
 }
 
 .user_info .buttonsBox button:hover {
@@ -125,8 +123,69 @@ body {
   color: white;
 }
 
-.conversationTable a {
-  color: black;
+.conversationContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversationContainer .conversationHeader {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.conversationContainer .conversationHeader .conversationNameContainer {
+  margin-left: 5px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.conversationContainer .conversationHeader .conversationDateContainer {
+  flex: 1;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.conversationContainer .conversationBody {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.conversationContainer .conversationLeftsideContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversationContainer .conversationLeftsideContainer img {
+  height: 100%;
+  width: 100%;
+}
+
+.conversationContainer .conversationRightsideContainer {
+  padding: 10px;
+  flex: 6;
+}
+
+.conversationContainer .conversationRightsideContainer .messagePreviewTitle {
+  text-decoration: underline;
 }
 
 .scroll_box {
@@ -141,18 +200,19 @@ body {
   width: 95%;
 }
 
-td {
-  vertical-align: middle !important;
+.scroll_box a {
+  color: black;
+  transition: 0.3s;
 }
 
-.nav.nav-pills {
-  margin-top: 10px;
+td {
+  vertical-align: middle !important;
 }
 
 .nav.nav-pills a {
   cursor: pointer;
   color: black;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .nav.nav-pills a:hover {
@@ -210,19 +270,19 @@ td {
   height: 80px;
 }
 
-.conversation-container {
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  color: black;
-}
-
-.message-preview {
-  font-size: 20px;
-}
-
 @media screen and (min-width: 768px) {
+  .nav.nav-pills a {
+    font-size: 20px;
+  }
+  .user_info .profileImageBox {
+    width: 75%;
+  }
+  .user_info .personelInfoBox {
+    width: 75%;
+  }
+  .user_info .buttonsBox {
+    width: 75%;
+  }
   .profileNameBox {
     width: 95%;
   }

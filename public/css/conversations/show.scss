@@ -54,32 +54,59 @@ body {
     margin: 0;
   }
 }
-.messageContainer {
+.conversationContainer {
   display: flex;
-  flex-direction: row;
-  padding: 10px;
-  background-color: white;
-  margin-bottom: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  .messagePictureContainer {
+  flex-direction: column;;
+  .conversationHeader {
     flex: 1;
-  }
-  .messageContentContainer {
     display: flex;
-    flex-direction: column;
-    flex: 5;
-    .messageDateContainer {
+    flex-direction: row;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    .conversationNameContainer {
+      margin-left: 5px;
       display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .conversationDateContainer {
+      flex: 1;
+      display: flex;
+      font-size: 12px;
       align-items: center;
       justify-content: flex-end;
-      flex: 1;
     }
-    .messageBodyContainer {
-      display: flex;
-      flex: 6;
-      padding: 10px;
+  }
+  .conversationBody {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .conversationLeftsideContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 100%;
+      width: 100%;
     }
+  }
+  .conversationRightsideContainer {
+    padding: 10px;
+    flex: 10;
+    display: flex;
+    align-items: center;
   }
 }
 @media screen and (min-width: 768px) {

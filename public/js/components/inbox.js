@@ -24,19 +24,8 @@ class Inbox extends React.Component {
       return <Conversation conversation={convo} key={key}/>
     })
     return (
-      <div className="panel panel-default">
-        <table className="table">
-          <thead className="tableHeadAttending">
-            <tr>
-              <th>Name</th>
-              <th>When</th>
-              <th>Most Recent Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {convos}
-          </tbody>
-        </table>
+      <div>
+        {convos}
       </div>
     )
   }

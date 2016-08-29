@@ -27224,6 +27224,34 @@
 	            { className: 'col-xs-12 col-sm-6 col-md-4 user_info' },
 	            _react2.default.createElement(
 	              'div',
+	              { className: 'visible-xs hidden-sm hidden-md hidden-lg' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'profileNameBox' },
+	                _react2.default.createElement(
+	                  'h1',
+	                  null,
+	                  'Welcome Back, ',
+	                  this.state.user.full_name
+	                ),
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'aboutYou' },
+	                  'About You:'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'aboutMeDescriptionBox' },
+	                  _react2.default.createElement(
+	                    'h5',
+	                    null,
+	                    this.state.user.description
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
 	              { className: 'center-block profileImageBox' },
 	              _react2.default.createElement('img', { className: 'user_image center-block img-responsive', src: this.state.user.user_image }),
 	              _react2.default.createElement(
@@ -27370,25 +27398,29 @@
 	            { className: 'col-xs-12 col-sm-6 col-md-8' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'profileNameBox' },
-	              _react2.default.createElement(
-	                'h1',
-	                null,
-	                'Welcome Back, ',
-	                this.state.user.full_name
-	              ),
-	              _react2.default.createElement(
-	                'h3',
-	                { className: 'aboutYou' },
-	                'About You:'
-	              ),
+	              { className: 'hidden-xs visible-sm visible-md visible-lg' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'aboutMeDescriptionBox' },
+	                { className: 'profileNameBox' },
 	                _react2.default.createElement(
-	                  'h5',
+	                  'h1',
 	                  null,
-	                  this.state.user.description
+	                  'Welcome Back, ',
+	                  this.state.user.full_name
+	                ),
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'aboutYou' },
+	                  'About You:'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'aboutMeDescriptionBox' },
+	                  _react2.default.createElement(
+	                    'h5',
+	                    null,
+	                    this.state.user.description
+	                  )
 	                )
 	              )
 	            ),
@@ -27958,39 +27990,8 @@
 	      });
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'panel panel-default' },
-	        _react2.default.createElement(
-	          'table',
-	          { className: 'table' },
-	          _react2.default.createElement(
-	            'thead',
-	            { className: 'tableHeadAttending' },
-	            _react2.default.createElement(
-	              'tr',
-	              null,
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Name'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'When'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Most Recent Message'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            convos
-	          )
-	        )
+	        null,
+	        convos
 	      );
 	    }
 	  }]);
@@ -28037,53 +28038,51 @@
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "tr",
-	        { className: "conversationTable" },
+	        "a",
+	        { href: "/conversations/" + this.props.conversation.id },
 	        _react2.default.createElement(
-	          "td",
-	          { scope: "row", className: "user_profile" },
-	          _react2.default.createElement("img", { className: "profile_image img-circle", src: this.props.conversation.message_partner.user_image }),
+	          "div",
+	          { className: "conversationContainer" },
 	          _react2.default.createElement(
-	            "a",
-	            null,
-	            this.props.conversation.message_partner.first_name
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "td",
-	          null,
+	            "div",
+	            { className: "conversationHeader" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "conversationNameContainer" },
+	              "Conversation with ",
+	              this.props.conversation.message_partner.first_name
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "conversationDateContainer" },
+	              this.props.conversation.messages[0].created_at
+	            )
+	          ),
 	          _react2.default.createElement(
-	            "a",
-	            { href: "/conversations/" + this.props.conversation.id },
-	            this.props.conversation.messages[0].created_at
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "td",
-	          null,
-	          _react2.default.createElement(
-	            "a",
-	            { href: "/conversations/" + this.props.conversation.id },
-	            this.props.conversation.message_preview
+	            "div",
+	            { className: "conversationBody" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "conversationLeftsideContainer" },
+	              _react2.default.createElement("img", { className: "profile_image img-responsive img-circle", src: this.props.conversation.message_partner.user_image })
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "conversationRightsideContainer" },
+	              _react2.default.createElement(
+	                "div",
+	                { className: "messagePreviewTitle" },
+	                "Most Recent Message:"
+	              ),
+	              _react2.default.createElement(
+	                "i",
+	                null,
+	                this.props.conversation.message_preview
+	              )
+	            )
 	          )
 	        )
-	      )
-	      //
-	      // <a href={"/conversations/" + this.props.conversation.id}>
-	      //   <div className="col-xs-10 conversation-container" >
-	      //     <div className="col-xs-2">
-	      //       <img className="img-responsive img-circle" src={this.props.conversation.message_partner.user_image} />
-	      //     </div>
-	      //     <div className="col-xs-2">
-	      //       <h4>{this.props.conversation.message_partner.first_name}</h4>
-	      //       <h4>{this.props.conversation.messages[0].created_at}</h4>
-	      //     </div>
-	      //     <div className="col-xs-8 message-preview">
-	      //       {this.props.conversation.message_preview}
-	      //     </div>
-	      //   </div>
-	      // </a>
-	      ;
+	      );
 	    }
 	  }]);
 

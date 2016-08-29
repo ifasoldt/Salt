@@ -21627,23 +21627,28 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "messageContainer" },
+	        { className: "conversationContainer" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "messagePictureContainer" },
-	          _react2.default.createElement("img", { className: "img-rounded img-responsive", src: this.props.message.author.user_image })
+	          { className: "conversationHeader" },
+	          _react2.default.createElement("div", { className: "conversationNameContainer" }),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "conversationDateContainer" },
+	            this.props.message.created_at
+	          )
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "messageContentContainer" },
+	          { className: "conversationBody" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "messageDateContainer" },
-	            this.props.message.created_at
+	            { className: "conversationLeftsideContainer" },
+	            _react2.default.createElement("img", { className: "profile_image img-responsive img-circle", src: this.props.message.author.user_image })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "messageBodyContainer" },
+	            { className: "conversationRightsideContainer" },
 	            this.props.message.body.split('\n').map(function (item, key) {
 	              return _react2.default.createElement(
 	                "span",
