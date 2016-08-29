@@ -98,8 +98,14 @@ class ShowEvent extends React.Component  {
     })
   }
   setButtons(){
-    if ((document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) || ((document.getElementById('profile-box').getAttribute('data-id') == "none") )){
+    if(document.getElementById('profile-box').getAttribute('data-id') == "none"){
       this.setState({msg_button: <div></div>})
+    }
+    else if(document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) {
+      this.setState({msg_button:
+        <div className="text-center">
+          <button type="button" className="btn message-button" data-toggle="modal" data-target="#eventModal">Edit Event</button>
+        </div>})
     }
     else if (this.state.appIds.includes(parseInt(document.getElementById('profile-box').getAttribute('data-id')))) {
       this.setState({msg_button:<div className="buttonContainer">
