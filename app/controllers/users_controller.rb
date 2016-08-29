@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :require_user, only: [:dashboard]
+  before_action :require_user, only: [:dashboard, :change_password]
 
   def show
   end
@@ -54,6 +54,18 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to root_path
+  end
+
+  def change_password
+    @user = current_user
+      if @user.authenticate(params[:password])
+        @user.update(user_params)
+        session[:email] = @user.email
+        render json: @user, status: 200
+      else
+        render json: {error: "Incorrect password"}, status: 400
+      end
+    end
   end
 
   private

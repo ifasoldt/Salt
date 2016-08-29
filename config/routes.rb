@@ -13,6 +13,8 @@ root 'welcome#index'
 
 # sign_up
 post '/api/users' => 'users#create'
+
+post '/users/change_password' => 'users#change_password'
 # user_dashboard
 get '/current_user/dashboard/' => 'users#dashboard'
 get 'current_user/dashboard/hosting' => 'users#dashboard'

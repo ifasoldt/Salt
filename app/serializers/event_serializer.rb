@@ -44,7 +44,7 @@ class EventSerializer < ActiveModel::Serializer
             <img class='img-responsive' width='200' height='200' src='#{Refile.attachment_url(object.images.first, :file, :fit, 400, 400)}' />
           </div>
           <div class='eventInfoDateTime'>#{object.formatted_date} at #{object.formatted_time}</div>
-          <div class='eventInfoGuestLimit'> Guest Limit #{object.guest_limit} Spots Left: #{object.spots_left} </div>
+          <div class='eventInfoGuestLimit'> Guest Limit #{object.guest_limit || "none"} Spots Left: #{object.spots_left} </div>
         </div>"
       end
     end
