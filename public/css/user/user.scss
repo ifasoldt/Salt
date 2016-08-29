@@ -1,0 +1,134 @@
+body {
+  background-color: #e8e8e8;
+}
+.user_info {
+  .profileImageBox {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  .user_image {
+    border-radius: 10px;
+  }
+  .eventsInfoBox {
+    padding-top: 5px;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-around;
+    .eventsSpan {
+      margin-left: 3px;
+    }
+  }
+  .personelInfoBox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    h4 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 17px;
+    }
+    .personelContainer {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      .iconContainer {
+        font-size: 30px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .infoContainer {
+        flex: 3;
+      }
+      .user_street, .user_city, .user_state, .user_zip {
+        font-size: 17px;
+      }
+    }
+  }
+  .user_state, .user_zip {
+    margin-left: 4px;
+  }
+  .buttonsBox {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    button {
+      background-color: black;
+      color: white;
+      transition: 0.3s;
+      width: 110px;
+    }
+    button:hover, button:focus {
+      color: pink;
+    }
+  }
+}
+.profileNameBox {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  h1, h3, h5 {
+    margin: 0;
+  }
+  .aboutYou {
+    margin-top: 20px;
+  }
+  .aboutMeDescriptionBox {
+    padding: 10px;
+    border-top: 1px solid black;
+    h5 {
+      font-size: 18px;
+    }
+  }
+}
+.user_profile {
+  .profile_image {
+    width: 40px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  a {
+    color: black;
+    cursor: pointer;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .user_info {
+    .profileImageBox {
+      width: 75%;
+    }
+    .personelInfoBox {
+      width: 75%;
+    }
+    .buttonsBox {
+      width: 75%;
+    }
+  }
+  .profileNameBox {
+    width: 95%;
+  }
+  .scroll_box {
+    width: 95%;
+  }
+}

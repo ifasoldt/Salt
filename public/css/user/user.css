@@ -1,0 +1,149 @@
+body {
+  background-color: #e8e8e8;
+}
+
+.user_info .profileImageBox {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.user_info .user_image {
+  border-radius: 10px;
+}
+
+.user_info .eventsInfoBox {
+  padding-top: 5px;
+  font-size: 17px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user_info .eventsInfoBox .eventsSpan {
+  margin-left: 3px;
+}
+
+.user_info .personelInfoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.user_info .personelInfoBox h4 {
+  font-size: 20px;
+}
+
+.user_info .personelInfoBox p {
+  font-size: 17px;
+}
+
+.user_info .personelInfoBox .personelContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.user_info .personelInfoBox .personelContainer .iconContainer {
+  font-size: 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_info .personelInfoBox .personelContainer .infoContainer {
+  flex: 3;
+}
+
+.user_info .personelInfoBox .personelContainer .user_street, .user_info .personelInfoBox .personelContainer .user_city, .user_info .personelInfoBox .personelContainer .user_state, .user_info .personelInfoBox .personelContainer .user_zip {
+  font-size: 17px;
+}
+
+.user_info .user_state, .user_info .user_zip {
+  margin-left: 4px;
+}
+
+.user_info .buttonsBox {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: white;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.user_info .buttonsBox button {
+  background-color: black;
+  color: white;
+  transition: 0.3s;
+  width: 110px;
+}
+
+.user_info .buttonsBox button:hover, .user_info .buttonsBox button:focus {
+  color: pink;
+}
+
+.profileNameBox {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.profileNameBox h1, .profileNameBox h3, .profileNameBox h5 {
+  margin: 0;
+}
+
+.profileNameBox .aboutYou {
+  margin-top: 20px;
+}
+
+.profileNameBox .aboutMeDescriptionBox {
+  padding: 10px;
+  border-top: 1px solid black;
+}
+
+.profileNameBox .aboutMeDescriptionBox h5 {
+  font-size: 18px;
+}
+
+.user_profile .profile_image {
+  width: 40px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.user_profile a {
+  color: black;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .user_info .profileImageBox {
+    width: 75%;
+  }
+  .user_info .personelInfoBox {
+    width: 75%;
+  }
+  .user_info .buttonsBox {
+    width: 75%;
+  }
+  .profileNameBox {
+    width: 95%;
+  }
+  .scroll_box {
+    width: 95%;
+  }
+}
