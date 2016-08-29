@@ -27524,10 +27524,9 @@
 	    value: function updateUser() {
 	      var _this2 = this;
 
-	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
-	        var hostingEvents = response.hosted_events.map(function (events) {
-	          return events;
-	        });
+	      fetchApi('GET', '/current_user/dashboard.json?hosting=true', {}, function (response) {
+	        console.log(response);
+	        var hostingEvents = response;
 	        _this2.setState({
 	          hostedEvents: hostingEvents
 	        });
@@ -27761,9 +27760,10 @@
 	    value: function updateUser() {
 	      var _this2 = this;
 
-	      fetchApi('GET', '/current_user/dashboard.json', {}, function (response) {
+	      fetchApi('GET', '/current_user/dashboard.json?attending=true', {}, function (response) {
+	        console.log(response);
 	        _this2.setState({
-	          attendingEvents: response.events
+	          attendingEvents: response
 	        });
 	      });
 	    }

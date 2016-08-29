@@ -10,6 +10,6 @@ has_many :messages
   end
 
   def message_preview
-    truncate(object.messages[0].body, length: 90, omission: '... (continued)')
+    truncate(object.most_recent_message.body, length: 90, omission: '... (continued)')
   end
 end

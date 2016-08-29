@@ -197,3 +197,12 @@ a {
     font-size: 13px;
   }
 }
+
+.map-overlay {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}

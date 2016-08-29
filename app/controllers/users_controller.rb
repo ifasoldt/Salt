@@ -25,7 +25,13 @@ class UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       format.html {render :dashboard}
-      format.json {render json: @user, include: ['address', 'hosted_events', 'hosted_events.applications', 'events', 'events.applications', 'applications' 'thumbs', 'images']}
+      if params[:attending]
+        format.json {render json: @user.events}
+      elsif params[:hosting]
+        format.json {render json: @user.hosted_events}
+      else
+        format.json {render json: @user, include: ['address', 'hosted_events', 'hosted_events.applications', 'events', 'events.applications', 'applications' 'thumbs', 'images']}
+      end
     end
   end
 

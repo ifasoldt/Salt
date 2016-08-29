@@ -17,9 +17,10 @@ class Attending extends React.Component  {
     $('[data-toggle="tooltip"]').tooltip()
   }
   updateUser() {
-    fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
+    fetchApi('GET','/current_user/dashboard.json?attending=true', {}, (response) => {
+      console.log(response)
       this.setState({
-        attendingEvents: response.events
+        attendingEvents: response
       })
     })
   }
