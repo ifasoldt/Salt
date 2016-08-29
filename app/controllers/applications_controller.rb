@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :require_user, only: [:create]
-  before_action :set_application, only: [:update, :destroy]
+  before_action :set_application, only: [:update]
   before_action :require_host, only: [:update]
 
   def create
@@ -24,6 +24,7 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
+    @application = Application.find_by(event_id: params[:event_id], user_id: current_user.id)
     @application.destroy
     render json: @application, status: 200
   end
