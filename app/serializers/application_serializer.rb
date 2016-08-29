@@ -9,7 +9,11 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def application_profile_pic
-    Refile.attachment_url(object.user.images.first, :file, :fill, 400, 400) if object.user.images.first
+    if object.user.images.first
+      Refile.attachment_url(object.user.images.first, :file, :fill, 400, 400) if object.user.images.first
+    else
+      "/assets/no_pic.png"
+    end
   end
 
   def app_event_id
