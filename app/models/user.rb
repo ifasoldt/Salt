@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :images, as: :imageable, dependent: :destroy
   accepts_attachments_for :images
 
+  # ARE EVENTS SCOPED OR NOT?
 
   validates :first_name, :last_name, :email, :date_of_birth, presence: true
   validates :first_name, :last_name, format: { with: /([ \u00c0-\u01ffa-zA-Z'\-])+/, message: "only allows letters" }

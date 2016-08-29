@@ -4,72 +4,42 @@
 
 <div class="container-fluid">
   <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 user_info">
-        <div class="visible-xs hidden-sm hidden-md hidden-lg">
-          <div class="profileNameBox">
-            <h1>Jake Willingham</h1>
-            <h3 class="aboutYou">About Jake:</h3>
-            <div class="aboutMeDescriptionBox">
-              <h5>Jake is the coolest cat on the block and the best chef in town.</h5>
-            </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 user_info">
+      <div class="visible-xs hidden-sm hidden-md hidden-lg">
+        <div class="profileNameBox">
+          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+          <h3 class="aboutYou">About <%= @user.first_name %>:</h3>
+          <div class="aboutMeDescriptionBox">
+            <h5><%= @user.description %></h5>
           </div>
-        </div>
-        <div class="center-block profileImageBox">
-          <img class="user_image center-block img-responsive" src="/assets/profileImage.png" />
-          <div class="center-block eventsInfoBox">
-            <span>5<span class="eventsSpan">events hosted</span> </span>
-            <span>10<span class="eventsSpan">events attended</span> </span>
-          </div>
-        </div>
-        <div class="center-block personelInfoBox">
-          <div class="personelContainer">
-            <div class="iconContainer">
-              <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-            </div>
-            <div class="infoContainer">
-              <h4>Date of Birth</h4>
-              <p>10/13/1989</p>
-            </div>
-          </div>
-          <div class="personelContainer">
-            <div class="iconContainer">
-              <i class="fa fa-phone-square" aria-hidden="true"></i>
-            </div>
-            <div class="infoContainer">
-              <h4>Phone Number</h4>
-              <p>317-987-3436</p>
-            </div>
-          </div>
-          <div class="personelContainer">
-            <div class="iconContainer">
-              <i class="fa fa-globe" aria-hidden="true"></i>
-            </div>
-            <div class="infoContainer">
-              <h4>Address:</h4>
-              <div class="user_street">6140 Norwaldo Ave</div>
-              <span class="user_city">Indianapolis,</span>
-              <span class="user_state">Indiana</span>
-              <span class="user_zip">46220</span>
-            </div>
-          </div>
-        </div>
-        <div class="center-block buttonsBox">
-          <a href="#" data-toggle="modal" data-target="#messageUserModal"><button class="btn">Message</button></a>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-8">
-        <div class="hidden-xs visible-sm visible-md visible-lg">
-          <div class="profileNameBox">
-            <h1>Jake Willingham</h1>
-            <h3 class="aboutYou">About Jake:</h3>
-            <div class="aboutMeDescriptionBox">
-              <h5>Jake is the coolest cat on the block and the best chef in town.</h5>
-            </div>
-          </div>
+      <div class="center-block profileImageBox" id="userID" data-id="<%= @user.id %>">
+        <img class="user_image center-block img-responsive" src="<%= attachment_url(@user.images[0], :file, :fill, 400, 400, fallback: "/assets/no_pic.png") %>" />
+        <div class="center-block eventsInfoBox">
+          <span><%= @user.hosted_events.count %><span class="eventsSpan">events hosted</span> </span>
+          <span><%= @user.events.count %><span class="eventsSpan">events attended</span> </span>
+        </div>
+        <div class="buttonsBox">
+          <a href="#" data-toggle="modal" data-target="#messageUserModal"><button class="center-block btn">Message</button></a>
         </div>
       </div>
     </div>
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <div class="hidden-xs visible-sm visible-md visible-lg">
+        <div class="profileNameBox">
+          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+          <h3 class="aboutYou">About <%= @user.first_name %>:</h3>
+          <div class="aboutMeDescriptionBox">
+            <h5><%= @user.description %></h5>
+          </div>
+        </div>
+      </div>
+      <div class="scroll_box">
+      </div>
+    </div>
   </div>
+</div>
 
   <div class="modal fade" id="messageUserModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -78,8 +48,8 @@
           <h4 class="modal-title" id="myModalLabel">Message Jake</h4>
         </div>
         <div class="modal-body">
-        <label for="message"></label>
-        <textarea type="text" class="form-control" id="message" name="message"></textarea>
+        <label for="body"></label>
+        <textarea type="text" class="form-control" id="message" name="body"></textarea>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

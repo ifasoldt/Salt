@@ -23,51 +23,8 @@ body {
       margin-left: 3px;
     }
   }
-  .personelInfoBox {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: white;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    h4 {
-      font-size: 20px;
-    }
-    p {
-      font-size: 17px;
-    }
-    .personelContainer {
-      display: flex;
-      flex: 1;
-      flex-direction: row;
-      .iconContainer {
-        font-size: 30px;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .infoContainer {
-        flex: 3;
-      }
-      .user_street, .user_city, .user_state, .user_zip {
-        font-size: 17px;
-      }
-    }
-  }
-  .user_state, .user_zip {
-    margin-left: 4px;
-  }
   .buttonsBox {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    background-color: white;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
+    margin-top: 5px;
     button {
       background-color: black;
       color: white;
@@ -79,6 +36,7 @@ body {
     }
   }
 }
+
 .profileNameBox {
   background-color: white;
   border: 1px solid black;
@@ -112,16 +70,22 @@ body {
   }
 }
 
+.scroll_box {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  overflow-y: scroll;
+  height: 500px;
+  border: 1px solid black;
+  margin-bottom: 40px;
+  width: 95%;
+}
 
 @media screen and (min-width: 768px) {
   .user_info {
     .profileImageBox {
-      width: 75%;
-    }
-    .personelInfoBox {
-      width: 75%;
-    }
-    .buttonsBox {
       width: 75%;
     }
   }
