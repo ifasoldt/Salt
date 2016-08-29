@@ -37,8 +37,7 @@ class MessageBox extends React.Component {
           <div className="col-xs-12 col-sm-4">
             <div className="profileImageBox center-block">
               <img className="user_image img-responsive" src={this.props.conversation.message_partner.user_image} />
-              <h2>Name: {this.props.conversation.message_partner.first_name}</h2>
-              <h4>Description: {this.props.conversation.message_partner.description}</h4>
+              <h2 className="text-center">{this.props.conversation.message_partner.first_name}</h2>
             </div>
           </div>
           <div className="col-xs-12 col-sm-8">

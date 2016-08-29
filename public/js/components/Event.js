@@ -72,9 +72,6 @@ class Event extends React.Component  {
     })
 
   }
-  componentDidUpdate () {
-      $('[data-toggle="tooltip"]').tooltip()
-  }
   filterGuests(e) {
     this.setState({guestLimit: e.target.value})
     this.filteredSearch({
@@ -148,7 +145,6 @@ class Event extends React.Component  {
                   <br/>
                   <span className="time" data-id={event.id}>{event.formatted_time}</span>
                 </div>
-                <i className="fa fa-heart-o watchIcon" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Watch Event"></i>
               </div>
               <div className="descContainer" data-id={event.id}>
                 <div className="profileContainer" data-id={event.id}>

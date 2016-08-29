@@ -21624,7 +21624,7 @@
 	      } else if (this.state.appIds.includes(parseInt(document.getElementById('profile-box').getAttribute('data-id')))) {
 	        this.setState({ msg_button: _react2.default.createElement(
 	            'div',
-	            { className: 'text-center' },
+	            { className: 'buttonContainer' },
 	            _react2.default.createElement(
 	              'button',
 	              { type: 'button', className: 'btn message-button', onClick: this.leaveEvent },
@@ -21639,7 +21639,7 @@
 	      } else {
 	        this.setState({ msg_button: _react2.default.createElement(
 	            'div',
-	            { className: 'text-center' },
+	            { className: 'buttonContainer' },
 	            _react2.default.createElement(
 	              'button',
 	              { type: 'button', className: 'btn message-button', 'data-toggle': 'modal', 'data-target': '#joinEventModal' },
@@ -22125,7 +22125,7 @@
 	                    'Questions and Comments'
 	                  )
 	                ),
-	                _react2.default.createElement('input', { type: 'text', placeholder: 'Type a comment here', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
+	                _react2.default.createElement('input', { encType: 'text', placeholder: 'Type a comment here', className: 'form-control', onKeyPress: this.post, value: this.state.value, onChange: this.commentsChange }),
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'commentsScrollBox' },
@@ -22163,12 +22163,12 @@
 	                { className: 'modal-footer' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+	                  { encType: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
 	                  'Cancel'
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-danger', onClick: this.flag },
+	                  { encType: 'button', className: 'btn btn-danger', onClick: this.flag },
 	                  'Flag Comment'
 	                )
 	              )
@@ -22196,19 +22196,19 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'modal-body' },
-	                _react2.default.createElement('textarea', { style: { height: '80px' }, type: 'text', className: 'form-control', value: this.state.messageValue, onChange: this.messageChange })
+	                _react2.default.createElement('textarea', { style: { height: '80px' }, encType: 'text', className: 'form-control', value: this.state.messageValue, onChange: this.messageChange })
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'modal-footer' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                  { encType: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
 	                  'Cancel'
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-black', onClick: this.messageHost },
+	                  { encType: 'button', className: 'btn btn-black', onClick: this.messageHost },
 	                  'Send Message'
 	                )
 	              )
@@ -22229,7 +22229,7 @@
 	                { className: 'modal-header' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'close', 'data-dismiss': 'modal' },
+	                  { encType: 'button', className: 'close', 'data-dismiss': 'modal' },
 	                  '×'
 	                ),
 	                _react2.default.createElement(
@@ -22243,26 +22243,26 @@
 	                { className: 'modal-body' },
 	                _react2.default.createElement(
 	                  'form',
-	                  { method: 'post', action: '#', enctype: 'multipart/form-data', id: 'current_event_join', 'data-id': '<%= @event.id %>' },
+	                  { method: 'post', action: '#', encType: 'multipart/form-data', id: 'current_event_join', 'data-id': '<%= @event.id %>' },
 	                  _react2.default.createElement(
 	                    'div',
 	                    { className: 'form-group' },
 	                    _react2.default.createElement(
 	                      'label',
-	                      { 'for': 'application_guests' },
+	                      { htmlFor: 'application_guests' },
 	                      'Number Of Guests'
 	                    ),
-	                    _react2.default.createElement('input', { type: 'text', value: this.state.quantityValue, placeholder: 'Make Sure To Include Yourself', onChange: this.quantityChange, className: 'form-control', id: 'application_guests', name: 'application_guests' })
+	                    _react2.default.createElement('input', { encType: 'text', value: this.state.quantityValue, placeholder: 'Make Sure To Include Yourself', onChange: this.quantityChange, className: 'form-control', id: 'application_guests', name: 'application_guests' })
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
 	                    { className: 'form-group' },
 	                    _react2.default.createElement(
 	                      'label',
-	                      { 'for': 'application_message' },
+	                      { htmlFor: 'application_message' },
 	                      'Message To Event Creator'
 	                    ),
-	                    _react2.default.createElement('textarea', { type: 'text', value: this.state.messageValue, onChange: this.messageChange, id: 'application_message', className: 'form-control text_input', name: 'application_message', placeholder: 'Describe Guests' })
+	                    _react2.default.createElement('textarea', { encType: 'text', value: this.state.messageValue, onChange: this.messageChange, id: 'application_message', className: 'form-control text_input', name: 'application_message', placeholder: 'Describe Guests' })
 	                  )
 	                ),
 	                _react2.default.createElement('div', { id: 'joinEventErrors', className: 'error' })
@@ -22272,7 +22272,7 @@
 	                { className: 'modal-footer' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', id: 'btn_application_submit', className: 'btn btn-default', onClick: this.joinEvent },
+	                  { encType: 'button', id: 'btn_application_submit', className: 'btn btn-default', onClick: this.joinEvent },
 	                  _react2.default.createElement(
 	                    'span',
 	                    null,
@@ -22281,7 +22281,7 @@
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                  { encType: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
 	                  'Close'
 	                )
 	              )

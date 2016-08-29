@@ -86,6 +86,7 @@ body {
   background-color: black;
   color: white;
   transition: 0.3s;
+  width: 110px;
 }
 
 .user_info .buttonsBox button:hover, .user_info .buttonsBox button:focus {

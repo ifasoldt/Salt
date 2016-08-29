@@ -34,14 +34,12 @@ body {
 .content_area {
   padding-top: 10px;
 }
-
-.eventInfoTitle{
-  font-size: 20px;
+.eventInfoTitle {
+  a {
+    color: black;
+    font-size: 16px;
+  }
 }
-a {
-  color:inherit;
-  text-decoration: none;
- }
 .eventContainer {
   border-radius: 10px;
   display: flex;

@@ -21579,11 +21579,6 @@
 	      });
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      $('[data-toggle="tooltip"]').tooltip();
-	    }
-	  }, {
 	    key: 'filterGuests',
 	    value: function filterGuests(e) {
 	      this.setState({ guestLimit: e.target.value });
@@ -21688,8 +21683,7 @@
 	                  { className: 'time', 'data-id': event.id },
 	                  event.formatted_time
 	                )
-	              ),
-	              _react2.default.createElement('i', { className: 'fa fa-heart-o watchIcon', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Watch Event' })
+	              )
 	            ),
 	            _react2.default.createElement(
 	              'div',

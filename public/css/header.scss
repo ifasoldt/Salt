@@ -12,7 +12,7 @@
     color: white;
     transition: 0.3s;
   }
-  button:hover, button:focus {
+  button:hover, button:focus, button:active {
     color: pink;
     background-color: black;
   }

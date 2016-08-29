@@ -44,27 +44,27 @@ document.getElementById('btn_event_submit').addEventListener('click', function (
     }
   })
 })
-var eventID_join = document.getElementById('current_event_join')
-var current_event_join = eventID_join.getAttribute('data-id')
-// edit event
-document.getElementById('btn_application_submit').addEventListener('click', function () {
-  removeErrors()
-  var buttonDisable = document.getElementById('btn_application_submit')
-  buttonDisable.setAttribute('disabled', true)
-  var formFields = {
-    quantity: document.getElementById('application_guests').value,
-    message: document.getElementById('application_message').value
-  }
-  fetchApi('POST', `/api/events/${current_event_join}/applications`, formFields, function (response, statusCode) {
-    if (statusCode >= 200 && statusCode < 300) {
-      location.reload()
-      buttonDisable.removeAttribute('disabled')
-    }
-    else {
-      buttonDisable.removeAttribute('disabled')
-      var errors = response.forEach(function(error){
-        createError(error, 'application_message')
-      })
-    }
-  })
-})
+// var eventID_join = document.getElementById('current_event_join')
+// var current_event_join = eventID_join.getAttribute('data-id')
+// // edit event
+// document.getElementById('btn_application_submit').addEventListener('click', function () {
+//   removeErrors()
+//   var buttonDisable = document.getElementById('btn_application_submit')
+//   buttonDisable.setAttribute('disabled', true)
+//   var formFields = {
+//     quantity: document.getElementById('application_guests').value,
+//     message: document.getElementById('application_message').value
+//   }
+//   fetchApi('POST', `/api/events/${current_event_join}/applications`, formFields, function (response, statusCode) {
+//     if (statusCode >= 200 && statusCode < 300) {
+//       location.reload()
+//       buttonDisable.removeAttribute('disabled')
+//     }
+//     else {
+//       buttonDisable.removeAttribute('disabled')
+//       var errors = response.forEach(function(error){
+//         createError(error, 'application_message')
+//       })
+//     }
+//   })
+// })

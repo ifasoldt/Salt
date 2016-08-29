@@ -102,14 +102,14 @@ class ShowEvent extends React.Component  {
       this.setState({msg_button: <div></div>})
     }
     else if (this.state.appIds.includes(parseInt(document.getElementById('profile-box').getAttribute('data-id')))) {
-      this.setState({msg_button:<div className="text-center">
+      this.setState({msg_button:<div className="buttonContainer">
                 <button type="button" className="btn message-button" onClick={this.leaveEvent}>Leave Event</button>
                 <button type="button" className="btn message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
               </div> })
     }
     else {
       this.setState({msg_button:
-      <div className="text-center">
+      <div className="buttonContainer">
         <button type="button" className="btn message-button" data-toggle="modal" data-target="#joinEventModal">Join Event</button>
         <button type="button" className="btn message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
       </div>})
@@ -354,7 +354,7 @@ class ShowEvent extends React.Component  {
                 </div>
                 <div className="commentsBox">
                   <h3 className="commentsTitle"><strong>Questions and Comments</strong></h3>
-                  <input type="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
+                  <input encType="text" placeholder="Type a comment here" className="form-control" onKeyPress={this.post} value={this.state.value} onChange={this.commentsChange} />
                   <div className="commentsScrollBox">
                     {all_comments}
                   </div>
@@ -372,8 +372,8 @@ class ShowEvent extends React.Component  {
                   Do you wish to flag this comment as inappropriate or misleading?
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" className="btn btn-danger" onClick={this.flag}>Flag Comment</button>
+                  <button encType="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button encType="button" className="btn btn-danger" onClick={this.flag}>Flag Comment</button>
                 </div>
               </div>
             </div>
@@ -385,11 +385,11 @@ class ShowEvent extends React.Component  {
                   <h4 className="modal-title" id="myModalLabel">Message The Host Of This Event</h4>
                 </div>
                 <div className="modal-body">
-                <textarea style={{height:'80px'}} type="text" className="form-control" value={this.state.messageValue} onChange={this.messageChange}></textarea>
+                <textarea style={{height:'80px'}} encType="text" className="form-control" value={this.state.messageValue} onChange={this.messageChange}></textarea>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="button" className="btn btn-black" onClick={this.messageHost}>Send Message</button>
+                  <button encType="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button encType="button" className="btn btn-black" onClick={this.messageHost}>Send Message</button>
                 </div>
               </div>
             </div>
@@ -398,27 +398,27 @@ class ShowEvent extends React.Component  {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <button encType="button" className="close" data-dismiss="modal">&times;</button>
                   <h4 className="modal-title">Join Event</h4>
                 </div>
                 <div className="modal-body">
-                  <form method="post" action="#" enctype="multipart/form-data" id="current_event_join" data-id="<%= @event.id %>">
+                  <form method="post" action="#" encType="multipart/form-data" id="current_event_join" data-id="<%= @event.id %>">
                     <div className="form-group">
-                      <label for="application_guests">Number Of Guests</label>
-                      <input type="text" value={this.state.quantityValue} placeholder="Make Sure To Include Yourself" onChange={this.quantityChange} className="form-control" id="application_guests" name="application_guests" />
+                      <label htmlFor="application_guests">Number Of Guests</label>
+                      <input encType="text" value={this.state.quantityValue} placeholder="Make Sure To Include Yourself" onChange={this.quantityChange} className="form-control" id="application_guests" name="application_guests" />
                     </div>
                     <div className="form-group">
-                      <label for="application_message">Message To Event Creator</label>
-                      <textarea type="text" value={this.state.messageValue} onChange={this.messageChange} id="application_message" className="form-control text_input" name="application_message" placeholder="Describe Guests"></textarea>
+                      <label htmlFor="application_message">Message To Event Creator</label>
+                      <textarea encType="text" value={this.state.messageValue} onChange={this.messageChange} id="application_message" className="form-control text_input" name="application_message" placeholder="Describe Guests"></textarea>
                     </div>
                   </form>
                   <div id="joinEventErrors" className="error"></div>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" id="btn_application_submit" className="btn btn-default" onClick={this.joinEvent}>
+                  <button encType="button" id="btn_application_submit" className="btn btn-default" onClick={this.joinEvent}>
                     <span>Submit</span>
                   </button>
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                  <button encType="button" className="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

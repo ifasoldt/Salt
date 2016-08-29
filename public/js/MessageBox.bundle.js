@@ -130,15 +130,8 @@
 	              _react2.default.createElement('img', { className: 'user_image img-responsive', src: this.props.conversation.message_partner.user_image }),
 	              _react2.default.createElement(
 	                'h2',
-	                null,
-	                'Name: ',
+	                { className: 'text-center' },
 	                this.props.conversation.message_partner.first_name
-	              ),
-	              _react2.default.createElement(
-	                'h4',
-	                null,
-	                'Description: ',
-	                this.props.conversation.message_partner.description
 	              )
 	            )
 	          ),

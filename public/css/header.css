@@ -14,7 +14,7 @@
   transition: 0.3s;
 }
 
-.modal-footer button:hover, .modal-footer button:focus {
+.modal-footer button:hover, .modal-footer button:focus, .modal-footer button:active {
   color: pink;
   background-color: black;
 }
