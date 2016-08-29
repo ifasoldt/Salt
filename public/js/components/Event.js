@@ -15,7 +15,7 @@ class Event extends React.Component  {
       guestLimit: '',
       noResultsFound: '',
       noLocationFound: '',
-      mapText:'NoMapOverlay'
+      mapOverlay:<div></div>
     }
   }
   componentDidMount () {
@@ -58,7 +58,7 @@ class Event extends React.Component  {
             handler.getMap().setZoom(10)
             handler.map.centerOn(results[0].geometry.location)
             context.setState({
-              mapText: 'ComingSoon',
+              mapOverlay: <img src="/assets/coming_soon2.png" className="map-overlay" />,
               noLocationFound: ''
             })
           }
@@ -197,8 +197,8 @@ class Event extends React.Component  {
             </select>
           </div>
         </div>
-        <div className={this.state.mapText}>
-          <div id="map"></div>
+        <div>
+          <div id="map">{this.state.mapOverlay}</div>
         </div>
         <div className="container-fluid content_area">
           <div className="row">

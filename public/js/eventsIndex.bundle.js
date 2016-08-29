@@ -21458,7 +21458,7 @@
 	      guestLimit: '',
 	      noResultsFound: '',
 	      noLocationFound: '',
-	      mapText: 'NoMapOverlay'
+	      mapOverlay: _react2.default.createElement('div', null)
 	    };
 	    return _this;
 	  }
@@ -21511,7 +21511,7 @@
 	              handler.getMap().setZoom(10);
 	              handler.map.centerOn(results[0].geometry.location);
 	              context.setState({
-	                mapText: 'ComingSoon',
+	                mapOverlay: _react2.default.createElement('img', { src: '/assets/coming_soon2.png', className: 'map-overlay' }),
 	                noLocationFound: ''
 	              });
 	            } else {
@@ -21781,8 +21781,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: this.state.mapText },
-	          _react2.default.createElement('div', { id: 'map' })
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'map' },
+	            this.state.mapOverlay
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',

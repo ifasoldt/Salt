@@ -15,10 +15,9 @@ class Hosting extends React.Component  {
     this.updateUser()
   }
   updateUser() {
-    fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
-      var hostingEvents = response.hosted_events.map((events) => {
-        return events
-      })
+    fetchApi('GET','/current_user/dashboard.json?hosting=true', {}, (response) => {
+      console.log(response)
+      var hostingEvents = response
       this.setState({
         hostedEvents: hostingEvents
       })
