@@ -91,7 +91,7 @@ class UserDashboard extends React.Component  {
                     <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/attending'>Events Attending</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/messages'>Messages</Link>
+                    <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/inbox'>Inbox</Link>
                   </li>
                 </ul>
                 <div className="scroll_box">

@@ -4,6 +4,6 @@ class CommentSerializer < ActiveModel::Serializer
   belongs_to :event
 
   def formatted_created_at
-    object.created_at.strftime('%b %e at %l:%M %p')
+    object.created_at.strftime('%A, %b %d. @ %l:%M %P')
   end
 end

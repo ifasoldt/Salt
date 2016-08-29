@@ -1,27 +1,45 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Conversation from './conversation'
+import Conversation from './Conversation'
 
 class Inbox extends React.Component {
-  render(){
-    var conversations = this.props.conversations.map((conversation, key) => {
-      return <Conversation conversation={conversation} key={key}/>
+  constructor(props) {
+    super(props)
+    this.updateConversations = this.updateConversations.bind(this)
+    this.state = {
+      conversations: []
+    }
+  }
+  componentDidMount () {
+    this.updateConversations()
+  }
+  updateConversations () {
+    fetchApi('GET', `/conversations.json`, {}, (response) =>{
+      console.log(response)
+      this.setState({ conversations: response })
     })
-    return(
-      <div>
-        {conversations}
+  }
+  render () {
+    var convos = this.state.conversations.map((convo, key) => {
+      return <Conversation conversation={convo} key={key}/>
+    })
+    return (
+      <div className="panel panel-default">
+        <table className="table">
+          <thead className="tableHeadAttending">
+            <tr>
+              <th>Name</th>
+              <th>When</th>
+              <th>Most Recent Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            {convos}
+          </tbody>
+        </table>
       </div>
     )
   }
 }
 
-fetchApi('GET', `/conversations.json`, {}, (response, statusCode) =>{
-  console.log(response)
-  var conversations = response
-  ReactDOM.render(<Inbox conversations={conversations}/>, document.getElementById('inbox'))
-})
-
-
 export default Inbox
-
-// inbox, conversation, message-box, messages

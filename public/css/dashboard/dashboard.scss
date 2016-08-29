@@ -98,7 +98,15 @@ body {
     }
   }
 }
-
+.tableHeadAttending {
+  background-color: black;
+  color: white;
+}
+.conversationTable {
+  a {
+    color: black;
+  }
+}
 .scroll_box {
   padding: 10px;
   border: 1px solid transparent;
@@ -167,12 +175,23 @@ td {
 .text_input {
   height: 80px;
 }
+.conversation-container{
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color:black;
+}
+.message-preview{
+  font-size: 20px;
+}
+
 
 @media screen and (min-width: 768px) {
   .profileNameBox {
     width: 95%;
   }
   .scroll_box {
-    width: 95;
+    width: 95%;
   }
 }

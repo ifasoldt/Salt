@@ -5,6 +5,6 @@ belongs_to :author, class_name: 'User'
 
 
   def created_at
-    object.created_at.strftime("%b %e, %l:%M %p")
+    object.created_at.strftime("%A, %b %d. @ %l:%M %P")
   end
 end

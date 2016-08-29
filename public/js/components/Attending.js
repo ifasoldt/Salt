@@ -48,7 +48,7 @@ class Attending extends React.Component  {
                   <img className="profile_image img-circle" src={event.event_images[0]} />
                   <a>{event.title}</a>
                 </td>
-                <td>{event.formatted_date} @ {event.formatted_time}</td>
+                <td><a>{event.formatted_date} @ {event.formatted_time}</a></td>
                 <td>{event.spots_left}</td>
                 <td>
                   {(() => {
@@ -71,11 +71,8 @@ class Attending extends React.Component  {
         })
         return (
             <div className="panel panel-default">
-              <div className="panel-heading">
-                Events Attending
-              </div>
               <table className="table">
-                <thead>
+                <thead className="tableHeadAttending">
                   <tr>
                     <th>Title</th>
                     <th>When</th>

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Message from './message'
+import Message from './Message'
 
 class MessageBox extends React.Component {
   constructor(props) {
@@ -34,19 +34,22 @@ class MessageBox extends React.Component {
     return(
       <div className="container-fluid">
         <div className="row">
-          <div className="col-xs-12 col-sm-4 user_info">
-            <img className="user_image img-responsive" src={this.props.conversation.message_partner.user_image} />
-            <h2>Name: {this.props.conversation.message_partner.first_name}</h2>
-            <h4>Description: {this.props.conversation.message_partner.description}</h4>
+          <div className="col-xs-12 col-sm-4">
+            <div className="profileImageBox center-block">
+              <img className="user_image img-responsive" src={this.props.conversation.message_partner.user_image} />
+              <h2>Name: {this.props.conversation.message_partner.first_name}</h2>
+              <h4>Description: {this.props.conversation.message_partner.description}</h4>
+            </div>
           </div>
           <div className="col-xs-12 col-sm-8">
-          <h2>Compose a new message to {this.props.conversation.message_partner.first_name}</h2>
-            <textarea style={{height:'80px'}} type="text" className="form-control" value={this.state.value} onChange={this.messageChange}></textarea>
-            <button type="button" className="btn btn-success" onClick={this.post}>Send Message</button>
-          </div>
-          <div className="col-xs-12 col-sm-8">
-            <h2> Conversation </h2>
-            {allMessages}
+            <div className="messageBox">
+              <h2>Compose a new message to {this.props.conversation.message_partner.first_name}</h2>
+              <textarea style={{height:'80px'}} type="text" className="form-control" value={this.state.value} onChange={this.messageChange}></textarea>
+              <button type="button" className="btn" onClick={this.post}>Send Message</button>
+            </div>
+            <div className="conversationBox">
+              {allMessages}
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ module.exports = {
     eventsIndex: './js/events/index.js',
     showEvent: './js/events/showEvent.js',
     userDashboard: './js/dashboard/userDashboard.js',
-    inbox: './js/components/inbox.js',
     MessageBox: './js/components/MessageBox.js'
   },
   output: {

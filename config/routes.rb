@@ -17,6 +17,7 @@ post '/api/users' => 'users#create'
 get '/current_user/dashboard/' => 'users#dashboard'
 get 'current_user/dashboard/hosting' => 'users#dashboard'
 get 'current_user/dashboard/attending' => 'users#dashboard'
+get 'current_user/dashboard/inbox' => 'users#dashboard'
 # user update
 put '/api/users/:id' => 'users#update'
 patch '/api/users/:id' => 'users#update'
