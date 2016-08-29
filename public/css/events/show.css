@@ -339,3 +339,13 @@ body {
     height: 400px;
   }
 }
+
+.message-button {
+  margin: 10px 10px 0 10px;
+}
+
+.btn-black {
+  background-color: black;
+  color: white;
+  transition: 0.3s;
+}

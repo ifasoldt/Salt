@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :description, :food, :guest_limit, :spots_left, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :time, :filter_guests, :event_images, :formatted_date, :formatted_time, :confirmed_guests, :event_marker
+  attributes :id, :description, :food, :guest_limit, :spots_left, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :time, :filter_guests, :event_images, :formatted_date, :formatted_time, :confirmed_guests, :event_marker, :event_application_ids
   belongs_to :host, class_name: 'User'
   has_many :images
   has_many :comments
@@ -12,6 +12,14 @@ class EventSerializer < ActiveModel::Serializer
       ev_images << Refile.attachment_url(image, :file, :fill, 1000, 1000)
     end
     ev_images
+  end
+
+  def event_application_ids
+    app_ids = []
+    object.applications.each do |app|
+      app_ids << app.user.id
+    end
+    app_ids
   end
   #
   # def test

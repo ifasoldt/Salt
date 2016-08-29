@@ -11,7 +11,11 @@ class ShowEvent extends React.Component  {
     this.messageHost = this.messageHost.bind(this)
     this.mountSlider = this.mountSlider.bind(this)
     this.messageChange = this.messageChange.bind(this)
-
+    this.joinEvent = this.joinEvent.bind(this)
+    this.leaveEvent = this.leaveEvent.bind(this)
+    this.messageChange = this.messageChange.bind(this)
+    this.quantityChange = this.quantityChange.bind(this)
+    this.setButtons = this.setButtons.bind(this)
     this.state = {
       mapLoaded: false,
       events: [],
@@ -22,7 +26,11 @@ class ShowEvent extends React.Component  {
       hiddenComments: [],
       commentId: '',
       value: '',
-      messageValue:''
+      messageValue:'',
+      appIds: [],
+      messageValue: '',
+      quantityValue: '',
+      msg_button: <div></div>
     }
   }
   componentDidMount () {
@@ -50,11 +58,66 @@ class ShowEvent extends React.Component  {
       this.setState({commentId:''})
     })
   }
-
   setCommentId(e) {
     this.setState({commentId: e.target.getAttribute('data-id')})
   }
-
+  leaveEvent() {
+    // I'm not using the :id in the controller, so the last line can be anything as long as it's there.
+    fetchApi('DELETE',`/api/events/${this.state.events.id}/applications/leave`, {}, (response, statusCode) => {
+      if (statusCode >= 200 && statusCode < 300) {
+        var newAppIds = this.state.appIds
+        console.log(this.state.appIds)
+        console.log("First" + newAppIds)
+        console.log(response.user.id)
+        var index = newAppIds.indexOf(response.user.id)
+        console.log(index)
+        newAppIds.splice(index, 1)
+        console.log("Second" + newAppIds)
+        this.setState({appIds: newAppIds})
+        this.setButtons()
+      }
+      else {
+        alert('Error')
+      }
+    })
+  }
+  joinEvent() {
+    fetchApi('POST',`/api/events/${this.state.events.id}/applications`, {quantity: this.state.quantityValue, message: this.state.messageValue}, (response, statusCode) => {
+      if (statusCode >= 200 && statusCode < 300) {
+        $('#joinEventModal').modal('hide')
+        var newAppIds = this.state.appIds
+        newAppIds.unshift(response.user.id)
+        this.setState({appIds: newAppIds})
+        this.setButtons()
+        this.setState({messageValue:''})
+        this.setState({quantityValue:''})
+      }
+      else {
+        $('#joinEventErrors').append(response)
+      }
+    })
+  }
+  setButtons(){
+    if ((document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) || ((document.getElementById('profile-box').getAttribute('data-id') == "none") )){
+      this.setState({msg_button: <div></div>})
+    }
+    else if (this.state.appIds.includes(parseInt(document.getElementById('profile-box').getAttribute('data-id')))) {
+      this.setState({msg_button:<div className="text-center">
+                <button type="button" className="btn message-button" onClick={this.leaveEvent}>Leave Event</button>
+                <button type="button" className="btn message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
+              </div> })
+    }
+    else {
+      this.setState({msg_button:
+      <div className="text-center">
+        <button type="button" className="btn message-button" data-toggle="modal" data-target="#joinEventModal">Join Event</button>
+        <button type="button" className="btn message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
+      </div>})
+    }
+  }
+  messageChange(e) {
+    this.setState({messageValue: e.target.value})
+  }
   post(e) {
     if (e.key === 'Enter') {
       fetchApi('POST',`/events/${this.state.events.id}/comments`, {body: e.target.value}, (response, statusCode) => {
@@ -75,6 +138,9 @@ class ShowEvent extends React.Component  {
   }
   messageChange(e) {
     this.setState({messageValue: e.target.value})
+  }
+  quantityChange(e) {
+    this.setState({quantityValue: e.target.value})
   }
   mountSlider () {
     $("#slider").slick({
@@ -101,15 +167,16 @@ class ShowEvent extends React.Component  {
   }
   updateEvents() {
     fetchApi('GET', `/api/events/${current_event}.json`, {}, (response) => {
-      console.log(response)
       this.setState({
         events: response,
         sliderImages: response.event_images,
         host: response.host,
         markerArray: response.event_marker,
-        comments: response.comments
+        comments: response.comments,
+        appIds: response.event_application_ids
       })
       this.mountSlider()
+      this.setButtons()
     })
   }
   componentDidUpdate () {
@@ -140,14 +207,6 @@ class ShowEvent extends React.Component  {
         }
         return <div style={imageStyle} className="slideImageStyle" key={key}></div>
       })
-      var msg_button = ""
-      // button is rendering momentarily and then dissapearing
-      // if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id){
-      //   msg_button = ""
-      // }
-      // else {
-      //   msg_button = <button type="button" className="btn center-block message-button" data-toggle="modal" data-target="#messageHostModal">Message Host</button>
-      // }
 
       var all_comments = this.state.comments.map((comment, key) => {
         if (!this.state.hiddenComments.includes(comment.id) && comment.flagged != true){
@@ -212,7 +271,7 @@ class ShowEvent extends React.Component  {
                     <img src={this.state.host.user_image} className="img-responsive center-block hostImg" alt="" />
                     <h2 className="hostsName text-center">{this.state.host.full_name}</h2>
                   </div>
-                  {msg_button}
+                  {this.state.msg_button}
                 </div>
                 <div className="eventInfoBox center-block">
                   <div className="eventDescContainer">
@@ -329,8 +388,37 @@ class ShowEvent extends React.Component  {
                 <textarea style={{height:'80px'}} type="text" className="form-control" value={this.state.messageValue} onChange={this.messageChange}></textarea>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" className="btn btn-primary" onClick={this.messageHost}>Message Host</button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="button" className="btn btn-black" onClick={this.messageHost}>Send Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal fade" id="joinEventModal" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className="modal-title">Join Event</h4>
+                </div>
+                <div className="modal-body">
+                  <form method="post" action="#" enctype="multipart/form-data" id="current_event_join" data-id="<%= @event.id %>">
+                    <div className="form-group">
+                      <label for="application_guests">Number Of Guests</label>
+                      <input type="text" value={this.state.quantityValue} placeholder="Make Sure To Include Yourself" onChange={this.quantityChange} className="form-control" id="application_guests" name="application_guests" />
+                    </div>
+                    <div className="form-group">
+                      <label for="application_message">Message To Event Creator</label>
+                      <textarea type="text" value={this.state.messageValue} onChange={this.messageChange} id="application_message" className="form-control text_input" name="application_message" placeholder="Describe Guests"></textarea>
+                    </div>
+                  </form>
+                  <div id="joinEventErrors" className="error"></div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" id="btn_application_submit" className="btn btn-default" onClick={this.joinEvent}>
+                    <span>Submit</span>
+                  </button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
