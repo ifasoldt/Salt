@@ -9,7 +9,7 @@ document.getElementById('submitPassword').addEventListener('click', function () 
     password_confirmation: document.getElementById('confirmPassword').value
   }
 
-  fetchApi('POST','/users/change_password', formFields, function (response, statusCode) {
+  fetchApi('POST','/users/change/password', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       redirect('/current_user/dashboard')
       buttonDisable.removeAttribute('disabled')

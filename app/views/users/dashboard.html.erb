@@ -1,5 +1,4 @@
   <% content_for :stylesheets do %>
-    <link rel="stylesheet" href="/css/flatpickr.min.css" />
     <link rel="stylesheet" href="/css/dashboard/dashboard.css" />
   <% end %>
 
@@ -44,7 +43,7 @@
             <label for="description">Give A Brief Description Of Yourself</label>
             <textarea type="text" id="descriptionBio" class="form-control text_input" name="description"><%= @user&.description %></textarea>
           </div>
-          <a href="/users/new_password">Change Password</a>
+          <a href="/users/new/password">Change Password</a>
           <br />
           <h4>Address</h4>
           <hr />

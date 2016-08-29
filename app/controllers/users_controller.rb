@@ -61,13 +61,15 @@ class UsersController < ApplicationController
 
   def change_password
     @user = current_user
-      if @user.authenticate(params[:password])
-        @user.update(user_params)
-        session[:email] = @user.email
-        render json: @user, status: 200
-      else
-        render json: {error: "Incorrect password"}, status: 400
-      end
+    if @user.authenticate(params[:current_password])
+        if @user.update(user_params)
+          session[:email] = @user.email
+          render json: @user, status: 200
+        else
+          render json: ["Password fields do not match"], status: 400
+        end
+    else
+      render json: ["Incorrect password"], status: 400
     end
   end
 
