@@ -56,6 +56,9 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def new_password
+  end
+
   def change_password
     @user = current_user
       if @user.authenticate(params[:password])

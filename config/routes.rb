@@ -14,6 +14,8 @@ root 'welcome#index'
 # sign_up
 post '/api/users' => 'users#create'
 
+get 'users/new_password' => 'users#new_password'
+
 post '/users/change_password' => 'users#change_password'
 # user_dashboard
 get '/current_user/dashboard/' => 'users#dashboard'
