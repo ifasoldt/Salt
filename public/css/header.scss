@@ -2,6 +2,21 @@
   font-family: 'Abel', sans-serif;
   box-sizing: border-box
 }
+.modal-header {
+  background-color: black;
+  color: white;
+}
+.modal-footer {
+  button {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+  }
+  button:hover, button:focus {
+    color: pink;
+    background-color: black;
+  }
+}
 a {
   text-decoration: none;
 }
@@ -282,17 +297,3 @@ header {
     }
   }
 }
-
-// #navSearchLocation{
-//   width:100%;
-//   display: block;
-//   height: 34px;
-//   padding: 6px 12px;
-//   font-size: 14px;
-//   line-height: 1.42857143;
-//   color: #555;
-//   background-color: #fff;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-//   margin: 0
-// }

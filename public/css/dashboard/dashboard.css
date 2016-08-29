@@ -88,7 +88,7 @@ body {
   transition: 0.3s;
 }
 
-.user_info .buttonsBox button:hover {
+.user_info .buttonsBox button:hover, .user_info .buttonsBox button:focus {
   color: pink;
 }
 

@@ -36,7 +36,7 @@ body {
     transition: 0.3s;
     margin-top: 10px;
   }
-  button:hover {
+  button:hover, button:focus {
     color: pink;
   }
 }

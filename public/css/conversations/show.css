@@ -45,7 +45,7 @@ body {
   margin-top: 10px;
 }
 
-.messageBox button:hover {
+.messageBox button:hover, .messageBox button:focus {
   color: pink;
 }
 

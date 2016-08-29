@@ -37,7 +37,7 @@ body {
     color: white;
     transition: 0.3s;
   }
-  button:hover {
+  button:hover, button:focus {
     color: pink;
   }
 }
@@ -249,7 +249,7 @@ body {
     background-color: black;
     transition: 0.3s;
   }
-  button:hover {
+  button:hover, button:focus {
     color: pink;
   }
 }

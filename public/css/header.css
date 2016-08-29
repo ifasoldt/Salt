@@ -3,6 +3,22 @@
   box-sizing: border-box;
 }
 
+.modal-header {
+  background-color: black;
+  color: white;
+}
+
+.modal-footer button {
+  background-color: black;
+  color: white;
+  transition: 0.3s;
+}
+
+.modal-footer button:hover, .modal-footer button:focus {
+  color: pink;
+  background-color: black;
+}
+
 a {
   text-decoration: none;
 }

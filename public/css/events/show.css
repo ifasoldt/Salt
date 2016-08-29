@@ -48,7 +48,7 @@ body {
   transition: 0.3s;
 }
 
-.hostProfileBox button:hover {
+.hostProfileBox button:hover, .hostProfileBox button:focus {
   color: pink;
 }
 
@@ -301,7 +301,7 @@ body {
   transition: 0.3s;
 }
 
-.buttonContainer button:hover {
+.buttonContainer button:hover, .buttonContainer button:focus {
   color: pink;
 }
 
