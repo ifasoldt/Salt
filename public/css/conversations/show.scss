@@ -1,7 +1,6 @@
 body {
   background-color: #e8e8e8;
 }
-
 .profileImageBox {
   margin-top: 20px;
   width: 100%;
@@ -10,16 +9,13 @@ body {
   margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 5px;
+  h2 {
+    margin: 10px 0;
+  }
+  img {
+    border-radius: 10px;
+  }
 }
-
-.profileImageBox h2 {
-  margin: 10px 0;
-}
-
-.profileImageBox img {
-  border-radius: 10px;
-}
-
 .messageBox {
   margin-top: 20px;
   width: 100%;
@@ -28,27 +24,22 @@ body {
   margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 5px;
+  textarea {
+    margin-top: 10px;
+  }
+  h2 {
+    margin: 0;
+  }
+  button {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+    margin-top: 10px;
+  }
+  button:hover {
+    color: pink;
+  }
 }
-
-.messageBox textarea {
-  margin-top: 10px;
-}
-
-.messageBox h2 {
-  margin: 0;
-}
-
-.messageBox button {
-  background-color: black;
-  color: white;
-  transition: 0.3s;
-  margin-top: 10px;
-}
-
-.messageBox button:hover {
-  color: pink;
-}
-
 .conversationBox {
   margin-top: 20px;
   width: 100%;
@@ -59,12 +50,10 @@ body {
   border-radius: 5px;
   overflow: scroll;
   height: 500px;
+  h2 {
+    margin: 0;
+  }
 }
-
-.conversationBox h2 {
-  margin: 0;
-}
-
 .messageContainer {
   display: flex;
   flex-direction: row;
@@ -73,31 +62,26 @@ body {
   margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 5px;
+  .messagePictureContainer {
+    flex: 1;
+  }
+  .messageContentContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    .messageDateContainer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1;
+    }
+    .messageBodyContainer {
+      display: flex;
+      flex: 6;
+      padding: 10px;
+    }
+  }
 }
-
-.messageContainer .messagePictureContainer {
-  flex: 1;
-}
-
-.messageContainer .messageContentContainer {
-  display: flex;
-  flex-direction: column;
-  flex: 5;
-}
-
-.messageContainer .messageContentContainer .messageDateContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.messageContainer .messageContentContainer .messageBodyContainer {
-  display: flex;
-  flex: 6;
-  padding: 10px;
-}
-
 @media screen and (min-width: 768px) {
   .profileImageBox {
     width: 75%;
