@@ -7,7 +7,7 @@ document.getElementById('submitEmail').addEventListener('click', function () {
     email: document.getElementById('email').value
   }
 
-  fetchApi('POST','/users/change/password', formFields, function (response, statusCode) {
+  fetchApi('POST','/password_recoveries', formFields, function (response, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
       redirect('/')
       buttonDisable.removeAttribute('disabled')
