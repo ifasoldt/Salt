@@ -1,13 +1,8 @@
 class ThumbsController < ApplicationController
 
   def create
-    @thumb = Thumb.create(thumb_params)
-    render json: @thumb
-  end
-
-  def update
-    @thumb = Thumb.find(params[:id])
-    @thumb.update(thumb_params)
+    @thumb = Thumb.find_or_create_by(event_id: params[:event_id], host_id: current_user.id, user_id: user_id)
+    @thumb.update(category: params[:category])
     render json: @thumb
   end
 
