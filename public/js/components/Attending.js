@@ -18,7 +18,6 @@ class Attending extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json?attending=true', {}, (response) => {
-      console.log(response)
       this.setState({
         attendingEvents: response
       })
@@ -43,11 +42,12 @@ class Attending extends React.Component  {
           color: 'red'
         }
         var eventsAttending = this.state.attendingEvents.map((event, key) => {
+          var link = "/events/" + event.id
           return (
               <tr key={key}>
                 <td scope="row" className="user_profile">
-                  <img className="profile_image img-circle" src={event.event_images[0]} />
-                  <a>{event.title}</a>
+                  <a href={link}><img className="profile_image img-circle" src={event.event_images[0]} />
+                  {event.title}</a>
                 </td>
                 <td><a>{event.formatted_date} @ {event.formatted_time}</a></td>
                 <td>{event.spots_left}</td>

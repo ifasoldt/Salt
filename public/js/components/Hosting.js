@@ -16,7 +16,6 @@ class Hosting extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json?hosting=true', {}, (response) => {
-      console.log(response)
       var hostingEvents = response
       this.setState({
         hostedEvents: hostingEvents
@@ -49,11 +48,12 @@ class Hosting extends React.Component  {
       }
       var eventsHosting = this.state.hostedEvents.map((event, key) => {
         var eventApplications = event.applications.map((app, key) => {
+          var link = "/users/" + app.app_user_id
             return (
             <tr key={key}>
               <td scope="row" className="user_profile">
-                <img className="profile_image img-circle" src={app.application_profile_pic} />
-                <a>{app.application_user_name}</a>
+                <a href={link}><img className="profile_image img-circle" src={app.application_profile_pic} />
+                {app.application_user_name}</a>
               </td>
               <td>{app.quantity}</td>
               <td><i>{app.message}</i></td>
