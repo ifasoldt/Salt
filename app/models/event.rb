@@ -69,4 +69,18 @@ private
   end
 
 
+  def self.update_application_statuses
+    events = Event.where("date < ?", Date.today).or(Event.where("date = ? AND time < ?", Date.today, Time.now))
+    events.each do |event|
+      event.applications.each do |app|
+        if app.status == ('approved' || 'rateable')
+          app.status = 'rateable'
+        else
+          app.status = 'denied'
+        end
+        app.save
+      end
+    end
+  end
+
 end
