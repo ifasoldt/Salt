@@ -349,3 +349,8 @@ header .form-control:focus {
     margin: 0px 8px 5px 14px;
   }
 }
+
+.forgot-password {
+  margin-top: 7px;
+  float: left;
+}

@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :thumbs
   has_many :host_thumbs, class_name: 'Thumb', foreign_key: 'host_id'
   has_many :images, as: :imageable, dependent: :destroy
+  has_many :password_recoveries
   accepts_attachments_for :images
 
 

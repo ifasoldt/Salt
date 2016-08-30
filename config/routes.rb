@@ -8,6 +8,7 @@ resources :users, except:[:index, :edit, :create, :new, :update]
 resources :thumbs, only: [:create]
 resources :conversations, only: [:index, :show]
 resources :messages, only: [:create]
+resources :password_recoveries, except: [:index, :destroy, :show]
 
 root 'welcome#index'
 
