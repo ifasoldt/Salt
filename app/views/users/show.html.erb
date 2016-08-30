@@ -35,10 +35,38 @@
           </div>
         </div>
       </div>
-      <div class="scroll_box">
+        <div class="activityContainer">
+          <div class="activityHeader">
+            <h3 class="text-center">Activity in the Last Month</h3>
+          </div>
+          <div class="scrollContainers">
+              <div class="activityBoxLeft">
+                <div class="leftHeader">
+                  <h3>Hosted:</h3>
+                </div>
+                <div class="leftContent">
+                  <% @user.hosted_events.where(date: 4.weeks.ago..Date.today).each do |hosted_event| %>
+                    <%= render partial: "hosted_events", locals: {hosted_event: hosted_event} %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="activityBoxRight">
+                <div class="rightHeader">
+                  <h3>Attending:</h3>
+                </div>
+                <div class="rightContent">
+                  <% @user.events.where(date: 4.weeks.ago..Date.today).each do |event| %>
+                    <%= render partial: "attending_events", locals: {event: event} %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+
 </div>
 
   <div class="modal fade" id="messageUserModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
