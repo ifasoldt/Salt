@@ -27,59 +27,8 @@ body {
   margin-left: 3px;
 }
 
-.user_info .personelInfoBox {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  background-color: white;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.user_info .personelInfoBox h4 {
-  font-size: 20px;
-}
-
-.user_info .personelInfoBox p {
-  font-size: 17px;
-}
-
-.user_info .personelInfoBox .personelContainer {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-}
-
-.user_info .personelInfoBox .personelContainer .iconContainer {
-  font-size: 30px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user_info .personelInfoBox .personelContainer .infoContainer {
-  flex: 3;
-}
-
-.user_info .personelInfoBox .personelContainer .user_street, .user_info .personelInfoBox .personelContainer .user_city, .user_info .personelInfoBox .personelContainer .user_state, .user_info .personelInfoBox .personelContainer .user_zip {
-  font-size: 17px;
-}
-
-.user_info .user_state, .user_info .user_zip {
-  margin-left: 4px;
-}
-
 .user_info .buttonsBox {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background-color: white;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 5px;
+  margin-top: 5px;
 }
 
 .user_info .buttonsBox button {
@@ -91,6 +40,42 @@ body {
 
 .user_info .buttonsBox button:hover, .user_info .buttonsBox button:focus {
   color: pink;
+}
+
+.personelInfoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.personelInfoBox h4 {
+  font-size: 20px;
+}
+
+.personelInfoBox p {
+  font-size: 17px;
+}
+
+.personelInfoBox .personelContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.personelInfoBox .personelContainer .iconContainer {
+  font-size: 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.personelInfoBox .personelContainer .infoContainer {
+  flex: 3;
 }
 
 .profileNameBox {
@@ -130,6 +115,158 @@ body {
   cursor: pointer;
 }
 
+.activityContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.activityHeader {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.activityHeader h3 {
+  margin: 0;
+}
+
+.scrollContainers {
+  flex: 8;
+  display: flex;
+  flex-direction: column;
+}
+
+.activityBoxLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.activityBoxLeft .leftHeader {
+  flex: 1;
+}
+
+.activityBoxLeft .leftContent {
+  flex: 10;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.activityBoxLeft h2, .activityBoxLeft h3, .activityBoxLeft h4 {
+  margin: 0;
+}
+
+.activityBoxLeft h3 {
+  margin-bottom: 10px;
+}
+
+.activityBoxRight {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.activityBoxRight .rightHeader {
+  flex: 1;
+}
+
+.activityBoxRight .rightContent {
+  flex: 10;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.activityBoxRight h2, .activityBoxRight h3, .activityBoxRight h4 {
+  margin: 0;
+}
+
+.activityBoxRight h3 {
+  margin-bottom: 10px;
+}
+
+.conversationContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversationContainer .conversationHeader {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.conversationContainer .conversationHeader .conversationNameContainer {
+  margin-left: 5px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.conversationContainer .conversationHeader .conversationDateContainer {
+  flex: 1;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.conversationContainer .conversationBody {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.conversationContainer .conversationLeftsideContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversationContainer .conversationLeftsideContainer img {
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.conversationContainer .conversationRightsideContainer {
+  padding: 10px;
+  flex: 10;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
 @media screen and (min-width: 768px) {
   .user_info .profileImageBox {
     width: 75%;
@@ -137,13 +274,21 @@ body {
   .user_info .personelInfoBox {
     width: 75%;
   }
-  .user_info .buttonsBox {
-    width: 75%;
-  }
   .profileNameBox {
     width: 95%;
   }
-  .scroll_box {
+  .activityContainer {
     width: 95%;
+  }
+  .scrollContainers {
+    flex: 8;
+    display: flex;
+    flex-direction: row;
+  }
+  .activityBoxLeft {
+    margin-right: 10px;
+  }
+  .activityBoxRight {
+    margin-left: 10px;
   }
 }

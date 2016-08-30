@@ -23,51 +23,8 @@ body {
       margin-left: 3px;
     }
   }
-  .personelInfoBox {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: white;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    h4 {
-      font-size: 20px;
-    }
-    p {
-      font-size: 17px;
-    }
-    .personelContainer {
-      display: flex;
-      flex: 1;
-      flex-direction: row;
-      .iconContainer {
-        font-size: 30px;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .infoContainer {
-        flex: 3;
-      }
-      .user_street, .user_city, .user_state, .user_zip {
-        font-size: 17px;
-      }
-    }
-  }
-  .user_state, .user_zip {
-    margin-left: 4px;
-  }
   .buttonsBox {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    background-color: white;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
+    margin-top: 5px;
     button {
       background-color: black;
       color: white;
@@ -79,6 +36,38 @@ body {
     }
   }
 }
+
+.personelInfoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  h4 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 17px;
+  }
+  .personelContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    .iconContainer {
+      font-size: 30px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .infoContainer {
+      flex: 3;
+    }
+  }
+}
+
 .profileNameBox {
   background-color: white;
   border: 1px solid black;
@@ -111,6 +100,137 @@ body {
     cursor: pointer;
   }
 }
+.activityContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.activityHeader {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width: 100%;
+  h3 {
+    margin: 0;
+  }
+}
+.scrollContainers {
+ flex: 8;
+ display: flex;
+ flex-direction: column;
+}
+.activityBoxLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 40px;
+  width: 100%;
+  .leftHeader {
+    flex: 1;
+  }
+  .leftContent {
+    flex: 10;
+    overflow-y: scroll;
+    height: 400px;
+  }
+  h2, h3, h4 {
+    margin: 0;
+  }
+  h3 {
+    margin-bottom: 10px;
+  }
+}
+.activityBoxRight {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 40px;
+  width: 100%;
+  .rightHeader {
+    flex: 1;
+  }
+  .rightContent {
+    flex: 10;
+    overflow-y: scroll;
+    height: 400px;
+  }
+  h2, h3, h4 {
+    margin: 0;
+  }
+  h3 {
+    margin-bottom: 10px;
+  }
+}
+
+.conversationContainer {
+  display: flex;
+  flex-direction: column;
+  .conversationHeader {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    .conversationNameContainer {
+      margin-left: 5px;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .conversationDateContainer {
+      flex: 1;
+      display: flex;
+      font-size: 12px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+  .conversationBody {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .conversationLeftsideContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      border-radius: 5px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .conversationRightsideContainer {
+    padding: 10px;
+    flex: 10;
+    display: flex;
+    align-items: center;
+    color: black;
+  }
+}
 
 
 @media screen and (min-width: 768px) {
@@ -121,14 +241,22 @@ body {
     .personelInfoBox {
       width: 75%;
     }
-    .buttonsBox {
-      width: 75%;
-    }
   }
   .profileNameBox {
     width: 95%;
   }
-  .scroll_box {
+  .activityContainer {
     width: 95%;
+  }
+  .scrollContainers {
+   flex: 8;
+   display: flex;
+   flex-direction: row;
+  }
+  .activityBoxLeft {
+    margin-right: 10px;
+  }
+  .activityBoxRight {
+    margin-left: 10px;
   }
 }
