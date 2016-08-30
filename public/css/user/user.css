@@ -42,6 +42,42 @@ body {
   color: pink;
 }
 
+.personelInfoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.personelInfoBox h4 {
+  font-size: 20px;
+}
+
+.personelInfoBox p {
+  font-size: 17px;
+}
+
+.personelInfoBox .personelContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.personelInfoBox .personelContainer .iconContainer {
+  font-size: 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.personelInfoBox .personelContainer .infoContainer {
+  flex: 3;
+}
+
 .profileNameBox {
   background-color: white;
   border: 1px solid black;
@@ -233,6 +269,9 @@ body {
 
 @media screen and (min-width: 768px) {
   .user_info .profileImageBox {
+    width: 75%;
+  }
+  .user_info .personelInfoBox {
     width: 75%;
   }
   .profileNameBox {

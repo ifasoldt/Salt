@@ -16,12 +16,38 @@
       </div>
       <div class="center-block profileImageBox" id="userID" data-id="<%= @user.id %>">
         <img class="user_image center-block img-responsive" src="<%= attachment_url(@user.images[0], :file, :fill, 400, 400, fallback: "/assets/no_pic.png") %>" />
-        <div class="center-block eventsInfoBox">
-          <span><%= @user.hosted_events.count %><span class="eventsSpan">events hosted</span> </span>
-          <span><%= @user.events.count %><span class="eventsSpan">events attended</span> </span>
-        </div>
         <div class="buttonsBox">
-          <a href="#" data-toggle="modal" data-target="#messageUserModal"><button class="center-block btn">Message</button></a>
+          <a href="#" data-toggle="modal" data-target="#messageUserModal"><button class="center-block btn">Message <%= @user.first_name %></button></a>
+        </div>
+      </div>
+
+      <div class="center-block personelInfoBox">
+        <div class="personelContainer">
+          <div class="iconContainer">
+            <i class="fa fa-glass" aria-hidden="true"></i>
+          </div>
+          <div class="infoContainer">
+            <h4>Events Hosted:</h4>
+            <p><%= @user.hosted_events.count %></p>
+          </div>
+        </div>
+        <div class="personelContainer">
+          <div class="iconContainer">
+            <i class="fa fa-users" aria-hidden="true"></i>
+          </div>
+          <div class="infoContainer">
+            <h4>Events Attended:</h4>
+            <p><%= @user.events.count %></p>
+          </div>
+        </div>
+        <div class="personelContainer">
+          <div class="iconContainer">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+          </div>
+          <div class="infoContainer">
+            <h4>User Joined On:</h4>
+            <p><%= @user.created_at.strftime('%B %d, %Y') %></p>
+          </div>
         </div>
       </div>
     </div>
