@@ -15,6 +15,14 @@ header {
   display: none !important;
 }
 
+.navDropdownMenuItems {
+  background-color: transparent !important;
+}
+
+.navBarMobile {
+  display: none !important;
+}
+
 .jumbotron {
   background-image: url("../../assets/food.jpg");
   background-position: center;

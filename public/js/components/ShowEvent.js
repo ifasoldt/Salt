@@ -305,7 +305,7 @@ class ShowEvent extends React.Component  {
                       <i className="fa fa-child" aria-hidden="true"></i>
                     </div>
                     <div className="infoContainer">
-                      <h3>Children Welcome?:</h3>
+                      <h3>Children Welcome?</h3>
                       <h3 style={this.state.events.allow_children ? greenColor : redColor}>{this.state.events.allow_children ? 'Yes' : 'No'}</h3>
                     </div>
                   </div>
@@ -314,7 +314,7 @@ class ShowEvent extends React.Component  {
                       <i className="fa fa-beer" aria-hidden="true"></i>
                     </div>
                     <div className="infoContainer">
-                      <h3>Alcohol Welcome?:</h3>
+                      <h3>Alcohol Welcome?</h3>
                       <h3 style={this.state.events.alcohol_allowed ? greenColor : redColor} >{this.state.events.alcohol_allowed ? 'Yes' : 'No'}</h3>
                     </div>
                   </div>
