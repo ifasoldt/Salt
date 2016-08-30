@@ -1,5 +1,5 @@
 class ApplicationSerializer < ActiveModel::Serializer
-  attributes :id, :message, :quantity, :application_user_name, :application_profile_pic, :status, :app_event_id
+  attributes :id, :message, :quantity, :application_user_name, :application_profile_pic, :status, :app_event_id, :app_user_id
 
   belongs_to :user
   belongs_to :event
@@ -18,5 +18,9 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def app_event_id
     object.event.id
+  end
+
+  def app_user_id
+    object.user.id
   end
 end

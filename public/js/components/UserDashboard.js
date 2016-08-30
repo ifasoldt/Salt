@@ -15,7 +15,6 @@ class UserDashboard extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json', {}, (response) => {
-      console.log(response)
       var hostingEvents = response.hosted_events.map((events) => {
         return events
       })
