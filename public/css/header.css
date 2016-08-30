@@ -27,6 +27,39 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+#navDropdownMenu {
+  position: absolute;
+  width: 80px;
+  right: 6px;
+}
+
+.navDropdownMenuItems {
+  list-style: none;
+  position: relative;
+  z-index: 20;
+  margin: 0;
+  text-align: center;
+  padding: 10px 5px;
+  background-color: black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.navDropdownMenuItems a {
+  transition: 0.3s;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  cursor: pointer;
+}
+
+.navDropdownMenuItems a li {
+  margin-top: 3px;
+}
+
+.navDropdownMenuItems a:hover, .navDropdownMenuItems a:focus, .navDropdownMenuItems a:active {
+  color: pink;
+}
+
 nav a {
   position: relative;
   display: inline-block;
@@ -340,6 +373,10 @@ header .form-control:focus {
   .header_img img {
     width: 120px;
     margin-top: 10px;
+  }
+  #navDropdownMenu {
+    position: absolute;
+    width: 100px;
   }
   .header_profile {
     display: inline-block;

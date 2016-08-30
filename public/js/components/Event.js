@@ -24,6 +24,7 @@ class Event extends React.Component  {
   updateEvents() {
     fetchApi('GET',`/events.json${window.location.search}`, {}, (response) => {
       this.noResults(response)
+      console.log(response)
       var array = response.map(function(event){
         return event.event_marker[0]
       })
@@ -157,7 +158,12 @@ class Event extends React.Component  {
                 </div>
                 <div className="eventDescContainer" data-id={event.id}>
                   <h3 className="event_title" data-id={event.id}>{event.title}</h3>
-                  <p className="event_guests" data-id={event.id}>Guest Limit: {event.guest_limit}</p>
+                  {(() => {
+                    switch (event.guest_limit) {
+                      case null: return <p className="event_guests" data-id={event.id}>Guest Limit: None</p>
+                      default: return <p className="event_guests" data-id={event.id}>Guest Limit: {event.guest_limit}</p>
+                    }
+                  })()}
                   <p className="event_spots_left" data-id={event.id}>Spots Open: {event.spots_left}</p>
                 </div>
               </div>

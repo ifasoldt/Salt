@@ -21530,6 +21530,7 @@
 
 	      fetchApi('GET', '/events.json' + window.location.search, {}, function (response) {
 	        _this2.noResults(response);
+	        console.log(response);
 	        var array = response.map(function (event) {
 	          return event.event_marker[0];
 	        });
@@ -21714,12 +21715,23 @@
 	                  { className: 'event_title', 'data-id': event.id },
 	                  event.title
 	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'event_guests', 'data-id': event.id },
-	                  'Guest Limit: ',
-	                  event.guest_limit
-	                ),
+	                function () {
+	                  switch (event.guest_limit) {
+	                    case null:
+	                      return _react2.default.createElement(
+	                        'p',
+	                        { className: 'event_guests', 'data-id': event.id },
+	                        'Guest Limit: None'
+	                      );
+	                    default:
+	                      return _react2.default.createElement(
+	                        'p',
+	                        { className: 'event_guests', 'data-id': event.id },
+	                        'Guest Limit: ',
+	                        event.guest_limit
+	                      );
+	                  }
+	                }(),
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'event_spots_left', 'data-id': event.id },

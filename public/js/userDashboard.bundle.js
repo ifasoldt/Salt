@@ -27507,6 +27507,7 @@
 	    _this.updateUser = _this.updateUser.bind(_this);
 	    _this.applicationCheck = _this.applicationCheck.bind(_this);
 	    _this.updateApplications = _this.updateApplications.bind(_this);
+	    _this.rateUser = _this.rateUser.bind(_this);
 	    _this.state = {
 	      hostedEvents: []
 	    };
@@ -27548,6 +27549,18 @@
 	      });
 	    }
 	  }, {
+	    key: 'rateUser',
+	    value: function rateUser(e) {
+	      var _this4 = this;
+
+	      var eventID = e.target.getAttribute('data-event-id');
+	      var userID = e.target.getAttribute('data-user-id');
+	      var vote = e.target.getAttribute('data-vote-id');
+	      fetchApi('POST', '/thumbs', { event_id: eventID, user_id: userID, category: vote }, function (response) {
+	        _this4.updateUser();
+	      });
+	    }
+	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
 	      $('[data-toggle="tooltip"]').tooltip();
@@ -27555,7 +27568,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var greenColor = {
 	        color: 'lightgreen'
@@ -27611,7 +27624,7 @@
 	                        'Approved'
 	                      ),
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
-	                          return _this4.applicationCheck(e);
+	                          return _this5.applicationCheck(e);
 	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Remove From Event', 'aria-hidden': 'true' })
 	                    );
 	                  case "denied":
@@ -27625,11 +27638,22 @@
 	                      'div',
 	                      null,
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
-	                          return _this4.applicationCheck(e);
+	                          return _this5.applicationCheck(e);
 	                        }, 'data-id': app.app_event_id, style: greenColor, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' }),
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
-	                          return _this4.applicationCheck(e);
+	                          return _this5.applicationCheck(e);
 	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
+	                    );
+	                  case "rateable":
+	                    return _react2.default.createElement(
+	                      'div',
+	                      null,
+	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                          return _this5.rateUser(e);
+	                        }, 'data-event-id': app.app_event_id, style: greenColor, 'data-vote-id': 'up', 'data-user-id': app.app_user_id, className: 'fa fa-thumbs-up thumbUp', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvote User', 'aria-hidden': 'true' }),
+	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                          return _this5.rateUser(e);
+	                        }, 'data-event-id': app.app_event_id, style: redColor, 'data-vote-id': 'down', 'data-app-id': app.id, className: 'fa fa-thumbs-down thumbDown', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvote User', 'aria-hidden': 'true' })
 	                    );
 	                  default:
 	                    return _react2.default.createElement(

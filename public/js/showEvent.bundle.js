@@ -21993,7 +21993,7 @@
 	                    _react2.default.createElement(
 	                      'h3',
 	                      null,
-	                      'Children Welcome?:'
+	                      'Children Welcome?'
 	                    ),
 	                    _react2.default.createElement(
 	                      'h3',
@@ -22016,7 +22016,7 @@
 	                    _react2.default.createElement(
 	                      'h3',
 	                      null,
-	                      'Alcohol Welcome?:'
+	                      'Alcohol Welcome?'
 	                    ),
 	                    _react2.default.createElement(
 	                      'h3',

@@ -1,3 +1,18 @@
+$(document).ready(function () {
+  $('#navDropdown').click(function () {
+    var isActive = $(this).next("div").hasClass('active')
+    $(".menu").each(function(){
+      $(this).slideUp(150)
+      $(this).removeClass('active')
+    })
+    if(! isActive ){
+      $(this).next("div").slideToggle(150)
+      $(this).next("div").addClass('active')
+      $(this).siblings().next("div ul").hide(150)
+    }
+  })
+})
+
 // sign up
 document.getElementById('btn_sign_up').addEventListener('click', function () {
   removeErrors()

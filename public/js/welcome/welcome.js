@@ -1,3 +1,7 @@
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 var start = document.getElementById("index_date_from").flatpickr({
   minDate: new Date()})
 var end = document.getElementById("index_date_to").flatpickr({
