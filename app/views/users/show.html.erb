@@ -16,9 +16,11 @@
       </div>
       <div class="center-block profileImageBox" id="userID" data-id="<%= @user.id %>">
         <img class="user_image center-block img-responsive" src="<%= attachment_url(@user.images[0], :file, :fill, 400, 400, fallback: "/assets/no_pic.png") %>" />
+        <% unless @user == current_user %>
         <div class="buttonsBox">
           <a href="#" data-toggle="modal" data-target="#messageUserModal"><button class="center-block btn">Message <%= @user.first_name %></button></a>
         </div>
+        <% end %>
       </div>
 
       <div class="center-block personelInfoBox">
