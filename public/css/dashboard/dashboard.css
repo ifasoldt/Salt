@@ -193,6 +193,7 @@ body {
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 5px;
+  border-top-left-radius: 0;
   background-color: white;
   overflow-y: scroll;
   height: 500px;
@@ -218,6 +219,8 @@ td {
   cursor: pointer;
   color: black;
   font-size: 18px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .nav.nav-pills a:hover {

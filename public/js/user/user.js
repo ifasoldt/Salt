@@ -1,8 +1,8 @@
 document.getElementById('sendMessage').addEventListener('click', function () {
   removeErrors()
   var recipient = document.getElementById('userID')
-  var recipientID = recipient.getAttribute('data-id').value
-  
+  var recipientID = recipient.getAttribute('data-id')
+
   var buttonDisable = document.getElementById('sendMessage')
   buttonDisable.setAttribute('disabled', true)
 

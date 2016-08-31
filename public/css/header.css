@@ -3,9 +3,20 @@
   box-sizing: border-box;
 }
 
+.modal {
+  top: 60px !important;
+}
+
+.modal-content {
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
 .modal-header {
   background-color: black;
   color: white;
+  border-top-left-radius: 9px !important;
+  border-top-right-radius: 9px !important;
 }
 
 .modal-footer button {
