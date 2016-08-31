@@ -27481,6 +27481,7 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/current_user/dashboard.json?hosting=true', {}, function (response) {
+	        console.log(response);
 	        var hostingEvents = response;
 	        _this2.setState({
 	          hostedEvents: hostingEvents
