@@ -42,8 +42,7 @@ class Hosting extends React.Component  {
     this.updateToolTips()
   }
   updateToolTips () {
-    $('[data-toggle="tooltip"]').tooltip('destroy')
-    $('[data-toggle="tooltip"]').tooltip('show')
+    $('[data-toggle="tooltip"]').tooltip()
   }
   rateUser (e) {
     var eventID = e.target.getAttribute('data-event-id')

@@ -27571,8 +27571,7 @@
 	  }, {
 	    key: 'updateToolTips',
 	    value: function updateToolTips() {
-	      $('[data-toggle="tooltip"]').tooltip('destroy');
-	      $('[data-toggle="tooltip"]').tooltip('show');
+	      $('[data-toggle="tooltip"]').tooltip();
 	    }
 	  }, {
 	    key: 'rateUser',
