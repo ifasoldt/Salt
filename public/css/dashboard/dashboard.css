@@ -210,6 +210,10 @@ td {
   vertical-align: middle !important;
 }
 
+.nav.nav-pills {
+  margin-top: 10px;
+}
+
 .nav.nav-pills a {
   cursor: pointer;
   color: black;
