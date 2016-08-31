@@ -1,7 +1,8 @@
 // API Host
 // var api = 'https://arcane-harbor-93523.herokuapp.com'
-var api = 'http://localhost:3000'
-// var api = 'https://c4f482c0.ngrok.io'
+// var api = 'http://localhost:3000'
+
+var api = 'https://infinite-cove-48463.herokuapp.com'
 var production = false
 
 // Utilities
