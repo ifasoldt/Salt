@@ -101,13 +101,13 @@ class UserDashboard extends React.Component  {
                 </div>
                 <ul className="nav nav-pills">
                   <li role="presentation">
-                    <Link onlyActiveOnIndex activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard'>Events Hosting</Link>
+                    <Link onlyActiveOnIndex activeStyle={{color:'white', backgroundColor:'black'}} to='/current_user/dashboard'>Events Hosting</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard/attending'>Events Attending</Link>
+                    <Link activeStyle={{color:'white', backgroundColor:'black'}} to='/current_user/dashboard/attending'>Events Attending</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard/inbox'>Inbox</Link>
+                    <Link activeStyle={{color:'white', backgroundColor:'black'}} to='/current_user/dashboard/inbox'>Inbox</Link>
                   </li>
                 </ul>
                 <div className="scroll_box">
