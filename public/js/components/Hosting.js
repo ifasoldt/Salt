@@ -88,7 +88,6 @@ class Hosting extends React.Component  {
                             switch (app.thumb_status) {
                               case null: return {color:'black'}
                               case "up": return greenColor
-                              case "down": return redColor
                               default: return {color:'black'}
                             }
                           })()
@@ -98,7 +97,6 @@ class Hosting extends React.Component  {
                           (() => {
                             switch (app.thumb_status) {
                               case null: return {color:'black'}
-                              case "up": return greenColor
                               case "down": return redColor
                               default: return {color:'black'}
                             }
