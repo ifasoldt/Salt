@@ -253,8 +253,11 @@ td {
 
 .panel-heading {
   background-color: black !important;
-  color: white !important;
   border-bottom: 0 !important;
+}
+
+.panel-heading a {
+  color: white !important;
 }
 
 .nameHeader {
