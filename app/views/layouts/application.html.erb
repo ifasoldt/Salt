@@ -121,7 +121,7 @@
                     <div id="navDropdownMenu" class="menu" style="display:none">
                       <ul class="navDropdownMenuItems">
                         <a href="/current_user/dashboard"><li>Profile</li></a>
-                        <a href="/current_user/"><li>Host</li></a>
+                        <a href="#" data-toggle="modal" data-target="#eventModalHeader"><li>Host</li></a>
                         <a href="/current_user/dashboard/inbox"><li>Inbox</li></a>
                       </ul>
                     </div>
@@ -229,6 +229,146 @@
             </span>
             <button type="button" id="btn_login" class="btn btn-default">
               <span>Login</span>
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="eventModalHeader" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Event</h4>
+          </div>
+
+          <div class="modal-body">
+            <form method="post" action="#" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="title">Event Title</label>
+                <input type="text" class="form-control" id="titleHeader" name="title"  />
+              </div>
+              <div class="form-group">
+                <label for="images_files">Event Image</label>
+                <input type="file" class="form-control" name="images_files" id="images_filesHeader" multiple />
+              </div>
+              <div class="form-group">
+                <label for="date">Event Date</label>
+                <input type="text" class="form-control flatpickr" id="dateHeader" name="date" data-date-format="d-m-Y" />
+              </div>
+              <div class="form-group">
+                <label for="time">Event Time</label>
+                <input type="text" data-enable-time="true" data-no-calendar="true" value="17:00" class="form-control flatpickr" id="timeHeader" name="time"  />
+              </div>
+              <div class="form-group">
+                <label for="guest_limit">Number Of Guests</label>
+                <input type="text" class="form-control" id="guest_limitHeader" name="guest_limit"  />
+              </div>
+              <div class="form-group">
+                <label for="unlimited_guests">No Guest Limit</label>
+                <input type="checkbox" id="unlimited_guestsHeader" name="unlimited_guests" />
+              </div>
+              <div class="form-group">
+                <label for="allow_children">Children Welcome</label>
+                <input type="checkbox" id="allow_childrenHeader" name="allow_children" />
+              </div>
+              <div class="form-group">
+                <label for="alcohol_allowed">Alcohol Welcome</label>
+                <input type="checkbox" id="alcohol_allowedHeader" name="alcohol_allowed" />
+              </div><div class="form-group">
+                <label for="filter_guests">Guests Need To Be Approved <span class="text-muted">(Cannot Be Changed Once Created)</span></label>
+                <input type="checkbox" id="filter_guestsHeader" name="filter_guests" />
+              </div>
+              <div class="form-group">
+                <label for="food">Food/Drink</label>
+                <textarea type="text" id="foodHeader" name="food" class="form-control text_input" /></textarea>
+              </div>
+              <div class="form-group">
+                <label for="description">Description Of Event</label>
+                <textarea type="text" id="descriptionHeader" class="form-control text_input" name="description"></textarea>
+              </div>
+              <br />
+              <h4>Event Address</h4>
+              <hr />
+              <div class="form-group">
+                <label for="user_address">Event Will Be Hosted At Your Address</label>
+                <input type="checkbox" id="user_addressHeader" name="user_address" />
+              </div>
+              <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" id="streetEventHeader" name="street"  />
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="cityEventHeader" name="city"  />
+              </div>
+              <div class="form-group">
+                <label for="state" >State</label>
+                <select id="stateEventHeader" name="state" class="form-control">
+                  <option disabled selected value> -- select a state -- </option>
+                  <option value="Alabama">Alabama</option>
+                  <option value="Alaska">Alaska</option>
+                  <option value="Arizona">Arizona</option>
+                  <option value="Arkansas">Arkansas</option>
+                  <option value="California">California</option>
+                  <option value="Colorado">Colorado</option>
+                  <option value="Connecticut">Connecticut</option>
+                  <option value="Delaware">Delaware</option>
+                  <option value="District Of Columbia">District Of Columbia</option>
+                  <option value="Florida">Florida</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Hawaii">Hawaii</option>
+                  <option value="Idaho">Idaho</option>
+                  <option value="Illinois">Illinois</option>
+                  <option value="Indiana">Indiana</option>
+                  <option value="Iowa">Iowa</option>
+                  <option value="Kansas">Kansas</option>
+                  <option value="Kentucky">Kentucky</option>
+                  <option value="Louisiana">Louisiana</option>
+                  <option value="Maine">Maine</option>
+                  <option value="Maryland">Maryland</option>
+                  <option value="Massachusetts">Massachusetts</option>
+                  <option value="Michigan">Michigan</option>
+                  <option value="Minnesota">Minnesota</option>
+                  <option value="Mississippi">Mississippi</option>
+                  <option value="Missouri">Missouri</option>
+                  <option value="Montana">Montana</option>
+                  <option value="Nebraska">Nebraska</option>
+                  <option value="Nevada">Nevada</option>
+                  <option value="New Hampshire">New Hampshire</option>
+                  <option value="New Jersey">New Jersey</option>
+                  <option value="New Mexico">New Mexico</option>
+                  <option value="New York">New York</option>
+                  <option value="North Carolina">North Carolina</option>
+                  <option value="North Dakota">North Dakota</option>
+                  <option value="Ohio">Ohio</option>
+                  <option value="Oklahoma">Oklahoma</option>
+                  <option value="Oregon">Oregon</option>
+                  <option value="Pennsylvania">Pennsylvania</option>
+                  <option value="Rhode Island">Rhode Island</option>
+                  <option value="South Carolina">South Carolina</option>
+                  <option value="South Dakota">South Dakota</option>
+                  <option value="Tennessee">Tennessee</option>
+                  <option value="Texas">Texas</option>
+                  <option value="Utah">Utah</option>
+                  <option value="Vermont">Vermont</option>
+                  <option value="Virginia">Virginia</option>
+                  <option value="Washington">Washington</option>
+                  <option value="West Virginia">West Virginia</option>
+                  <option value="Wisconsin">Wisconsin</option>
+                  <option value="Wyoming">Wyoming</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" id="zipEventHeader" name="zip"  />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btn_event_submitHeader" class="btn btn-default">
+              <span>Submit</span>
             </button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>

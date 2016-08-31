@@ -60,3 +60,42 @@ document.getElementById('btn_login').addEventListener('click', function () {
     }
   })
 })
+
+document.getElementById('btn_event_submitHeader').addEventListener('click', function () {
+  removeErrors()
+  var buttonDisable = document.getElementById('btn_event_submitHeader')
+  buttonDisable.setAttribute('disabled', true)
+  var data = new FormData()
+  var pics = document.getElementById('images_filesHeader').files.length;
+  for (var x = 0; x < pics; x++) {
+    data.append('images_files[]', document.getElementById('images_files').files[x]);
+  }
+  data.append('title', document.getElementById('titleHeader').value)
+  data.append('date', document.getElementById('dateHeader').value)
+  data.append('time', document.getElementById('timeHeader').value)
+  data.append('user_address', document.getElementById('user_addressHeader').checked)
+  data.append('street', document.getElementById('streetEventHeader').value)
+  data.append('city', document.getElementById('cityEventHeader').value)
+  data.append('state', document.getElementById('stateEventHeader').value)
+  data.append('zip', document.getElementById('zipEventHeader').value)
+  data.append('guest_limit', document.getElementById('guest_limitHeader').value)
+  data.append('unlimited_guests', document.getElementById('unlimited_guestsHeader').checked)
+  data.append('alcohol_allowed', document.getElementById('alcohol_allowedHeader').checked)
+  data.append('allow_children', document.getElementById('allow_childrenHeader').checked)
+  data.append('filter_guests', document.getElementById('filter_guestsHeader').checked)
+  data.append('food', document.getElementById('foodHeader').value)
+  data.append('description', document.getElementById('descriptionHeader').value)
+
+  fetchApiImages('POST', '/api/events', data, function (response, statusCode) {
+    if (statusCode >= 200 && statusCode < 300) {
+      redirect(`/events/${response.id}`)
+      buttonDisable.removeAttribute('disabled')
+    }
+    else {
+      buttonDisable.removeAttribute('disabled')
+      var errors = response.forEach(function(error){
+        createError(error, 'zipEventHeader')
+      })
+    }
+  })
+})
