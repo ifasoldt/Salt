@@ -8,6 +8,7 @@ class Hosting extends React.Component  {
     this.applicationCheck = this.applicationCheck.bind(this)
     this.updateApplications = this.updateApplications.bind(this)
     this.rateUser = this.rateUser.bind(this)
+    this.updateToolTips = this.updateToolTips.bind(this)
     this.state = {
       hostedEvents: []
     }
@@ -21,7 +22,7 @@ class Hosting extends React.Component  {
       this.setState({
         hostedEvents: hostingEvents
       })
-      $('[data-toggle="tooltip"]').tooltip()
+      this.updateToolTips()
     })
   }
   applicationCheck (e) {
@@ -34,6 +35,14 @@ class Hosting extends React.Component  {
     fetchApi('PATCH',`/api/events/${eventID}/applications/${appID}`, {status: status}, (response) => {
       this.updateUser()
     })
+    this.updateToolTips()
+  }
+  componentDidUpdate () {
+    this.updateToolTips()
+  }
+  updateToolTips () {
+    $('[data-toggle="tooltip"]').tooltip('destroy')
+    $('[data-toggle="tooltip"]').tooltip('show')
   }
   rateUser (e) {
     var eventID = e.target.getAttribute('data-event-id')
@@ -41,9 +50,9 @@ class Hosting extends React.Component  {
     var vote = e.target.getAttribute('data-vote-id')
     var appID = e.target.getAttribute('data-app-id')
     fetchApi('POST','/thumbs', {event_id: eventID, user_id: userID, category: vote, app_id: appID}, (response) => {
-      console.log(response)
       this.updateUser()
     })
+    this.updateToolTips()
   }
     render() {
       var greenColor = {
@@ -67,13 +76,13 @@ class Hosting extends React.Component  {
               </td>
               <td>
                 <div className="votesContainer">
-                  <div className="votesContainerUp" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true">
-                    <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes"></i>
-                    <span>{app.user_thumbs_up}</span>
+                  <div className="votesContainerUp">
+                    <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true"></i>
+                    <span className="thumbVotesNumber">{app.user_thumbs_up}</span>
                   </div>
-                  <div className="votesContainerDown" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true">
-                    <i style={redColor} className="fa fa-thumbs-down thumbDownVotes"></i>
-                    <span>{app.user_thumbs_down}</span>
+                  <div className="votesContainerDown">
+                    <i style={redColor} className="fa fa-thumbs-down thumbDownVotes" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true"></i>
+                    <span className="thumbVotesNumber">{app.user_thumbs_down}</span>
                   </div>
                 </div>
               </td>

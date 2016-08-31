@@ -265,7 +265,11 @@ td {
 }
 
 .thumbsHeader {
-  width: 15%;
+  width: 10%;
+}
+
+.thumbVotesNumber {
+  margin-left: 2px;
 }
 
 .quantityHeader {
@@ -273,7 +277,7 @@ td {
 }
 
 .messageHeader {
-  width: 40%;
+  width: 45%;
 }
 
 .statusHeader {
