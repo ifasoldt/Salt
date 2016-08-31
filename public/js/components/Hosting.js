@@ -39,7 +39,8 @@ class Hosting extends React.Component  {
     var eventID = e.target.getAttribute('data-event-id')
     var userID = e.target.getAttribute('data-user-id')
     var vote = e.target.getAttribute('data-vote-id')
-    fetchApi('POST','/thumbs', {event_id: eventID, user_id: userID, category: vote}, (response) => {
+    var appID = e.target.getAttribute('data-app-id')
+    fetchApi('POST','/thumbs', {event_id: eventID, user_id: userID, category: vote, app_id: appID}, (response) => {
       this.updateUser()
     })
   }
@@ -54,6 +55,7 @@ class Hosting extends React.Component  {
         color: 'red'
       }
       var eventsHosting = this.state.hostedEvents.map((event, key) => {
+        var linkEvent = "/events/" + event.id
         var eventApplications = event.applications.map((app, key) => {
           var link = "/users/" + app.app_user_id
             return (
@@ -72,18 +74,36 @@ class Hosting extends React.Component  {
                         <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
                       </div>
                       case "denied": return <div>
-                      <span style={redColor}>Denied</span>
-                      <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
+                        <span style={redColor}>Denied</span>
+                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
                       </div>
                       case "pending":  return <div>
-                      <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
+                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
 
-                      <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
+                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
                       </div>
                       case "rateable": return <div>
-                        <i onClick={(e) => this.rateUser(e)} data-event-id={app.app_event_id} style={greenColor} data-vote-id="up" data-user-id={app.app_user_id} className="fa fa-thumbs-up thumbUp" data-toggle="tooltip" data-placement="bottom" title="Upvote User" aria-hidden="true"></i>
+                        <i onClick={(e) => this.rateUser(e)} data-event-id={app.app_event_id} data-app-id={app.id} style={
+                          (() => {
+                            switch (app.thumb_status) {
+                              case null: return {color:'black'}
+                              case "up": return greenColor
+                              case "down": return redColor
+                              default: return {color:'black'}
+                            }
+                          })()
+                        } data-vote-id="up" data-user-id={app.app_user_id} className="fa fa-thumbs-up thumbUp" data-toggle="tooltip" data-placement="bottom" title="Upvote User" aria-hidden="true"></i>
 
-                        <i onClick={(e) => this.rateUser(e)} data-event-id={app.app_event_id} style={redColor} data-vote-id="down" data-app-id={app.id} className="fa fa-thumbs-down thumbDown" data-toggle="tooltip" data-placement="bottom" title="Downvote User" aria-hidden="true"></i>
+                        <i onClick={(e) => this.rateUser(e)} data-event-id={app.app_event_id} data-app-id={app.id} style={
+                          (() => {
+                            switch (app.thumb_status) {
+                              case null: return {color:'black'}
+                              case "up": return greenColor
+                              case "down": return redColor
+                              default: return {color:'black'}
+                            }
+                          })()
+                        } data-vote-id="down" data-app-id={app.id} className="fa fa-thumbs-down thumbDown" data-toggle="tooltip" data-placement="bottom" title="Downvote User" aria-hidden="true"></i>
                       </div>
                       default: return <span style={Color}>Pending</span>
                     }
@@ -96,7 +116,7 @@ class Hosting extends React.Component  {
       return (
           <div className="panel panel-default" key={key}>
             <div className="panel-heading">
-              {event.title}
+              <a href={linkEvent} className="linkToHostedEvent">{event.title}</a>
             </div>
             <table className="table">
               <thead>

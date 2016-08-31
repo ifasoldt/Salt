@@ -27501,6 +27501,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -27568,7 +27570,8 @@
 	      var eventID = e.target.getAttribute('data-event-id');
 	      var userID = e.target.getAttribute('data-user-id');
 	      var vote = e.target.getAttribute('data-vote-id');
-	      fetchApi('POST', '/thumbs', { event_id: eventID, user_id: userID, category: vote }, function (response) {
+	      var appID = e.target.getAttribute('data-app-id');
+	      fetchApi('POST', '/thumbs', { event_id: eventID, user_id: userID, category: vote, app_id: appID }, function (response) {
 	        _this4.updateUser();
 	      });
 	    }
@@ -27587,6 +27590,7 @@
 	        color: 'red'
 	      };
 	      var eventsHosting = this.state.hostedEvents.map(function (event, key) {
+	        var linkEvent = "/events/" + event.id;
 	        var eventApplications = event.applications.map(function (app, key) {
 	          var link = "/users/" + app.app_user_id;
 	          return _react2.default.createElement(
@@ -27620,6 +27624,8 @@
 	              'td',
 	              null,
 	              function () {
+	                var _React$createElement;
+
 	                switch (app.status) {
 	                  case "approved":
 	                    return _react2.default.createElement(
@@ -27664,10 +27670,32 @@
 	                      null,
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this5.rateUser(e);
-	                        }, 'data-event-id': app.app_event_id, style: greenColor, 'data-vote-id': 'up', 'data-user-id': app.app_user_id, className: 'fa fa-thumbs-up thumbUp', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvote User', 'aria-hidden': 'true' }),
-	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                        }, 'data-event-id': app.app_event_id, 'data-app-id': app.id, style: function () {
+	                          switch (app.thumb_status) {
+	                            case null:
+	                              return { color: 'black' };
+	                            case "up":
+	                              return greenColor;
+	                            case "down":
+	                              return redColor;
+	                            default:
+	                              return { color: 'black' };
+	                          }
+	                        }(), 'data-vote-id': 'up', 'data-user-id': app.app_user_id, className: 'fa fa-thumbs-up thumbUp', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvote User', 'aria-hidden': 'true' }),
+	                      _react2.default.createElement('i', (_React$createElement = { onClick: function onClick(e) {
 	                          return _this5.rateUser(e);
-	                        }, 'data-event-id': app.app_event_id, style: redColor, 'data-vote-id': 'down', 'data-app-id': app.id, className: 'fa fa-thumbs-down thumbDown', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvote User', 'aria-hidden': 'true' })
+	                        }, 'data-event-id': app.app_event_id, 'data-app-id': app.id, style: function () {
+	                          switch (app.thumb_status) {
+	                            case null:
+	                              return { color: 'black' };
+	                            case "up":
+	                              return greenColor;
+	                            case "down":
+	                              return redColor;
+	                            default:
+	                              return { color: 'black' };
+	                          }
+	                        }(), 'data-vote-id': 'down' }, _defineProperty(_React$createElement, 'data-app-id', app.id), _defineProperty(_React$createElement, 'className', 'fa fa-thumbs-down thumbDown'), _defineProperty(_React$createElement, 'data-toggle', 'tooltip'), _defineProperty(_React$createElement, 'data-placement', 'bottom'), _defineProperty(_React$createElement, 'title', 'Downvote User'), _defineProperty(_React$createElement, 'aria-hidden', 'true'), _React$createElement))
 	                    );
 	                  default:
 	                    return _react2.default.createElement(
@@ -27686,7 +27714,11 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'panel-heading' },
-	            event.title
+	            _react2.default.createElement(
+	              'a',
+	              { href: linkEvent, className: 'linkToHostedEvent' },
+	              event.title
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'table',

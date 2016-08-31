@@ -6,6 +6,10 @@ body {
   margin-top: 40px;
 }
 
+#slider {
+  margin-bottom: 20px;
+}
+
 #slider .slick-slide {
   height: 320px;
 }

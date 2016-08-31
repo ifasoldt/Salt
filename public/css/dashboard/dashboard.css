@@ -207,6 +207,19 @@ body {
   transition: 0.3s;
 }
 
+.linkToHostedEvent {
+  cursor: pointer;
+}
+
+.thumbUp {
+  cursor: pointer;
+}
+
+.thumbDown {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 td {
   vertical-align: middle !important;
 }
