@@ -102,7 +102,7 @@ class Hosting extends React.Component  {
                               default: return {color:'black'}
                             }
                           })()
-                        } data-vote-id="down" data-app-id={app.id} className="fa fa-thumbs-down thumbDown" data-toggle="tooltip" data-placement="bottom" title="Downvote User" aria-hidden="true"></i>
+                        } data-vote-id="down" data-user-id={app.app_user_id} className="fa fa-thumbs-down thumbDown" data-toggle="tooltip" data-placement="bottom" title="Downvote User" aria-hidden="true"></i>
                       </div>
                       default: return <span style={Color}>Pending</span>
                     }
