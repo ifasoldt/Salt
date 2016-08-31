@@ -27464,6 +27464,7 @@
 	    _this.applicationCheck = _this.applicationCheck.bind(_this);
 	    _this.updateApplications = _this.updateApplications.bind(_this);
 	    _this.rateUser = _this.rateUser.bind(_this);
+	    _this.updateToolTips = _this.updateToolTips.bind(_this);
 	    _this.state = {
 	      hostedEvents: []
 	    };
@@ -27486,7 +27487,7 @@
 	        _this2.setState({
 	          hostedEvents: hostingEvents
 	        });
-	        $('[data-toggle="tooltip"]').tooltip();
+	        _this2.updateToolTips();
 	      });
 	    }
 	  }, {
@@ -27505,6 +27506,18 @@
 	      fetchApi('PATCH', '/api/events/' + eventID + '/applications/' + appID, { status: status }, function (response) {
 	        _this3.updateUser();
 	      });
+	      this.updateToolTips();
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.updateToolTips();
+	    }
+	  }, {
+	    key: 'updateToolTips',
+	    value: function updateToolTips() {
+	      $('[data-toggle="tooltip"]').tooltip('destroy');
+	      $('[data-toggle="tooltip"]').tooltip('show');
 	    }
 	  }, {
 	    key: 'rateUser',
@@ -27516,9 +27529,9 @@
 	      var vote = e.target.getAttribute('data-vote-id');
 	      var appID = e.target.getAttribute('data-app-id');
 	      fetchApi('POST', '/thumbs', { event_id: eventID, user_id: userID, category: vote, app_id: appID }, function (response) {
-	        console.log(response);
 	        _this4.updateUser();
 	      });
+	      this.updateToolTips();
 	    }
 	  }, {
 	    key: 'render',
@@ -27559,21 +27572,21 @@
 	                { className: 'votesContainer' },
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'votesContainerUp', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvotes', 'aria-hidden': 'true' },
-	                  _react2.default.createElement('i', { style: greenColor, className: 'fa fa-thumbs-up thumbUpVotes' }),
+	                  { className: 'votesContainerUp' },
+	                  _react2.default.createElement('i', { style: greenColor, className: 'fa fa-thumbs-up thumbUpVotes', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvotes', 'aria-hidden': 'true' }),
 	                  _react2.default.createElement(
 	                    'span',
-	                    null,
+	                    { className: 'thumbVotesNumber' },
 	                    app.user_thumbs_up
 	                  )
 	                ),
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'votesContainerDown', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvotes', 'aria-hidden': 'true' },
-	                  _react2.default.createElement('i', { style: redColor, className: 'fa fa-thumbs-down thumbDownVotes' }),
+	                  { className: 'votesContainerDown' },
+	                  _react2.default.createElement('i', { style: redColor, className: 'fa fa-thumbs-down thumbDownVotes', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvotes', 'aria-hidden': 'true' }),
 	                  _react2.default.createElement(
 	                    'span',
-	                    null,
+	                    { className: 'thumbVotesNumber' },
 	                    app.user_thumbs_down
 	                  )
 	                )
