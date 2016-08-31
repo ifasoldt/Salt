@@ -17,7 +17,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def thumb_status
-    object.thumb.category
+    object.thumb&.category
   end
 
   def app_event_id
