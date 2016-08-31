@@ -66,16 +66,16 @@ class Hosting extends React.Component  {
                 {app.application_user_name}</a>
               </td>
               <td>
-                <div className="votesContainer">
-                  <div className="votesContainerUp" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true">
-                    <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes"></i>
-                    <span>{app.user_thumbs_up}</span>
-                  </div>
-                  <div className="votesContainerDown" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true">
-                    <i style={redColor} className="fa fa-thumbs-down thumbDownVotes"></i>
-                    <span>{app.user_thumbs_down}</span>
-                  </div>
-                </div>
+                // <div className="votesContainer">
+                //   <div className="votesContainerUp" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true">
+                //     <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes"></i>
+                //     <span>{app.user_thumbs_up}</span>
+                //   </div>
+                //   <div className="votesContainerDown" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true">
+                //     <i style={redColor} className="fa fa-thumbs-down thumbDownVotes"></i>
+                //     <span>{app.user_thumbs_down}</span>
+                //   </div>
+                // </div>
               </td>
               <td>{app.quantity}</td>
               <td><i>{app.message}</i></td>
