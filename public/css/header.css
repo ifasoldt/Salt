@@ -232,7 +232,7 @@ nav a {
 .navMobileSearchIcon {
   font-size: 24px;
   margin-top: 25px;
-  left: 116px;
+  left: 100px;
   position: absolute;
   z-index: 8;
 }
@@ -370,6 +370,12 @@ header .form-control:focus {
 .header_profile img {
   width: 50px;
   margin: 0px 8px 5px 10px;
+}
+
+@media screen and (min-width: 350px) {
+  .navMobileSearchIcon {
+    left: 115px;
+  }
 }
 
 @media screen and (min-width: 768px) {

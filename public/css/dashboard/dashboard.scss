@@ -104,7 +104,11 @@ body {
   background-color: black;
   color: white;
 }
-
+.table {
+  td {
+    padding: 4px !important;
+  }
+}
 .conversationContainer {
   display: flex;
   flex-direction: column;;
@@ -172,7 +176,7 @@ body {
   height: 500px;
   border: 1px solid black;
   margin-bottom: 40px;
-  width: 95%;
+  width: 100%;
   a {
     color: black;
     transition: 0.3s;
@@ -257,6 +261,13 @@ td {
   height: 80px;
 }
 
+@media screen and (min-width: 425px) {
+  .table {
+    td {
+      padding: 8px !important;
+    }
+  }
+}
 
 @media screen and (min-width: 768px) {
   .nav.nav-pills {

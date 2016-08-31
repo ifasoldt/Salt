@@ -22080,6 +22080,11 @@
 	                      'h1',
 	                      { className: 'eventTitle' },
 	                      this.state.events.title
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'socialMediaShareButtons' },
+	                      _react2.default.createElement('div', { className: 'addthis_inline_share_toolbox' })
 	                    )
 	                  ),
 	                  _react2.default.createElement(

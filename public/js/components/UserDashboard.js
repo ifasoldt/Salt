@@ -32,7 +32,7 @@ class UserDashboard extends React.Component  {
               <div className="col-xs-12 col-sm-6 col-md-4 user_info">
                 <div className="visible-xs hidden-sm hidden-md hidden-lg">
                   <div className="profileNameBox">
-                    <h1>Welcome Back, {this.state.user.full_name}</h1>
+                    <h1>Welcome, {this.state.user.full_name}</h1>
                     <h3 className="aboutYou">About You:</h3>
                     <div className="aboutMeDescriptionBox">
                       <h5>{this.state.user.description}</h5>
@@ -91,7 +91,7 @@ class UserDashboard extends React.Component  {
               <div className="col-xs-12 col-sm-6 col-md-8">
                 <div className="hidden-xs visible-sm visible-md visible-lg">
                   <div className="profileNameBox">
-                    <h1>Welcome Back, {this.state.user.full_name}</h1>
+                    <h1>Welcome, {this.state.user.full_name}</h1>
                     <h3 className="aboutYou">About You:</h3>
                     <div className="aboutMeDescriptionBox">
                       <h5>{this.state.user.description}</h5>

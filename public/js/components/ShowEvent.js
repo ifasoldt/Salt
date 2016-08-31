@@ -340,6 +340,9 @@ class ShowEvent extends React.Component  {
                   <div className="detailsContainer">
                     <div className="titleContainer">
                       <h1 className="eventTitle">{this.state.events.title}</h1>
+                      <div className="socialMediaShareButtons">
+                        <div className="addthis_inline_share_toolbox"></div>
+                      </div>
                     </div>
                     <div className="calendarContainer">
                       <div className="iconContainer">

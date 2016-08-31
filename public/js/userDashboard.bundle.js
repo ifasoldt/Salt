@@ -27232,7 +27232,7 @@
 	                _react2.default.createElement(
 	                  'h1',
 	                  null,
-	                  'Welcome Back, ',
+	                  'Welcome, ',
 	                  this.state.user.full_name
 	                ),
 	                _react2.default.createElement(
@@ -27415,7 +27415,7 @@
 	                _react2.default.createElement(
 	                  'h1',
 	                  null,
-	                  'Welcome Back, ',
+	                  'Welcome, ',
 	                  this.state.user.full_name
 	                ),
 	                _react2.default.createElement(
