@@ -21515,6 +21515,14 @@
 	      });
 	    }
 	  }, {
+	    key: 'deleteEvent',
+	    value: function deleteEvent() {
+	      fetchApi('DELETE', '/events/' + this.state.events.id, {}, function (response) {
+	        $('#deleteEventModal').modal('hide');
+	        window.location.pathname = '/';
+	      });
+	    }
+	  }, {
 	    key: 'setCommentId',
 	    value: function setCommentId(e) {
 	      this.setState({ commentId: e.target.getAttribute('data-id') });
@@ -21569,6 +21577,11 @@
 	              'button',
 	              { type: 'button', className: 'btn message-button', 'data-toggle': 'modal', 'data-target': '#eventModal' },
 	              'Edit Event'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'button', className: 'btn message-button', 'data-toggle': 'modal', 'data-target': '#deleteEventModal' },
+	              'Delete Event'
 	            )
 	          ) });
 	      } else if (this.state.appIds.includes(parseInt(document.getElementById('profile-box').getAttribute('data-id')))) {
@@ -22120,6 +22133,46 @@
 	                  'button',
 	                  { encType: 'button', className: 'btn btn-danger', onClick: this.flag },
 	                  'Flag Comment'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'modal fade', id: 'deleteEventModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel', 'aria-hidden': 'true' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'modal-dialog', role: 'document' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'modal-content' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-header' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'modal-title', id: 'myModalLabel' },
+	                  'Delete Event'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-body' },
+	                'Are you sure that you want to delete this event? You will not be able to recover your event if you change your mind later.'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-footer' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { encType: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+	                  'Never Mind'
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { encType: 'button', className: 'btn btn-danger', onClick: this.deleteEvent },
+	                  'Delete Event'
 	                )
 	              )
 	            )

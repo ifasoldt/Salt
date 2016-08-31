@@ -58,6 +58,12 @@ class ShowEvent extends React.Component  {
       this.setState({commentId:''})
     })
   }
+  deleteEvent() {
+    fetchApi('DELETE', `/events/${this.state.events.id}`, {}, (response) => {
+      $('#deleteEventModal').modal('hide')
+      window.location.pathname = `/`
+    })
+  }
   setCommentId(e) {
     this.setState({commentId: e.target.getAttribute('data-id')})
   }
@@ -100,6 +106,7 @@ class ShowEvent extends React.Component  {
       this.setState({msg_button:
         <div className="text-center">
           <button type="button" className="btn message-button" data-toggle="modal" data-target="#eventModal">Edit Event</button>
+          <button type="button" className="btn message-button" data-toggle="modal" data-target="#deleteEventModal">Delete Event</button>
         </div>})
     }
     else if (this.state.appIds.includes(parseInt(document.getElementById('profile-box').getAttribute('data-id')))) {
@@ -375,6 +382,22 @@ class ShowEvent extends React.Component  {
                 <div className="modal-footer">
                   <button encType="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <button encType="button" className="btn btn-danger" onClick={this.flag}>Flag Comment</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal fade" id="deleteEventModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title" id="myModalLabel">Delete Event</h4>
+                </div>
+                <div className="modal-body">
+                  Are you sure that you want to delete this event? You will not be able to recover your event if you change your mind later.
+                </div>
+                <div className="modal-footer">
+                  <button encType="button" className="btn btn-secondary" data-dismiss="modal">Never Mind</button>
+                  <button encType="button" className="btn btn-danger" onClick={this.deleteEvent}>Delete Event</button>
                 </div>
               </div>
             </div>
