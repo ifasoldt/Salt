@@ -106,14 +106,14 @@
                     <% if current_user %>
                     <a href="#" alt="Profile Image">
                     <% else %>
-                    <a href="#" alt="Profile Image"><%= image_tag('/assets/no_pic.png', :class => "img-circle header_profile_image") %>
+                    <a href="#" alt="Profile Image">
                     <% end %>
                        <% if current_user&.images&.first  %>
                         <%= image_tag(attachment_url(current_user.images.first, :file, :fill, 300, 300), :class => "img-circle header_profile_image")%>
                       <% elsif current_user && current_user&.images&.first == nil %>
                        <%= image_tag('/assets/no_pic.png', :class => "img-circle header_profile_image") %>
                        <% else %>
-                       <%= image_tag('/assets/no_pic.png', {:class => "img-circle header_profile_image", :data-toggle =>"tooltip", :data-placement => "bottom", :title => "Must Be Logged In"}) %>
+                       <%= image_tag('/assets/no_pic.png', :class => "img-circle header_profile_image", data: {toggle: "tooltip", placement: "bottom", title: "Must Be Logged In"}) %>
                       <% end %>
                     </a>
                     </div>
