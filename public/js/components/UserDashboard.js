@@ -72,6 +72,12 @@ class UserDashboard extends React.Component  {
                     <div className="infoContainer">
                       <h4>Address:</h4>
                       <div className="user_street">{this.state.address.street}</div>
+                      {(() => {
+                        switch (this.state.address.city) {
+                          case null: return <span className="user_city">{this.state.address.city}</span>
+                          default: return <span className="user_city">{this.state.address.city},</span>
+                        }
+                      })()}
                       <span className="user_city">{this.state.address.city},</span>
                       <span className="user_state">{this.state.address.state}</span>
                       <span className="user_zip">{this.state.address.zip}</span>
