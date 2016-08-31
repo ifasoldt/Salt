@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, length: {maximum: 25}
   validates :email, format: {with: /\A\S+@.+\.\S+\z/, message: "must be a valid email"}
   validates :email, uniqueness: true
-  validates :email, :length {maximum: 60}
+  validates :email, length: {maximum: 60}
   validates :password, length: {minimum: 6}, on: :create
   validates :description, length: {maximum: 2000}, allow_nil: true
   validates :phone, format: {with: /\A\d{3}-\d{3}-\d{4}\z/}, allow_blank: true
