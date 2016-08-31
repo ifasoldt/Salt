@@ -24,7 +24,7 @@ body {
 }
 
 .user_info .eventsInfoBox .eventsSpan {
-  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .user_info .personelInfoBox {
@@ -208,6 +208,10 @@ body {
 
 td {
   vertical-align: middle !important;
+}
+
+.nav.nav-pills {
+  margin-top: 10px;
 }
 
 .nav.nav-pills a {

@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: space-around;
     .eventsSpan {
-      margin-left: 3px;
+      margin-right: 3px;
     }
   }
   .personelInfoBox {
@@ -182,6 +182,7 @@ td {
   vertical-align: middle !important;
 }
 .nav.nav-pills {
+  margin-top: 10px;
   a {
     cursor: pointer;
     color: black;

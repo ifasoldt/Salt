@@ -42,8 +42,8 @@ class UserDashboard extends React.Component  {
                 <div className="center-block profileImageBox">
                   <img className="user_image center-block img-responsive" src={this.state.user.user_image} />
                   <div className="center-block eventsInfoBox">
-                    <span>{this.state.user.hosted_events_count}<span className="eventsSpan">events hosted</span> </span>
-                    <span>{this.state.user.attended_events_count}<span className="eventsSpan">events attended</span> </span>
+                    <span><span className="eventsSpan">Events hosted:</span>{this.state.user.hosted_events_count}</span>
+                    <span><span className="eventsSpan">Events attended:</span>{this.state.user.attended_events_count}</span>
                   </div>
                 </div>
                 <div className="center-block personelInfoBox">
@@ -95,13 +95,13 @@ class UserDashboard extends React.Component  {
                 </div>
                 <ul className="nav nav-pills">
                   <li role="presentation">
-                    <Link onlyActiveOnIndex activeStyle={{color:'pink'}} to='/current_user/dashboard'>Events Hosting</Link>
+                    <Link onlyActiveOnIndex activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard'>Events Hosting</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/attending'>Events Attending</Link>
+                    <Link activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard/attending'>Events Attending</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'pink'}} to='/current_user/dashboard/inbox'>Inbox</Link>
+                    <Link activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard/inbox'>Inbox</Link>
                   </li>
                 </ul>
                 <div className="scroll_box">

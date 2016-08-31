@@ -8,7 +8,6 @@ body {
   .slick-slide {
     height: 320px;
   }
-  margin-bottom: 20px;
 }
 .slick-prev:before, .slick-next:before {
   color: white !important;
@@ -106,6 +105,9 @@ body {
     }
   }
 }
+.hostsName {
+  margin-top: 10px;
+}
 #map {
   height: 200px;
 }
@@ -162,7 +164,7 @@ body {
     justify-content: center;
   }
   .infoContainer {
-    flex: 2;
+    flex: 3;
   }
 }
 .eventSpecificBox {
@@ -313,7 +315,7 @@ body {
 }
 
 .message-button {
-  margin: 10px 10px 0 10px
+  margin: 0;
 }
 
 .btn-black{
