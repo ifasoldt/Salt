@@ -42,8 +42,8 @@ class UserDashboard extends React.Component  {
                 <div className="center-block profileImageBox">
                   <img className="user_image center-block img-responsive" src={this.state.user.user_image} />
                   <div className="center-block eventsInfoBox">
-                    <span>{this.state.user.hosted_events_count}<span className="eventsSpan">events hosted</span> </span>
-                    <span>{this.state.user.attended_events_count}<span className="eventsSpan">events attended</span> </span>
+                    <span><span className="eventsSpan">Events hosted:</span>{this.state.user.hosted_events_count}</span>
+                    <span><span className="eventsSpan">Events attended:</span>{this.state.user.attended_events_count}</span>
                   </div>
                 </div>
                 <div className="center-block personelInfoBox">
