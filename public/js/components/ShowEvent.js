@@ -16,6 +16,7 @@ class ShowEvent extends React.Component  {
     this.messageChange = this.messageChange.bind(this)
     this.quantityChange = this.quantityChange.bind(this)
     this.setButtons = this.setButtons.bind(this)
+    this.deleteEvent = this.deleteEvent.bind(this)
     this.state = {
       mapLoaded: false,
       events: [],
@@ -396,7 +397,7 @@ class ShowEvent extends React.Component  {
                   Are you sure that you want to delete this event? You will not be able to recover your event if you change your mind later.
                 </div>
                 <div className="modal-footer">
-                  <button encType="button" className="btn btn-secondary" data-dismiss="modal">Never Mind</button>
+                  <button encType="button" className="btn btn-secondary" data-dismiss="modal">Nevermind</button>
                   <button encType="button" className="btn btn-danger" onClick={this.deleteEvent}>Delete Event</button>
                 </div>
               </div>

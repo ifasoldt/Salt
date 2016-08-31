@@ -21464,6 +21464,7 @@
 	    _this.messageChange = _this.messageChange.bind(_this);
 	    _this.quantityChange = _this.quantityChange.bind(_this);
 	    _this.setButtons = _this.setButtons.bind(_this);
+	    _this.deleteEvent = _this.deleteEvent.bind(_this);
 	    _this.state = (_this$state = {
 	      mapLoaded: false,
 	      events: [],
@@ -22167,7 +22168,7 @@
 	                _react2.default.createElement(
 	                  'button',
 	                  { encType: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
-	                  'Never Mind'
+	                  'Nevermind'
 	                ),
 	                _react2.default.createElement(
 	                  'button',
