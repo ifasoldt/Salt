@@ -2,7 +2,7 @@
 // var api = 'https://arcane-harbor-93523.herokuapp.com'
 // var api = 'http://localhost:3000'
 
-var api = 'https://infinite-cove-48463.herokuapp.com'
+var api = 'http://salt-up.com'
 var production = false
 
 // Utilities
