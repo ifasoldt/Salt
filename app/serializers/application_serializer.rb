@@ -21,11 +21,11 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def user_thumbs_up
-    object.user.thumbs.where(category: 'up')
+    object.user.thumbs.where(category: 'up').count
   end
 
   def user_thumbs_down
-    object.user.thumbs.where(category: 'down')
+    object.user.thumbs.where(category: 'down').count
   end
 
   def app_event_id
