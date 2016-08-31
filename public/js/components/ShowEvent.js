@@ -105,7 +105,7 @@ class ShowEvent extends React.Component  {
     }
     else if(document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) {
       this.setState({msg_button:
-        <div className="text-center">
+        <div className="text-center buttonContainer">
           <button type="button" className="btn message-button" data-toggle="modal" data-target="#eventModal">Edit Event</button>
           <button type="button" className="btn message-button" data-toggle="modal" data-target="#deleteEventModal">Delete Event</button>
         </div>})
@@ -398,7 +398,7 @@ class ShowEvent extends React.Component  {
                 </div>
                 <div className="modal-footer">
                   <button encType="button" className="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-                  <button encType="button" className="btn btn-danger" onClick={this.deleteEvent}>Delete Event</button>
+                  <button encType="button" className="btn btn-black" onClick={this.deleteEvent}>Delete Event</button>
                 </div>
               </div>
             </div>

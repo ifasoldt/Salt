@@ -21573,7 +21573,7 @@
 	      } else if (document.getElementById('profile-box').getAttribute('data-id') == this.state.host.id) {
 	        this.setState({ msg_button: _react2.default.createElement(
 	            'div',
-	            { className: 'text-center' },
+	            { className: 'text-center buttonContainer' },
 	            _react2.default.createElement(
 	              'button',
 	              { type: 'button', className: 'btn message-button', 'data-toggle': 'modal', 'data-target': '#eventModal' },
@@ -22172,7 +22172,7 @@
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { encType: 'button', className: 'btn btn-danger', onClick: this.deleteEvent },
+	                  { encType: 'button', className: 'btn btn-black', onClick: this.deleteEvent },
 	                  'Delete Event'
 	                )
 	              )
