@@ -1,5 +1,5 @@
 class ApplicationSerializer < ActiveModel::Serializer
-  attributes :id, :message, :quantity, :application_user_name, :application_profile_pic, :status, :app_event_id, :app_user_id
+  attributes :id, :message, :quantity, :application_user_name, :application_profile_pic, :status, :app_event_id, :app_user_id, :thumb_status
 
   belongs_to :user
   belongs_to :event
@@ -14,6 +14,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     else
       "/assets/no_pic.png"
     end
+  end
+
+  def thumb_status
+    object.thumb.category
   end
 
   def app_event_id
