@@ -1,6 +1,7 @@
 class Application < ApplicationRecord
   belongs_to :user
   belongs_to :event
+  has_one :thumb
   validates :quantity, presence: true
   validates :quantity, numericality: {only_integer: true, message: 'must be a number'}
   validates :message, length: {maximum: 1000}, allow_blank: true
