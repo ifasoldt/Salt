@@ -9,7 +9,7 @@ class EventSerializer < ActiveModel::Serializer
   def event_images
     ev_images = []
     object.images.each do |image|
-      ev_images << Refile.attachment_url(image, :file, :fill, 400, 1000)
+      ev_images << Refile.attachment_url(image, :file, :fill, 1000, 400)
     end
     ev_images
   end
