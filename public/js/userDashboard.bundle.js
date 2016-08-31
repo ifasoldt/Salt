@@ -27610,6 +27610,34 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'votesContainer' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'votesContainerUp', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvotes', 'aria-hidden': 'true' },
+	                  _react2.default.createElement('i', { style: greenColor, className: 'fa fa-thumbs-up thumbUpVotes' }),
+	                  _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    app.user_thumbs_up
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'votesContainerDown', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvotes', 'aria-hidden': 'true' },
+	                  _react2.default.createElement('i', { style: redColor, className: 'fa fa-thumbs-down thumbDownVotes' }),
+	                  _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    app.user_thumbs_down
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
 	              app.quantity
 	            ),
 	            _react2.default.createElement(
@@ -27730,6 +27758,11 @@
 	                  'th',
 	                  { className: 'nameHeader' },
 	                  'Name'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  { className: 'thumbsHeader' },
+	                  'Thumbs'
 	                ),
 	                _react2.default.createElement(
 	                  'th',

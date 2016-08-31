@@ -65,6 +65,18 @@ class Hosting extends React.Component  {
                 <a href={link}><img className="profile_image img-circle" src={app.application_profile_pic} />
                 {app.application_user_name}</a>
               </td>
+              <td>
+                <div className="votesContainer">
+                  <div className="votesContainerUp" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true">
+                    <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes"></i>
+                    <span>{app.user_thumbs_up}</span>
+                  </div>
+                  <div className="votesContainerDown" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true">
+                    <i style={redColor} className="fa fa-thumbs-down thumbDownVotes"></i>
+                    <span>{app.user_thumbs_down}</span>
+                  </div>
+                </div>
+              </td>
               <td>{app.quantity}</td>
               <td><i>{app.message}</i></td>
               <td>
@@ -80,7 +92,6 @@ class Hosting extends React.Component  {
                       </div>
                       case "pending":  return <div>
                         <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
-
                         <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
                       </div>
                       case "rateable": return <div>
@@ -121,6 +132,7 @@ class Hosting extends React.Component  {
               <thead>
                 <tr>
                   <th className="nameHeader">Name</th>
+                  <th className="thumbsHeader">Thumbs</th>
                   <th className="quantityHeader">Guests</th>
                   <th className="messageHeader">Messages</th>
                   <th className="statusHeader">Status</th>
