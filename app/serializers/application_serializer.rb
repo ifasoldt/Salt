@@ -1,5 +1,5 @@
 class ApplicationSerializer < ActiveModel::Serializer
-  attributes :id, :message, :quantity, :application_user_name, :application_profile_pic, :status, :app_event_id, :app_user_id, :thumb_status
+  attributes :id, :message, :quantity, :application_user_name, :application_profile_pic, :status, :app_event_id, :user_thumbs_up, :user_thumbs_down, :app_user_id, :thumb_status
 
   belongs_to :user
   belongs_to :event
@@ -18,6 +18,14 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def thumb_status
     object.thumb&.category
+  end
+
+  def user_thumbs_up
+    object.user.thumbs.where(category: 'up')
+  end
+
+  def user_thumbs_down
+    object.user.thumbs.where(category: 'down')
   end
 
   def app_event_id
