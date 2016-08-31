@@ -78,7 +78,6 @@ class UserDashboard extends React.Component  {
                           default: return <span className="user_city">{this.state.address.city},</span>
                         }
                       })()}
-                      <span className="user_city">{this.state.address.city},</span>
                       <span className="user_state">{this.state.address.state}</span>
                       <span className="user_zip">{this.state.address.zip}</span>
                     </div>
@@ -101,13 +100,13 @@ class UserDashboard extends React.Component  {
                 </div>
                 <ul className="nav nav-pills">
                   <li role="presentation">
-                    <Link onlyActiveOnIndex activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard'>Events Hosting</Link>
+                    <Link onlyActiveOnIndex activeStyle={{color:'white', backgroundColor:'black'}} to='/current_user/dashboard'>Events Hosting</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard/attending'>Events Attending</Link>
+                    <Link activeStyle={{color:'white', backgroundColor:'black'}} to='/current_user/dashboard/attending'>Events Attending</Link>
                   </li>
                   <li role="presentation">
-                    <Link activeStyle={{color:'white'; backgroundColor:'black'}} to='/current_user/dashboard/inbox'>Inbox</Link>
+                    <Link activeStyle={{color:'white', backgroundColor:'black'}} to='/current_user/dashboard/inbox'>Inbox</Link>
                   </li>
                 </ul>
                 <div className="scroll_box">

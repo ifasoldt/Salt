@@ -21,6 +21,7 @@ class Hosting extends React.Component  {
       this.setState({
         hostedEvents: hostingEvents
       })
+      $('[data-toggle="tooltip"]').tooltip()
     })
   }
   applicationCheck (e) {
@@ -41,9 +42,6 @@ class Hosting extends React.Component  {
     fetchApi('POST','/thumbs', {event_id: eventID, user_id: userID, category: vote}, (response) => {
       this.updateUser()
     })
-  }
-  componentDidUpdate () {
-      $('[data-toggle="tooltip"]').tooltip()
   }
     render() {
       var greenColor = {
@@ -78,9 +76,9 @@ class Hosting extends React.Component  {
                       <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
                       </div>
                       case "pending":  return <div>
-                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
+                      <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={greenColor} data-stat-id="approved" data-app-id={app.id} className="fa fa-check-circle accept_application" data-toggle="tooltip" data-placement="bottom" title="Accept Application" aria-hidden="true"></i>
 
-                        <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
+                      <i onClick={(e) => this.applicationCheck(e)} data-id={app.app_event_id} style={redColor} data-stat-id="denied" data-app-id={app.id} className="fa fa-times-circle deny_application" data-toggle="tooltip" data-placement="bottom" title="Reject Application" aria-hidden="true"></i>
                       </div>
                       case "rateable": return <div>
                         <i onClick={(e) => this.rateUser(e)} data-event-id={app.app_event_id} style={greenColor} data-vote-id="up" data-user-id={app.app_user_id} className="fa fa-thumbs-up thumbUp" data-toggle="tooltip" data-placement="bottom" title="Upvote User" aria-hidden="true"></i>

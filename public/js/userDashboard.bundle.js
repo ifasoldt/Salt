@@ -27212,6 +27212,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container-fluid' },
@@ -27259,24 +27261,22 @@
 	                _react2.default.createElement(
 	                  'span',
 	                  null,
-	                  this.state.user.hosted_events_count,
 	                  _react2.default.createElement(
 	                    'span',
 	                    { className: 'eventsSpan' },
-	                    'events hosted'
+	                    'Events hosted:'
 	                  ),
-	                  ' '
+	                  this.state.user.hosted_events_count
 	                ),
 	                _react2.default.createElement(
 	                  'span',
 	                  null,
-	                  this.state.user.attended_events_count,
 	                  _react2.default.createElement(
 	                    'span',
 	                    { className: 'eventsSpan' },
-	                    'events attended'
+	                    'Events attended:'
 	                  ),
-	                  ' '
+	                  this.state.user.attended_events_count
 	                )
 	              )
 	            ),
@@ -27350,12 +27350,23 @@
 	                    { className: 'user_street' },
 	                    this.state.address.street
 	                  ),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { className: 'user_city' },
-	                    this.state.address.city,
-	                    ','
-	                  ),
+	                  function () {
+	                    switch (_this3.state.address.city) {
+	                      case null:
+	                        return _react2.default.createElement(
+	                          'span',
+	                          { className: 'user_city' },
+	                          _this3.state.address.city
+	                        );
+	                      default:
+	                        return _react2.default.createElement(
+	                          'span',
+	                          { className: 'user_city' },
+	                          _this3.state.address.city,
+	                          ','
+	                        );
+	                    }
+	                  }(),
 	                  _react2.default.createElement(
 	                    'span',
 	                    { className: 'user_state' },
@@ -27431,7 +27442,7 @@
 	                { role: 'presentation' },
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { onlyActiveOnIndex: true, activeStyle: { color: 'pink' }, to: '/current_user/dashboard' },
+	                  { onlyActiveOnIndex: true, activeStyle: { color: 'white', backgroundColor: 'black' }, to: '/current_user/dashboard' },
 	                  'Events Hosting'
 	                )
 	              ),
@@ -27440,7 +27451,7 @@
 	                { role: 'presentation' },
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { activeStyle: { color: 'pink' }, to: '/current_user/dashboard/attending' },
+	                  { activeStyle: { color: 'white', backgroundColor: 'black' }, to: '/current_user/dashboard/attending' },
 	                  'Events Attending'
 	                )
 	              ),
@@ -27449,7 +27460,7 @@
 	                { role: 'presentation' },
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { activeStyle: { color: 'pink' }, to: '/current_user/dashboard/inbox' },
+	                  { activeStyle: { color: 'white', backgroundColor: 'black' }, to: '/current_user/dashboard/inbox' },
 	                  'Inbox'
 	                )
 	              )
@@ -27529,6 +27540,7 @@
 	        _this2.setState({
 	          hostedEvents: hostingEvents
 	        });
+	        $('[data-toggle="tooltip"]').tooltip();
 	      });
 	    }
 	  }, {
@@ -27559,11 +27571,6 @@
 	      fetchApi('POST', '/thumbs', { event_id: eventID, user_id: userID, category: vote }, function (response) {
 	        _this4.updateUser();
 	      });
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      $('[data-toggle="tooltip"]').tooltip();
 	    }
 	  }, {
 	    key: 'render',
@@ -27625,13 +27632,20 @@
 	                      ),
 	                      _react2.default.createElement('i', { onClick: function onClick(e) {
 	                          return _this5.applicationCheck(e);
-	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Remove From Event', 'aria-hidden': 'true' })
+	                        }, 'data-id': app.app_event_id, style: redColor, 'data-stat-id': 'denied', 'data-app-id': app.id, className: 'fa fa-times-circle deny_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Reject Application', 'aria-hidden': 'true' })
 	                    );
 	                  case "denied":
 	                    return _react2.default.createElement(
-	                      'span',
-	                      { style: redColor },
-	                      'Denied'
+	                      'div',
+	                      null,
+	                      _react2.default.createElement(
+	                        'span',
+	                        { style: redColor },
+	                        'Denied'
+	                      ),
+	                      _react2.default.createElement('i', { onClick: function onClick(e) {
+	                          return _this5.applicationCheck(e);
+	                        }, 'data-id': app.app_event_id, style: greenColor, 'data-stat-id': 'approved', 'data-app-id': app.id, className: 'fa fa-check-circle accept_application', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Accept Application', 'aria-hidden': 'true' })
 	                    );
 	                  case "pending":
 	                    return _react2.default.createElement(
