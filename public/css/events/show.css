@@ -66,7 +66,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   flex: 1;
+}
+
+.detailsContainer .titleContainer .socialMediaShareButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .detailsContainer .titleContainer h1 {
