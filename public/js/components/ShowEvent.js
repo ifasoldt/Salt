@@ -66,13 +66,8 @@ class ShowEvent extends React.Component  {
     fetchApi('DELETE',`/api/events/${this.state.events.id}/applications/leave`, {}, (response, statusCode) => {
       if (statusCode >= 200 && statusCode < 300) {
         var newAppIds = this.state.appIds
-        console.log(this.state.appIds)
-        console.log("First" + newAppIds)
-        console.log(response.user.id)
         var index = newAppIds.indexOf(response.user.id)
-        console.log(index)
         newAppIds.splice(index, 1)
-        console.log("Second" + newAppIds)
         this.setState({appIds: newAppIds})
         this.setButtons()
       }

@@ -41,6 +41,7 @@ class Hosting extends React.Component  {
     var vote = e.target.getAttribute('data-vote-id')
     var appID = e.target.getAttribute('data-app-id')
     fetchApi('POST','/thumbs', {event_id: eventID, user_id: userID, category: vote, app_id: appID}, (response) => {
+      console.log(response)
       this.updateUser()
     })
   }

@@ -21583,13 +21583,8 @@
 	      fetchApi('DELETE', '/api/events/' + this.state.events.id + '/applications/leave', {}, function (response, statusCode) {
 	        if (statusCode >= 200 && statusCode < 300) {
 	          var newAppIds = _this4.state.appIds;
-	          console.log(_this4.state.appIds);
-	          console.log("First" + newAppIds);
-	          console.log(response.user.id);
 	          var index = newAppIds.indexOf(response.user.id);
-	          console.log(index);
 	          newAppIds.splice(index, 1);
-	          console.log("Second" + newAppIds);
 	          _this4.setState({ appIds: newAppIds });
 	          _this4.setButtons();
 	        } else {

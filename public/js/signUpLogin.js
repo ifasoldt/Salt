@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  $("#dateHeader").flatpickr()
+  $("#timeHeader").flatpickr()
+})
+
 $(document).ready(function () {
   $('#navDropdown').click(function () {
     var isActive = $(this).next("div").hasClass('active')

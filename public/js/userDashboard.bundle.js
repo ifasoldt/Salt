@@ -27572,6 +27572,7 @@
 	      var vote = e.target.getAttribute('data-vote-id');
 	      var appID = e.target.getAttribute('data-app-id');
 	      fetchApi('POST', '/thumbs', { event_id: eventID, user_id: userID, category: vote, app_id: appID }, function (response) {
+	        console.log(response);
 	        _this4.updateUser();
 	      });
 	    }
