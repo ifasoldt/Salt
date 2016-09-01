@@ -406,6 +406,9 @@ header .form-control:focus {
     width: 60px;
     margin: 0px 8px 5px 14px;
   }
+}
+
+@media screen and (min-width: 950px) {
   .navSearchContainer .navDateFrom input, .navSearchContainer .navDateTo input {
     font-size: 18px;
   }
