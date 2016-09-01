@@ -104,11 +104,7 @@ body {
   background-color: black;
   color: white;
 }
-.table {
-  td {
-    padding: 4px !important;
-  }
-}
+
 .conversationContainer {
   display: flex;
   flex-direction: column;;
@@ -176,7 +172,7 @@ body {
   height: 500px;
   border: 1px solid black;
   margin-bottom: 40px;
-  width: 100%;
+  width: 95%;
   a {
     color: black;
     transition: 0.3s;
@@ -198,18 +194,15 @@ td {
 }
 .nav.nav-pills {
   margin-top: 10px;
-  li {
-    a {
-      cursor: pointer;
-      color: black;
-      font-size: 14px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      padding: 10px 8px;
-    }
-    a:hover {
-      background-color: inherit;
-    }
+  a {
+    cursor: pointer;
+    color: black;
+    font-size: 18px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  a:hover {
+    background-color: inherit;
   }
 }
 .user_profile {
@@ -236,8 +229,12 @@ td {
 .thumbsHeader {
   width: 10%;
 }
+.votesContainerUp, .votesContainerDown {
+  display: flex;
+  align-items: center;
+}
 .thumbVotesNumber {
-  margin-left: 2px;
+  margin-left: 4px;
 }
 .quantityHeader {
   width: 10%;
@@ -264,20 +261,11 @@ td {
   height: 80px;
 }
 
-@media screen and (min-width: 425px) {
-  .table {
-    td {
-      padding: 8px !important;
-    }
-  }
-}
 
 @media screen and (min-width: 768px) {
   .nav.nav-pills {
-    li {
-      a {
-        font-size: 20px;
-      }
+    a {
+      font-size: 20px;
     }
   }
   .user_info {
