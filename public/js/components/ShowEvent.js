@@ -446,7 +446,7 @@ class ShowEvent extends React.Component  {
                 <div className="modal-body">
                   <form method="post" action="#" encType="multipart/form-data" id="current_event_join" data-id="<%= @event.id %>">
                     <div className="form-group">
-                      <label htmlFor="application_guests">Maximum Guest Limit</label>
+                      <label htmlFor="application_guests">Number of Guests?</label>
                       <input encType="text" value={this.state.quantityValue} placeholder="Make Sure To Include Yourself" onChange={this.quantityChange} className="form-control" id="application_guests" name="application_guests" />
                     </div>
                     <div className="form-group">
