@@ -13,6 +13,22 @@ class EventSerializer < ActiveModel::Serializer
     end
     ev_images
   end
+  # 
+  # def landscape_event_images
+  #   ev_images = []
+  #   object.images.each do |image|
+  #     ev_images << Refile.attachment_url(image, :file, :fill, 1000, 400)
+  #   end
+  #   ev_images
+  # end
+
+  # def square_event_images
+  #   ev_images = []
+  #   object.images.each do |image|
+  #     ev_images << Refile.attachment_url(image, :file, :fill, 300, 300)
+  #   end
+  #   ev_images
+  # end
 
   def event_application_ids
     app_ids = []
