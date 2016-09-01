@@ -202,6 +202,7 @@ class ShowEvent extends React.Component  {
     }
   }
     render() {
+      var linkToHost = "/users/" + this.state.host.id
       var greenColor = {
         color: 'lightgreen'
       }
@@ -280,7 +281,9 @@ class ShowEvent extends React.Component  {
               <div className="col-xs-12 col-sm-4">
                 <div className="hostProfileBox center-block" data-id={this.state.id}>
                   <div className="hostImgBox center-block">
-                    <img src={this.state.host.user_image} className="img-responsive center-block hostImg" alt="" />
+                    <a href={linkToHost}>
+                      <img src={this.state.host.user_image} className="img-responsive center-block hostImg" alt="" />
+                    </a>
                     <h2 className="hostsName text-center">{this.state.host.full_name}</h2>
                   </div>
                   {this.state.msg_button}

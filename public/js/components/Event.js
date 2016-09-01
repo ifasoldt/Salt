@@ -24,7 +24,6 @@ class Event extends React.Component  {
   updateEvents() {
     fetchApi('GET',`/events.json${window.location.search}`, {}, (response) => {
       this.noResults(response)
-      console.log(response)
       var array = response.map(function(event){
         return event.event_marker[0]
       })
@@ -44,7 +43,6 @@ class Event extends React.Component  {
       var markers = handler.addMarkers(this.state.markerArray, {animation: 'DROP'});
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      console.log(this.state.markerArray.length)
       if(this.state.markerArray.length == 1){
         handler.getMap().setZoom(14)
       }
@@ -55,7 +53,6 @@ class Event extends React.Component  {
         var location = window.location.search.split("&")[0].replace("?","").split("=")[1]
         geocoder.geocode({'address': location}, function(results, status){
           if(status == 'OK'){
-            console.log(results)
             handler.getMap().setZoom(10)
             handler.map.centerOn(results[0].geometry.location)
             context.setState({

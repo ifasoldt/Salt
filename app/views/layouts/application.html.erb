@@ -29,12 +29,9 @@
                 <div class="hidden-xs visible-sm visible-md visible-lg">
                   <form method="get" action="#" enctype="multipart/form-data">
                     <div class="navSearchContainer">
-                      <div class="navButtonContainer center-block">
-                        <button type="button" class="btn" id="navSubmitSearch"><i class="fa fa-search navSearchIcon" aria-hidden="true"></i></button>
-                      </div>
                       <div class="navCityContainer">
                         <div class="form-group">
-                          <input type="text" class="form-control" id="navLocation" name="navLocation" placeholder="Where Do You Want To Search?" required />
+                          <input type="text" class="form-control" id="navLocation" name="navLocation" placeholder="Where To?" required />
                           <span id="error" class="hiddenError error">All Fields Need Values</span>
                         </div>
                       </div>
@@ -50,6 +47,9 @@
                         <div class="form-group">
                           <input type="text" class="form-control flatpickr" data-date-format="m-d-Y" id="nav_ending_date" name="nav_ending_date" placeholder="To" required />
                         </div>
+                      </div>
+                      <div class="navButtonContainer center-block">
+                        <button type="button" class="btn" id="navSubmitSearch"><i class="fa fa-search navSearchIcon" aria-hidden="true"></i></button>
                       </div>
                     </div>
                   </form>
@@ -377,6 +377,7 @@
     </div>
 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57c73178fe93fb3a"></script>
+    <script type="text/javascript" src="/js/fetch.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/js/config.js"></script>

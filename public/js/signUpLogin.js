@@ -73,7 +73,7 @@ document.getElementById('btn_event_submitHeader').addEventListener('click', func
   var data = new FormData()
   var pics = document.getElementById('images_filesHeader').files.length;
   for (var x = 0; x < pics; x++) {
-    data.append('images_files[]', document.getElementById('images_files').files[x]);
+    data.append('images_files[]', document.getElementById('images_filesHeader').files[x]);
   }
   data.append('title', document.getElementById('titleHeader').value)
   data.append('date', document.getElementById('dateHeader').value)

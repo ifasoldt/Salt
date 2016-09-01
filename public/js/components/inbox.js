@@ -15,7 +15,6 @@ class Inbox extends React.Component {
   }
   updateConversations () {
     fetchApi('GET', `/conversations.json`, {}, (response) =>{
-      console.log(response)
       this.setState({ conversations: response })
     })
   }

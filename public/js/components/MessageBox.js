@@ -57,7 +57,6 @@ class MessageBox extends React.Component {
 }
 
 fetchApi('GET', `/conversations/${window.location.pathname.split("/")[2]}.json`, {}, (response, statusCode) =>{
-  console.log(response)
   var conversation = response
   ReactDOM.render(<MessageBox conversation={conversation}/>, document.getElementById('MessageBox'))
 })
