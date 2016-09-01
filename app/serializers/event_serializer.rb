@@ -34,8 +34,8 @@ class EventSerializer < ActiveModel::Serializer
 
   def event_marker
     Gmaps4rails.build_markers([object]) do |object, marker|
-      marker.lat object.address.lat + ([0.000002, 0.000003, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008].sample) * ([-1, 1].sample)
-      marker.lng object.address.lng + ([0.000002, 0.000003, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008].sample) * ([-1, 1].sample)
+      marker.lat object.address.lat + ([0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008].sample) * ([-1, 1].sample)
+      marker.lng object.address.lng + ([0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008].sample) * ([-1, 1].sample)
       if object.images.any?
         # event name, date, time link to event. Guest limit Space Left
         marker.infowindow "<div class='infoWindow'>

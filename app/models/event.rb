@@ -18,10 +18,10 @@ class Event < ApplicationRecord
   has_many :thumbs
   has_many :images, as: :imageable, dependent: :destroy
   accepts_attachments_for :images, attachment: :file
-
   validates :description, :food, :time, :title, presence: true
   validates :description, length: {maximum: 1000}
   validates :guest_limit, numericality: {greater_than_or_equal_to: 2}, allow_nil: true
+  validates :guest_limit, numericality: {less_than_or_equal_to: 1000000, message: "should really be set to unlimited"}, allow_nil: true
   validates_date :date, :after => lambda { Date.yesterday }, :after_message => "must be a future date"
   validate :date_cannot_be_earlier_today
   validate :guest_limit_xor_unlimited_guests
@@ -56,6 +56,12 @@ private
   end
 
   def guest_limit_xor_unlimited_guests
+    unless (guest_limit.blank?) ^ (unlimited_guests == false)
+      errors.add(:Please, "specify the number of guests or choose unlimited, but not both")
+    end
+  end
+
+  def address_xor_use_current_address
     unless (guest_limit.blank?) ^ (unlimited_guests == false)
       errors.add(:Please, "specify the number of guests or choose unlimited, but not both")
     end
