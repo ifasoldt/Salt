@@ -22334,7 +22334,7 @@
 	                    _react2.default.createElement(
 	                      'label',
 	                      { htmlFor: 'application_guests' },
-	                      'Maximum Guest Limit'
+	                      'Number of Guests?'
 	                    ),
 	                    _react2.default.createElement('input', { encType: 'text', value: this.state.quantityValue, placeholder: 'Make Sure To Include Yourself', onChange: this.quantityChange, className: 'form-control', id: 'application_guests', name: 'application_guests' })
 	                  ),
