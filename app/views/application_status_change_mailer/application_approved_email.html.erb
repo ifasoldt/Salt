@@ -1,8 +1,8 @@
 <h2>Great News <%= @application.user.first_name %>!</h2>
-<p>Your request to join the Salt event, <%= @application.event.title %>, has been approved! You have been added to the guest list for this event.</p>
+<p>Your request to join the Salt-Up event, <%= @application.event.title %>, has been approved! You have been added to the guest list for this event.</p>
 <!-- needs to be current_user_dashboard_path when in production... -->
-<p>Details about the event are available on your Salt <%= link_to 'dashboard', current_user_dashboard_url %>. If for some reason you cannot make it to the event, please remove your application to make room for others. You can do this as well on your Salt dashboard. Directions to the event can be obtained here: <%= link_to "here", "http://maps.google.com/maps?saddr=#{@application.user&.address&.full_address || nil}&daddr=#{@application.event.address.full_address}" %>
+<p>Details about the event are available on your Salt-Up <%= link_to 'dashboard', current_user_dashboard_url %>. If for some reason you cannot make it to the event, please remove your application to make room for others. You can do this as well on your Salt-Up dashboard. Directions to the event can be obtained here: <%= link_to "here", "http://maps.google.com/maps?saddr=#{@application.user&.address&.full_address || nil}&daddr=#{@application.event.address.full_address}" %>
 </p>
 <p>Meet Someone Different!</p>
-<p>The Salt Staff</p>
+<p>The Salt-Up Staff</p>
 <img src="http://www.salt-up.com/assets/salticon.png" style="width: 100px;"/>
