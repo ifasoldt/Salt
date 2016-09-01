@@ -345,6 +345,9 @@ header {
       margin: 0px 8px 5px 14px;
     }
   }
+}
+
+@media screen and (min-width: 950px) {
   .navSearchContainer {
     .navDateFrom, .navDateTo {
       input {
@@ -353,6 +356,7 @@ header {
       }
   }
 }
+
 
 .forgot-password {
   margin-top: 7px;

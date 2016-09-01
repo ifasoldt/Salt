@@ -64,7 +64,7 @@ body {
     }
     h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 24px;
     }
   }
   .detailsBottomContainer {
@@ -129,7 +129,7 @@ body {
   padding: 10px;
   width: 100%;
 }
-.eventInfoTitle {
+.eventInfo {
   a {
     color: black;
     font-size: 16px;
@@ -236,7 +236,7 @@ body {
     overflow: scroll;
     height: 300px;
   }
-  .commentsTitle {
+  .comments {
     margin: 10px 0;
   }
   .commentUserName {
@@ -276,22 +276,20 @@ body {
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 768px) {
   .eventInfoBox, .hostProfileBox, .eventSpecificBox {
     width: 75%;
   }
   .commentsBox, .mapBox, .detailsContainer {
     width: 95%;
   }
-}
-@media screen and (min-width: 768px) {
   .detailsContainer {
     flex-direction: row;
   }
   .detailsContainer {
     .titleContainer {
       h1 {
-        font-size: 32px;
+        font-size: 28px;
       }
     }
     .detailsBottomContainer {

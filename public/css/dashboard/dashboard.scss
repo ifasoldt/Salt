@@ -197,9 +197,10 @@ td {
   a {
     cursor: pointer;
     color: black;
-    font-size: 18px;
+    font-size: 14px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    padding: 8px 4px;
   }
   a:hover {
     background-color: inherit;
@@ -265,7 +266,8 @@ td {
 @media screen and (min-width: 768px) {
   .nav.nav-pills {
     a {
-      font-size: 20px;
+      padding: 10px 6px;
+      font-size: 18px;
     }
   }
   .user_info {
