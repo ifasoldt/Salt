@@ -294,13 +294,14 @@ header {
   }
 }
 .header_img {
-  margin-top: 2px;
-  display: inline-block;
   float: left;
   margin-right: 10px;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
   img {
     width: 80px;
-    margin-top: 20px;
   }
 }
 .header_links {
@@ -331,7 +332,6 @@ header {
   .header_img {
     img {
       width: 120px;
-      margin-top: 10px;
     }
   }
   #navDropdownMenu {

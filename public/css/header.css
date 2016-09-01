@@ -351,15 +351,16 @@ header .form-control:focus {
 }
 
 .header_img {
-  margin-top: 2px;
-  display: inline-block;
   float: left;
   margin-right: 10px;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
 }
 
 .header_img img {
   width: 80px;
-  margin-top: 20px;
 }
 
 .header_links {
@@ -393,7 +394,6 @@ header .form-control:focus {
   }
   .header_img img {
     width: 120px;
-    margin-top: 10px;
   }
   #navDropdownMenu {
     position: absolute;
