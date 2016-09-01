@@ -20,7 +20,7 @@ class EventIndexSerializer < ActiveModel::Serializer
         marker.infowindow "<div class='infoWindow'>
         <div class='eventInfoTitle'><a href='/events/#{object.id}'}>#{object.title}</a></div>
           <div class='eventInfoImage'>
-            <img class='img-responsive' width='200' height='200' src='#{Refile.attachment_url(object.images.first, :file, :fit, 400, 400)}' />
+            <img class='img-responsive' width='200' height='200' src='#{Refile.attachment_url(object.images.first, :file, :fit, 100, 100)}' />
           </div>
           <div class='eventInfoDateTime'>#{object.formatted_date} at #{object.formatted_time}</div>
           <div class='eventInfoGuestLimit'> Guest Limit #{object.guest_limit || "none"} Spots Left: #{object.spots_left} </div>
