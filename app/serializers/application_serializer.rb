@@ -10,7 +10,7 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def application_profile_pic
     if object.user.images.first
-      Refile.attachment_url(object.user.images.first, :file, :fill, 400, 400) if object.user.images.first
+      Refile.attachment_url(object.user.images.first, :file, :fill, 100, 100) if object.user.images.first
     else
       "/assets/no_pic.png"
     end

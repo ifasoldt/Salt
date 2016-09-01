@@ -27255,7 +27255,7 @@
 	                    _react2.default.createElement(
 	                      'i',
 	                      null,
-	                      'This is private and is never shown publicly'
+	                      'We will never show this publicly'
 	                    )
 	                  )
 	                )

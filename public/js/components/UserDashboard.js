@@ -54,7 +54,7 @@ class UserDashboard extends React.Component  {
                     <div className="infoContainer">
                       <h4>Date of Birth</h4>
                       <p>{this.state.user.date_of_birth}</p>
-                      <h6><i>This is private and is never shown publicly</i></h6>
+                      <h6><i>We will never show this publicly</i></h6>
                     </div>
                   </div>
                   <div className="personelContainer">
