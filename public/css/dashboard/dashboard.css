@@ -124,10 +124,6 @@ body {
   color: white;
 }
 
-.table td {
-  padding: 4px !important;
-}
-
 .conversationContainer {
   display: flex;
   flex-direction: column;
@@ -203,7 +199,7 @@ body {
   height: 500px;
   border: 1px solid black;
   margin-bottom: 40px;
-  width: 100%;
+  width: 95%;
 }
 
 .scroll_box a {
@@ -232,16 +228,15 @@ td {
   margin-top: 10px;
 }
 
-.nav.nav-pills li a {
+.nav.nav-pills a {
   cursor: pointer;
   color: black;
-  font-size: 14px;
+  font-size: 18px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding: 10px 8px;
 }
 
-.nav.nav-pills li a:hover {
+.nav.nav-pills a:hover {
   background-color: inherit;
 }
 
@@ -273,8 +268,13 @@ td {
   width: 10%;
 }
 
+.votesContainerUp, .votesContainerDown {
+  display: flex;
+  align-items: center;
+}
+
 .thumbVotesNumber {
-  margin-left: 2px;
+  margin-left: 4px;
 }
 
 .quantityHeader {
@@ -308,14 +308,8 @@ td {
   height: 80px;
 }
 
-@media screen and (min-width: 425px) {
-  .table td {
-    padding: 8px !important;
-  }
-}
-
 @media screen and (min-width: 768px) {
-  .nav.nav-pills li a {
+  .nav.nav-pills a {
     font-size: 20px;
   }
   .user_info .profileImageBox {
