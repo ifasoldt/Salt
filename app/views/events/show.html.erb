@@ -1,4 +1,4 @@
-<% content_for :stylesheets do %>  <link rel="stylesheet" href="/css/flatpickr.min.css" />
+<% content_for :stylesheets do %>
   <link rel="stylesheet" href="/css/events/show.css" />
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
@@ -33,7 +33,7 @@
             <input type="file" class="form-control" name="images_files" id="images_files" multiple />
           </div>
           <div class="form-group">
-            <label for="guest_limit">Number Of Guests</label>
+            <label for="guest_limit">Maximum Guest Limit</label>
             <input type="text" class="form-control" id="guest_limit" value="<%= @event.guest_limit %>" name="guest_limit" />
           </div>
           <div class="form-group">
@@ -162,7 +162,6 @@
 
 
 <% content_for :scripts do %>
-  <script src="/js/flatpickr.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
   <script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyCVaNAId-8BJ8S1fgCLBun7MTbHioICoZU"></script>
   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -171,5 +170,4 @@
   <script src='/javascripts/gmaps_google.js'></script>
   <script src="/js/events/show.js"></script>
   <script src="/js/showEvent.bundle.js"></script>
-  <script src="/js/configImages.js"></script>
 <% end %>

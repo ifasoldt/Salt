@@ -165,6 +165,8 @@ nav a {
   text-align: center;
   background-color: transparent;
   border: 0;
+  padding: 0;
+  font-size: 14px;
 }
 
 .navSearchContainer .navArrowContainer {
@@ -187,6 +189,8 @@ nav a {
   text-align: center;
   background-color: transparent;
   border: 0;
+  padding: 0;
+  font-size: 14px;
 }
 
 .navSearchContainer .navButtonContainer {
@@ -324,7 +328,7 @@ nav a {
 }
 
 .hideSearch {
-  visibility: hidden;
+  display: none;
   transition: 0.3s;
 }
 
@@ -401,6 +405,9 @@ header .form-control:focus {
   .header_profile img {
     width: 60px;
     margin: 0px 8px 5px 14px;
+  }
+  .navSearchContainer .navDateFrom input, .navSearchContainer .navDateTo input {
+    font-size: 18px;
   }
 }
 

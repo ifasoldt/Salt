@@ -140,6 +140,7 @@ body {
 
 .hostsName {
   margin-top: 10px;
+  color: black;
 }
 
 #map {
@@ -283,6 +284,10 @@ body {
 
 .commentsBox .commentsTitle {
   margin: 10px 0;
+}
+
+.commentsBox .commentUserName {
+  color: black;
 }
 
 .commentsBox .panel-heading {

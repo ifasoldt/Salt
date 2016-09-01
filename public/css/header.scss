@@ -137,6 +137,8 @@ nav a {
       text-align: center;
       background-color: transparent;
       border: 0;
+      padding: 0;
+      font-size: 14px;
     }
   }
   .navArrowContainer {
@@ -155,6 +157,8 @@ nav a {
       text-align: center;
       background-color: transparent;
       border: 0;
+      padding: 0;
+      font-size: 14px;
     }
   }
   .navButtonContainer {
@@ -270,7 +274,7 @@ nav a {
   color: white;
 }
 .hideSearch {
-  visibility: hidden;
+  display: none;
   transition: 0.3s;
 }
 
@@ -340,6 +344,13 @@ header {
       width: 60px;
       margin: 0px 8px 5px 14px;
     }
+  }
+  .navSearchContainer {
+    .navDateFrom, .navDateTo {
+      input {
+        font-size: 18px;
+        }
+      }
   }
 }
 

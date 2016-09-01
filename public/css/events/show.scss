@@ -116,6 +116,7 @@ body {
 }
 .hostsName {
   margin-top: 10px;
+  color: black;
 }
 #map {
   height: 200px;
@@ -237,6 +238,9 @@ body {
   }
   .commentsTitle {
     margin: 10px 0;
+  }
+  .commentUserName {
+    color: black;
   }
   .panel-heading {
     background-color: black;

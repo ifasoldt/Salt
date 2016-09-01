@@ -220,11 +220,14 @@ class ShowEvent extends React.Component  {
 
       var all_comments = this.state.comments.map((comment, key) => {
         if (!this.state.hiddenComments.includes(comment.id) && comment.flagged != true){
+          var linkToUser = "/users/" + comment.user.id
           return (
             <div className="panel panel-default commentContainer" key={key}>
               <div className="panel-heading rightContainer">
                 <div className="panel-title nameContainer">
-                  <h4>{comment.user.full_name} says:</h4>
+                  <a href={linkToUser}>
+                    <h4 className="commentUserName">{comment.user.full_name} says:</h4>
+                  </a>
                   <div className="timeFlagContainer">
                     <h5>{comment.formatted_created_at}</h5>
                     <i className="fa fa-flag commentFlag" aria-hidden="true" data-toggle="modal" data-target="#commentFlag-modal" data-id={comment.id} onClick={(e) => this.setCommentId(e)}></i>
@@ -281,10 +284,10 @@ class ShowEvent extends React.Component  {
               <div className="col-xs-12 col-sm-4">
                 <div className="hostProfileBox center-block" data-id={this.state.id}>
                   <div className="hostImgBox center-block">
+                    <img src={this.state.host.user_image} className="img-responsive center-block hostImg" alt="" />
                     <a href={linkToHost}>
-                      <img src={this.state.host.user_image} className="img-responsive center-block hostImg" alt="" />
+                      <h2 className="hostsName text-center">{this.state.host.full_name}</h2>
                     </a>
-                    <h2 className="hostsName text-center">{this.state.host.full_name}</h2>
                   </div>
                   {this.state.msg_button}
                 </div>
@@ -438,7 +441,7 @@ class ShowEvent extends React.Component  {
                 <div className="modal-body">
                   <form method="post" action="#" encType="multipart/form-data" id="current_event_join" data-id="<%= @event.id %>">
                     <div className="form-group">
-                      <label htmlFor="application_guests">Number Of Guests</label>
+                      <label htmlFor="application_guests">Maximum Guest Limit</label>
                       <input encType="text" value={this.state.quantityValue} placeholder="Make Sure To Include Yourself" onChange={this.quantityChange} className="form-control" id="application_guests" name="application_guests" />
                     </div>
                     <div className="form-group">
