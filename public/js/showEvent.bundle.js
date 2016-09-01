@@ -21748,7 +21748,7 @@
 	      fetchApi('GET', '/api/events/' + current_event + '.json', {}, function (response) {
 	        _this7.setState({
 	          events: response,
-	          sliderImages: response.event_images,
+	          sliderImages: response.landscape_event_images,
 	          host: response.host,
 	          markerArray: response.event_marker,
 	          comments: response.comments,

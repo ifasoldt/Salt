@@ -46,7 +46,7 @@ class Attending extends React.Component  {
           return (
               <tr key={key}>
                 <td scope="row" className="user_profile">
-                  <a href={link}><img className="profile_image img-circle" src={event.event_images[0]} />
+                  <a href={link}><img className="profile_image img-circle" src={event.square_event_images[0]} />
                   {event.title}</a>
                 </td>
                 <td><a>{event.formatted_date} @ {event.formatted_time}</a></td>
