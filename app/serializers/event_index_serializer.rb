@@ -8,7 +8,11 @@ class EventIndexSerializer < ActiveModel::Serializer
     object.images.each do |image|
       ev_images << Refile.attachment_url(image, :file, :fill, 400, 300)
     end
-    ev_images
+    if ev_images[0]
+      ev_images
+    else
+      ['/assets/no_event_image.jpeg']
+    end
   end
 
   def event_marker
