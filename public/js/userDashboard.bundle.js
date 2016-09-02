@@ -27885,7 +27885,6 @@
 	      var _this2 = this;
 
 	      fetchApi('GET', '/current_user/dashboard.json?attending=true', {}, function (response) {
-	        console.log(response);
 	        _this2.setState({
 	          attendingEvents: response
 	        });
