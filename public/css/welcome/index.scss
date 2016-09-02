@@ -74,6 +74,11 @@ header {
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      .dateTextContainerText {
+        font-size: 18px;
+        color: white;
+        margin-right: 6px;
+      }
     }
     label {
       color: white;
@@ -108,12 +113,12 @@ header {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     .dateTextContainer {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
     label {
       color: white;

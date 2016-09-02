@@ -94,6 +94,12 @@ header {
   justify-content: center;
 }
 
+.searchContainer .dateFrom .dateTextContainer .dateTextContainerText {
+  font-size: 18px;
+  color: white;
+  margin-right: 6px;
+}
+
 .searchContainer .dateFrom label {
   color: white;
   font-size: 16px;
@@ -130,14 +136,14 @@ header {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .searchContainer .dateTo .dateTextContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .searchContainer .dateTo label {
