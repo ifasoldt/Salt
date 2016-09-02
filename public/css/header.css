@@ -272,10 +272,6 @@ nav a {
 
 .navMobileSearchContainer .navMobileCityContainer input {
   font-size: 12px;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 0;
 }
 
 .navMobileSearchContainer .navMobileDatesContainer {
@@ -287,26 +283,36 @@ nav a {
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom {
   width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom input {
+.navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom .form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom .form-group input {
   font-size: 12px;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: 0;
-  border-right: 0;
 }
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo {
   width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo input {
+.navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo .form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo .form-group input {
   font-size: 12px;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: 0;
-  border-right: 2px solid black;
 }
 
 .navMobileSearchContainer .navMobileButtonContainer {
@@ -319,8 +325,10 @@ nav a {
 
 .navMobileSearchContainer .navMobileButtonContainer button {
   width: 50%;
-  background-color: black;
-  color: white;
+  font-size: 12px;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
 }
 
 .navSearchIcon {
