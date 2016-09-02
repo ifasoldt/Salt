@@ -18,7 +18,6 @@ class Attending extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json?attending=true', {}, (response) => {
-      console.log(response)
       this.setState({
         attendingEvents: response
       })
