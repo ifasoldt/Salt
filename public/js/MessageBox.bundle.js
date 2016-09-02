@@ -21628,12 +21628,7 @@
 	        _react2.default.createElement(
 	          "div",
 	          { className: "conversationHeader" },
-	          _react2.default.createElement("div", { className: "conversationNameContainer" }),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "conversationDateContainer" },
-	            this.props.message.created_at
-	          )
+	          this.props.message.created_at
 	        ),
 	        _react2.default.createElement(
 	          "div",

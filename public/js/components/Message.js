@@ -5,12 +5,7 @@ class Message extends React.Component  {
     return(
         <div className="conversationContainer">
           <div className="conversationHeader">
-            <div className="conversationNameContainer">
-            
-            </div>
-            <div className="conversationDateContainer">
-              {this.props.message.created_at}
-            </div>
+            {this.props.message.created_at}
           </div>
           <div className="conversationBody">
             <div className="conversationLeftsideContainer">
