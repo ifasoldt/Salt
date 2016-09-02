@@ -1,7 +1,7 @@
 // API Host
-var api = 'http://localhost:3000'
+// var api = 'http://localhost:3000'
 
-// var api = 'http://www.salt-up.com'
+var api = 'http://www.salt-up.com'
 var production = false
 
 // Utilities
