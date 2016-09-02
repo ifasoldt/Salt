@@ -216,6 +216,9 @@ header {
         padding-left: 0;
         border: none;
         border-radius: 0;
+        .dateTextContainerText {
+          display: none;
+        }
       }
       input {
         border-top: 2px solid black;
@@ -246,6 +249,9 @@ header {
         padding-left: 0;
         border: none;
         border-radius: 0;
+        .dateTextContainerText {
+          display: none;
+        }
       }
       input {
         border-top: 2px solid black;

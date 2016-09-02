@@ -256,6 +256,9 @@ header {
     border: none;
     border-radius: 0;
   }
+  .searchContainer .dateFrom .dateTextContainer .dateTextContainerText {
+    display: none;
+  }
   .searchContainer .dateFrom input {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
@@ -285,6 +288,9 @@ header {
     padding-left: 0;
     border: none;
     border-radius: 0;
+  }
+  .searchContainer .dateTo .dateTextContainer .dateTextContainerText {
+    display: none;
   }
   .searchContainer .dateTo input {
     border-top: 2px solid black;
