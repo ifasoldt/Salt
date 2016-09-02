@@ -213,9 +213,9 @@ header {
     .dateFrom {
       margin-bottom: 0px;
       .dateTextContainer {
-        padding-left: 5px;
-        border: 2px solid;
-        border-radius: 5px;
+        padding-left: 0;
+        border: none;
+        border-radius: 0;
       }
       input {
         border-top: 2px solid black;
@@ -243,9 +243,9 @@ header {
     .dateTo {
       margin-bottom: 0px;
       .dateTextContainer {
-        padding-left: 5px;
-        border: 2px solid;
-        border-radius: 5px;
+        padding-left: none;
+        border: none;
+        border-radius: 0;
       }
       input {
         border-top: 2px solid black;

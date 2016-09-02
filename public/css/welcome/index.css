@@ -252,9 +252,9 @@ header {
     margin-bottom: 0px;
   }
   .searchContainer .dateFrom .dateTextContainer {
-    padding-left: 5px;
-    border: 2px solid;
-    border-radius: 5px;
+    padding-left: 0;
+    border: none;
+    border-radius: 0;
   }
   .searchContainer .dateFrom input {
     border-top: 2px solid black;
@@ -282,9 +282,9 @@ header {
     margin-bottom: 0px;
   }
   .searchContainer .dateTo .dateTextContainer {
-    padding-left: 5px;
-    border: 2px solid;
-    border-radius: 5px;
+    padding-left: none;
+    border: none;
+    border-radius: 0;
   }
   .searchContainer .dateTo input {
     border-top: 2px solid black;
