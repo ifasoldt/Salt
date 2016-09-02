@@ -38,6 +38,8 @@ put '/api/events/:event_id/applications/:id' => 'applications#update'
 delete '/api/events/:event_id/applications/:id' => 'applications#destroy', as: :event_application_delete
 get '/test_maps/' => 'welcome#test'
 
+get '/pages/:page' => 'pages#show'
+
 
 
 
