@@ -215,6 +215,86 @@ body {
   border-top: 1px solid black;
   font-size: 12px;
 }
+
+.attendingEventsContainer {
+  border: 1px solid black;
+  border-radius: 5px;
+  .attendingEventsHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    .titleHeader {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .whenHeader {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .spotsHeader {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .approvedHeader {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .attendingEventsBody {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid black;
+    .attendingEventHeader {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+    }
+    .attendingEventDate {
+      font-size: 12px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .attendingEventSpots {
+      font-size: 12px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .attendingEventStatus {
+      font-size: 12px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+
+
+
+
 .conversationContainer {
   display: flex;
   flex-direction: column;;

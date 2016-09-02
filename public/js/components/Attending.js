@@ -18,6 +18,7 @@ class Attending extends React.Component  {
   }
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json?attending=true', {}, (response) => {
+      console.log(response)
       this.setState({
         attendingEvents: response
       })
@@ -44,14 +45,14 @@ class Attending extends React.Component  {
         var eventsAttending = this.state.attendingEvents.map((event, key) => {
           var link = "/events/" + event.id
           return (
-              <tr key={key}>
-                <td scope="row" className="user_profile">
+              <div className="attendingEventsBody" key={key}>
+                <div className="attendingEventHeader">
                   <a href={link}><img className="profile_image img-circle" src={event.square_event_images[0]} />
                   {event.title}</a>
-                </td>
-                <td><a>{event.formatted_date} @ {event.formatted_time}</a></td>
-                <td>{event.spots_left}</td>
-                <td>
+                </div>
+                <div className="attendingEventDate">{event.formatted_date} @ {event.formatted_time}</div>
+                <div className="attendingEventSpots">{event.spots_left}</div>
+                <div className="attendingEventStatus">
                   {(() => {
                     switch (event.applications[0].status) {
                       case "approved": return <div>
@@ -66,25 +67,19 @@ class Attending extends React.Component  {
                       default: return <span style={orangeColor}>Pending</span>
                     }
                   })()}
-                </td>
-              </tr>
+                </div>
+              </div>
             )
         })
         return (
-            <div className="panel panel-default">
-              <table className="table">
-                <thead className="tableHeadAttending">
-                  <tr>
-                    <th>Title</th>
-                    <th>When</th>
-                    <th>Spots Open</th>
-                    <th>Approved</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {eventsAttending}
-                </tbody>
-              </table>
+            <div className="attendingEventsContainer">
+                <div className="attendingEventsHeaderContainer">
+                  <div className="titleHeader">Title</div>
+                  <div className="whenHeader">When</div>
+                  <div className="spotsHeader">Spots Open</div>
+                  <div className="approvedHeader">Approved</div>
+                </div>
+                {eventsAttending}
             </div>
           )
     }
