@@ -297,6 +297,9 @@ nav a {
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom label {
   color: white;
+  margin: 0;
+  font-size: 12px;
+  margin-right: 2px;
 }
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom .form-group {
@@ -319,6 +322,9 @@ nav a {
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo label {
   color: white;
+  margin: 0;
+  font-size: 12px;
+  margin-right: 2px;
 }
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo .form-group {
