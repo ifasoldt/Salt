@@ -112,10 +112,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
-
+	      var userProfileLink = 'users/' + this.props.conversation.message_partner.id;
 	      var allMessages = this.state.messages.map(function (message, key) {
-	        var userProfileLink = 'users/' + _this3.props.conversation.message_partner.id;
 	        return _react2.default.createElement(_Message2.default, { message: message, key: key });
 	      });
 	      return _react2.default.createElement(
