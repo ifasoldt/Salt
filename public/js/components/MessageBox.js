@@ -29,6 +29,7 @@ class MessageBox extends React.Component {
   }
   render(){
     var allMessages = this.state.messages.map((message, key) => {
+      var userProfileLink = `users/${this.props.conversation.message_partner.id}`
       return <Message message={message} key={key}/>
     })
     return(
@@ -36,7 +37,7 @@ class MessageBox extends React.Component {
         <div className="row">
           <div className="col-xs-12 col-sm-4">
             <div className="profileImageBox center-block">
-              <img className="user_image img-responsive" src={this.props.conversation.message_partner.user_image} />
+              <a href={userProfileLink}><img className="user_image img-responsive" src={this.props.conversation.message_partner.user_image} /></a>
               <h2 className="text-center">{this.props.conversation.message_partner.first_name}</h2>
             </div>
           </div>
