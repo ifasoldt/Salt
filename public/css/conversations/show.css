@@ -72,30 +72,14 @@ body {
 }
 
 .conversationContainer .conversationHeader {
-  flex: 1;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   background-color: black;
   color: white;
   padding: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-}
-
-.conversationContainer .conversationHeader .conversationNameContainer {
-  margin-left: 5px;
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.conversationContainer .conversationHeader .conversationDateContainer {
-  flex: 1;
-  display: flex;
-  font-size: 12px;
-  align-items: center;
-  justify-content: flex-end;
 }
 
 .conversationContainer .conversationBody {

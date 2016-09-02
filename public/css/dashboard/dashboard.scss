@@ -326,13 +326,16 @@ body {
   .conversationHeader {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     background-color: black;
     color: white;
     padding: 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    .conversationDateContainer {
+      font-size: 10px;
+    }
   }
   .conversationBody {
     flex: 2;
@@ -540,5 +543,12 @@ td {
   }
   .scroll_box {
     width: 95%;
+  }
+  .conversationContainer {
+    .conversationHeader {
+      .conversationDateContainer {
+        font-size: 12px;
+      }
+    }
   }
 }
