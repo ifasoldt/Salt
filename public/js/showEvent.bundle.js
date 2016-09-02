@@ -21870,7 +21870,7 @@
 	                  { className: 'titleContainer' },
 	                  _react2.default.createElement(
 	                    'h1',
-	                    { className: 'eventTitle' },
+	                    { className: 'eventTitle text-center' },
 	                    this.state.events.title
 	                  ),
 	                  _react2.default.createElement(

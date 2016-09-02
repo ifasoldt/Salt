@@ -119,9 +119,139 @@ body {
   font-size: 18px;
 }
 
-.tableHeadAttending {
+.hostingEventContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.hostingEventContainer .hostingEventTitleContainer {
   background-color: black;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hostingEventContainer .hostingEventTitleContainer a {
   color: white;
+}
+
+.hostingEventContainer .hostingEventTitleContainer .hostingEventTitleDateContainer {
+  color: white;
+  font-size: 12px;
+}
+
+.hostingEventContainer .applicationsHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 5px;
+}
+
+.hostingEventContainer .applicationSingleContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border-top: 1px solid;
+}
+
+.hostingEventContainer .applicationSingleContainer .applicationSingleHeaderContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.hostingEventContainer .applicationSingleContainer .applicationSingleHeaderContainer a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hostingEventContainer .applicationSingleContainer .votesContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.hostingEventContainer .applicationSingleContainer .votesContainer .votesContainerDown {
+  margin-left: 4px;
+}
+
+.hostingEventContainer .applicationSingleContainer .votesContainer .thumbVotesNumber {
+  margin-left: 4px;
+}
+
+.hostingEventContainer .applicationSingleContainer .applicationSingleQuantityContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.hostingEventContainer .applicationSingleContainer .applicationSingleMessageContainer {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.hostingEventContainer .applicationSingleContainer .applicationSingleStatusContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.hostingEventContainer .nameHeader {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hostingEventContainer .thumbsHeader {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hostingEventContainer .quantityHeader {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hostingEventContainer .messageHeader {
+  flex: 3;
+  display: flex;
+  align-items: center;
+}
+
+.hostingEventContainer .statusHeader {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noApplications {
+  padding: 5px;
+  border-top: 1px solid black;
+  font-size: 12px;
 }
 
 .conversationContainer {
@@ -199,7 +329,7 @@ body {
   height: 500px;
   border: 1px solid black;
   margin-bottom: 40px;
-  width: 95%;
+  width: 100%;
 }
 
 .scroll_box a {
@@ -250,44 +380,6 @@ td {
 .user_profile a {
   color: black;
   cursor: pointer;
-}
-
-.panel-heading {
-  background-color: black !important;
-  border-bottom: 0 !important;
-}
-
-.panel-heading a {
-  color: white !important;
-}
-
-.nameHeader {
-  width: 20%;
-}
-
-.thumbsHeader {
-  width: 10%;
-}
-
-.votesContainerUp, .votesContainerDown {
-  display: flex;
-  align-items: center;
-}
-
-.thumbVotesNumber {
-  margin-left: 4px;
-}
-
-.quantityHeader {
-  width: 10%;
-}
-
-.messageHeader {
-  width: 45%;
-}
-
-.statusHeader {
-  width: 15%;
 }
 
 .accept_application {

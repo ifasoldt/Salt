@@ -100,11 +100,121 @@ body {
     }
   }
 }
-.tableHeadAttending {
-  background-color: black;
-  color: white;
+.hostingEventContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  .hostingEventTitleContainer {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      color: white;
+    }
+    .hostingEventTitleDateContainer {
+      color: white;
+      font-size: 12px;
+    }
+  }
+  .applicationsHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: 5px;
+  }
+  .applicationSingleContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    border-top: 1px solid;
+    .applicationSingleHeaderContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .votesContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      .votesContainerDown {
+        margin-left: 4px;
+      }
+      .thumbVotesNumber {
+        margin-left: 4px;
+      }
+    }
+    .applicationSingleQuantityContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .applicationSingleMessageContainer {
+      flex: 3;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+    .applicationSingleStatusContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+  }
+  .nameHeader {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .thumbsHeader {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .quantityHeader {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .messageHeader {
+    flex: 3;
+    display: flex;
+    align-items: center;
+  }
+  .statusHeader {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
-
+.noApplications {
+  padding: 5px;
+  border-top: 1px solid black;
+  font-size: 12px;
+}
 .conversationContainer {
   display: flex;
   flex-direction: column;;
@@ -172,7 +282,7 @@ body {
   height: 500px;
   border: 1px solid black;
   margin-bottom: 40px;
-  width: 95%;
+  width: 100%;
   a {
     color: black;
     transition: 0.3s;
@@ -216,35 +326,6 @@ td {
     color: black;
     cursor: pointer;
   }
-}
-.panel-heading {
-  background-color: black !important;
-  border-bottom: 0 !important;
-  a {
-    color: white !important;
-  }
-}
-.nameHeader {
-  width: 20%;
-}
-.thumbsHeader {
-  width: 10%;
-}
-.votesContainerUp, .votesContainerDown {
-  display: flex;
-  align-items: center;
-}
-.thumbVotesNumber {
-  margin-left: 4px;
-}
-.quantityHeader {
-  width: 10%;
-}
-.messageHeader {
-  width: 45%;
-}
-.statusHeader {
-  width: 15%;
 }
 .accept_application {
   cursor: pointer;

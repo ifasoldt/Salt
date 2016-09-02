@@ -259,7 +259,7 @@ class ShowEvent extends React.Component  {
               <div className="col-xs-12 hidden-sm hidden-md hidden-lg">
                 <div className="detailsContainer">
                   <div className="titleContainer">
-                    <h1 className="eventTitle">{this.state.events.title}</h1>
+                    <h1 className="eventTitle text-center">{this.state.events.title}</h1>
                     <div className="socialMediaShareButtons">
                       <div className="addthis_inline_share_toolbox"></div>
                     </div>

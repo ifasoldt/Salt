@@ -5,7 +5,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   belongs_to :event
 
   def application_user_name
-    object.user.full_name
+    object.user.first_name
   end
 
   def application_profile_pic

@@ -19,6 +19,7 @@ class Hosting extends React.Component  {
   updateUser() {
     fetchApi('GET','/current_user/dashboard.json?hosting=true', {}, (response) => {
       var hostingEvents = response
+      console.log(response)
       this.setState({
         hostedEvents: hostingEvents
       })
@@ -66,28 +67,27 @@ class Hosting extends React.Component  {
       var eventsHosting = this.state.hostedEvents.map((event, key) => {
         var linkEvent = "/events/" + event.id
         var eventApplications = event.applications.map((app, key) => {
+
           var link = "/users/" + app.app_user_id
             return (
-            <tr key={key}>
-              <td scope="row" className="user_profile">
+            <div className="applicationSingleContainer" key={key}>
+              <div className="applicationSingleHeaderContainer">
                 <a href={link}><img className="profile_image img-circle" src={app.application_profile_pic} />
                 {app.application_user_name}</a>
-              </td>
-              <td>
-                <div className="votesContainer">
-                  <div className="votesContainerUp">
-                    <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true"></i>
-                    <span className="thumbVotesNumber">{app.user_thumbs_up}</span>
-                  </div>
-                  <div className="votesContainerDown">
-                    <i style={redColor} className="fa fa-thumbs-down thumbDownVotes" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true"></i>
-                    <span className="thumbVotesNumber">{app.user_thumbs_down}</span>
-                  </div>
+              </div>
+              <div className="votesContainer">
+                <div className="votesContainerUp">
+                  <i style={greenColor} className="fa fa-thumbs-up thumbUpVotes" data-toggle="tooltip" data-placement="bottom" title="Upvotes" aria-hidden="true"></i>
+                  <span className="thumbVotesNumber">{app.user_thumbs_up}</span>
                 </div>
-              </td>
-              <td>{app.quantity}</td>
-              <td><i>{app.message}</i></td>
-              <td>
+                <div className="votesContainerDown">
+                  <i style={redColor} className="fa fa-thumbs-down thumbDownVotes" data-toggle="tooltip" data-placement="bottom" title="Downvotes" aria-hidden="true"></i>
+                  <span className="thumbVotesNumber">{app.user_thumbs_down}</span>
+                </div>
+              </div>
+              <div className="applicationSingleQuantityContainer">{app.quantity}</div>
+              <div className="applicationSingleMessageContainer"><i>{app.message}</i></div>
+              <div className="applicationSingleStatusContainer">
                   {(() => {
                     switch (app.status) {
                       case "approved": return <div>
@@ -126,30 +126,32 @@ class Hosting extends React.Component  {
                       default: return <span style={Color}>Pending</span>
                     }
                   })()}
-              </td>
-            </tr>
+              </div>
+            </div>
           )
         }
       )
       return (
-          <div className="panel panel-default" key={key}>
-            <div className="panel-heading">
-              <a href={linkEvent} className="linkToHostedEvent">{event.title}</a>
-            </div>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th className="nameHeader">Name</th>
-                  <th className="thumbsHeader">Thumbs</th>
-                  <th className="quantityHeader">Guests</th>
-                  <th className="messageHeader">Messages</th>
-                  <th className="statusHeader">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {eventApplications}
-              </tbody>
-            </table>
+          <div className="hostingEventContainer" key={key}>
+              <div className="hostingEventTitleContainer">
+                <a href={linkEvent} className="linkToHostedEvent">{event.title}</a>
+                <div className="hostingEventTitleDateContainer">
+                  {event.formatted_date} @ {event.formatted_time}
+                </div>
+              </div>
+              <div className="applicationsHeaderContainer">
+                <div className="nameHeader">Name</div>
+                <div className="thumbsHeader">Thumbs</div>
+                <div className="quantityHeader">Guests</div>
+                <div className="messageHeader">Messages</div>
+                <div className="statusHeader">Status</div>
+              </div>
+              {(() => {
+                  switch (event.applications.length) {
+                    case 0: return <div className="noApplications"><i>There are no applications at this time</i></div>
+                    default: return eventApplications
+                  }
+                })()}
           </div>
         )
       })

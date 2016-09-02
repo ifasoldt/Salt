@@ -27538,6 +27538,7 @@
 
 	      fetchApi('GET', '/current_user/dashboard.json?hosting=true', {}, function (response) {
 	        var hostingEvents = response;
+	        console.log(response);
 	        _this2.setState({
 	          hostedEvents: hostingEvents
 	        });
@@ -27603,13 +27604,14 @@
 	      var eventsHosting = this.state.hostedEvents.map(function (event, key) {
 	        var linkEvent = "/events/" + event.id;
 	        var eventApplications = event.applications.map(function (app, key) {
+
 	          var link = "/users/" + app.app_user_id;
 	          return _react2.default.createElement(
-	            'tr',
-	            { key: key },
+	            'div',
+	            { className: 'applicationSingleContainer', key: key },
 	            _react2.default.createElement(
-	              'td',
-	              { scope: 'row', className: 'user_profile' },
+	              'div',
+	              { className: 'applicationSingleHeaderContainer' },
 	              _react2.default.createElement(
 	                'a',
 	                { href: link },
@@ -27618,41 +27620,37 @@
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'td',
-	              null,
+	              'div',
+	              { className: 'votesContainer' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'votesContainer' },
+	                { className: 'votesContainerUp' },
+	                _react2.default.createElement('i', { style: greenColor, className: 'fa fa-thumbs-up thumbUpVotes', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvotes', 'aria-hidden': 'true' }),
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'votesContainerUp' },
-	                  _react2.default.createElement('i', { style: greenColor, className: 'fa fa-thumbs-up thumbUpVotes', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Upvotes', 'aria-hidden': 'true' }),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { className: 'thumbVotesNumber' },
-	                    app.user_thumbs_up
-	                  )
-	                ),
+	                  'span',
+	                  { className: 'thumbVotesNumber' },
+	                  app.user_thumbs_up
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'votesContainerDown' },
+	                _react2.default.createElement('i', { style: redColor, className: 'fa fa-thumbs-down thumbDownVotes', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvotes', 'aria-hidden': 'true' }),
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'votesContainerDown' },
-	                  _react2.default.createElement('i', { style: redColor, className: 'fa fa-thumbs-down thumbDownVotes', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Downvotes', 'aria-hidden': 'true' }),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { className: 'thumbVotesNumber' },
-	                    app.user_thumbs_down
-	                  )
+	                  'span',
+	                  { className: 'thumbVotesNumber' },
+	                  app.user_thumbs_down
 	                )
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'td',
-	              null,
+	              'div',
+	              { className: 'applicationSingleQuantityContainer' },
 	              app.quantity
 	            ),
 	            _react2.default.createElement(
-	              'td',
-	              null,
+	              'div',
+	              { className: 'applicationSingleMessageContainer' },
 	              _react2.default.createElement(
 	                'i',
 	                null,
@@ -27660,8 +27658,8 @@
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'td',
-	              null,
+	              'div',
+	              { className: 'applicationSingleStatusContainer' },
 	              function () {
 	                switch (app.status) {
 	                  case "approved":
@@ -27743,58 +27741,68 @@
 	        });
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'panel panel-default', key: key },
+	          { className: 'hostingEventContainer', key: key },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'panel-heading' },
+	            { className: 'hostingEventTitleContainer' },
 	            _react2.default.createElement(
 	              'a',
 	              { href: linkEvent, className: 'linkToHostedEvent' },
 	              event.title
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'hostingEventTitleDateContainer' },
+	              event.formatted_date,
+	              ' @ ',
+	              event.formatted_time
 	            )
 	          ),
 	          _react2.default.createElement(
-	            'table',
-	            { className: 'table' },
+	            'div',
+	            { className: 'applicationsHeaderContainer' },
 	            _react2.default.createElement(
-	              'thead',
-	              null,
-	              _react2.default.createElement(
-	                'tr',
-	                null,
-	                _react2.default.createElement(
-	                  'th',
-	                  { className: 'nameHeader' },
-	                  'Name'
-	                ),
-	                _react2.default.createElement(
-	                  'th',
-	                  { className: 'thumbsHeader' },
-	                  'Thumbs'
-	                ),
-	                _react2.default.createElement(
-	                  'th',
-	                  { className: 'quantityHeader' },
-	                  'Guests'
-	                ),
-	                _react2.default.createElement(
-	                  'th',
-	                  { className: 'messageHeader' },
-	                  'Messages'
-	                ),
-	                _react2.default.createElement(
-	                  'th',
-	                  { className: 'statusHeader' },
-	                  'Status'
-	                )
-	              )
+	              'div',
+	              { className: 'nameHeader' },
+	              'Name'
 	            ),
 	            _react2.default.createElement(
-	              'tbody',
-	              null,
-	              eventApplications
+	              'div',
+	              { className: 'thumbsHeader' },
+	              'Thumbs'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'quantityHeader' },
+	              'Guests'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'messageHeader' },
+	              'Messages'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'statusHeader' },
+	              'Status'
 	            )
-	          )
+	          ),
+	          function () {
+	            switch (event.applications.length) {
+	              case 0:
+	                return _react2.default.createElement(
+	                  'div',
+	                  { className: 'noApplications' },
+	                  _react2.default.createElement(
+	                    'i',
+	                    null,
+	                    'There are no applications at this time'
+	                  )
+	                );
+	              default:
+	                return eventApplications;
+	            }
+	          }()
 	        );
 	      });
 	      return _react2.default.createElement(
