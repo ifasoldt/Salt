@@ -66,6 +66,9 @@ header {
     flex: 2;
     height: 45px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     input {
       width: 100%;
       border-radius: 5px;
@@ -92,6 +95,9 @@ header {
     flex: 2;
     height: 45px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     input {
       width: 100%;
       border: 2px solid black;

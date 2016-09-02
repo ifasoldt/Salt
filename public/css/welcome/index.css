@@ -82,6 +82,9 @@ header {
   flex: 2;
   height: 45px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchContainer .dateFrom input {
@@ -112,6 +115,9 @@ header {
   flex: 2;
   height: 45px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchContainer .dateTo input {
