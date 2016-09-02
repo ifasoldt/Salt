@@ -19,6 +19,11 @@
   border-top-right-radius: 5px !important;
 }
 
+.modal-header button {
+  color: white;
+  opacity: 1;
+}
+
 .modal-footer button {
   background-color: black;
   color: white;
