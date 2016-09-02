@@ -139,6 +139,7 @@ body {
       align-items: center;
       justify-content: center;
       font-size: 12px;
+      padding: 1px;
       a {
         display: flex;
         flex-direction: column;
@@ -152,15 +153,11 @@ body {
     .votesContainer {
       flex: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      .votesContainerDown {
-        margin-left: 4px;
-      }
-      .thumbVotesNumber {
-        margin-left: 4px;
-      }
+      padding: 1px;
     }
     .applicationSingleQuantityContainer {
       flex: 1;
@@ -168,12 +165,14 @@ body {
       align-items: center;
       justify-content: center;
       font-size: 12px;
+      padding: 1px;
     }
     .applicationSingleMessageContainer {
       flex: 3;
       display: flex;
       align-items: center;
       font-size: 12px;
+      padding: 1px;
     }
     .applicationSingleStatusContainer {
       flex: 1;
@@ -181,6 +180,7 @@ body {
       align-items: center;
       justify-content: center;
       font-size: 12px;
+      padding: 1px;
     }
   }
   .nameHeader {
@@ -188,29 +188,34 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1px;
   }
   .thumbsHeader {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1px;
   }
   .quantityHeader {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1px;
   }
   .messageHeader {
     flex: 3;
     display: flex;
     align-items: center;
+    padding: 1px;
   }
   .statusHeader {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1px;
   }
 }
 .noApplications {
@@ -233,24 +238,28 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 1px;
     }
     .whenHeader {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 1px;
     }
     .spotsHeader {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 1px;
     }
     .approvedHeader {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 1px;
     }
   }
   .attendingEventsBody {
@@ -262,7 +271,6 @@ body {
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
       a {
         display: flex;
         align-items: center;

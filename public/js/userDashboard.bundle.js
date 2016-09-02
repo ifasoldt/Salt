@@ -27926,7 +27926,7 @@
 	            _react2.default.createElement(
 	              'a',
 	              { href: link },
-	              _react2.default.createElement('img', { className: 'profile_image img-circle', src: event.square_event_images[0] }),
+	              _react2.default.createElement('img', { className: 'profile_image', src: event.square_event_images[0] }),
 	              event.title
 	            )
 	          ),

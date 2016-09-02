@@ -46,7 +46,7 @@ class Attending extends React.Component  {
           return (
               <div className="attendingEventsBody" key={key}>
                 <div className="attendingEventHeader">
-                  <a href={link}><img className="profile_image img-circle" src={event.square_event_images[0]} />
+                  <a href={link}><img className="profile_image" src={event.square_event_images[0]} />
                   {event.title}</a>
                 </div>
                 <div className="attendingEventDate">{event.formatted_date} @ {event.formatted_time}</div>
