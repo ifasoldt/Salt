@@ -27,14 +27,14 @@ class EventsController < ApplicationController
     end
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: @events}
+      format.json {render json: @events, each_serializer: EventIndexSerializer}
     end
   end
 
   def show
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @event, include: ['comments', 'comments.user', 'host', 'images'] }
+      format.json {render json: @event, serializer: ShowEventSerializer, include: ['comments', 'comments.user', 'host', 'images'] }
     end
   end
 

@@ -7,6 +7,9 @@ class ApplicationsController < ApplicationController
     @application = current_user.applications.new(application_params.merge(user_id: current_user.id))
     set_applicaton_status
     if @application.save
+      if @application.status == 'approved'
+        ApplicationStatusChangeMailer.application_approved_email(@application).deliver
+      end
       render json: @application
     else
       render json: @application.errors.full_messages, status: 400

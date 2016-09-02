@@ -1,14 +1,13 @@
-class EventSerializer < ActiveModel::Serializer
-  attributes :id, :description, :food, :guest_limit, :spots_left, :date, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :time, :filter_guests, :formatted_date, :formatted_time, :confirmed_guests, :event_marker, :event_application_ids, :square_event_images
+class ShowEventSerializer < ActiveModel::Serializer
+  attributes :id, :description, :food, :guest_limit, :spots_left, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :formatted_date, :formatted_time, :confirmed_guests, :event_marker, :landscape_event_images, :event_application_ids
   belongs_to :host, class_name: 'User'
   has_many :comments
-  has_many :applications
 
-
-  def square_event_images
+  #
+  def landscape_event_images
     ev_images = []
     object.images.each do |image|
-      ev_images << Refile.attachment_url(image, :file, :fill, 100, 100)
+      ev_images << Refile.attachment_url(image, :file, :fill, 1200, 400)
     end
     ev_images
   end
@@ -20,16 +19,6 @@ class EventSerializer < ActiveModel::Serializer
     end
     app_ids
   end
-  #
-  # def test
-  #   respond_to do |format|
-  #     format.json {
-  #     @markers = events_markers(@events)
-  #     render json: @markers
-  #     }
-  #     format.html {}
-  #   end
-  # end
 
   def event_marker
     Gmaps4rails.build_markers([object]) do |object, marker|
