@@ -28,8 +28,8 @@ class MessageBox extends React.Component {
     this.setState({value: e.target.value})
   }
   render(){
+    var userProfileLink = `users/${this.props.conversation.message_partner.id}`
     var allMessages = this.state.messages.map((message, key) => {
-      var userProfileLink = `users/${this.props.conversation.message_partner.id}`
       return <Message message={message} key={key}/>
     })
     return(
