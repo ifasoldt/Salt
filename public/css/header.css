@@ -257,6 +257,8 @@ nav a {
 .navMobileSearchContainer {
   background-color: black;
   padding: 3px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .navMobileSearchContainer .form-group {
@@ -293,6 +295,10 @@ nav a {
   justify-content: center;
 }
 
+.navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom label {
+  color: white;
+}
+
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateFrom .form-group {
   display: flex;
   align-items: center;
@@ -309,6 +315,10 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo label {
+  color: white;
 }
 
 .navMobileSearchContainer .navMobileDatesContainer .navMobileDateTo .form-group {
@@ -330,7 +340,7 @@ nav a {
 }
 
 .navMobileSearchContainer .navMobileButtonContainer button {
-  width: 30%;
+  width: 20%;
   font-size: 12px;
   background-color: white;
   border-radius: 5px;

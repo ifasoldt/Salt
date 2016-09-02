@@ -216,6 +216,8 @@ nav a {
 .navMobileSearchContainer {
   background-color: black;
   padding: 3px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   .form-group {
     margin-bottom: 0;
   }
@@ -242,6 +244,9 @@ nav a {
       display: flex;
       align-items: center;
       justify-content: center;
+      label {
+        color: white;
+      }
       .form-group {
         display: flex;
         align-items: center;
@@ -257,6 +262,9 @@ nav a {
       display: flex;
       align-items: center;
       justify-content: center;
+      label {
+        color: white;
+      }
       .form-group {
         display: flex;
         align-items: center;
@@ -274,7 +282,7 @@ nav a {
     cursor: pointer;
     width: 95%;
     button {
-      width: 30%;
+      width: 20%;
       font-size: 12px;
       background-color: white;
       border-radius: 5px;
