@@ -394,7 +394,7 @@ body {
 }
 
 .conversationContainer .conversationHeader .conversationDateContainer {
-  flex: 1;
+  flex: 3;
   display: flex;
   font-size: 12px;
   align-items: center;
