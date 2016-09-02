@@ -112,7 +112,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var userProfileLink = 'users/' + this.props.conversation.message_partner.id;
+	      var userProfileLink = '/users/' + this.props.conversation.message_partner.id;
 	      var allMessages = this.state.messages.map(function (message, key) {
 	        return _react2.default.createElement(_Message2.default, { message: message, key: key });
 	      });
@@ -131,7 +131,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { href: userProfileLink },
-	                _react2.default.createElement('img', { className: 'user_image img-responsive', src: this.props.conversation.message_partner.user_image })
+	                _react2.default.createElement('img', { className: 'user_image center-block img-responsive', src: this.props.conversation.message_partner.user_image })
 	              ),
 	              _react2.default.createElement(
 	                'h2',
