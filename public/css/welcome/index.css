@@ -87,6 +87,12 @@ header {
   justify-content: center;
 }
 
+.searchContainer .dateFrom label {
+  color: white;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
 .searchContainer .dateFrom input {
   width: 100%;
   border-radius: 5px;
@@ -118,6 +124,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.searchContainer .dateTo label {
+  color: white;
+  font-size: 14px;
+  margin-right: 4px;
 }
 
 .searchContainer .dateTo input {
