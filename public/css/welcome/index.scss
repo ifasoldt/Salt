@@ -69,6 +69,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    .dateTextContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
     label {
       color: white;
       font-size: 16px;
@@ -103,6 +109,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    .dateTextContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
     label {
       color: white;
       font-size: 16px;
