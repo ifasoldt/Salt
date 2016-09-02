@@ -3,7 +3,7 @@ class Application < ApplicationRecord
   belongs_to :event
   has_one :thumb
   validates :quantity, presence: true
-  validates :quantity, numericality: {only_integer: true, message: 'must be a number'}
+  validates :quantity, numericality: {only_integer: true, message: 'must be a number'}, allow_nil: true
   validates :message, length: {maximum: 160}, allow_blank: true
   validate :event_has_enough_spots_left, if: :event
   default_scope { order(created_at: 'DESC') }
