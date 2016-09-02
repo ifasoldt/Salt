@@ -119,7 +119,7 @@ body {
     }
     .hostingEventTitleDateContainer {
       color: white;
-      font-size: 12px;
+      font-size: 10px;
     }
   }
   .applicationsHeaderContainer {
@@ -138,7 +138,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 10px;
       padding: 1px;
       a {
         display: flex;
@@ -156,22 +156,25 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 10px;
       padding: 1px;
+      .thumbVotesNumber {
+        margin-left: 3px;
+      }
     }
     .applicationSingleQuantityContainer {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 10px;
       padding: 1px;
     }
     .applicationSingleMessageContainer {
       flex: 2.5;
       display: flex;
       align-items: center;
-      font-size: 12px;
+      font-size: 10px;
       padding: 1px;
     }
     .applicationSingleStatusContainer {
@@ -179,7 +182,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 10px;
       padding: 1px;
     }
   }
@@ -189,6 +192,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1px;
+    font-size: 12px;
   }
   .thumbsHeader {
     flex: 1;
@@ -196,6 +200,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1px;
+    font-size: 12px;
   }
   .quantityHeader {
     flex: 1;
@@ -203,12 +208,14 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1px;
+    font-size: 12px;
   }
   .messageHeader {
-    flex: 3;
+    flex: 2.5;
     display: flex;
     align-items: center;
     padding: 1px;
+    font-size: 12px;
   }
   .statusHeader {
     flex: 1;
@@ -216,6 +223,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1px;
+    font-size: 12px;
   }
 }
 .noApplications {
@@ -239,6 +247,7 @@ body {
       justify-content: center;
       align-items: center;
       padding: 1px;
+      font-size: 12px;
     }
     .whenHeader {
       flex: 1;
@@ -246,6 +255,7 @@ body {
       justify-content: center;
       align-items: center;
       padding: 1px;
+      font-size: 12px;
     }
     .spotsHeader {
       flex: 1;
@@ -253,6 +263,7 @@ body {
       justify-content: center;
       align-items: center;
       padding: 1px;
+      font-size: 12px;
     }
     .approvedHeader {
       flex: 1;
@@ -260,6 +271,7 @@ body {
       justify-content: center;
       align-items: center;
       padding: 1px;
+      font-size: 12px;
     }
   }
   .attendingEventsBody {
@@ -275,7 +287,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
+        font-size: 10px;
         img {
           max-width: 50px;
           margin-right: 10px;
@@ -283,7 +295,7 @@ body {
       }
     }
     .attendingEventDate {
-      font-size: 12px;
+      font-size: 10px;
       flex: 1;
       display: flex;
       align-items: center;
@@ -291,14 +303,14 @@ body {
       text-align: center;
     }
     .attendingEventSpots {
-      font-size: 12px;
+      font-size: 10px;
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .attendingEventStatus {
-      font-size: 12px;
+      font-size: 10px;
       flex: 1;
       display: flex;
       align-items: center;
@@ -437,6 +449,87 @@ td {
 }
 .text_input {
   height: 80px;
+}
+
+
+@media screen and (min-width: 425px) {
+  .hostingEventContainer {
+    .hostingEventTitleContainer {
+      .hostingEventTitleDateContainer {
+        font-size: 12px;
+      }
+    }
+    .applicationsHeaderContainer {
+    }
+    .applicationSingleContainer {
+      .applicationSingleHeaderContainer {
+        font-size: 12px;
+      }
+      .votesContainer {
+        font-size: 12px;
+      }
+      .applicationSingleQuantityContainer {
+        font-size: 12px;
+      }
+      .applicationSingleMessageContainer {
+        font-size: 12px;
+      }
+      .applicationSingleStatusContainer {
+        font-size: 12px;
+      }
+    }
+    .nameHeader {
+      font-size: 14px;
+    }
+    .thumbsHeader {
+      font-size: 14px;
+    }
+    .quantityHeader {
+      font-size: 14px;
+    }
+    .messageHeader {
+      font-size: 14px;
+    }
+    .statusHeader {
+      font-size: 14px;
+    }
+  }
+  .noApplications {
+    font-size: 12px;
+  }
+
+  .attendingEventsContainer {
+    .attendingEventsHeaderContainer {
+      .titleHeader {
+        font-size: 14px;
+      }
+      .whenHeader {
+        font-size: 14px;
+      }
+      .spotsHeader {
+        font-size: 14px;
+      }
+      .approvedHeader {
+        font-size: 14px;
+      }
+    }
+    .attendingEventsBody {
+      .attendingEventHeader {
+        a {
+          font-size: 12px;
+        }
+      }
+      .attendingEventDate {
+        font-size: 12px;
+      }
+      .attendingEventSpots {
+        font-size: 12px;
+      }
+      .attendingEventStatus {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
 
