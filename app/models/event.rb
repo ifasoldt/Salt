@@ -50,7 +50,7 @@ class Event < ApplicationRecord
 private
 
   def date_cannot_be_earlier_today
-    if date == Date.today && time.hour < Time.now.hour
+    if date == Date.today && time.localtime.hour < Time.now.hour
       errors.add(:time, "can't be earlier today!")
     end
   end
@@ -76,7 +76,7 @@ private
 
 
   def self.update_application_statuses
-    events = Event.where("date < ?", Date.today).or(Event.where("date = ? AND time < ?", Date.today, Time.now))
+    events = Event.where("date < ?", Date.today).or(Event.where("date = ? AND time < ?", Date.today, Time.current.utc))
     events.each do |event|
       event.applications.each do |app|
         if app.status == ('approved' || 'rateable')
