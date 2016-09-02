@@ -92,11 +92,15 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  padding-left: 5px;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 .searchContainer .dateFrom .dateTextContainer .dateTextContainerText {
   font-size: 18px;
-  color: white;
+  color: black;
   margin-right: 6px;
 }
 
@@ -108,8 +112,6 @@ header {
 
 .searchContainer .dateFrom input {
   width: 100%;
-  border-radius: 5px;
-  border: 2px solid black;
 }
 
 .searchContainer .indexArrowContainer {
@@ -144,11 +146,15 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  padding-left: 5px;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 .searchContainer .dateTo .dateTextContainer .dateTextContainerText {
   font-size: 18px;
-  color: white;
+  color: black;
   margin-right: 6px;
 }
 
@@ -160,8 +166,6 @@ header {
 
 .searchContainer .dateTo input {
   width: 100%;
-  border: 2px solid black;
-  border-radius: 5px;
 }
 
 .searchContainer button {
