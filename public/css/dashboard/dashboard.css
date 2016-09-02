@@ -143,7 +143,7 @@ body {
 
 .hostingEventContainer .hostingEventTitleContainer .hostingEventTitleDateContainer {
   color: white;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .hostingEventContainer .applicationsHeaderContainer {
@@ -165,7 +165,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   padding: 1px;
 }
 
@@ -186,7 +186,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   padding: 1px;
 }
 
@@ -199,7 +199,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   padding: 1px;
 }
 
@@ -207,7 +207,7 @@ body {
   flex: 2.5;
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 10px;
   padding: 1px;
 }
 
@@ -216,7 +216,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   padding: 1px;
 }
 
@@ -226,6 +226,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .hostingEventContainer .thumbsHeader {
@@ -234,6 +235,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .hostingEventContainer .quantityHeader {
@@ -242,6 +244,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .hostingEventContainer .messageHeader {
@@ -249,6 +252,7 @@ body {
   display: flex;
   align-items: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .hostingEventContainer .statusHeader {
@@ -257,6 +261,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .noApplications {
@@ -284,6 +289,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .attendingEventsContainer .attendingEventsHeaderContainer .whenHeader {
@@ -292,6 +298,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .attendingEventsContainer .attendingEventsHeaderContainer .spotsHeader {
@@ -300,6 +307,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .attendingEventsContainer .attendingEventsHeaderContainer .approvedHeader {
@@ -308,6 +316,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1px;
+  font-size: 12px;
 }
 
 .attendingEventsContainer .attendingEventsBody {
@@ -327,7 +336,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventHeader a img {
@@ -336,7 +345,7 @@ body {
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventDate {
-  font-size: 12px;
+  font-size: 10px;
   flex: 1;
   display: flex;
   align-items: center;
@@ -345,7 +354,7 @@ body {
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventSpots {
-  font-size: 12px;
+  font-size: 10px;
   flex: 1;
   display: flex;
   align-items: center;
@@ -353,7 +362,7 @@ body {
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventStatus {
-  font-size: 12px;
+  font-size: 10px;
   flex: 1;
   display: flex;
   align-items: center;
@@ -505,6 +514,69 @@ td {
 
 .text_input {
   height: 80px;
+}
+
+@media screen and (min-width: 425px) {
+  .hostingEventContainer .hostingEventTitleContainer .hostingEventTitleDateContainer {
+    font-size: 12px;
+  }
+  .hostingEventContainer .applicationSingleContainer .applicationSingleHeaderContainer {
+    font-size: 12px;
+  }
+  .hostingEventContainer .applicationSingleContainer .votesContainer {
+    font-size: 12px;
+  }
+  .hostingEventContainer .applicationSingleContainer .applicationSingleQuantityContainer {
+    font-size: 12px;
+  }
+  .hostingEventContainer .applicationSingleContainer .applicationSingleMessageContainer {
+    font-size: 12px;
+  }
+  .hostingEventContainer .applicationSingleContainer .applicationSingleStatusContainer {
+    font-size: 12px;
+  }
+  .hostingEventContainer .nameHeader {
+    font-size: 14px;
+  }
+  .hostingEventContainer .thumbsHeader {
+    font-size: 14px;
+  }
+  .hostingEventContainer .quantityHeader {
+    font-size: 14px;
+  }
+  .hostingEventContainer .messageHeader {
+    font-size: 14px;
+  }
+  .hostingEventContainer .statusHeader {
+    font-size: 14px;
+  }
+  .noApplications {
+    font-size: 12px;
+  }
+  .attendingEventsContainer .attendingEventsHeaderContainer .titleHeader {
+    font-size: 14px;
+  }
+  .attendingEventsContainer .attendingEventsHeaderContainer .whenHeader {
+    font-size: 14px;
+  }
+  .attendingEventsContainer .attendingEventsHeaderContainer .spotsHeader {
+    font-size: 14px;
+  }
+  .attendingEventsContainer .attendingEventsHeaderContainer .approvedHeader {
+    font-size: 14px;
+  }
+  .attendingEventsContainer .attendingEventsBody .attendingEventHeader a {
+    font-size: 12px;
+  }
+  .attendingEventsContainer .attendingEventsBody .attendingEventDate {
+    font-size: 12px;
+  }
+  .attendingEventsContainer .attendingEventsBody .attendingEventSpots {
+    font-size: 12px;
+  }
+  .attendingEventsContainer .attendingEventsBody .attendingEventStatus {
+    font-size: 12px;
+  }
 }
 
 @media screen and (min-width: 768px) {
