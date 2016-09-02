@@ -282,7 +282,7 @@ header {
     margin-bottom: 0px;
   }
   .searchContainer .dateTo .dateTextContainer {
-    padding-left: none;
+    padding-left: 0;
     border: none;
     border-radius: 0;
   }
