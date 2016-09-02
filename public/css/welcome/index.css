@@ -51,7 +51,6 @@ header {
   border: none;
   height: 45px;
   font-size: 14px;
-  border: 2px solid black;
 }
 
 .searchContainer .form-group {
@@ -252,6 +251,11 @@ header {
   .searchContainer .dateFrom {
     margin-bottom: 0px;
   }
+  .searchContainer .dateFrom .dateTextContainer {
+    padding-left: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+  }
   .searchContainer .dateFrom input {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
@@ -276,6 +280,11 @@ header {
   }
   .searchContainer .dateTo {
     margin-bottom: 0px;
+  }
+  .searchContainer .dateTo .dateTextContainer {
+    padding-left: 5px;
+    border: 2px solid;
+    border-radius: 5px;
   }
   .searchContainer .dateTo input {
     border-top: 2px solid black;
