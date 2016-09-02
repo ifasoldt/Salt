@@ -50,6 +50,8 @@ class Event < ApplicationRecord
 private
 
   def date_cannot_be_earlier_today
+    Rails.logger.info time.localtime.hour
+    Rails.logger.info Time.now.hour
     if date == Date.today && time.localtime.hour < Time.now.hour
       errors.add(:time, "can't be earlier today!")
     end
