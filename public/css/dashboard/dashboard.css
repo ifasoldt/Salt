@@ -175,6 +175,10 @@ body {
   justify-content: center;
 }
 
+.hostingEventContainer .applicationSingleContainer .applicationSingleHeaderContainer a img {
+  max-width: 50px;
+}
+
 .hostingEventContainer .applicationSingleContainer .votesContainer {
   flex: 1;
   display: flex;
@@ -299,6 +303,7 @@ body {
   display: flex;
   flex-direction: row;
   border-top: 1px solid black;
+  padding: 5px;
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventHeader {
@@ -313,6 +318,11 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+}
+
+.attendingEventsContainer .attendingEventsBody .attendingEventHeader a img {
+  max-width: 50px;
+  margin-right: 10px;
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventDate {

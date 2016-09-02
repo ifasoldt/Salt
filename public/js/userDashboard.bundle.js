@@ -27492,7 +27492,6 @@
 
 	      fetchApi('GET', '/current_user/dashboard.json?hosting=true', {}, function (response) {
 	        var hostingEvents = response;
-	        console.log(response);
 	        _this2.setState({
 	          hostedEvents: hostingEvents
 	        });
