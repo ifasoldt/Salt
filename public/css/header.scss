@@ -215,6 +215,7 @@ nav a {
 }
 .navMobileSearchContainer {
   background-color: black;
+  padding: 3px;
   .form-group {
     margin-bottom: 0;
   }
@@ -222,7 +223,8 @@ nav a {
     border-radius: 0;
   }
   .navMobileCityContainer {
-    width: 95%;
+    width: 100%;
+    margin-bottom: 5px;
     input {
       font-size: 12px;
     }
@@ -232,8 +234,11 @@ nav a {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 5px;
+    width: 100%;
     .navMobileDateFrom {
-      width: 95%;
+      flex: 1;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -247,7 +252,8 @@ nav a {
       }
     }
     .navMobileDateTo {
-      width: 95%;
+      width: 100%;
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -268,7 +274,7 @@ nav a {
     cursor: pointer;
     width: 95%;
     button {
-      width: 50%;
+      width: 30%;
       font-size: 12px;
       background-color: white;
       border-radius: 5px;
