@@ -242,6 +242,7 @@ header {
   }
   .searchContainer .buttonContainer {
     margin-bottom: 0px;
+    justify-content: flex-start;
   }
   .searchContainer .buttonContainer button {
     color: white;
