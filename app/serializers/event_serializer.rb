@@ -10,7 +10,11 @@ class EventSerializer < ActiveModel::Serializer
     object.images.each do |image|
       ev_images << Refile.attachment_url(image, :file, :fill, 100, 100)
     end
-    ev_images
+    if ev_images[0]
+      ev_images
+    else
+      ['/assets/no_event_image.jpeg']
+    end
   end
 
   def event_application_ids
