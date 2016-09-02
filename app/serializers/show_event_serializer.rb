@@ -1,5 +1,5 @@
 class ShowEventSerializer < ActiveModel::Serializer
-  attributes :id, :description, :food, :guest_limit, :spots_left, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :formatted_date, :formatted_time, :confirmed_guests, :event_marker, :landscape_event_images
+  attributes :id, :description, :food, :guest_limit, :spots_left, :title, :allow_children, :alcohol_allowed, :unlimited_guests, :formatted_date, :formatted_time, :confirmed_guests, :event_marker, :landscape_event_images, :event_application_ids
   belongs_to :host, class_name: 'User'
   has_many :comments
 
@@ -12,6 +12,13 @@ class ShowEventSerializer < ActiveModel::Serializer
     ev_images
   end
 
+  def event_application_ids
+    app_ids = []
+    object.applications.each do |app|
+      app_ids << app.user.id
+    end
+    app_ids
+  end
 
   def event_marker
     Gmaps4rails.build_markers([object]) do |object, marker|
