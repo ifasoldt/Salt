@@ -85,6 +85,7 @@ header {
 }
 
 .searchContainer .dateFrom input {
+  width: 100%;
   border-radius: 5px;
   border: 2px solid black;
 }
@@ -114,6 +115,7 @@ header {
 }
 
 .searchContainer .dateTo input {
+  width: 100%;
   border: 2px solid black;
   border-radius: 5px;
 }
@@ -129,6 +131,9 @@ header {
 .searchContainer .buttonContainer {
   flex: 1;
   height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchContainer .buttonContainer button {

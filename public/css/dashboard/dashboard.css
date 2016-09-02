@@ -166,6 +166,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  padding: 1px;
 }
 
 .hostingEventContainer .applicationSingleContainer .applicationSingleHeaderContainer a {
@@ -182,17 +183,11 @@ body {
 .hostingEventContainer .applicationSingleContainer .votesContainer {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-}
-
-.hostingEventContainer .applicationSingleContainer .votesContainer .votesContainerDown {
-  margin-left: 4px;
-}
-
-.hostingEventContainer .applicationSingleContainer .votesContainer .thumbVotesNumber {
-  margin-left: 4px;
+  padding: 1px;
 }
 
 .hostingEventContainer .applicationSingleContainer .applicationSingleQuantityContainer {
@@ -201,6 +196,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  padding: 1px;
 }
 
 .hostingEventContainer .applicationSingleContainer .applicationSingleMessageContainer {
@@ -208,6 +204,7 @@ body {
   display: flex;
   align-items: center;
   font-size: 12px;
+  padding: 1px;
 }
 
 .hostingEventContainer .applicationSingleContainer .applicationSingleStatusContainer {
@@ -216,6 +213,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  padding: 1px;
 }
 
 .hostingEventContainer .nameHeader {
@@ -223,6 +221,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1px;
 }
 
 .hostingEventContainer .thumbsHeader {
@@ -230,6 +229,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1px;
 }
 
 .hostingEventContainer .quantityHeader {
@@ -237,12 +237,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1px;
 }
 
 .hostingEventContainer .messageHeader {
   flex: 3;
   display: flex;
   align-items: center;
+  padding: 1px;
 }
 
 .hostingEventContainer .statusHeader {
@@ -250,6 +252,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1px;
 }
 
 .noApplications {
@@ -276,6 +279,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1px;
 }
 
 .attendingEventsContainer .attendingEventsHeaderContainer .whenHeader {
@@ -283,6 +287,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1px;
 }
 
 .attendingEventsContainer .attendingEventsHeaderContainer .spotsHeader {
@@ -290,6 +295,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1px;
 }
 
 .attendingEventsContainer .attendingEventsHeaderContainer .approvedHeader {
@@ -297,6 +303,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1px;
 }
 
 .attendingEventsContainer .attendingEventsBody {
@@ -310,7 +317,6 @@ body {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventHeader a {
