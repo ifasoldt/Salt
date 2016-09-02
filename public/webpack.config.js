@@ -3,7 +3,9 @@ module.exports = {
     eventsIndex: './js/events/index.js',
     showEvent: './js/events/showEvent.js',
     userDashboard: './js/dashboard/userDashboard.js',
-    MessageBox: './js/components/MessageBox.js'
+    MessageBox: './js/components/MessageBox.js',
+    welcome: './js/welcome/welcome.js',
+    search: './js/header/search.js'
   },
   output: {
     path: './js',
