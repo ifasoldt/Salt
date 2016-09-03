@@ -24,7 +24,7 @@ header {
 }
 
 .jumbotron {
-  background-image: url("../../assets/food.jpg");
+  background-image: url("../../assets/picnic.jpg");
   background-position: center;
   background-size: cover;
   height: 400px;
@@ -333,5 +333,11 @@ header {
 @media screen and (min-width: 992px) {
   .info_text {
     padding: 0 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .searchContainer .cityContainer {
+    flex: 5;
   }
 }
