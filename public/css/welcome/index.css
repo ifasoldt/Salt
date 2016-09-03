@@ -232,7 +232,7 @@ header {
     height: 500px;
   }
   .searchContainer {
-    margin-top: 200px;
+    margin-top: 380px;
     flex-direction: row;
   }
   .searchContainer input {
