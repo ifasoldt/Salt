@@ -18,7 +18,7 @@ header {
   display: none !important;
 }
 .jumbotron {
-  background-image: url('../../assets/picnic.jpg');
+  background-image: linear-gradient(rgba(255, 153, 153, 0.3), rgba(255, 176, 71, 0.2)), url("../../assets/picnic.jpg");
   background-position: center;
   background-size: cover;
   height: 400px;
@@ -191,8 +191,11 @@ header {
   .errorIndex {
     top: 0px;
   }
+  .jumbotron {
+    height: 500px;
+  }
   .searchContainer {
-    margin-top: 150px;
+    margin-top: 200px;
     flex-direction: row;
     input {
       margin-bottom: 0;
