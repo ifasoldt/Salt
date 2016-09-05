@@ -6,7 +6,7 @@
 }
 
 
-.row.is-flex {
+.is-flex {
    display: -webkit-box;
    display: -webkit-flex;
    display: -ms-flexbox;
@@ -16,7 +16,7 @@
    flex-wrap: wrap;
 }
 
-.row.is-flex > [class*='col-'] {
+.is-flex > [class*='col-'] {
    display: -webkit-box;
    display: -webkit-flex;
    display: -ms-flexbox;
