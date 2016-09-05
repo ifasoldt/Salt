@@ -3,7 +3,12 @@
 }
 
 .bio-rect {
-  margin-top: 75px;
+  margin: 50px 0 50px 0;
+}
+
+.bio-rect1 {
+  margin: 0 0 50px 0;
+  border-top: 1px solid grey;
 }
 
 .is-flex {
@@ -14,7 +19,7 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  align-items: flex;
+  align-items: center;
 }
 
 .is-flex > [class*='col-'] {
