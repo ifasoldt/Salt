@@ -14,6 +14,7 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  align-items: flex;
 }
 
 .is-flex > [class*='col-'] {
