@@ -109,8 +109,6 @@ body {
 .conversationContainer .conversationRightsideContainer {
   padding: 10px;
   flex: 10;
-  display: flex;
-  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
