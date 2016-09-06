@@ -26,9 +26,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html {render :dashboard}
       if params[:attending]
-        format.json {render json: @user.events.order_by(date: 'DESC')}
+        format.json {render json: @user.events.order(date: 'DESC')}
       elsif params[:hosting]
-        format.json {render json: @user.hosted_events.order_by(date: 'DESC')}
+        format.json {render json: @user.hosted_events.order(date: 'DESC')}
       else
         format.json {render json: @user, include: ['address', 'hosted_events', 'hosted_events.applications', 'events', 'events.applications', 'applications' 'thumbs', 'images']}
       end
