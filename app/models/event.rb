@@ -81,7 +81,7 @@ private
       event.applications.each do |app|
         if app.status == ('approved' || 'rateable')
           app.status = 'rateable'
-        else
+        elsif app.status == 'pending'
           app.status = 'denied'
         end
         app.save
