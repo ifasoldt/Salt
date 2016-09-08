@@ -558,7 +558,7 @@ td {
   .attendingEventsContainer .attendingEventsBody .attendingEventHeader a {
     font-size: 12px;
   }
-  .attendingEventsContainer .attendingEventsBody .attendingEventHeader img {
+  .attendingEventsContainer .attendingEventsBody .attendingEventHeader a img {
     display: flex;
   }
   .attendingEventsContainer .attendingEventsBody .attendingEventDate {
