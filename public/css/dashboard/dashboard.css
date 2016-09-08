@@ -340,8 +340,9 @@ body {
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventHeader a img {
-  max-width: 50px;
+  width: 50px;
   margin-right: 10px;
+  display: none;
 }
 
 .attendingEventsContainer .attendingEventsBody .attendingEventDate {
@@ -556,6 +557,9 @@ td {
   }
   .attendingEventsContainer .attendingEventsBody .attendingEventHeader a {
     font-size: 12px;
+  }
+  .attendingEventsContainer .attendingEventsBody .attendingEventHeader img {
+    display: flex;
   }
   .attendingEventsContainer .attendingEventsBody .attendingEventDate {
     font-size: 12px;
